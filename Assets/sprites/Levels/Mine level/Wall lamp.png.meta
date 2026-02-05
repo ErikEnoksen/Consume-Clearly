@@ -1,0 +1,2600 @@
+fileFormatVersion: 2
+guid: da2fdd22f1e02e8408ba817a4b35a6c0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8309569226443711823
+    second: Wall lamp_0
+  - first:
+      213: 9201374394166879875
+    second: Wall lamp_1
+  - first:
+      213: -1631151753796683775
+    second: Wall lamp_2
+  - first:
+      213: 6202802777919169905
+    second: Wall lamp_3
+  - first:
+      213: 4045315012946606949
+    second: Wall lamp_4
+  - first:
+      213: 5501152570841822025
+    second: Wall lamp_5
+  - first:
+      213: -3818992206072448111
+    second: Wall lamp_6
+  - first:
+      213: 1287388507253334727
+    second: Wall lamp_7
+  - first:
+      213: -7591707245923911590
+    second: Wall lamp_8
+  - first:
+      213: -2435279068432002798
+    second: Wall lamp_9
+  - first:
+      213: 3366414143804890869
+    second: Wall lamp_10
+  - first:
+      213: 7752697158552430822
+    second: Wall lamp_11
+  - first:
+      213: -2999278577206821383
+    second: Wall lamp_12
+  - first:
+      213: 542602904232594181
+    second: Wall lamp_13
+  - first:
+      213: 1341247620548931712
+    second: Wall lamp_14
+  - first:
+      213: 1640996742427904789
+    second: Wall lamp_15
+  - first:
+      213: 8078313157134547405
+    second: Wall lamp_16
+  - first:
+      213: -9050724542221867700
+    second: Wall lamp_17
+  - first:
+      213: -7625532340240798506
+    second: Wall lamp_18
+  - first:
+      213: 2619819340520039713
+    second: Wall lamp_19
+  - first:
+      213: 3163681705923170996
+    second: Wall lamp_20
+  - first:
+      213: -2637724426041111311
+    second: Wall lamp_21
+  - first:
+      213: 7967802723310041463
+    second: Wall lamp_22
+  - first:
+      213: -179713988623115436
+    second: Wall lamp_23
+  - first:
+      213: -1893196264260389440
+    second: Wall lamp_24
+  - first:
+      213: 489505657817370883
+    second: Wall lamp_25
+  - first:
+      213: -776356498178482543
+    second: Wall lamp_26
+  - first:
+      213: 2202992583785221867
+    second: Wall lamp_27
+  - first:
+      213: -3825800412841841686
+    second: Wall lamp_28
+  - first:
+      213: 9088082572044149850
+    second: Wall lamp_29
+  - first:
+      213: -5295550733696249692
+    second: Wall lamp_30
+  - first:
+      213: 6912760850955528567
+    second: Wall lamp_31
+  - first:
+      213: -1899469853685929756
+    second: Wall lamp_32
+  - first:
+      213: 3219049205354827190
+    second: Wall lamp_33
+  - first:
+      213: -7783141746516374048
+    second: Wall lamp_34
+  - first:
+      213: -6536875690512647649
+    second: Wall lamp_35
+  - first:
+      213: -3151684694006525599
+    second: Wall lamp_36
+  - first:
+      213: -346839148714799812
+    second: Wall lamp_37
+  - first:
+      213: 5943473001207756792
+    second: Wall lamp_38
+  - first:
+      213: 3134257303658320392
+    second: Wall lamp_39
+  - first:
+      213: -1871247461542075384
+    second: Wall lamp_40
+  - first:
+      213: -6015377114377771321
+    second: Wall lamp_41
+  - first:
+      213: 2071699890566509959
+    second: Wall lamp_42
+  - first:
+      213: -5480757924288514811
+    second: Wall lamp_43
+  - first:
+      213: -8935531215577834856
+    second: Wall lamp_44
+  - first:
+      213: 7727430712186011333
+    second: Wall lamp_45
+  - first:
+      213: 5953898690303526330
+    second: Wall lamp_46
+  - first:
+      213: 7486371039794401613
+    second: Wall lamp_47
+  - first:
+      213: -4328564012419746295
+    second: Wall lamp_48
+  - first:
+      213: -1337349709996788021
+    second: Wall lamp_49
+  - first:
+      213: 1927846089904892318
+    second: Wall lamp_50
+  - first:
+      213: -9199791298386916788
+    second: Wall lamp_51
+  - first:
+      213: -2911175584246504302
+    second: Wall lamp_52
+  - first:
+      213: 171380721662902275
+    second: Wall lamp_53
+  - first:
+      213: 3613376846104911650
+    second: Wall lamp_54
+  - first:
+      213: 5646201061897401175
+    second: Wall lamp_55
+  - first:
+      213: -3669720266512989147
+    second: Wall lamp_56
+  - first:
+      213: -612694606126988372
+    second: Wall lamp_57
+  - first:
+      213: -3029034816269906224
+    second: Wall lamp_58
+  - first:
+      213: -4947783035001459733
+    second: Wall lamp_59
+  - first:
+      213: -8925958964068668957
+    second: Wall lamp_60
+  - first:
+      213: 8386103096395365447
+    second: Wall lamp_61
+  - first:
+      213: -5747042080548504686
+    second: Wall lamp_62
+  - first:
+      213: -1816566906558428502
+    second: Wall lamp_63
+  - first:
+      213: 7627893578590384857
+    second: Wall lamp_64
+  - first:
+      213: -1708788770780534839
+    second: Wall lamp_65
+  - first:
+      213: -6872147608420985619
+    second: Wall lamp_66
+  - first:
+      213: 3739812211715150184
+    second: Wall lamp_67
+  - first:
+      213: 8210149353058783723
+    second: Wall lamp_68
+  - first:
+      213: 5080556649060395975
+    second: Wall lamp_69
+  - first:
+      213: -6181417013843553581
+    second: Wall lamp_70
+  - first:
+      213: -3009128699697296782
+    second: Wall lamp_71
+  - first:
+      213: -7396365460309481600
+    second: Wall lamp_72
+  - first:
+      213: -3534727490116247728
+    second: Wall lamp_73
+  - first:
+      213: 5595589823334499226
+    second: Wall lamp_74
+  - first:
+      213: -2459608654886267391
+    second: Wall lamp_75
+  - first:
+      213: -2638270050991507545
+    second: Wall lamp_76
+  - first:
+      213: -620849548676241355
+    second: Wall lamp_77
+  - first:
+      213: -5566004410616635173
+    second: Wall lamp_78
+  - first:
+      213: -7134448089411606783
+    second: Wall lamp_79
+  - first:
+      213: -6888339613466970373
+    second: Wall lamp_80
+  - first:
+      213: -3681837913623633214
+    second: Wall lamp_81
+  - first:
+      213: -5729693847137441877
+    second: Wall lamp_82
+  - first:
+      213: -4354682581075855936
+    second: Wall lamp_83
+  - first:
+      213: 8710131581304006006
+    second: Wall lamp_84
+  - first:
+      213: -5925185194331612094
+    second: Wall lamp_85
+  - first:
+      213: 5046763095096926262
+    second: Wall lamp_86
+  - first:
+      213: -1113199836320109832
+    second: Wall lamp_87
+  - first:
+      213: 927858680906153338
+    second: Wall lamp_88
+  - first:
+      213: -5179461511914561575
+    second: Wall lamp_89
+  - first:
+      213: -5943276856643769325
+    second: Wall lamp_90
+  - first:
+      213: -1578975521380299496
+    second: Wall lamp_91
+  - first:
+      213: -7989721477008496102
+    second: Wall lamp_92
+  - first:
+      213: -8470010284682206657
+    second: Wall lamp_93
+  - first:
+      213: -5217540622014198179
+    second: Wall lamp_94
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Wall lamp_0
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 0
+        width: 1374
+        height: 724
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f45e1ba7f25815370800000000000000
+      internalID: 8309569226443711823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_1
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 701
+        width: 22
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38621b1b249d1bf70800000000000000
+      internalID: 9201374394166879875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_2
+      rect:
+        serializedVersion: 2
+        x: 565
+        y: 710
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10871344f1cfc59e0800000000000000
+      internalID: -1631151753796683775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_3
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 721
+        width: 63
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 175adad3348c41650800000000000000
+      internalID: 6202802777919169905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_4
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 718
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56bbc3f3298d32830800000000000000
+      internalID: 4045315012946606949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_5
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 712
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 943f048ed15085c40800000000000000
+      internalID: 5501152570841822025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_6
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 713
+        width: 10
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19bf01d82d6300bc0800000000000000
+      internalID: -3818992206072448111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_7
+      rect:
+        serializedVersion: 2
+        x: 806
+        y: 722
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c261c6c609bdd110800000000000000
+      internalID: 1287388507253334727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_8
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 714
+        width: 29
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5832ff7b76d4a690800000000000000
+      internalID: -7591707245923911590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_9
+      rect:
+        serializedVersion: 2
+        x: 898
+        y: 703
+        width: 21
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2119a250796243ed0800000000000000
+      internalID: -2435279068432002798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_10
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 716
+        width: 15
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fe5758e3d7e7be20800000000000000
+      internalID: 3366414143804890869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_11
+      rect:
+        serializedVersion: 2
+        x: 1016
+        y: 717
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e8a2ba7dfc179b60800000000000000
+      internalID: 7752697158552430822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_12
+      rect:
+        serializedVersion: 2
+        x: 1052
+        y: 716
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fdf52f560c6066d0800000000000000
+      internalID: -2999278577206821383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_13
+      rect:
+        serializedVersion: 2
+        x: 1090
+        y: 700
+        width: 22
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50b01e07776b78700800000000000000
+      internalID: 542602904232594181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_14
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 709
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08038aaca911d9210800000000000000
+      internalID: 1341247620548931712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_15
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 709
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51b0df5c7ddf5c610800000000000000
+      internalID: 1640996742427904789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_16
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 711
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc97e53040feb1070800000000000000
+      internalID: 8078313157134547405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_17
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 708
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c45a4fc4bfd556280800000000000000
+      internalID: -9050724542221867700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_18
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 709
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6dca1b40dbaac2690800000000000000
+      internalID: -7625532340240798506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_19
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 715
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 125256f4fc77b5420800000000000000
+      internalID: 2619819340520039713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_20
+      rect:
+        serializedVersion: 2
+        x: 1021
+        y: 710
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4b2d3f7efb7a7eb20800000000000000
+      internalID: 3163681705923170996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_21
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 701
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fcc27a1c9be46bd0800000000000000
+      internalID: -2637724426041111311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_22
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 702
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 779f8439c52539e60800000000000000
+      internalID: 7967802723310041463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_23
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 693
+        width: 24
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45b53fa5417818df0800000000000000
+      internalID: -179713988623115436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_24
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 703
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c5b9aa37040ab5e0800000000000000
+      internalID: -1893196264260389440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_25
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 705
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3019fb16dc21bc600800000000000000
+      internalID: 489505657817370883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_26
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 702
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19e5103d0e3d935f0800000000000000
+      internalID: -776356498178482543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_27
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 705
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bee865f351a929e10800000000000000
+      internalID: 2202992583785221867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_28
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 705
+        width: 13
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aebe4036bc608eac0800000000000000
+      internalID: -3825800412841841686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_29
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 703
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a542c14d2fa5f1e70800000000000000
+      internalID: 9088082572044149850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_30
+      rect:
+        serializedVersion: 2
+        x: 819
+        y: 704
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a0d9fb2aac6286b0800000000000000
+      internalID: -5295550733696249692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_31
+      rect:
+        serializedVersion: 2
+        x: 834
+        y: 702
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7796e6a5e5f0fef50800000000000000
+      internalID: 6912760850955528567
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_32
+      rect:
+        serializedVersion: 2
+        x: 999
+        y: 701
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e8ac7d5b3ab3a5e0800000000000000
+      internalID: -1899469853685929756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_33
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 405
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bd8daf623c5cac20800000000000000
+      internalID: 3219049205354827190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_34
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 355
+        width: 24
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0edc06281d9bcf390800000000000000
+      internalID: -7783141746516374048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_35
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 351
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1a7b1e713a5845a0800000000000000
+      internalID: -6536875690512647649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_36
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 340
+        width: 32
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16194b91877f244d0800000000000000
+      internalID: -3151684694006525599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_37
+      rect:
+        serializedVersion: 2
+        x: 1369
+        y: 352
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3dc7a2c1a7cf2bf0800000000000000
+      internalID: -346839148714799812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_38
+      rect:
+        serializedVersion: 2
+        x: 1374
+        y: 363
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f7fc1964357b7250800000000000000
+      internalID: 5943473001207756792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_39
+      rect:
+        serializedVersion: 2
+        x: 1377
+        y: 371
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8025a33696e1f7b20800000000000000
+      internalID: 3134257303658320392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_40
+      rect:
+        serializedVersion: 2
+        x: 1378
+        y: 355
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 804eee7195ef706e0800000000000000
+      internalID: -1871247461542075384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_41
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 320
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c6af73a266158ca0800000000000000
+      internalID: -6015377114377771321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_42
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 336
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 785be6af21820cc10800000000000000
+      internalID: 2071699890566509959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_43
+      rect:
+        serializedVersion: 2
+        x: 1374
+        y: 336
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50530e6c4bf60f3b0800000000000000
+      internalID: -5480757924288514811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_44
+      rect:
+        serializedVersion: 2
+        x: 1399
+        y: 334
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89a9110b3bd9ef380800000000000000
+      internalID: -8935531215577834856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_45
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 320
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ce7a428a495d3b60800000000000000
+      internalID: 7727430712186011333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_46
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 315
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab58430505f70a250800000000000000
+      internalID: 5953898690303526330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_47
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 316
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4197b3dbcee4e760800000000000000
+      internalID: 7486371039794401613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_48
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 319
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9067e24e6f9dde3c0800000000000000
+      internalID: -4328564012419746295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_49
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 304
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc67b2b3687c07de0800000000000000
+      internalID: -1337349709996788021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_50
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 310
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e99286afdc511ca10800000000000000
+      internalID: 1927846089904892318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_51
+      rect:
+        serializedVersion: 2
+        x: 1371
+        y: 306
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4a0be38e86c35080800000000000000
+      internalID: -9199791298386916788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_52
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 291
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 294623eea3d6997d0800000000000000
+      internalID: -2911175584246504302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_53
+      rect:
+        serializedVersion: 2
+        x: 1361
+        y: 297
+        width: 22
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 300411cbbddd06200800000000000000
+      internalID: 171380721662902275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_54
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 274
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22f54b7d81b452230800000000000000
+      internalID: 3613376846104911650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_55
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 274
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 753f3d073f55b5e40800000000000000
+      internalID: 5646201061897401175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_56
+      rect:
+        serializedVersion: 2
+        x: 1378
+        y: 276
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52401715cd8821dc0800000000000000
+      internalID: -3669720266512989147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_57
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 249
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ca3c00e70854f77f0800000000000000
+      internalID: -612694606126988372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_58
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 256
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0de01f312e4b6f5d0800000000000000
+      internalID: -3029034816269906224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_59
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 25
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: beba80d4b81f55bb0800000000000000
+      internalID: -4947783035001459733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_60
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 26
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e929fa2d9f902480800000000000000
+      internalID: -8925958964068668957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_61
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 25
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74cf27ea55c616470800000000000000
+      internalID: 8386103096395365447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_62
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 28
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29b3fa74da76e30b0800000000000000
+      internalID: -5747042080548504686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_63
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 28
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aaacad7e5024ac6e0800000000000000
+      internalID: -1816566906558428502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_64
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 21
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d2fc50abc8bbd960800000000000000
+      internalID: 7627893578590384857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_65
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 26
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c72371aaa92948e0800000000000000
+      internalID: -1708788770780534839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_66
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 22
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de4540c092a31a0a0800000000000000
+      internalID: -6872147608420985619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_67
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 27
+        width: 9
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86113f5646b76e330800000000000000
+      internalID: 3739812211715150184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_68
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 25
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be1d8fd565f40f170800000000000000
+      internalID: 8210149353058783723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_69
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 19
+        width: 20
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cb6e78ba53c18640800000000000000
+      internalID: 5080556649060395975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_70
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 29
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d29c49f9f1373aa0800000000000000
+      internalID: -6181417013843553581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_71
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 28
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 27a0c13046d6d36d0800000000000000
+      internalID: -3009128699697296782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_72
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 24
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 087e84d2dc4da5990800000000000000
+      internalID: -7396365460309481600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_73
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 29
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05f10d5531022fec0800000000000000
+      internalID: -3534727490116247728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_74
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 26
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a93c4a03c4787ad40800000000000000
+      internalID: 5595589823334499226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_75
+      rect:
+        serializedVersion: 2
+        x: 705
+        y: 28
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 106170fb5f6bdddd0800000000000000
+      internalID: -2459608654886267391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_76
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 24
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a77915ed5bf26bd0800000000000000
+      internalID: -2638270050991507545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_77
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 21
+        width: 20
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 538e038ff9c4267f0800000000000000
+      internalID: -620849548676241355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_78
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 23
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd020fe7a7491c2b0800000000000000
+      internalID: -5566004410616635173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_79
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 21
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 107282a33495dfc90800000000000000
+      internalID: -7134448089411606783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_80
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 29
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf6bc071e93b760a0800000000000000
+      internalID: -6888339613466970373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_81
+      rect:
+        serializedVersion: 2
+        x: 837
+        y: 19
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c2e5edbceb77ecc0800000000000000
+      internalID: -3681837913623633214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_82
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 19
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba7a1a1adc90c70b0800000000000000
+      internalID: -5729693847137441877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_83
+      rect:
+        serializedVersion: 2
+        x: 506
+        y: 19
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c5746db34f0193c0800000000000000
+      internalID: -4354682581075855936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_84
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 20
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6756982668a90e870800000000000000
+      internalID: 8710131581304006006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_85
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 19
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24cd57f657385cda0800000000000000
+      internalID: -5925185194331612094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_86
+      rect:
+        serializedVersion: 2
+        x: 585
+        y: 17
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 630adcccb44b90640800000000000000
+      internalID: 5046763095096926262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_87
+      rect:
+        serializedVersion: 2
+        x: 674
+        y: 9
+        width: 9
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8faed1895ae1d80f0800000000000000
+      internalID: -1113199836320109832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_88
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 17
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7d7c25ed8a60ec00800000000000000
+      internalID: 927858680906153338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_89
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 17
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9df5686623bde18b0800000000000000
+      internalID: -5179461511914561575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_90
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 18
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31ca2fd003d358da0800000000000000
+      internalID: -5943276856643769325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_91
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 19
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81d071b012a561ae0800000000000000
+      internalID: -1578975521380299496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_92
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 16
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1a6994e5aece1190800000000000000
+      internalID: -7989721477008496102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_93
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 0
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f32ac99a58a747a80800000000000000
+      internalID: -8470010284682206657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Wall lamp_94
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 0
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5e4cafa2729797b0800000000000000
+      internalID: -5217540622014198179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Wall lamp_0: 8309569226443711823
+      Wall lamp_1: 9201374394166879875
+      Wall lamp_10: 3366414143804890869
+      Wall lamp_11: 7752697158552430822
+      Wall lamp_12: -2999278577206821383
+      Wall lamp_13: 542602904232594181
+      Wall lamp_14: 1341247620548931712
+      Wall lamp_15: 1640996742427904789
+      Wall lamp_16: 8078313157134547405
+      Wall lamp_17: -9050724542221867700
+      Wall lamp_18: -7625532340240798506
+      Wall lamp_19: 2619819340520039713
+      Wall lamp_2: -1631151753796683775
+      Wall lamp_20: 3163681705923170996
+      Wall lamp_21: -2637724426041111311
+      Wall lamp_22: 7967802723310041463
+      Wall lamp_23: -179713988623115436
+      Wall lamp_24: -1893196264260389440
+      Wall lamp_25: 489505657817370883
+      Wall lamp_26: -776356498178482543
+      Wall lamp_27: 2202992583785221867
+      Wall lamp_28: -3825800412841841686
+      Wall lamp_29: 9088082572044149850
+      Wall lamp_3: 6202802777919169905
+      Wall lamp_30: -5295550733696249692
+      Wall lamp_31: 6912760850955528567
+      Wall lamp_32: -1899469853685929756
+      Wall lamp_33: 3219049205354827190
+      Wall lamp_34: -7783141746516374048
+      Wall lamp_35: -6536875690512647649
+      Wall lamp_36: -3151684694006525599
+      Wall lamp_37: -346839148714799812
+      Wall lamp_38: 5943473001207756792
+      Wall lamp_39: 3134257303658320392
+      Wall lamp_4: 4045315012946606949
+      Wall lamp_40: -1871247461542075384
+      Wall lamp_41: -6015377114377771321
+      Wall lamp_42: 2071699890566509959
+      Wall lamp_43: -5480757924288514811
+      Wall lamp_44: -8935531215577834856
+      Wall lamp_45: 7727430712186011333
+      Wall lamp_46: 5953898690303526330
+      Wall lamp_47: 7486371039794401613
+      Wall lamp_48: -4328564012419746295
+      Wall lamp_49: -1337349709996788021
+      Wall lamp_5: 5501152570841822025
+      Wall lamp_50: 1927846089904892318
+      Wall lamp_51: -9199791298386916788
+      Wall lamp_52: -2911175584246504302
+      Wall lamp_53: 171380721662902275
+      Wall lamp_54: 3613376846104911650
+      Wall lamp_55: 5646201061897401175
+      Wall lamp_56: -3669720266512989147
+      Wall lamp_57: -612694606126988372
+      Wall lamp_58: -3029034816269906224
+      Wall lamp_59: -4947783035001459733
+      Wall lamp_6: -3818992206072448111
+      Wall lamp_60: -8925958964068668957
+      Wall lamp_61: 8386103096395365447
+      Wall lamp_62: -5747042080548504686
+      Wall lamp_63: -1816566906558428502
+      Wall lamp_64: 7627893578590384857
+      Wall lamp_65: -1708788770780534839
+      Wall lamp_66: -6872147608420985619
+      Wall lamp_67: 3739812211715150184
+      Wall lamp_68: 8210149353058783723
+      Wall lamp_69: 5080556649060395975
+      Wall lamp_7: 1287388507253334727
+      Wall lamp_70: -6181417013843553581
+      Wall lamp_71: -3009128699697296782
+      Wall lamp_72: -7396365460309481600
+      Wall lamp_73: -3534727490116247728
+      Wall lamp_74: 5595589823334499226
+      Wall lamp_75: -2459608654886267391
+      Wall lamp_76: -2638270050991507545
+      Wall lamp_77: -620849548676241355
+      Wall lamp_78: -5566004410616635173
+      Wall lamp_79: -7134448089411606783
+      Wall lamp_8: -7591707245923911590
+      Wall lamp_80: -6888339613466970373
+      Wall lamp_81: -3681837913623633214
+      Wall lamp_82: -5729693847137441877
+      Wall lamp_83: -4354682581075855936
+      Wall lamp_84: 8710131581304006006
+      Wall lamp_85: -5925185194331612094
+      Wall lamp_86: 5046763095096926262
+      Wall lamp_87: -1113199836320109832
+      Wall lamp_88: 927858680906153338
+      Wall lamp_89: -5179461511914561575
+      Wall lamp_9: -2435279068432002798
+      Wall lamp_90: -5943276856643769325
+      Wall lamp_91: -1578975521380299496
+      Wall lamp_92: -7989721477008496102
+      Wall lamp_93: -8470010284682206657
+      Wall lamp_94: -5217540622014198179
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,1144 @@
+fileFormatVersion: 2
+guid: 3a55f8de7447e004b805f7056523b87f
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2463020927103541877
+    second: Storage lamp foreground_0
+  - first:
+      213: 2225716351404587505
+    second: Storage lamp foreground_1
+  - first:
+      213: -5243035235670883581
+    second: Storage lamp foreground_2
+  - first:
+      213: 852664729832282718
+    second: Storage lamp foreground_3
+  - first:
+      213: -4974369509383228558
+    second: Storage lamp foreground_4
+  - first:
+      213: -3624131199606305126
+    second: Storage lamp foreground_5
+  - first:
+      213: 5000534869503556263
+    second: Storage lamp foreground_6
+  - first:
+      213: -6176875507149409710
+    second: Storage lamp foreground_7
+  - first:
+      213: 4077115194368414255
+    second: Storage lamp foreground_8
+  - first:
+      213: -4207071684269793019
+    second: Storage lamp foreground_9
+  - first:
+      213: -9216199128097070565
+    second: Storage lamp foreground_10
+  - first:
+      213: -1775251803301454551
+    second: Storage lamp foreground_11
+  - first:
+      213: -912562046396088506
+    second: Storage lamp foreground_12
+  - first:
+      213: -5549537189405253976
+    second: Storage lamp foreground_13
+  - first:
+      213: 8778968845152566479
+    second: Storage lamp foreground_14
+  - first:
+      213: -7418129769738081400
+    second: Storage lamp foreground_15
+  - first:
+      213: 6177467751901412537
+    second: Storage lamp foreground_16
+  - first:
+      213: -6370749417766266447
+    second: Storage lamp foreground_17
+  - first:
+      213: 6898428668408688296
+    second: Storage lamp foreground_18
+  - first:
+      213: 4739682862819723759
+    second: Storage lamp foreground_19
+  - first:
+      213: -2548563025679188850
+    second: Storage lamp foreground_20
+  - first:
+      213: 3155155335881488000
+    second: Storage lamp foreground_21
+  - first:
+      213: 328235618364326629
+    second: Storage lamp foreground_22
+  - first:
+      213: -7525384171751017590
+    second: Storage lamp foreground_23
+  - first:
+      213: 3795636074944842788
+    second: Storage lamp foreground_24
+  - first:
+      213: -8050726432593534218
+    second: Storage lamp foreground_25
+  - first:
+      213: -7212226040623167398
+    second: Storage lamp foreground_26
+  - first:
+      213: 4620309440802917488
+    second: Storage lamp foreground_27
+  - first:
+      213: -5544826682943666829
+    second: Storage lamp foreground_28
+  - first:
+      213: -5661732493042786982
+    second: Storage lamp foreground_29
+  - first:
+      213: -6143428273096148186
+    second: Storage lamp foreground_30
+  - first:
+      213: 2026435373521335861
+    second: Storage lamp foreground_31
+  - first:
+      213: 1683025376875469391
+    second: Storage lamp foreground_32
+  - first:
+      213: -39639791659317731
+    second: Storage lamp foreground_33
+  - first:
+      213: -3190857735034387999
+    second: Storage lamp foreground_34
+  - first:
+      213: 6354747793304578852
+    second: Storage lamp foreground_35
+  - first:
+      213: -3625092876622068993
+    second: Storage lamp foreground_36
+  - first:
+      213: 8620718659006282257
+    second: Storage lamp foreground_37
+  - first:
+      213: -462378621244512568
+    second: Storage lamp foreground_38
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Storage lamp foreground_0
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 17
+        width: 329
+        height: 276
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8dd3a5348791ddd0800000000000000
+      internalID: -2463020927103541877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_1
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 279
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f9bf30ba3553ee10800000000000000
+      internalID: 2225716351404587505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_2
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 270
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3030bf06b3ffc37b0800000000000000
+      internalID: -5243035235670883581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_3
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 281
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5a582edd0645db00800000000000000
+      internalID: 852664729832282718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_4
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 280
+        width: 12
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 273bdab594d77fab0800000000000000
+      internalID: -4974369509383228558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_5
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 275
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9e4e0c10ef74bdc0800000000000000
+      internalID: -3624131199606305126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_6
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 278
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aab6b748f7756540800000000000000
+      internalID: 5000534869503556263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_7
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 282
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2527c86e374574aa0800000000000000
+      internalID: -6176875507149409710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_8
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 218
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f225da4faa2d49830800000000000000
+      internalID: 4077115194368414255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_9
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 209
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 501ae7ad79a7d95c0800000000000000
+      internalID: -4207071684269793019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_10
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 203
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b126286f8bb791080800000000000000
+      internalID: -9216199128097070565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_11
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 204
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92d585df3e90d57e0800000000000000
+      internalID: -1775251803301454551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_12
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 188
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64fbe0d57ade553f0800000000000000
+      internalID: -912562046396088506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_13
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 179
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ae1ea534551cf2b0800000000000000
+      internalID: -5549537189405253976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_14
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 173
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcc3a85d6a925d970800000000000000
+      internalID: 8778968845152566479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_15
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 176
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88be20107428d0990800000000000000
+      internalID: -7418129769738081400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_16
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 166
+        width: 6
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bcb383d036cab550800000000000000
+      internalID: 6177467751901412537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_17
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 162
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b9d301882d8697a0800000000000000
+      internalID: -6370749417766266447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_18
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 166
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8aeeed013542cbf50800000000000000
+      internalID: 6898428668408688296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_19
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 158
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe9406aa37cb6c140800000000000000
+      internalID: 4739682862819723759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_20
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 148
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8c72b65e6fa1acd0800000000000000
+      internalID: -2548563025679188850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_21
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 136
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 086f46eaf0d59cb20800000000000000
+      internalID: 3155155335881488000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_22
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 146
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e28c3b4e802e8400800000000000000
+      internalID: 328235618364326629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_23
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 134
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a83fe6c87f6709790800000000000000
+      internalID: -7525384171751017590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_24
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 147
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42cceb766eecca430800000000000000
+      internalID: 3795636074944842788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_25
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 123
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f22a61d6f2164090800000000000000
+      internalID: -8050726432593534218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_26
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 129
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5885d8c0a609eb90800000000000000
+      internalID: -7212226040623167398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_27
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 117
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 07c017bf4f2ae1040800000000000000
+      internalID: 4620309440802917488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_28
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 115
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37509067281dc03b0800000000000000
+      internalID: -5544826682943666829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_29
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 113
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5dd5e27b4c7d61b0800000000000000
+      internalID: -5661732493042786982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_30
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 118
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62b330fe8882ebaa0800000000000000
+      internalID: -6143428273096148186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_31
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 109
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53676075c385f1c10800000000000000
+      internalID: 2026435373521335861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_32
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 104
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4a51a8c9ae4b5710800000000000000
+      internalID: 1683025376875469391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_33
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 98
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d160d2bc1db237ff0800000000000000
+      internalID: -39639791659317731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_34
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 32
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e1c77ebbcbc7b3d0800000000000000
+      internalID: -3190857735034387999
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_35
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 38
+        width: 17
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42bed19f279903850800000000000000
+      internalID: 6354747793304578852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_36
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 28
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff2842b3c3511bdc0800000000000000
+      internalID: -3625092876622068993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_37
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 26
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11ab6a222f1f2a770800000000000000
+      internalID: 8620718659006282257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Storage lamp foreground_38
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 25
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c66cf0081d4599f0800000000000000
+      internalID: -462378621244512568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Storage lamp foreground_0: -2463020927103541877
+      Storage lamp foreground_1: 2225716351404587505
+      Storage lamp foreground_10: -9216199128097070565
+      Storage lamp foreground_11: -1775251803301454551
+      Storage lamp foreground_12: -912562046396088506
+      Storage lamp foreground_13: -5549537189405253976
+      Storage lamp foreground_14: 8778968845152566479
+      Storage lamp foreground_15: -7418129769738081400
+      Storage lamp foreground_16: 6177467751901412537
+      Storage lamp foreground_17: -6370749417766266447
+      Storage lamp foreground_18: 6898428668408688296
+      Storage lamp foreground_19: 4739682862819723759
+      Storage lamp foreground_2: -5243035235670883581
+      Storage lamp foreground_20: -2548563025679188850
+      Storage lamp foreground_21: 3155155335881488000
+      Storage lamp foreground_22: 328235618364326629
+      Storage lamp foreground_23: -7525384171751017590
+      Storage lamp foreground_24: 3795636074944842788
+      Storage lamp foreground_25: -8050726432593534218
+      Storage lamp foreground_26: -7212226040623167398
+      Storage lamp foreground_27: 4620309440802917488
+      Storage lamp foreground_28: -5544826682943666829
+      Storage lamp foreground_29: -5661732493042786982
+      Storage lamp foreground_3: 852664729832282718
+      Storage lamp foreground_30: -6143428273096148186
+      Storage lamp foreground_31: 2026435373521335861
+      Storage lamp foreground_32: 1683025376875469391
+      Storage lamp foreground_33: -39639791659317731
+      Storage lamp foreground_34: -3190857735034387999
+      Storage lamp foreground_35: 6354747793304578852
+      Storage lamp foreground_36: -3625092876622068993
+      Storage lamp foreground_37: 8620718659006282257
+      Storage lamp foreground_38: -462378621244512568
+      Storage lamp foreground_4: -4974369509383228558
+      Storage lamp foreground_5: -3624131199606305126
+      Storage lamp foreground_6: 5000534869503556263
+      Storage lamp foreground_7: -6176875507149409710
+      Storage lamp foreground_8: 4077115194368414255
+      Storage lamp foreground_9: -4207071684269793019
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

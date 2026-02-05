@@ -1,0 +1,74 @@
+name: Test
+
+on: [push, pull_request, workflow_dispatch]
+
+permissions: write-all
+
+jobs:
+  testAllModes:
+    name: Test in ${{ matrix.testMode }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        projectPath:
+          - .
+        testMode:
+          - playmode
+          - editmode
+        unityVersion:
+          - 6000.2.6f2
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - name: Debug directory structure
+        run: |
+          echo "Workflow Directory:"
+          pwd
+          echo "Root Directory:"
+          ls -la
+          echo "Project Directory:"
+          ls -la ${{ matrix.projectPath }}
+          echo "ProjectSettings:"
+          ls -la ${{ matrix.projectPath }}/ProjectSettings
+      - uses: actions/cache@v3
+        with:
+          path: ${{ matrix.projectPath }}/Library
+          key: Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }} 
+          restore-keys: |
+            Library-${{ matrix.projectPath }}-
+            Library-
+      - uses: game-ci/unity-test-runner@v4
+        id: tests
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          projectPath: ${{ matrix.projectPath }}
+          testMode: ${{ matrix.testMode }}
+          unityVersion: ${{ matrix.unityVersion }}
+          artifactsPath: ${{ matrix.testMode }}-artifacts
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          checkName: ${{ matrix.testMode }} Test Results
+
+      # Ensure we always have a concrete path for upload-artifact
+      - name: Determine artifact path
+        id: artifact_path
+        run: |
+          if [ -n "${{ steps.tests.outputs.artifactsPath }}" ]; then
+            echo "artifact_path=${{ steps.tests.outputs.artifactsPath }}" >> $GITHUB_OUTPUT
+          else
+            echo "artifact_path=${{ matrix.testMode }}-artifacts" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Ensure artifact path exists
+        run: |
+          mkdir -p "${{ steps.artifact_path.outputs.artifact_path }}" || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Test results for ${{ matrix.testMode }}
+          path: ${{ steps.artifact_path.outputs.artifact_path }}

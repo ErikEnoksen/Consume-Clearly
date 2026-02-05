@@ -1,0 +1,273 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &284641754606636756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7078455580901460338}
+  m_Layer: 0
+  m_Name: Lift Bottom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7078455580901460338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284641754606636756}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -3.45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2661910896105574002}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1224569570556291785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2661910896105574002}
+  m_Layer: 0
+  m_Name: MineLift
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2661910896105574002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224569570556291785}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2960012822288901877}
+  - {fileID: 1926381968474196689}
+  - {fileID: 3783204159575513507}
+  - {fileID: 7078455580901460338}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1462965036965111706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3783204159575513507}
+  m_Layer: 0
+  m_Name: Lift Top
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3783204159575513507
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462965036965111706}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 5.21, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2661910896105574002}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1203040025452618391
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2661910896105574002}
+    m_Modifications:
+    - target: {fileID: 994001642902926058, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+      propertyPath: topPoint
+      value: 
+      objectReference: {fileID: 3783204159575513507}
+    - target: {fileID: 994001642902926058, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+      propertyPath: bottomPoint
+      value: 
+      objectReference: {fileID: 7078455580901460338}
+    - target: {fileID: 1603266784137795682, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+      propertyPath: m_Name
+      value: Lift cabin
+      objectReference: {fileID: 0}
+    - target: {fileID: 1603266784137795682, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154040132570154082, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154040132570154082, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154040132570154082, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154040132570154082, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154040132570154082, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154040132570154082, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154040132570154082, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154040132570154082, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154040132570154082, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154040132570154082, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6345389411167331743, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 2020738448054237629, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+--- !u!114 &2123844960704532605 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 994001642902926058, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+  m_PrefabInstance: {fileID: 1203040025452618391}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5a8f2d1aa527af46a33a309be22f529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::LevelObjects.Interactable.LiftPlatform
+--- !u!4 &2960012822288901877 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4154040132570154082, guid: 88b3c5ceae6f30247a36b9c2736e7a5f, type: 3}
+  m_PrefabInstance: {fileID: 1203040025452618391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4102261391514492989
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2661910896105574002}
+    m_Modifications:
+    - target: {fileID: 2474106984267918060, guid: c719ddf07ba20b5469c122f41782121f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474106984267918060, guid: c719ddf07ba20b5469c122f41782121f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474106984267918060, guid: c719ddf07ba20b5469c122f41782121f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474106984267918060, guid: c719ddf07ba20b5469c122f41782121f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474106984267918060, guid: c719ddf07ba20b5469c122f41782121f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474106984267918060, guid: c719ddf07ba20b5469c122f41782121f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474106984267918060, guid: c719ddf07ba20b5469c122f41782121f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474106984267918060, guid: c719ddf07ba20b5469c122f41782121f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474106984267918060, guid: c719ddf07ba20b5469c122f41782121f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2474106984267918060, guid: c719ddf07ba20b5469c122f41782121f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5263620061518596093, guid: c719ddf07ba20b5469c122f41782121f, type: 3}
+      propertyPath: m_Name
+      value: Lift mechanism
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4497890849924736075, guid: c719ddf07ba20b5469c122f41782121f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5421819839295021163}
+  m_SourcePrefab: {fileID: 100100000, guid: c719ddf07ba20b5469c122f41782121f, type: 3}
+--- !u!1 &469956445018457206 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4497890849924736075, guid: c719ddf07ba20b5469c122f41782121f, type: 3}
+  m_PrefabInstance: {fileID: 4102261391514492989}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5421819839295021163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 469956445018457206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc2e836a8d225f4fbfb7e2f982b3081, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::LevelObjects.Interactable.CogwheelRotation
+  rotationSpeed: 180
+  lift: {fileID: 2123844960704532605}
+--- !u!4 &1926381968474196689 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2474106984267918060, guid: c719ddf07ba20b5469c122f41782121f, type: 3}
+  m_PrefabInstance: {fileID: 4102261391514492989}
+  m_PrefabAsset: {fileID: 0}
