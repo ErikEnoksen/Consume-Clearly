@@ -25,35 +25,49 @@ public class Dialogue : MonoBehaviour
     public DialogueObject currentDialogue;
 
     private int currentLineIndex;
+    private bool isDialogueActive = false;
+    private bool isTyping = false;
 
     void Start()
     {
-        StartDialogue();
+        if (dialogueBox != null)
+        {
+            dialogueBox.SetActive(false);
+        }
+        
+       //StartDialogue();
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (isDialogueActive && Input.GetMouseButtonDown(0))
         {
+            if (currentDialogue == null || currentDialogue.dialogueLines.Length == 0)
+                return;
+
             DialogueLine currentLine = currentDialogue.dialogueLines[currentLineIndex];
             string fullText = currentLine.text;
 
-            if (dialogueText.text == fullText)
+            if (isTyping)
             {
-                NextLine();
+                // Skip typing animation
+                StopAllCoroutines();
+                dialogueText.text = fullText;
+                isTyping = false;
             }
             else
             {
-                StopAllCoroutines();
-                dialogueText.text = fullText;
+                NextLine();
             }
         }
     }
 
 void StartDialogue()
     {
+        
         currentLineIndex = 0;
         dialogueText.text = string.Empty;
+        isDialogueActive = true;
 
         if (!dialogueBox.activeSelf)
         {
@@ -98,12 +112,14 @@ void StartDialogue()
         string fullText = currentLine.text;
 
         dialogueText.text = string.Empty;
-
+        isTyping = true;
+        
         foreach (char c in fullText.ToCharArray())
         {
             dialogueText.text += c;
             yield return new WaitForSeconds(dialogueSpeed);
         }
+        isTyping = false;
     }
 
     void NextLine()
@@ -120,5 +136,16 @@ void StartDialogue()
         {
             dialogueBox.SetActive(false);
         }
+    }
+
+    void EndDialogue()
+    {
+        isDialogueActive = false;
+        dialogueBox.SetActive(false);
+    }
+
+    public bool IsDialogueActive()
+    {
+        return isDialogueActive;
     }
 }
