@@ -134,7 +134,7 @@ void StartDialogue()
         }
         else
         {
-            dialogueBox.SetActive(false);
+            EndDialogue();
         }
     }
 

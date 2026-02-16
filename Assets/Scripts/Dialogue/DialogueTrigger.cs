@@ -21,9 +21,12 @@ public class DialogueTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPlayerInRange && Input.GetKeyDown(interactKey) && !isDialogueActive)
+        if (isPlayerInRange && Input.GetKeyDown(interactKey))
         {
-            StartConversation();
+            if (!dialogueManager.IsDialogueActive())  // Check dialogue manager state
+            {
+                StartConversation();
+            }
         }
     }
 
@@ -31,7 +34,6 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (dialogueManager != null && dialogueToPlay != null)
         {
-            isDialogueActive = true;
             dialogueManager.DisplayDialogue(dialogueToPlay);
         }
     }
@@ -44,8 +46,7 @@ public class DialogueTrigger : MonoBehaviour
             //Could show interaction prompt UI here
         }
     }
-
-    private void onTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
