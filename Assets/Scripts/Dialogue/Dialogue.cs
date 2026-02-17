@@ -7,21 +7,20 @@ using UnityEngine.UI;
 public class Dialogue : MonoBehaviour
 {
     [Header("Dialogue Box Components:")]
-    [Tooltip("The Dialogue Box game object.")]
     [SerializeField] private GameObject dialogueBox;
-    [Tooltip("The Dialogue Text being displayed.")]
     [SerializeField] private TMP_Text dialogueText;
-    [Tooltip("The Name Text displayed in the top corner of the Dialogue Box. (Name of the person speaking)")]
     [SerializeField] private TMP_Text nameText;
-    [Tooltip("Image within the Dialogue Box. (The Dialogue Box background)")]
     [SerializeField] private Image dialogueBoxImage;
+    
+    [Header("Choice Buttons:")]
+    [SerializeField] private GameObject choicesPanel;
+    [SerializeField] private Button[] choiceButtons;
     
     [Header("Speed of Typing:")]
     [Tooltip("Speed of the Dialogue Text being typed out. (Lower value makes text type out faster)")]
     [SerializeField] private float dialogueSpeed;
     
     [Header("Dialogue Data:")]
-    [Tooltip("The Scriptable Object that holds dialogue data. (The Scriptable Object controls the Dialogue Box Components)")]
     public DialogueObject currentDialogue;
 
     private int currentLineIndex;
@@ -31,29 +30,26 @@ public class Dialogue : MonoBehaviour
     void Start()
     {
         if (dialogueBox != null)
-        {
             dialogueBox.SetActive(false);
-        }
-        
-       //StartDialogue();
-    }
 
+        if (choicesPanel != null)
+            choicesPanel.SetActive(false);
+    }
+    
     void Update()
     {
-        if (isDialogueActive && Input.GetMouseButtonDown(0))
+      
+        if (isDialogueActive && !choicesPanel.activeSelf && Input.GetMouseButtonDown(0))
         {
             if (currentDialogue == null || currentDialogue.dialogueLines.Length == 0)
                 return;
 
-            DialogueLine currentLine = currentDialogue.dialogueLines[currentLineIndex];
-            string fullText = currentLine.text;
-
             if (isTyping)
             {
-                // Skip typing animation
                 StopAllCoroutines();
-                dialogueText.text = fullText;
+                dialogueText.text = currentDialogue.dialogueLines[currentLineIndex].text;
                 isTyping = false;
+                CheckForChoices();
             }
             else
             {
@@ -61,19 +57,16 @@ public class Dialogue : MonoBehaviour
             }
         }
     }
-
-void StartDialogue()
+ void StartDialogue()
     {
-        
         currentLineIndex = 0;
         dialogueText.text = string.Empty;
         isDialogueActive = true;
 
         if (!dialogueBox.activeSelf)
-        {
             dialogueBox.SetActive(true);
-        }
 
+        choicesPanel.SetActive(false);
         ApplyLineVisuals(currentDialogue.dialogueLines[0]);
         StartCoroutine(TypeLine());
     }
@@ -91,18 +84,18 @@ void StartDialogue()
             nameText.text = line.speakerName;
             nameText.gameObject.SetActive(!string.IsNullOrEmpty(line.speakerName));
         }
-        
+
         if (dialogueBoxImage != null)
         {
             dialogueBoxImage.color = line.dialogueBoxColor;
+
+            if (line.dialogueBoxSprite != null)
+            {
+                dialogueBoxImage.sprite = line.dialogueBoxSprite;
+                dialogueBoxImage.type = Image.Type.Sliced;
+            }
         }
-        
-        if (dialogueBoxImage != null && line.dialogueBoxSprite != null)
-        {
-            dialogueBoxImage.sprite = line.dialogueBoxSprite;
-            dialogueBoxImage.type = Image.Type.Sliced; 
-        }
-        
+
         dialogueText.color = line.textColor;
     }
 
@@ -113,13 +106,53 @@ void StartDialogue()
 
         dialogueText.text = string.Empty;
         isTyping = true;
-        
+
         foreach (char c in fullText.ToCharArray())
         {
             dialogueText.text += c;
             yield return new WaitForSeconds(dialogueSpeed);
         }
+
         isTyping = false;
+        CheckForChoices();
+    }
+
+    private void CheckForChoices()
+    {
+        DialogueLine currentLine = currentDialogue.dialogueLines[currentLineIndex];
+
+        if (currentLine.choices != null && currentLine.choices.Length > 0)
+        {
+            ShowChoices(currentLine.choices);
+        }
+    }
+
+    private void ShowChoices(string[] choices)
+    {
+        choicesPanel.SetActive(true);
+
+        for (int i = 0; i < choiceButtons.Length; i++)
+        {
+            if (i < choices.Length)
+            {
+                choiceButtons[i].gameObject.SetActive(true);
+                choiceButtons[i].GetComponentInChildren<TMP_Text>().text = choices[i];
+
+                int index = i;
+                choiceButtons[i].onClick.RemoveAllListeners();
+                choiceButtons[i].onClick.AddListener(() => OnChoiceSelected(index));
+            }
+            else
+            {
+                choiceButtons[i].gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void OnChoiceSelected(int choiceIndex)
+    {
+        choicesPanel.SetActive(false);
+        NextLine();
     }
 
     void NextLine()
@@ -127,9 +160,8 @@ void StartDialogue()
         if (currentLineIndex < currentDialogue.dialogueLines.Length - 1)
         {
             currentLineIndex++;
-            DialogueLine nextLine = currentDialogue.dialogueLines[currentLineIndex];
-
-            ApplyLineVisuals(nextLine);
+            choicesPanel.SetActive(false);
+            ApplyLineVisuals(currentDialogue.dialogueLines[currentLineIndex]);
             StartCoroutine(TypeLine());
         }
         else
@@ -141,6 +173,7 @@ void StartDialogue()
     void EndDialogue()
     {
         isDialogueActive = false;
+        choicesPanel.SetActive(false);
         dialogueBox.SetActive(false);
     }
 
@@ -149,3 +182,25 @@ void StartDialogue()
         return isDialogueActive;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
