@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemTest : MonoBehaviour
 {
@@ -6,10 +7,12 @@ public class ItemTest : MonoBehaviour
     private string itemName;
     [SerializeField]
     private int quantity;
-    [SerializeField] 
-    private int maxCount;
     [SerializeField]
     private Sprite sprite;
+
+    [TextArea]
+    [SerializeField]
+    private string itemDescription;
 
     private InventoryManagerTest inventory;
 
@@ -17,15 +20,28 @@ public class ItemTest : MonoBehaviour
     void Start()
     {
         inventory = GameObject.Find("InventortySelector").GetComponent<InventoryManagerTest>();
+
     }
 
-    //checks if the player bumped into the item and stores it in the inventory
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (collision.gameObject.tag == "Player")
+
+        if (other.gameObject.tag == "Player")
         {
-            inventory.AddItem(itemName, quantity, sprite);
-            Destroy(gameObject);
+
+            if (Input.GetKey(KeyCode.F))
+            {
+                int exceccItems = inventory.AddItem(itemName, quantity, sprite, itemDescription);
+                if (exceccItems <= 0)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    quantity = exceccItems;
+                }
+            }
         }
     }
 
