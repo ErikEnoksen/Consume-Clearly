@@ -88,42 +88,69 @@ public class InventoryItemTest : MonoBehaviour, IPointerClickHandler
 
     }
 
-    public void EmptySlot()
-    {
-        quantity = 0;
-        quantityText.enabled = false;
-        quantityText.text = string.Empty;
-        
-        itemImage.enabled = false;
-        itemImage.sprite = null;
-        itemName = string.Empty;
-        itemDescription = string.Empty;
-
-        isFull = false;
-    }
-
-    
+    //highlights the selected itembox and deselects the previous selected spots
     public void OnLeftClick()
     {
         inventoryManager.DeselectAllSlots();
         selectedShaders.SetActive(true);
         infoImage.gameObject.SetActive(true);
         thisItemSelected = true;
+        
         itemDescriptionTitle.text = itemName;
         itemDescriptionText.text = itemDescription;
         infoImage.sprite = itemImage.sprite;
-        if (infoImage.sprite != null)
-        {
-            infoImage.enabled = true;
-        }
-        else
-        {
-            infoImage.enabled = false;
-        }
+        
+        if (infoImage.sprite != null) infoImage.enabled = true;
+        else infoImage.enabled = false;
     }
 
     public void OnRightClick()
     {
-        EmptySlot();
+        DropItem();
+    }
+
+    //creates a copy of the item in your inventory and creates it in the world as a dropped item
+    public void DropItem()
+    {
+        if (quantity > 0)
+        {
+            GameObject itemToDrop = new GameObject(itemName);
+            ItemTest newItem = itemToDrop.AddComponent<ItemTest>();
+
+            newItem.Initialize(itemName, 1, sprite, itemDescription);
+
+            SpriteRenderer sr = itemToDrop.AddComponent<SpriteRenderer>();
+            sr.sprite = sprite;
+
+            BoxCollider2D itemTrigger = itemToDrop.AddComponent<BoxCollider2D>();
+            itemTrigger.isTrigger = true;
+            itemTrigger.size = new Vector2(20f, 10f);
+
+            itemToDrop.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
+            itemToDrop.transform.localScale = new Vector2(0.1f, 0.1f);
+
+            quantity -= 1;
+            quantityText.text = quantity.ToString();
+            
+            //removes the item from the slot if there are no more items
+            if (quantity == 0)
+            {
+                EmptySlot();
+            }
+        }
+    }
+
+    //method that can be used when the count of an item reaches 0
+    private void EmptySlot()
+    {
+        quantityText.enabled = false;
+        quantityText.text = string.Empty;
+        
+        itemImage.enabled = false;
+        itemImage.sprite = null;
+        itemName = null;
+        itemDescription = null;
+
+        isFull = false;
     }
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ItemTest : MonoBehaviour
 {
@@ -10,9 +9,15 @@ public class ItemTest : MonoBehaviour
     [SerializeField]
     private Sprite sprite;
 
+    public string ItemName {  get { return itemName; } set { itemName = value; } }
+    public int Quantity { get { return quantity; } set { quantity = value; } }
+    public Sprite Sprite { get { return sprite; } set { sprite = value; } }
+
     [TextArea]
     [SerializeField]
     private string itemDescription;
+
+    public string ItemDescription { get { return itemDescription; } set { itemDescription = value; } }
 
     private InventoryManagerTest inventory;
 
@@ -20,9 +25,15 @@ public class ItemTest : MonoBehaviour
     void Start()
     {
         inventory = GameObject.Find("InventortySelector").GetComponent<InventoryManagerTest>();
-
     }
 
+    public void Initialize(string itemName, int quantity, Sprite sprite, string itemDescription)
+    {
+        ItemName = itemName;
+        Quantity = quantity;
+        Sprite = sprite;
+        ItemDescription = itemDescription;
+    }
 
     private void OnTriggerStay2D(Collider2D other)
     {
