@@ -6,10 +6,18 @@ public class ItemTest : MonoBehaviour
     private string itemName;
     [SerializeField]
     private int quantity;
-    [SerializeField] 
-    private int maxCount;
     [SerializeField]
     private Sprite sprite;
+
+    public string ItemName {  get { return itemName; } set { itemName = value; } }
+    public int Quantity { get { return quantity; } set { quantity = value; } }
+    public Sprite Sprite { get { return sprite; } set { sprite = value; } }
+
+    [TextArea]
+    [SerializeField]
+    private string itemDescription;
+
+    public string ItemDescription { get { return itemDescription; } set { itemDescription = value; } }
 
     private InventoryManagerTest inventory;
 
@@ -19,13 +27,32 @@ public class ItemTest : MonoBehaviour
         inventory = GameObject.Find("InventortySelector").GetComponent<InventoryManagerTest>();
     }
 
-    //checks if the player bumped into the item and stores it in the inventory
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void Initialize(string itemName, int quantity, Sprite sprite, string itemDescription)
     {
-        if (collision.gameObject.tag == "Player")
+        ItemName = itemName;
+        Quantity = quantity;
+        Sprite = sprite;
+        ItemDescription = itemDescription;
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+
+        if (other.gameObject.tag == "Player")
         {
-            inventory.AddItem(itemName, quantity, sprite);
-            Destroy(gameObject);
+
+            if (Input.GetKey(KeyCode.F))
+            {
+                int exceccItems = inventory.AddItem(itemName, quantity, sprite, itemDescription);
+                if (exceccItems <= 0)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    quantity = exceccItems;
+                }
+            }
         }
     }
 

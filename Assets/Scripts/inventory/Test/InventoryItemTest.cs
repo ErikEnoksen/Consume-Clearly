@@ -9,6 +9,10 @@ public class InventoryItemTest : MonoBehaviour, IPointerClickHandler
     public int quantity;
     public Sprite sprite;
     public bool isFull;
+    public string itemDescription;
+
+    [SerializeField]
+    private int maxStack;
 
     [SerializeField]
     private TMP_Text quantityText;
@@ -19,6 +23,9 @@ public class InventoryItemTest : MonoBehaviour, IPointerClickHandler
     public bool thisItemSelected;
 
     public Image infoImage;
+    public TMP_Text itemDescriptionTitle;
+    public TMP_Text itemDescriptionText;
+
     
     private InventoryManagerTest inventoryManager;
 
@@ -29,25 +36,41 @@ public class InventoryItemTest : MonoBehaviour, IPointerClickHandler
 
 
     //method for adding items to the inventory
-    public void AddItem(string itemName, int quantity, Sprite sprite)
+    public int AddItem(string itemName, int quantity, Sprite sprite, string itemDescription)
     {
+        if (isFull)
+        {
+            return quantity;
+        }
+
+        //updates the slot in the inventory to make the data visible in the inventory
         this.itemName = itemName;
-        this.quantity = quantity;
         this.sprite = sprite;
-        isFull = true;
-
+        this.itemDescription = itemDescription;
+        
         //SetActive makes the item and item count visible in the inventory
-        quantityText.text = quantity.ToString();
-        quantityText.gameObject.SetActive(true);
         itemImage.sprite = sprite;
-        itemImage.gameObject.SetActive(true);
-    }
-
-    //method to allow item stacking in the inventory
-    public void StackItem(int quantity)
-    {
+        itemImage.enabled = true;
+        
+        //checks if the amount of items in the slot and sees if there is space for the rest
         this.quantity += quantity;
+        if(this.quantity > maxStack)
+        {
+            quantityText.text = maxStack.ToString();
+            quantityText.enabled = true;
+            isFull = true;
+            
+            //return excess items
+            int excessItems = this.quantity - maxStack;
+            this.quantity = excessItems;
+            return excessItems;
+        }
+
+        //updates the view to the itemslot if the spot is not full yet
         quantityText.text = this.quantity.ToString();
+        quantityText.enabled = true;
+        return 0;
+        
     }
 
     //listens for when the user clicks on an itemslot in the inventory and executes the relevant code
@@ -65,23 +88,69 @@ public class InventoryItemTest : MonoBehaviour, IPointerClickHandler
 
     }
 
-    
+    //highlights the selected itembox and deselects the previous selected spots
     public void OnLeftClick()
     {
         inventoryManager.DeselectAllSlots();
         selectedShaders.SetActive(true);
+        infoImage.gameObject.SetActive(true);
         thisItemSelected = true;
-        if (sprite != null)
-        {
-            infoImage.sprite = sprite;
-            infoImage.gameObject.SetActive(true);
-        }
+        
+        itemDescriptionTitle.text = itemName;
+        itemDescriptionText.text = itemDescription;
+        infoImage.sprite = itemImage.sprite;
+        
+        if (infoImage.sprite != null) infoImage.enabled = true;
+        else infoImage.enabled = false;
     }
 
     public void OnRightClick()
     {
-
+        DropItem();
     }
 
+    //creates a copy of the item in your inventory and creates it in the world as a dropped item
+    public void DropItem()
+    {
+        if (quantity > 0)
+        {
+            GameObject itemToDrop = new GameObject(itemName);
+            ItemTest newItem = itemToDrop.AddComponent<ItemTest>();
 
+            newItem.Initialize(itemName, 1, sprite, itemDescription);
+
+            SpriteRenderer sr = itemToDrop.AddComponent<SpriteRenderer>();
+            sr.sprite = sprite;
+
+            BoxCollider2D itemTrigger = itemToDrop.AddComponent<BoxCollider2D>();
+            itemTrigger.isTrigger = true;
+            itemTrigger.size = new Vector2(20f, 10f);
+
+            itemToDrop.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
+            itemToDrop.transform.localScale = new Vector2(0.1f, 0.1f);
+
+            quantity -= 1;
+            quantityText.text = quantity.ToString();
+            
+            //removes the item from the slot if there are no more items
+            if (quantity == 0)
+            {
+                EmptySlot();
+            }
+        }
+    }
+
+    //method that can be used when the count of an item reaches 0
+    private void EmptySlot()
+    {
+        quantityText.enabled = false;
+        quantityText.text = string.Empty;
+        
+        itemImage.enabled = false;
+        itemImage.sprite = null;
+        itemName = null;
+        itemDescription = null;
+
+        isFull = false;
+    }
 }
