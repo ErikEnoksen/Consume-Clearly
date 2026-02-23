@@ -124,10 +124,11 @@ public class InventoryItemTest : MonoBehaviour, IPointerClickHandler
 
             BoxCollider2D itemTrigger = itemToDrop.AddComponent<BoxCollider2D>();
             itemTrigger.isTrigger = true;
-            itemTrigger.size = new Vector2(20f, 10f);
+            itemTrigger.size = new Vector2(2f, 1f);
 
-            itemToDrop.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
-            itemToDrop.transform.localScale = new Vector2(0.1f, 0.1f);
+            
+
+            itemToDrop.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position - new Vector3(0f, 0.5f);
 
             quantity -= 1;
             quantityText.text = quantity.ToString();
