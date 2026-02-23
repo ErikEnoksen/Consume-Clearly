@@ -19,13 +19,13 @@ public class Dialogue : MonoBehaviour
     [Header("Speed of Typing:")]
     [Tooltip("Speed of the Dialogue Text being typed out. (Lower value makes text type out faster)")]
     [SerializeField] private float dialogueSpeed;
-    
     [Header("Dialogue Data:")]
     public DialogueObject currentDialogue;
 
     private int currentLineIndex;
     private bool isDialogueActive = false;
     private bool isTyping = false;
+    public static event System.Action OnDialogueEnded;
 
     void Start()
     {
@@ -175,6 +175,7 @@ public class Dialogue : MonoBehaviour
         isDialogueActive = false;
         choicesPanel.SetActive(false);
         dialogueBox.SetActive(false);
+        OnDialogueEnded?.Invoke();
     }
 
     public bool IsDialogueActive()
