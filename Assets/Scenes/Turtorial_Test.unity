@@ -11249,7 +11249,7 @@ MonoBehaviour:
   uniqueId: f3f508f9-e08a-4192-8cb1-38df089d22c3
   brokenBridge: {fileID: 466567612}
   fixedBridge: {fileID: 1938967015}
-  woodItemId: Wood
+  plankItemId: Plank
   screwItemId: Screw
 --- !u!61 &1677244461
 BoxCollider2D:
