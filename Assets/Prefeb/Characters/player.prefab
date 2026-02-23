@@ -233,7 +233,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 823572384380113146}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c17d686654617d4485dd179130b3e7e, type: 3}
   m_Name: 
@@ -283,12 +283,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 823572384380113146}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bd90ee948b0d3740bff608343dacc97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::InventoryManagerTest
   inventoryMenu: {fileID: 0}
+  inventoryItems: []
 --- !u!1 &2287662028223444186
 GameObject:
   m_ObjectHideFlags: 0

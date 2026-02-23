@@ -11,79 +11,51 @@ namespace LevelObjects.Interactable
     [SerializeField] private GameObject fixedBridge;
 
     [Header("Required Items")]
-    [SerializeField] private string woodItemId = "Wood";
+    [SerializeField] private string plankItemId = "Plank";
     [SerializeField] private string screwItemId = "Screw";
     
-    private InventoryObject _inventory;
+    private InventoryManagerTest _inventory;
     private bool isRepaired = false;
 
     protected override void Awake()
     {
         base.Awake();
         
-        var controller = FindFirstObjectByType<InventoryController>(FindObjectsInactive.Include);
-        if (controller != null)
-        {
-            _inventory = controller.InventoryObject;
-        }
-        else
-        {
-            Debug.LogError("No InventoryController found in scene!");
-        }
+        _inventory = FindFirstObjectByType<InventoryManagerTest>();
+        
+        if (_inventory == null) 
+            
+            Debug.LogError("No InventoryManagerTest found in scene!");
+        
         UpdateVisuals();
     }
-    
-    //Place Holder to test if Bridge can be built
-// #if UNITY_EDITOR
-//     private void Update()
-//     {
-//         if (Input.GetKeyDown(KeyCode.T))
-//         {
-//             isRepaired = false; // allow re-testing
-//             Repair();
-//         }
-//     }
-// #endif
+
     public override void Interact()
     {
-        if (isRepaired) return;
-        if (_inventory == null) return;
+        if (isRepaired || _inventory == null) return;
         
-        int woodIndex = _inventory.FindItemIndexWithName(woodItemId);
-        int screwIndex = _inventory.FindItemIndexWithName(screwItemId);
+        InventoryItemTest plank = FindItemByName(plankItemId);
+        InventoryItemTest screw = FindItemByName(screwItemId);
 
-        if (woodIndex == -1)
-        {
-            Debug.LogWarning("No wood item in inventory!");
-            return;
-        }
-        if (screwIndex == -1)
-        {
-            Debug.LogWarning("No screws in your inventory");
-            return;
-        }
+        if (plank == null) {Debug.LogError("No Plank item found in inventory!"); return;}
+        if (screw == null) {Debug.LogError("No screws left in inventory!"); return;}
         
-        //Consumes one of each
-        int woodQty = _inventory.GetItemAt(woodIndex).Quantity;
-        int screwQty = _inventory.GetItemAt(screwIndex).Quantity;
+        plank.quantity -= 1;
+        if (plank.quantity <= 0) plank.DropItem();
+        screw.quantity -= 1;
+        if (screw.quantity <= 0) screw.DropItem();
         
-        if (woodQty > 1)
-        {
-            _inventory.ChangeQuantityAt(woodIndex, woodQty - 1);
-        }
-        else 
-        {
-            _inventory.RemoveItem(woodIndex);
-        }
-        if (screwQty > 1)
-        {
-            _inventory.ChangeQuantityAt(screwIndex, screwQty -1);
-        }
-        else
-        {
-            _inventory.RemoveItem(screwIndex);
-        }
         Repair();
+    }
+    private InventoryItemTest FindItemByName(string itemName)
+    {
+        foreach (var slot in _inventory.inventoryItems)
+        {
+            Debug.Log("Checking slot: " + slot.itemName + " qty: " + slot.quantity);
+            if (slot.itemName == itemName && slot.quantity > 0)
+                return slot;
+        }
+        return null;
     }
     
     private void Repair()
