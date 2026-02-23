@@ -21,6 +21,7 @@ namespace Companion
         [SerializeField] private bool canJump = true;
         [SerializeField] private float followDistance = 2f;
         [SerializeField] private float lookAheadDistance = 2f;
+        [SerializeField] private float teleportDistance = 15f;
 
         [Header("Ground Settings")]
         [SerializeField] private float groundCheckRadius = 0.1f;
@@ -38,7 +39,8 @@ namespace Companion
         [SerializeField] private float linkJumpHeight = 2.5f;
         [Tooltip("Duration of the jump animation over an off-mesh link")]
         [SerializeField] private float linkJumpDuration = 0.5f;
-
+        
+        private bool companionActivated = false;
         private Rigidbody2D rb;
         private NavMeshPath path;
         private AnimationController animationController;
@@ -54,6 +56,7 @@ namespace Companion
 
         private void Start()
         {
+            Dialogue.OnDialogueEnded += ActivateCompanion;
             InitializeComponents();
             FindTarget();
         }
@@ -68,9 +71,15 @@ namespace Companion
         private void FixedUpdate()
         {
             if (!IsTargetValid() || isOnOffMeshLink) return;
+            if (!companionActivated || !IsTargetValid() || isOnOffMeshLink) return;
 
             float distanceToPlayer = Vector2.Distance(transform.position, target.position);
-
+            
+            if (distanceToPlayer > teleportDistance)
+            {
+                TeleportToPlayer();
+                return;
+            }
             if (distanceToPlayer <= followDistance)
             {
                 HandleIdleState();
@@ -313,6 +322,22 @@ namespace Companion
         private bool IsGrounded()
         {
             return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        }
+        private void TeleportToPlayer()
+        {
+            rb.linearVelocity = Vector2.zero;
+            transform.position = target.position;
+            RecalculatePath();
+        }
+        private void ActivateCompanion()
+        {
+            companionActivated = true;
+            Dialogue.OnDialogueEnded -= ActivateCompanion;
+        }
+
+        private void OnDestroy()
+        {
+            Dialogue.OnDialogueEnded -= ActivateCompanion;
         }
     }
 }
