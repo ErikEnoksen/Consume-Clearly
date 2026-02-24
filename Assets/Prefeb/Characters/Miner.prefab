@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 625152158153895744}
   - component: {fileID: -8249197410289733627}
   - component: {fileID: 6831183442283334714}
+  - component: {fileID: -2883789739403078436}
+  - component: {fileID: -2436511805362685212}
   m_Layer: 7
   m_Name: Miner
   m_TagString: Untagged
@@ -252,6 +254,70 @@ MonoBehaviour:
   smoothingPoints: 3
   linkJumpHeight: 2.5
   linkJumpDuration: 0.5
+--- !u!61 &-2883789739403078436
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823572384380113146}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 8.4011, y: 13.82}
+    newSize: {x: 1, y: 2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 8.4011, y: 13.82}
+  m_EdgeRadius: 0
+--- !u!114 &-2436511805362685212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823572384380113146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d4581b53ce9f840aa7a2eb45a3e9ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::CompanionGiveItem
+  itemName: Rope
+  quantity: 1
+  sprite: {fileID: -4570153536982545689, guid: 756f2426d9db9c8499593cf1f529a608, type: 3}
+  itemDescription: Could hang myself with it
+  maxStack: 1
+  interactKey: 116
 --- !u!1 &3786246799249716820
 GameObject:
   m_ObjectHideFlags: 0
