@@ -5,9 +5,9 @@ public class ItemTest : MonoBehaviour
     [SerializeField]
     private string itemName;
     [SerializeField]
-    private int quantity;
+    private int quantity = 1;
     [SerializeField]
-    private int maxStack;
+    private int maxStack = 10;
     [SerializeField]
     private Sprite sprite;
 
