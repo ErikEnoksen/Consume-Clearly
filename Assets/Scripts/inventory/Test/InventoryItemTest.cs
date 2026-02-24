@@ -11,7 +11,6 @@ public class InventoryItemTest : MonoBehaviour, IPointerClickHandler
     public bool isFull;
     public string itemDescription;
 
-    [SerializeField]
     private int maxStack;
 
     [SerializeField]
@@ -36,7 +35,7 @@ public class InventoryItemTest : MonoBehaviour, IPointerClickHandler
 
 
     //method for adding items to the inventory
-    public int AddItem(string itemName, int quantity, Sprite sprite, string itemDescription)
+    public int AddItem(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack)
     {
         if (isFull)
         {
@@ -47,6 +46,7 @@ public class InventoryItemTest : MonoBehaviour, IPointerClickHandler
         this.itemName = itemName;
         this.sprite = sprite;
         this.itemDescription = itemDescription;
+        this.maxStack = maxStack;
         
         //SetActive makes the item and item count visible in the inventory
         itemImage.sprite = sprite;
@@ -117,7 +117,7 @@ public class InventoryItemTest : MonoBehaviour, IPointerClickHandler
             GameObject itemToDrop = new GameObject(itemName);
             ItemTest newItem = itemToDrop.AddComponent<ItemTest>();
 
-            newItem.Initialize(itemName, 1, sprite, itemDescription);
+            newItem.Initialize(itemName, 1, sprite, itemDescription, maxStack);
 
             SpriteRenderer sr = itemToDrop.AddComponent<SpriteRenderer>();
             sr.sprite = sprite;

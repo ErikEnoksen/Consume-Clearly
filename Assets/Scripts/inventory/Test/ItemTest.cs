@@ -7,11 +7,14 @@ public class ItemTest : MonoBehaviour
     [SerializeField]
     private int quantity;
     [SerializeField]
+    private int maxStack;
+    [SerializeField]
     private Sprite sprite;
 
     public string ItemName {  get { return itemName; } set { itemName = value; } }
     public int Quantity { get { return quantity; } set { quantity = value; } }
     public Sprite Sprite { get { return sprite; } set { sprite = value; } }
+    public int MaxStack { get { return maxStack; } set { maxStack = value; } }
 
     [TextArea]
     [SerializeField]
@@ -27,12 +30,13 @@ public class ItemTest : MonoBehaviour
         inventory = GameObject.Find("InventortySelector").GetComponent<InventoryManagerTest>();
     }
 
-    public void Initialize(string itemName, int quantity, Sprite sprite, string itemDescription)
+    public void Initialize(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack)
     {
         ItemName = itemName;
         Quantity = quantity;
         Sprite = sprite;
         ItemDescription = itemDescription;
+        MaxStack = maxStack;
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -43,7 +47,7 @@ public class ItemTest : MonoBehaviour
 
             if (Input.GetKey(KeyCode.F))
             {
-                int exceccItems = inventory.AddItem(itemName, quantity, sprite, itemDescription);
+                int exceccItems = inventory.AddItem(itemName, quantity, sprite, itemDescription, maxStack);
                 if (exceccItems <= 0)
                 {
                     Destroy(gameObject);

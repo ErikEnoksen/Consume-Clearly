@@ -23,17 +23,17 @@ public class InventoryManagerTest : MonoBehaviour
         }
     }
 
-    public int AddItem(string itemName, int quantity, Sprite sprite, string itemDescription)
+    public int AddItem(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack)
     {
         //checks the slots of the inventory and selects the first empty one it finds to store the item
         for (int i = 0; i < inventoryItems.Length; i++)
         {
             if(inventoryItems[i].isFull == false && inventoryItems[i].itemName == itemName || inventoryItems[i].quantity == 0)
             {
-                int exceccItems = inventoryItems[i].AddItem(itemName, quantity, sprite, itemDescription);
+                int exceccItems = inventoryItems[i].AddItem(itemName, quantity, sprite, itemDescription, maxStack);
                 if (exceccItems > 0)
                 {
-                    exceccItems = AddItem(itemName, exceccItems, sprite, itemDescription);
+                    exceccItems = AddItem(itemName, exceccItems, sprite, itemDescription, maxStack);
                 }
                 return exceccItems;
             }
