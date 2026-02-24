@@ -70,7 +70,6 @@ namespace Companion
 
         private void FixedUpdate()
         {
-            if (!IsTargetValid() || isOnOffMeshLink) return;
             if (!companionActivated || !IsTargetValid() || isOnOffMeshLink) return;
 
             float distanceToPlayer = Vector2.Distance(transform.position, target.position);
@@ -87,10 +86,6 @@ namespace Companion
             }
 
             UpdatePathfinding();
-
-            // Check if we're about to traverse an off-mesh link
-            if (TryHandleOffMeshLink()) return;
-
             HandleMovement();
             CheckIfStuck();
         }
@@ -110,21 +105,28 @@ namespace Companion
                 lastTargetPosition = target.position;
             }
 
-            if (path != null && path.corners.Length > 0)
+            // If path is empty or if NPC is to far away from target, recalculate path
+            if (path == null || path.corners.Length == 0)
             {
-                float distToPath = Vector2.Distance(transform.position,
-                    path.corners[Mathf.Min(currentCorner, path.corners.Length - 1)]);
+                RecalculatePath();
+                return;
+            }
 
-                if (distToPath > stuckCheckDistance)
-                {
-                    RecalculatePath();
-                }
+            int safeCorner = Mathf.Min(currentCorner, path.corners.Length - 1);
+            float distToPath = Vector2.Distance(transform.position, path.corners[safeCorner]);
+            if (distToPath > stuckCheckDistance)
+            {
+                RecalculatePath();
             }
         }
 
         private void HandleMovement()
         {
-            if (path == null || path.corners.Length <= 1 || currentCorner >= path.corners.Length) return;
+            if (path == null || path.corners.Length <= 1 || currentCorner >= path.corners.Length)
+            {
+                MoveDirectlyTowardTarget();
+                return;
+            }
 
             Vector3 nextCorner = GetSmoothedPosition();
             Vector2 direction = (nextCorner - transform.position).normalized;
@@ -146,17 +148,29 @@ namespace Companion
                 currentCorner++;
             }
         }
+        
+        private void MoveDirectlyTowardTarget()
+        {
+            Vector2 direction = (target.position - transform.position).normalized;
+            rb.linearVelocity = new Vector2(direction.x * moveSpeed, rb.linearVelocity.y);
+            animationController.FlipSprite(direction.x);
+            UpdateAnimationState(direction);
+
+            if (canJump && IsGrounded() && direction.y > 0.3f)
+            {
+                Jump();
+            }
+        }
 
         private Vector3 GetSmoothedPosition()
         {
             if (currentCorner >= path.corners.Length) return transform.position;
-
-            Vector3 targetPos = path.corners[currentCorner];
-            if (smoothedPath == null || smoothedPath.Length == 0) return targetPos;
+            if (smoothedPath == null || smoothedPath.Length == 0) return path.corners[currentCorner];
 
             int smoothIndex = Mathf.Min(currentCorner, smoothedPath.Length - 1);
             return smoothedPath[smoothIndex];
         }
+
 
         private void CheckIfStuck()
         {
@@ -178,10 +192,16 @@ namespace Companion
 
         private void RecalculatePath()
         {
+            if (!IsTargetValid()) return;
+
             if (NavMesh.CalculatePath(transform.position, target.position, NavMesh.AllAreas, path))
             {
                 currentCorner = 1;
                 SmoothPath();
+            }
+            else
+            {
+                path.ClearCorners();
             }
         }
 
@@ -208,26 +228,26 @@ namespace Companion
             }
         }
 
-        private bool TryHandleOffMeshLink()
-        {
-            if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 0.5f, NavMesh.AllAreas))
-            {
-                if (NavMesh.FindClosestEdge(hit.position, out NavMeshHit edge, NavMesh.AllAreas))
-                {
-                    if (edge.mask == 0 && !isOnOffMeshLink)
-                    {
-                        // No valid edge found, might be on a jump link
-                        OffMeshLinkData linkData = new OffMeshLinkData();
-                        if (linkData.valid)
-                        {
-                            StartCoroutine(TraverseOffMeshLink(linkData));
-                            return true;
-                        }
-                    }
-                }
-            }
-            return false;
-        }
+        // private bool TryHandleOffMeshLink()
+        // {
+        //     if (NavMesh.SamplePosition(transform.position, out NavMeshHit hit, 0.5f, NavMesh.AllAreas))
+        //     {
+        //         if (NavMesh.FindClosestEdge(hit.position, out NavMeshHit edge, NavMesh.AllAreas))
+        //         {
+        //             if (edge.mask == 0 && !isOnOffMeshLink)
+        //             {
+        //                 // No valid edge found, might be on a jump link
+        //                 OffMeshLinkData linkData = new OffMeshLinkData();
+        //                 if (linkData.valid)
+        //                 {
+        //                     StartCoroutine(TraverseOffMeshLink(linkData));
+        //                     return true;
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     return false;
+        // }
 
         private IEnumerator TraverseOffMeshLink(OffMeshLinkData data)
         {
@@ -321,6 +341,7 @@ namespace Companion
 
         private bool IsGrounded()
         {
+            if (groundCheck == null) return false;
             return Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         }
         private void TeleportToPlayer()
@@ -333,6 +354,11 @@ namespace Companion
         {
             companionActivated = true;
             Dialogue.OnDialogueEnded -= ActivateCompanion;
+            if (IsTargetValid())
+            {
+                lastTargetPosition = target.position;
+                RecalculatePath();
+            }
         }
 
         private void OnDestroy()
