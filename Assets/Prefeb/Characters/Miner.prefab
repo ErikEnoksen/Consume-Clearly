@@ -85,7 +85,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 3268527654876081028, guid: 05bc419038983cf41a5a94805e7b69e5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -137,7 +137,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 59d36e3cc29a72642921d94596a31963, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -308,6 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Main::DialogueTrigger
   dialogueToPlay: {fileID: 11400000, guid: a24edcb7dffbdde448331ff6107c7362, type: 2}
+  triggerType: 0
   interactKey: 102
 --- !u!1 &7993382541483594524
 GameObject:
