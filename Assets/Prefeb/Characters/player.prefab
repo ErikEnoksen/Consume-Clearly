@@ -15,10 +15,8 @@ GameObject:
   - component: {fileID: 8781617406767483414}
   - component: {fileID: 625152158153895744}
   - component: {fileID: -8249197410289733627}
-  - component: {fileID: 6978252231117196438}
   - component: {fileID: 3325875414331394727}
   - component: {fileID: 2895222603076180700}
-  - component: {fileID: 6442614642481839611}
   m_Layer: 3
   m_Name: player
   m_TagString: Player
@@ -226,19 +224,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 7.961043, y: 13.369999}
   m_Direction: 0
---- !u!114 &6978252231117196438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 823572384380113146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c17d686654617d4485dd179130b3e7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Main::InventoryController
-  _inventoryData: {fileID: 11400000, guid: 6b2c4cdbc3940d84e8dfc146e0274b3b, type: 2}
 --- !u!114 &3325875414331394727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,19 +261,6 @@ MonoBehaviour:
   pushOffHorizontal: 6
   pushOffVertical: 3
   jumpOffVertical: 8
---- !u!114 &6442614642481839611
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 823572384380113146}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bd90ee948b0d3740bff608343dacc97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Main::InventoryManagerTest
-  inventoryMenu: {fileID: 0}
 --- !u!1 &2287662028223444186
 GameObject:
   m_ObjectHideFlags: 0
