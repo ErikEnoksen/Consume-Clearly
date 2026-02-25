@@ -73,6 +73,24 @@ public class InventoryItemTest : MonoBehaviour, IPointerClickHandler
         
     }
 
+    public void RemoveItem(int quantity)
+    {
+        if (quantity < this.quantity)
+        {
+            this.quantity -= quantity;
+            quantityText.text = this.quantity.ToString();
+        }
+        else if (quantity == this.quantity)
+        {
+            this.quantity = 0;
+            EmptySlot();
+        }
+        else if(quantity > this.quantity)
+        {
+            return;
+        }
+}
+
     //listens for when the user clicks on an itemslot in the inventory and executes the relevant code
     public void OnPointerClick(PointerEventData eventData)
     {
