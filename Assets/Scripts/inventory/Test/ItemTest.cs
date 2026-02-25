@@ -27,7 +27,7 @@ public class ItemTest : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        inventory = GameObject.Find("InventortySelector").GetComponent<InventoryManagerTest>();
+        inventory = GameObject.Find("InventorySelector").GetComponent<InventoryManagerTest>();
     }
 
     public void Initialize(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack)

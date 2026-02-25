@@ -286,12 +286,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d4581b53ce9f840aa7a2eb45a3e9ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::CompanionGiveItem
-  itemName: Rope
+  itemName: TNT
   quantity: 1
-  sprite: {fileID: -4570153536982545689, guid: 756f2426d9db9c8499593cf1f529a608, type: 3}
-  itemDescription: Could hang myself with it
+  sprite: {fileID: 3467156571499139007, guid: 9136946f2be331c4b829d9545c4210ea, type: 3}
+  itemDescription: IT Can go boom
   maxStack: 1
-  interactKey: 116
+  interactKey: 296
 --- !u!1 &3786246799249716820
 GameObject:
   m_ObjectHideFlags: 0

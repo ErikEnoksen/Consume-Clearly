@@ -241,8 +241,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   pressE: {fileID: 8784308139853095190}
-  originOffset: 0.5
-  circleRadius: 0.5
+  originOffset: 0.1
+  circleRadius: 0.8
 --- !u!114 &2895222603076180700
 MonoBehaviour:
   m_ObjectHideFlags: 0
