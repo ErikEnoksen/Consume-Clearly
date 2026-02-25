@@ -30,7 +30,7 @@ public class InventoryItemTest : MonoBehaviour, IPointerClickHandler
 
     private void Start()
     {
-        inventoryManager = GameObject.Find("InventortySelector").GetComponent<InventoryManagerTest>();
+        inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManagerTest>();
     }
 
 

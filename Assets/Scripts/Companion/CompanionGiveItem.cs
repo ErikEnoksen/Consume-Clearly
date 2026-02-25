@@ -20,7 +20,7 @@ public class CompanionGiveItem : MonoBehaviour
     private void Start()
     {
         inventoryManager = GameObject
-            .Find("InventortySelector")
+            .Find("InventorySelector")
             .GetComponent<InventoryManagerTest>();
     }
 
