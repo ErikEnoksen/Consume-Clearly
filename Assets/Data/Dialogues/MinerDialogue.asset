@@ -10,17 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c234f20efd360eb45b89a7d3a2835e3e, type: 3}
-  m_Name: MentorDialogue_Controls
+  m_Name: MinerDialogue
   m_EditorClassIdentifier: Main::DialogueObject
   dialogueLines:
-  - text: "You can use A and D to move around\u2026\r\n\r\n"
-    speakerName: Mentor
-    dialogueBoxColor: {r: 1, g: 0.8705883, b: 0.6784314, a: 1}
-    textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
-    dialogueBoxSprite: {fileID: 0}
-    choices: []
-  - text: "To jump you press SPACEBAR\u2026\r\n\r\n"
-    speakerName: Mentor
+  - text: Hallo there! You want some TNT?
+    speakerName: Miner
     dialogueBoxColor: {r: 1, g: 0.8705883, b: 0.6784314, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
     dialogueBoxSprite: {fileID: 0}

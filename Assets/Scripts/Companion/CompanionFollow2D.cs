@@ -56,7 +56,7 @@ namespace Companion
 
         private void Start()
         {
-            Dialogue.OnDialogueEnded += ActivateCompanion;
+            Dialogue.OnDialogueEnded += OnDialogueEndedHandler;
             InitializeComponents();
             FindTarget();
         }
@@ -350,10 +350,22 @@ namespace Companion
             transform.position = target.position;
             RecalculatePath();
         }
+
+        private void OnDialogueEndedHandler(DialogueObject dialogue)
+        {
+            if (dialogue == null) return;
+
+            //Only activate companion if the ended dialogue is the one that should trigger it
+            if (dialogue.name == "MinerDialogue")
+            {
+                ActivateCompanion();
+            }
+            
+        }
         private void ActivateCompanion()
         {
             companionActivated = true;
-            Dialogue.OnDialogueEnded -= ActivateCompanion;
+            Dialogue.OnDialogueEnded -= OnDialogueEndedHandler;
             if (IsTargetValid())
             {
                 lastTargetPosition = target.position;
@@ -363,7 +375,7 @@ namespace Companion
 
         private void OnDestroy()
         {
-            Dialogue.OnDialogueEnded -= ActivateCompanion;
+            Dialogue.OnDialogueEnded -= OnDialogueEndedHandler;
         }
     }
 }

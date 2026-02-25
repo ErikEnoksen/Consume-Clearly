@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8551f3ab8e73148ae97c061e0b735e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::DialogueTrigger
-  dialogueToPlay: {fileID: 11400000, guid: a24edcb7dffbdde448331ff6107c7362, type: 2}
+  dialogueToPlay: {fileID: 11400000, guid: 7986fb9a283fe844dbd5794b543e6a75, type: 2}
   triggerType: 0
   interactKey: 102
 --- !u!1 &7993382541483594524
