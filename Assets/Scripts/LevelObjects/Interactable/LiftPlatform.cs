@@ -10,9 +10,11 @@ namespace LevelObjects.Interactable
         public Transform bottomPoint;
         public float moveSpeed = 2f;
         public GameObject liftGround;
+        public bool startMovingOnLevelStart = true;
 
         [Header("Player Settings")] public float playerYOffset = 0.5f; // Height above lift ground where player stands
-
+        
+        public bool isBroken = false;
         private bool isAtTop = false;
         public bool isMoving = false;
         private GameObject currentPlayer;
@@ -30,6 +32,12 @@ namespace LevelObjects.Interactable
             }
 
             CheckInitialPosition();
+
+            // If configured to start moving and the lift is at the top, begin moving to bottom immediately
+            if (startMovingOnLevelStart && isAtTop && !isMoving)
+            {
+                StartCoroutine(MoveLift());
+            }
         }
 
         private void CheckInitialPosition()
@@ -52,6 +60,10 @@ namespace LevelObjects.Interactable
 
         public override void Interact()
         {
+            if (isBroken)
+            {
+                return;
+            }
             if (!isMoving)
                 StartCoroutine(MoveLift());
         }
@@ -84,6 +96,15 @@ namespace LevelObjects.Interactable
                 currentPlayer = null;
                 playerRb = null;
             }
+        }
+
+        public void Repair()
+        {
+            if (!isBroken)
+            {
+                return;
+            }
+            isBroken = false;
         }
 
         private IEnumerator MoveLift()
