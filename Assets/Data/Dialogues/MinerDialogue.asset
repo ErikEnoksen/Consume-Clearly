@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: MinerDialogue
   m_EditorClassIdentifier: Main::DialogueObject
   dialogueLines:
-  - text: Hallo there! You want some TNT?
+  - text: Hello there! You want some TNT?
     speakerName: Miner
     dialogueBoxColor: {r: 1, g: 0.8705883, b: 0.6784314, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
-    dialogueBoxSprite: {fileID: 0}
+    dialogueBoxSprite: {fileID: -5805635871556436518, guid: 6b9f542dd340d2d48bc8b6e9cb489d01, type: 3}
     choices: []
