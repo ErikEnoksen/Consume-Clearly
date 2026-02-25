@@ -49,8 +49,16 @@ namespace LevelObjects.Interactable
 
             foreach (Interactable obj in linkedObjects)
             {
-                if (obj != null)
+                if (obj == null) continue;
+
+                if (obj is LiftPlatform lift && lift.isBroken)
+                {
+                    lift.Repair();
+                }
+                else
+                {
                     obj.Interact();
+                }
             }
         }
 
