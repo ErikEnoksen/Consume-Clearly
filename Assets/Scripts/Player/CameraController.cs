@@ -13,6 +13,7 @@ namespace Player
         private float halfHeight;
         private float halfWidth;
         private float minX, maxX, minY, maxY;
+        private float spriteWidth, spriteHeight;
 
         private void Start()
         {
@@ -45,8 +46,8 @@ namespace Player
                     halfWidth = halfHeight * cam.aspect;
                 }
 
-                float spriteWidth = backgroundSprite.sprite.bounds.size.x * backgroundSprite.transform.localScale.x;
-                float spriteHeight = backgroundSprite.sprite.bounds.size.y * backgroundSprite.transform.localScale.y;
+                spriteWidth = backgroundSprite.sprite.bounds.size.x * backgroundSprite.transform.lossyScale.x;
+                spriteHeight = backgroundSprite.sprite.bounds.size.y * backgroundSprite.transform.lossyScale.y;
 
                 Vector3 spritePos = backgroundSprite.transform.position;
 
@@ -86,8 +87,8 @@ namespace Player
                 Gizmos.color = Color.green;
                 Gizmos.DrawWireCube(backgroundSprite.transform.position,
                     new Vector3(
-                        backgroundSprite.sprite.bounds.size.x * backgroundSprite.transform.localScale.x,
-                        backgroundSprite.sprite.bounds.size.y * backgroundSprite.transform.localScale.y,
+                        spriteWidth,
+                        spriteHeight,
                         0));
             }
         }
