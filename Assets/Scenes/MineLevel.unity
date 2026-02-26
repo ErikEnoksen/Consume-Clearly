@@ -1947,6 +1947,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::rock
   requiresLever: 0
   uniqueId: 4588b5fd-a3a3-4100-a6b4-170ce676cbde
+  tntItemId: TNT
 --- !u!95 &366992977
 Animator:
   serializedVersion: 7
@@ -2889,6 +2890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::rock
   requiresLever: 0
   uniqueId: 9b32a4a5-81c0-4212-99ea-bb8e6b19cb58
+  tntItemId: TNT
 --- !u!95 &824329529
 Animator:
   serializedVersion: 7
@@ -3193,6 +3195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::rock
   requiresLever: 0
   uniqueId: f7fc6ab9-9ab1-4a75-b586-3909464f9d76
+  tntItemId: TNT
 --- !u!95 &859835706
 Animator:
   serializedVersion: 7
@@ -5503,6 +5506,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::rock
   requiresLever: 0
   uniqueId: 20750e37-a05f-44c2-97fe-97927f68dcc6
+  tntItemId: TNT
 --- !u!95 &1382250565
 Animator:
   serializedVersion: 7
@@ -5769,6 +5773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::rock
   requiresLever: 0
   uniqueId: e08936db-7367-45b7-8dda-66c3d0160408
+  tntItemId: TNT
 --- !u!95 &1394403525
 Animator:
   serializedVersion: 7
@@ -7305,6 +7310,10 @@ PrefabInstance:
     - target: {fileID: 3541813004625681828, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 8726127608279920751, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_Name
+      value: InventorySelector
       objectReference: {fileID: 0}
     - target: {fileID: 8914616892585617923, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_Pivot.x
