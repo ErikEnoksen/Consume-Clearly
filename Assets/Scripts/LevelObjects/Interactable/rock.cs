@@ -117,6 +117,7 @@ namespace LevelObjects.Interactable
             
             _used = true;
             StartCoroutine(DelayedPoof(3.0f));
+            AudioManager.Instance.Play("Rock");
 
            
         }

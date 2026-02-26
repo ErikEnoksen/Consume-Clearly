@@ -114,11 +114,14 @@ namespace Player
                 {
                     animationController.SetWalking(true);
                     animationController.SetIdle(false);
+                    if (!AudioManager.Instance.IsPlaying("Footstep"))
+                        AudioManager.Instance.Play("Footstep");
                 }
                 else
                 {
                     animationController.SetWalking(false);
                     animationController.SetIdle(true);
+                    AudioManager.Instance.Stop("Footstep");
                 }
             }
             
@@ -185,6 +188,9 @@ namespace Player
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 jumpBufferTimeCounter = jumpBufferTime;
+                Debug.Log("AudioManager instance: " + AudioManager.Instance);
+                Debug.Log("Sounds count: " + AudioManager.Instance.sounds.Length);
+                AudioManager.Instance.Play("Jump");
             }
             else
             {

@@ -37,6 +37,7 @@ namespace LevelObjects.Interactable
             if (startMovingOnLevelStart && isAtTop && !isMoving)
             {
                 StartCoroutine(MoveLift());
+                AudioManager.Instance.Play("Elevator");
             }
         }
 
@@ -66,6 +67,7 @@ namespace LevelObjects.Interactable
             }
             if (!isMoving)
                 StartCoroutine(MoveLift());
+                AudioManager.Instance.Play("Elevator");
         }
 
         public override InteractableObjectState SaveState()
