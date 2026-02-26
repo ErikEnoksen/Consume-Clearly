@@ -3,6 +3,7 @@ using UnityEngine;
 using Inventory;
 using Items;
 
+
 public class CompanionGiveItem : MonoBehaviour
 {
     [Header("Item Data")]
@@ -15,17 +16,17 @@ public class CompanionGiveItem : MonoBehaviour
     private bool playerInRange = false;
     private bool hasGivenItem = false;      // ensures item(s) are only given once
 
-    private InventoryManagerTest inventoryManagerTest;
+    private InventoryManager inventoryManager;
 
 
     private void Start()
     {
 
         // fallback to test manager (existing behavior)
-        inventoryManagerTest = GameObject.Find("InventortySelector")?.GetComponent<InventoryManagerTest>();
-        if (inventoryManagerTest == null)
+        inventoryManager = GameObject.Find("InventorySelector")?.GetComponent<InventoryManager>();
+        if (inventoryManager == null)
         {
-            Debug.LogWarning("No InventoryManagerTest found in scene.");
+            Debug.LogWarning("No InventoryManager found in scene.");
         }
 
         // Subscribe to dialogue end event
@@ -40,7 +41,7 @@ public class CompanionGiveItem : MonoBehaviour
     private void Update()
     {
         // keep old manual input behavior if desired (optional)
-        if (!hasGivenItem && playerInRange && inventoryManagerTest != null && Input.GetKeyDown(interactKey))
+        if (!hasGivenItem && playerInRange && inventoryManager != null && Input.GetKeyDown(interactKey))
         {
             GiveItem();
         }
@@ -58,9 +59,9 @@ public class CompanionGiveItem : MonoBehaviour
             playerInRange = false;
     }
 
-    private void OnDialogueEnded()
+    private void OnDialogueEnded(DialogueObject endedDialogue)
     {
-        // When any dialogue ends, give item if player is still in range
+        // When any dialogue ends give item if player is still in range
         if (playerInRange && !hasGivenItem)
         {
             GiveItem();
@@ -71,7 +72,7 @@ public class CompanionGiveItem : MonoBehaviour
     {
         if (hasGivenItem) return;
 
-        if (inventoryManagerTest != null)
+        if (inventoryManager != null)
         {
             if (itemObject == null)
             {
@@ -79,7 +80,7 @@ public class CompanionGiveItem : MonoBehaviour
             }
 
             // assign item data from item object if available
-            int leftover = inventoryManagerTest.AddItem(
+            int leftover = inventoryManager.AddItem(
                 itemObject != null ? itemObject.name : "UnknownItem",
                 quantity,
                 itemObject != null ? itemObject.ItemImage : null,
