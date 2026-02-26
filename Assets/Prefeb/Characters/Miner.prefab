@@ -286,11 +286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d4581b53ce9f840aa7a2eb45a3e9ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::CompanionGiveItem
-  itemName: Rope
+  itemObject: {fileID: 11400000, guid: 079ae63275cd6984f802b5da1f2b44a7, type: 2}
   quantity: 1
-  sprite: {fileID: -4570153536982545689, guid: 756f2426d9db9c8499593cf1f529a608, type: 3}
-  itemDescription: Could hang myself with it
-  maxStack: 1
   interactKey: 116
 --- !u!1 &3786246799249716820
 GameObject:
