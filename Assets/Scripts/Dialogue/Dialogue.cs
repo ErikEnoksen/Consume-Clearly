@@ -25,7 +25,7 @@ public class Dialogue : MonoBehaviour
     private int currentLineIndex;
     private bool isDialogueActive = false;
     private bool isTyping = false;
-    public static event System.Action OnDialogueEnded;
+    public static event System.Action<DialogueObject> OnDialogueEnded;
 
     void Start()
     {
@@ -175,7 +175,7 @@ public class Dialogue : MonoBehaviour
         isDialogueActive = false;
         choicesPanel.SetActive(false);
         dialogueBox.SetActive(false);
-        OnDialogueEnded?.Invoke();
+        OnDialogueEnded?.Invoke(currentDialogue);
     }
 
     public bool IsDialogueActive()

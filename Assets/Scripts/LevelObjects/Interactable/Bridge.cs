@@ -14,14 +14,14 @@ namespace LevelObjects.Interactable
     [SerializeField] private string plankItemId = "Plank";
     [SerializeField] private string screwItemId = "Screw";
     
-    private InventoryManagerTest _inventory;
+    private InventoryManager _inventory;
     private bool isRepaired = false;
 
     protected override void Awake()
     {
         base.Awake();
         
-        _inventory = FindFirstObjectByType<InventoryManagerTest>();
+        _inventory = FindFirstObjectByType<InventoryManager>();
         
         if (_inventory == null) 
             
@@ -34,8 +34,8 @@ namespace LevelObjects.Interactable
     {
         if (isRepaired || _inventory == null) return;
         
-        InventoryItemTest plank = FindItemByName(plankItemId);
-        InventoryItemTest screw = FindItemByName(screwItemId);
+        InventoryItem plank = FindItemByName(plankItemId);
+        InventoryItem screw = FindItemByName(screwItemId);
 
         if (plank == null) {Debug.LogError("No Plank item found in inventory!"); return;}
         if (screw == null) {Debug.LogError("No screws left in inventory!"); return;}
@@ -47,7 +47,7 @@ namespace LevelObjects.Interactable
         
         Repair();
     }
-    private InventoryItemTest FindItemByName(string itemName)
+    private InventoryItem FindItemByName(string itemName)
     {
         foreach (var slot in _inventory.inventoryItems)
         {

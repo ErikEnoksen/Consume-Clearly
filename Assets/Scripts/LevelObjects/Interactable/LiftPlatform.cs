@@ -13,7 +13,8 @@ namespace LevelObjects.Interactable
         public bool startMovingOnLevelStart = true;
 
         [Header("Player Settings")] public float playerYOffset = 0.5f; // Height above lift ground where player stands
-
+        
+        public bool isBroken = false;
         private bool isAtTop = false;
         public bool isMoving = false;
         private GameObject currentPlayer;
@@ -59,6 +60,10 @@ namespace LevelObjects.Interactable
 
         public override void Interact()
         {
+            if (isBroken)
+            {
+                return;
+            }
             if (!isMoving)
                 StartCoroutine(MoveLift());
         }
@@ -91,6 +96,15 @@ namespace LevelObjects.Interactable
                 currentPlayer = null;
                 playerRb = null;
             }
+        }
+
+        public void Repair()
+        {
+            if (!isBroken)
+            {
+                return;
+            }
+            isBroken = false;
         }
 
         private IEnumerator MoveLift()

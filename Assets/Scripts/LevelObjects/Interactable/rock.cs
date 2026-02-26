@@ -15,16 +15,22 @@ namespace LevelObjects.Interactable
         private List<SpriteRenderer> _poofRenderers = new List<SpriteRenderer>();
         private const string PoofClipName = "DustPoof";
         private const string PoofTriggerName = "Poof";
+        
+        [Header("Required Items")]
+        [SerializeField] private string tntItemId = "TNT";
 
         private bool _used;
         private bool _poofPlayed;
         // Cached lookup: whether the poof animator has the trigger parameter
         private bool _poofAnimatorHasTrigger;
         private int _poofTriggerHash;
-
+        
+        private InventoryManager _inventory;
+        
         // Ensure refs are ready early (LoadState may run before Start)
         protected override void Awake()
         {
+            _inventory = FindFirstObjectByType<InventoryManager>();
             EnsureInitialized();
         }
 
@@ -77,42 +83,66 @@ namespace LevelObjects.Interactable
         {
             EnsureInitialized();
         }
+        
+        //Searches the Inventory for required items
+        private InventoryItem FindItemByName(string itemName)
+        {
+            foreach (var slot in _inventory.inventoryItems)
+            {
+                Debug.Log("Checking slot: " + slot.itemName + " qty: " + slot.quantity);
+                if (slot.itemName == itemName && slot.quantity > 0)
+                    return slot;
+            }
+            return null;
+        }
+        
 
         public override void Interact()
         {
             EnsureInitialized();
 
             if (_used) return;
+            
+            
+            InventoryItem tnt = FindItemByName(tntItemId);
+            
+            if (tnt == null)
+            {
+                Debug.Log("You need " + tntItemId + " to destroy this rock!");
+                return;
+            }
+            
+            tnt.quantity -= 1;
+            if (tnt.quantity <= 0) tnt.DropItem();
+            
             _used = true;
+            StartCoroutine(DelayedPoof(3.0f));
 
-            if (_collider != null) _collider.enabled = false;
+           
+        }
+        
+        private IEnumerator DelayedPoof(float delay)
+        {
+            float remaining = delay;
+            while (remaining > 0)
+            {
+                Debug.Log("Biggest Explosion EVER Made in the entire Humar race History in: " + remaining);
+                yield return new WaitForSeconds(1f);
+                remaining -= 1f;
+            }
 
             if (_poofAnimator != null && !_poofPlayed)
             {
                 _poofPlayed = true;
                 
-                foreach (var r in _poofRenderers)
-                    r.enabled = true;
-                
+                foreach (var r in _poofRenderers) r.enabled = true;
                 _poofAnimator.enabled = true;
-                
-                if (_poofAnimatorHasTrigger)
-                {
-                    _poofAnimator.SetTrigger(_poofTriggerHash);
-                }
-                else
-                {
-                    _poofAnimator.Play(PoofClipName, -1, 0f);
-                }
-
+                if (_poofAnimatorHasTrigger) _poofAnimator.SetTrigger(_poofTriggerHash);
+                else _poofAnimator.Play(PoofClipName, -1, 0f);
                 StartCoroutine(DisableAfterPoofFromAnimator());
-                return;
+                yield break;
             }
-            
-            if (_sprite != null)
-            {
-                _sprite.enabled = false;
-            }
+            if (_sprite != null) _sprite.enabled = false;
         }
 
         private IEnumerator DisableAfterPoofFromAnimator()
