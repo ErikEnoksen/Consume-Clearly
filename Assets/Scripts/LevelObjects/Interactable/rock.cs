@@ -25,12 +25,12 @@ namespace LevelObjects.Interactable
         private bool _poofAnimatorHasTrigger;
         private int _poofTriggerHash;
         
-        private InventoryManagerTest _inventory;
+        private InventoryManager _inventory;
         
         // Ensure refs are ready early (LoadState may run before Start)
         protected override void Awake()
         {
-            _inventory = FindFirstObjectByType<InventoryManagerTest>();
+            _inventory = FindFirstObjectByType<InventoryManager>();
             EnsureInitialized();
         }
 
@@ -85,7 +85,7 @@ namespace LevelObjects.Interactable
         }
         
         //Searches the Inventory for required items
-        private InventoryItemTest FindItemByName(string itemName)
+        private InventoryItem FindItemByName(string itemName)
         {
             foreach (var slot in _inventory.inventoryItems)
             {
@@ -104,7 +104,7 @@ namespace LevelObjects.Interactable
             if (_used) return;
             
             
-            InventoryItemTest tnt = FindItemByName(tntItemId);
+            InventoryItem tnt = FindItemByName(tntItemId);
             
             if (tnt == null)
             {

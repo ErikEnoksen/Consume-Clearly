@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryItemTest : MonoBehaviour, IPointerClickHandler
+public class InventoryItem : MonoBehaviour, IPointerClickHandler
 {
     public string itemName;
     public int quantity;
@@ -26,11 +26,11 @@ public class InventoryItemTest : MonoBehaviour, IPointerClickHandler
     public TMP_Text itemDescriptionText;
 
     
-    private InventoryManagerTest inventoryManager;
+    private InventoryManager inventoryManager;
 
     private void Start()
     {
-        inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManagerTest>();
+        inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
     }
 
 
@@ -133,7 +133,7 @@ public class InventoryItemTest : MonoBehaviour, IPointerClickHandler
         if (quantity > 0)
         {
             GameObject itemToDrop = new GameObject(itemName);
-            ItemTest newItem = itemToDrop.AddComponent<ItemTest>();
+            Item newItem = itemToDrop.AddComponent<Item>();
 
             newItem.Initialize(itemName, 1, sprite, itemDescription, maxStack);
 

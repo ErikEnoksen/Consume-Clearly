@@ -15,13 +15,13 @@ public class CompanionGiveItem : MonoBehaviour
     private bool playerInRange = false;
     private bool hasGivenItem = false;
 
-    private InventoryManagerTest inventoryManager;
+    private InventoryManager inventoryManager;
 
     private void Start()
     {
         inventoryManager = GameObject
             .Find("InventorySelector")
-            .GetComponent<InventoryManagerTest>();
+            .GetComponent<InventoryManager>();
     }
 
     private void Update()

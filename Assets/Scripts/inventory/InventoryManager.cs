@@ -1,11 +1,11 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventoryManagerTest : MonoBehaviour
+public class InventoryManager : MonoBehaviour
 {
     public GameObject inventoryMenu;
     private bool inventoryActive;
-    public InventoryItemTest[] inventoryItems;
+    public InventoryItem[] inventoryItems;
 
     // Update is called once per frame
     void Update()

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ItemTest : MonoBehaviour
+public class Item : MonoBehaviour
 {
     [SerializeField]
     private string itemName;
@@ -22,12 +22,12 @@ public class ItemTest : MonoBehaviour
 
     public string ItemDescription { get { return itemDescription; } set { itemDescription = value; } }
 
-    private InventoryManagerTest inventory;
+    private InventoryManager inventory;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        inventory = GameObject.Find("InventorySelector").GetComponent<InventoryManagerTest>();
+        inventory = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
     }
 
     public void Initialize(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack)
