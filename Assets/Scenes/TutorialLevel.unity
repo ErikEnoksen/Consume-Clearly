@@ -2943,13 +2943,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::AudioManager
   sounds:
   - name: Footstep
-    clip: {fileID: 8300000, guid: d25230773f10a644eaab176e2e2f1131, type: 3}
-    volume: 1
+    clip: {fileID: 8300000, guid: e635210c29b887f4e8753cec9499006b, type: 3}
+    volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Jump
-    clip: {fileID: 8300000, guid: 35e1bafc90513bb478e5cf3984d97e40, type: 3}
+    clip: {fileID: 8300000, guid: f8146194952fbde43921b359f2a7ecb6, type: 3}
     volume: 1
     pitch: 1
     loop: 0
@@ -2965,6 +2965,12 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 0
+    source: {fileID: 0}
+  - name: BackgroundMusic
+    clip: {fileID: 8300000, guid: 0ad744505d2de0a47bef8e049f002109, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
     source: {fileID: 0}
 --- !u!4 &355150105
 Transform:
@@ -4035,7 +4041,7 @@ Transform:
   m_GameObject: {fileID: 466567612}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.15, y: -0.66, z: 0}
+  m_LocalPosition: {x: -0.31, y: -0.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10113,7 +10119,7 @@ Transform:
   m_GameObject: {fileID: 1394403520}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.87, y: 12.33, z: 0}
+  m_LocalPosition: {x: -27.59, y: 12.33, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15382,8 +15388,8 @@ SceneRoots:
   - {fileID: 1862305010}
   - {fileID: 1258988224}
   - {fileID: 1940241789}
-  - {fileID: 1538389848}
   - {fileID: 453745025}
+  - {fileID: 1538389848}
   - {fileID: 121752665}
   - {fileID: 999680900}
   - {fileID: 355150105}

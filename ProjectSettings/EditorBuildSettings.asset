@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: f9cbfb0815d94914291cfc6b3d18df78
   - enabled: 1
-    path: Assets/Scenes/MineLevel.unity
+    path: Assets/Scenes/Unused_Scenes/MineLevel.unity
     guid: bdc37d2348c8de0499f0af7ced2c9929
   - enabled: 1
     path: Assets/Scenes/Credits.unity
