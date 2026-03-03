@@ -3742,6 +3742,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3142699454289771988, guid: 46f91b0242796f246a6d05408d1fb64a, type: 3}
+      propertyPath: m_text
+      value: Money Text
+      objectReference: {fileID: 0}
     - target: {fileID: 5137503422337948914, guid: 46f91b0242796f246a6d05408d1fb64a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4764,7 +4768,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 27772996115716833, guid: d04970f683333b64a808e77cedc5239a, type: 3}
       propertyPath: m_Name
-      value: InventortySelector
+      value: InventorySelector
       objectReference: {fileID: 0}
     - target: {fileID: 27772996115716833, guid: d04970f683333b64a808e77cedc5239a, type: 3}
       propertyPath: m_IsActive
