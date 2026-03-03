@@ -2961,7 +2961,7 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: Rock
-    clip: {fileID: 8300000, guid: ac8d6546a6e4fd748b0f54ea94887664, type: 3}
+    clip: {fileID: 8300000, guid: dc51b2985f55919428798db26d2534a0, type: 3}
     volume: 1
     pitch: 1
     loop: 0
