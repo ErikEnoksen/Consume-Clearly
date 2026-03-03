@@ -40,10 +40,10 @@ namespace LevelObjects.Interactable
         if (plank == null) {Debug.LogError("No Plank item found in inventory!"); return;}
         if (screw == null) {Debug.LogError("No screws left in inventory!"); return;}
         
-        plank.quantity -= 1;
-        if (plank.quantity <= 0) plank.DropItem();
-        screw.quantity -= 1;
-        if (screw.quantity <= 0) screw.DropItem();
+        
+        if (plank.quantity > 0) plank.RemoveItem(1);
+        
+        if (screw.quantity > 0) screw.RemoveItem(1);
         
         Repair();
     }
