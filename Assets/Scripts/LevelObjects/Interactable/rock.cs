@@ -115,10 +115,9 @@ namespace LevelObjects.Interactable
             if (tnt.quantity > 0) tnt.RemoveItem(1);
             
             _used = true;
-            StartCoroutine(DelayedPoof(3.0f));
+            
+            StartCoroutine(DelayedPoof(2.0f));
             AudioManager.Instance.Play("Rock");
-
-           
         }
         
         private IEnumerator DelayedPoof(float delay)
