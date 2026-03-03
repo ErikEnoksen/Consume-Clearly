@@ -162,13 +162,11 @@ namespace LevelObjects.Interactable
 
             if (onLift)
             {
-                playerRb.gravityScale = 0;
                 playerRb.linearVelocity = Vector2.zero;
                 UpdatePlayerConstraints();
             }
             else
             {
-                playerRb.gravityScale = 1;
                 playerRb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
                 if (isMoving)

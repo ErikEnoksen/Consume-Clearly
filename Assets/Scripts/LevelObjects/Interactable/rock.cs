@@ -112,8 +112,7 @@ namespace LevelObjects.Interactable
                 return;
             }
             
-            tnt.quantity -= 1;
-            if (tnt.quantity <= 0) tnt.DropItem();
+            if (tnt.quantity > 0) tnt.RemoveItem(1);
             
             _used = true;
             StartCoroutine(DelayedPoof(3.0f));
