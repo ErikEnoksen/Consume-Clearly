@@ -8,13 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Sky
-  m_Shader: {fileID: 106, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 108, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _SUNDISK_SIMPLE
+  m_ValidKeywords: []
   m_InvalidKeywords:
   - _MAPPING_LATITUDE_LONGITUDE_LAYOUT
+  - _SUNDISK_SIMPLE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -46,7 +46,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 22b452bdba9a0214a9b40f2fef3d2355, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -73,7 +73,7 @@ Material:
     m_Floats:
     - _AtmosphereThickness: 1
     - _EnableExternalAlpha: 0
-    - _Exposure: 1.3
+    - _Exposure: 1.5
     - _ImageType: 0
     - _Layout: 0
     - _Mapping: 1
@@ -88,6 +88,6 @@ Material:
     - _GroundColor: {r: 0.36899996, g: 0.34899998, b: 0.34099993, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
     - _SkyTint: {r: 0.990566, g: 0.36912602, b: 0.36912602, a: 1}
-    - _Tint: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+    - _Tint: {r: 0.21782663, g: 0.65340376, b: 0.8396226, a: 0.5}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
