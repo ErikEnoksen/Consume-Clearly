@@ -2014,6 +2014,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &134116080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 134116082}
+  - component: {fileID: 134116081}
+  m_Layer: 0
+  m_Name: MoneyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &134116081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134116080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0503fd2403d74ab4b858f788443d1730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::MoneyManager
+  moneyCount: 200
+  moneyDisplay: {fileID: 1940241791}
+--- !u!4 &134116082
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 134116080}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.86063, y: 7.86464, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &134625719
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14378,6 +14424,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8533274557148510636, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_text
+      value: $0
+      objectReference: {fileID: 0}
     - target: {fileID: 8604276887623148409, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -14503,6 +14553,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8914616892585617923, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
   m_PrefabInstance: {fileID: 1940241789}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1940241791 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8533274557148510636, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+  m_PrefabInstance: {fileID: 1940241789}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1978039649
 GameObject:
   m_ObjectHideFlags: 0
@@ -15393,3 +15454,4 @@ SceneRoots:
   - {fileID: 121752665}
   - {fileID: 999680900}
   - {fileID: 355150105}
+  - {fileID: 134116082}
