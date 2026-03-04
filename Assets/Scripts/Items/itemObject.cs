@@ -9,7 +9,21 @@ namespace Items
         [field: SerializeField]
         public bool IsStackable { get; set; }
 
-        public int Id => GetInstanceID();
+        //public int Id => GetInstanceID();
+
+        [SerializeField]
+        private string itemID; // persistent id
+
+        // Use a stable string ID rather than GetInstanceID()
+        public string Id
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(itemID))
+                    GenerateId();
+                return itemID;
+            }
+        }
 
         [field: SerializeField]
         public int MaxStackSize { get; set; } = 1;
@@ -22,5 +36,17 @@ namespace Items
         public Sprite ItemImage { get; set; }
         [field: SerializeField]
         public bool IsUsable { get; set; }
+
+        private void OnValidate()
+        {
+            if (string.IsNullOrEmpty(itemID))
+                GenerateId();
+        }
+
+        private void GenerateId()
+        {
+            // Keep IDs short but unique: name + GUID fragment
+            itemID = $"{(string.IsNullOrEmpty(Name) ? "item" : Name)}-{Guid.NewGuid().ToString("N").Substring(0, 8)}";
+        }
     }
 }
