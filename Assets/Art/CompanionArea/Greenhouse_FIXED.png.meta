@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 861f6cec822ba2646b0fd9b69f0c5575
+guid: 44392e5be07fd0f40aebb18f9f447576
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6692416791218546962
-    second: Shop_Clean_0
+      213: -6011261186208945202
+    second: Greenhouse_FIXED_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shop_Clean_0
+      name: Greenhouse_FIXED_0
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 2104
-        height: 827
+        x: 501
+        y: 335
+        width: 1543
+        height: 1046
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ee61f86e262cf13a0800000000000000
-      internalID: -6692416791218546962
+      spriteID: ecb2ce7dcc5b39ca0800000000000000
+      internalID: -6011261186208945202
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Shop_Clean_0: -6692416791218546962
+      Greenhouse_FIXED_0: -6011261186208945202
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 04bd07e62e67fbf44b9a001ed4134636
+guid: fb29e418c06f6784ab766083d8259a38
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4893109978812616284
-    second: Greenhouse_Clean_0
-  - first:
-      213: 488023853042852511
-    second: Greenhouse_Clean_1
-  - first:
-      213: 5789670754672929657
-    second: Greenhouse_Clean_2
+      213: -465938279295821181
+    second: shop oak dirty broken_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,57 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Greenhouse_Clean_0
+      name: shop oak dirty broken_0
       rect:
         serializedVersion: 2
-        x: 197
-        y: 15
-        width: 1942
-        height: 1207
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c5e8b06d991d7e340800000000000000
-      internalID: 4893109978812616284
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Greenhouse_Clean_1
-      rect:
-        serializedVersion: 2
-        x: 1209
-        y: 66
-        width: 12
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f926982db1fc5c600800000000000000
-      internalID: 488023853042852511
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Greenhouse_Clean_2
-      rect:
-        serializedVersion: 2
-        x: 1193
+        x: 256
         y: 0
-        width: 6
-        height: 10
+        width: 1853
+        height: 827
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -165,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 97b6fba50ea095050800000000000000
-      internalID: 5789670754672929657
+      spriteID: 38ad0578a97a889f0800000000000000
+      internalID: -465938279295821181
       vertices: []
       indices: 
       edges: []
@@ -185,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Greenhouse_Clean_0: 4893109978812616284
-      Greenhouse_Clean_1: 488023853042852511
-      Greenhouse_Clean_2: 5789670754672929657
+      shop oak dirty broken_0: -465938279295821181
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
