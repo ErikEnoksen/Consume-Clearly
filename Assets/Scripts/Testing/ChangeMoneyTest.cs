@@ -18,8 +18,7 @@ public class ChangeMoneyTest : MonoBehaviour
 
             if (Input.GetKey(KeyCode.F))
             {
-                moneyManager.ChangeMoneyAmount(changeAmount);
-
+                Debug.Log(moneyManager.ChangeMoneyAmount(changeAmount));
             }
         }
         

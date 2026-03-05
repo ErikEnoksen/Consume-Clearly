@@ -5,6 +5,7 @@ public class MoneyManager : MonoBehaviour
 {
     [SerializeField]
     private int moneyCount = 0;
+    private bool moneyChanged = false;
 
     [SerializeField]
     private TMP_Text moneyDisplay;
@@ -14,7 +15,7 @@ public class MoneyManager : MonoBehaviour
         moneyDisplay.text = $"${moneyCount}";
     }
 
-    public void ChangeMoneyAmount(int amount)
+    public bool ChangeMoneyAmount(int amount)
     {
         if (amount > 0)
         {
@@ -24,13 +25,14 @@ public class MoneyManager : MonoBehaviour
         {
             RemoveMoney(Mathf.Abs(amount));
         }
+        return moneyChanged;
     }
 
     private void AddMoney(int amount)
     {
         moneyCount += amount;
         moneyDisplay.text = $"${moneyCount}";
-
+        moneyChanged = true;
     }
 
     private void RemoveMoney(int amount)
@@ -39,8 +41,13 @@ public class MoneyManager : MonoBehaviour
         {
             moneyCount -= amount;
             moneyDisplay.text = $"${moneyCount}";
+            moneyChanged = true;
         }
-
+        else
+        {
+            Debug.Log("Not enough money");
+            moneyChanged = false;
+        }
     }
 
 }
