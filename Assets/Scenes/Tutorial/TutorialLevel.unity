@@ -1998,7 +1998,7 @@ MonoBehaviour:
   m_BuildHeightMesh: 0
   m_MinRegionArea: 0
   m_HideEditorLogs: 0
-  m_NavMeshData: {fileID: 23800000, guid: 8c0ef7dfd5cd680428d5325b70f351fd, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 4671708a141e5fb4f9835426ee44f089, type: 2}
 --- !u!4 &121752665
 Transform:
   m_ObjectHideFlags: 0
@@ -10628,6 +10628,10 @@ PrefabInstance:
     - target: {fileID: 3003327264871337997, guid: a37cad1638bf380459a25c0f2e6aa825, type: 3}
       propertyPath: onTriggerEnter.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264101159942444807, guid: a37cad1638bf380459a25c0f2e6aa825, type: 3}
+      propertyPath: activateAfterFirstExit
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8559603078208366587, guid: a37cad1638bf380459a25c0f2e6aa825, type: 3}
       propertyPath: m_LocalPosition.x
