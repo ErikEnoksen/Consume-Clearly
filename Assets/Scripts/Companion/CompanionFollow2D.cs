@@ -193,6 +193,7 @@ namespace Companion
         private void RecalculatePath()
         {
             if (!IsTargetValid()) return;
+            if (path == null) path = new NavMeshPath();
 
             if (NavMesh.CalculatePath(transform.position, target.position, NavMesh.AllAreas, path))
             {

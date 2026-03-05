@@ -11,17 +11,20 @@ namespace LevelObjects.Interactable
 
         [Tooltip("Check if the trigger should happen continuously when object is inside")] [SerializeField]
         private readonly bool triggerContinuously = false;
-
+        
         [Header("Activation Settings")]
         [Tooltip("If true, trigger will be inactive until the player exits the zone first")]
         [SerializeField]
         private bool activateAfterFirstExit = false;
 
         private bool isActivated = false;
-
+        
+        [Header("Scene Settings")]
+        [SerializeField] private string sceneToLoad = "";
+        
         [Header("Trigger Events")] [SerializeField]
         private UnityEvent onTriggerEnter;
-
+        
         [SerializeField] private UnityEvent onTriggerExit;
         [SerializeField] private UnityEvent onTriggerStay; //only for continuous trigger = true
 
@@ -44,7 +47,14 @@ namespace LevelObjects.Interactable
         {
             if (IsInLayerMask(other.gameObject.layer) && isActivated)
             {
-                GameManager.Instance?.GoToMainMenu();
+                if (!string.IsNullOrEmpty(sceneToLoad))
+                {
+                    GameManager.Instance?.SaveProgress(sceneToLoad);
+                    GameManager.Instance?.LoadScene(sceneToLoad);
+                }
+                else
+                    GameManager.Instance?.GoToMainMenu();
+            
                 onTriggerEnter?.Invoke();
             }
         }

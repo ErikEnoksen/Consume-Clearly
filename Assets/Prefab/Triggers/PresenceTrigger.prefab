@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8559603078208366587}
   - component: {fileID: 2737979786781610321}
-  - component: {fileID: 3003327264871337997}
+  - component: {fileID: 7264101159942444807}
   m_Layer: 0
   m_Name: PresenceTrigger
   m_TagString: Untagged
@@ -79,7 +79,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &3003327264871337997
+--- !u!114 &7264101159942444807
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,6 +95,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   activateAfterFirstExit: 1
+  sceneToLoad: Downtown
   onTriggerEnter:
     m_PersistentCalls:
       m_Calls: []

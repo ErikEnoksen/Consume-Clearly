@@ -208,7 +208,7 @@ namespace LevelObjects.Interactable
         {
             if (collision.gameObject == currentPlayer)
             {
-                if (playerRb != null)
+                if (playerRb != null && gameObject.activeInHierarchy)
                 {
                     currentPlayer.transform.SetParent(null);
                     SetPlayerPhysics(false);
