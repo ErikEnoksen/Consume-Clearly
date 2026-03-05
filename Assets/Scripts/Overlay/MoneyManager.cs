@@ -11,13 +11,35 @@ public class MoneyManager : MonoBehaviour
 
     private void Awake()
     {
-        moneyDisplay.text = $"${moneyCount.ToString()}";
+        moneyDisplay.text = $"${moneyCount}";
     }
 
     public void ChangeMoneyAmount(int amount)
     {
+        if (amount > 0)
+        {
+            AddMoney(amount);
+        }
+        else
+        {
+            RemoveMoney(Mathf.Abs(amount));
+        }
+    }
+
+    private void AddMoney(int amount)
+    {
         moneyCount += amount;
-        moneyDisplay.text = $"${moneyCount.ToString()}";
+        moneyDisplay.text = $"${moneyCount}";
+
+    }
+
+    private void RemoveMoney(int amount)
+    {
+        if(amount <= moneyCount)
+        {
+            moneyCount -= amount;
+            moneyDisplay.text = $"${moneyCount}";
+        }
 
     }
 
