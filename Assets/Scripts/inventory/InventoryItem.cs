@@ -10,8 +10,10 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     public Sprite sprite;
     public bool isFull;
     public string itemDescription;
-
+    public int giftValue;
     private int maxStack;
+    //replace with friendship mechanics later
+    private int affectionLevel;
 
     [SerializeField]
     private TMP_Text quantityText;
@@ -33,9 +35,22 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
     }
 
+    private void GiveGift(int affectionIncrease)
+    {
+        if(CompareTag("Gift"))
+        {
+            affectionLevel += affectionIncrease;
+            RemoveItem(1);
+        }
+        else
+        {
+            Debug.Log("Not a gift");
+        }
+    }
+
 
     //method for adding items to the inventory
-    public int AddItem(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack)
+    public int AddItem(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string tag, int giftValue)
     {
         if (isFull)
         {
@@ -47,6 +62,8 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         this.sprite = sprite;
         this.itemDescription = itemDescription;
         this.maxStack = maxStack;
+        this.tag = tag;
+        this.giftValue = giftValue;
         
         //SetActive makes the item and item count visible in the inventory
         itemImage.sprite = sprite;
@@ -103,6 +120,13 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         {
             OnRightClick();
         }
+        else if(eventData.button == PointerEventData.InputButton.Middle)
+        {
+            Debug.Log(affectionLevel);
+            GiveGift(giftValue);
+            Debug.Log(affectionLevel);
+
+        }
 
     }
 
@@ -135,7 +159,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
             GameObject itemToDrop = new GameObject(itemName);
             Item newItem = itemToDrop.AddComponent<Item>();
 
-            newItem.Initialize(itemName, 1, sprite, itemDescription, maxStack);
+            newItem.Initialize(itemName, 1, sprite, itemDescription, maxStack, giftValue);
 
             SpriteRenderer sr = itemToDrop.AddComponent<SpriteRenderer>();
             sr.sprite = sprite;
@@ -169,6 +193,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         itemImage.sprite = null;
         itemName = null;
         itemDescription = null;
+        tag = "Untagged";
 
         isFull = false;
     }

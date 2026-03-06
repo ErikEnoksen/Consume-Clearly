@@ -20,7 +20,9 @@ public class SkyCycle : MonoBehaviour
     {
         elapsedTime += Time.deltaTime;
         slowedTime += Time.deltaTime/slowScale;
+        //rotates the sky at a set rate
         skybox.SetFloat(Rotation, elapsedTime * timeScale);
+        //changes the exposure of the material to simulate light and darkness
         skybox.SetFloat(Exposure, Mathf.Clamp(Mathf.Abs(Mathf.Cos(slowedTime))* (float)1.5, 0.15f, 1.5f));
     }
 }

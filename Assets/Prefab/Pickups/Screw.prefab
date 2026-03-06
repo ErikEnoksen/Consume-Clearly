@@ -8,9 +8,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 763164595874130931, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4061941178145323530, guid: d9a338b0f20f3e948ba468703680ceb6, type: 3}
+    - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 4061941178145323530, guid: d9a338b0f20f3e948ba468703680ceb6, type: 3}
+    - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: itemName
+      value: Screw
+      objectReference: {fileID: 0}
     - target: {fileID: 2274255593806471894, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: m_Name
-      value: Base Item
+      value: Screw
       objectReference: {fileID: 0}
     - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51,6 +63,14 @@ PrefabInstance:
     - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.49706513
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.67100006
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
