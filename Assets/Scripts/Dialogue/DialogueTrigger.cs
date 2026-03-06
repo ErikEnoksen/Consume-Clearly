@@ -39,6 +39,7 @@ public class DialogueTrigger : MonoBehaviour
             Debug.Log("F pressed, dialogue active: " + dialogueManager.IsDialogueActive());
             if (!dialogueManager.IsDialogueActive())
             {
+                AudioManager.Instance.Play("Speaking");
                 StartConversation();
             }
         }

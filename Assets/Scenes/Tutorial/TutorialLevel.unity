@@ -1951,7 +1951,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &121752663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2989,7 +2989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::AudioManager
   sounds:
   - name: Footstep
-    clip: {fileID: 8300000, guid: e635210c29b887f4e8753cec9499006b, type: 3}
+    clip: {fileID: 8300000, guid: 02b8ad00d0df30f4fb134978104a5b98, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
@@ -3017,6 +3017,12 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+  - name: Speaking
+    clip: {fileID: 8300000, guid: b950a970216fc2042a5f80505d87ee3e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
 --- !u!4 &355150105
 Transform:

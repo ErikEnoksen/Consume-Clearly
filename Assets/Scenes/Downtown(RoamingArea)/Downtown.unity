@@ -615,6 +615,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 414110397}
   m_CullTransparentMesh: 1
+--- !u!1 &435322913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 435322915}
+  - component: {fileID: 435322914}
+  m_Layer: 0
+  m_Name: playerSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &435322914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435322913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d79c41ae5d93ec4c8c58b4b907aa37a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::Player.PlayerSpawnPoint
+  isDefaultSpawn: 1
+  spawnType: 0
+  spawnID: 
+--- !u!4 &435322915
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 435322913}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.87406, y: -0.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &453198594
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,32 +693,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::AudioManager
   sounds:
   - name: Footstep
-    clip: {fileID: 8300000, guid: e635210c29b887f4e8753cec9499006b, type: 3}
+    clip: {fileID: 8300000, guid: 0384facd6d0973c40a56c802ebf57f4d, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: Jump
-    clip: {fileID: 8300000, guid: f8146194952fbde43921b359f2a7ecb6, type: 3}
+    clip: {fileID: 8300000, guid: 4103774d0a0f07247b6ab5b029e04f6c, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
-  - name: Elevator
-    clip: {fileID: 8300000, guid: 937f6cd7695a1134eb8b2ad4724919f0, type: 3}
-    volume: 1
-    pitch: 1
-    loop: 0
-    source: {fileID: 0}
-  - name: Rock
-    clip: {fileID: 8300000, guid: ac8d6546a6e4fd748b0f54ea94887664, type: 3}
+  - name: JumpEnd
+    clip: {fileID: 8300000, guid: 4e6924c3142234a49b27b442adcc5471, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: BackgroundMusic
-    clip: {fileID: 8300000, guid: 0ad744505d2de0a47bef8e049f002109, type: 3}
-    volume: 0
+    clip: {fileID: 8300000, guid: 8e765e44e854ea949a0a86f5ae4b68e6, type: 3}
+    volume: 1
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -3650,6 +3691,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 2072505454}
   - {fileID: 1211450105}
+  - {fileID: 435322915}
   - {fileID: 1286173356}
   - {fileID: 1847089149}
   - {fileID: 1397016655}

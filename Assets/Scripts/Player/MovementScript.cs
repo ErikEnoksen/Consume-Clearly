@@ -32,7 +32,8 @@ namespace Player
         private float coyoteTimeCounter;
         private float jumpBufferTimeCounter;
         private bool waitingForJumpAnimation = false;
-        private bool jumpApplied = false;
+        private bool jumpApplied = false;   
+        private bool wasGrounded = true;
 
         private AnimationController animationController;
 
@@ -174,22 +175,28 @@ namespace Player
 
         public void jump()
         {
+            
+            bool grounded = IsGrounded();
+            
             // Coyote time logic
-            if (IsGrounded())
+            if (grounded && !wasGrounded)
             {
-                coyoteTimeCounter = coyoteTime;
+                AudioManager.Instance.Play("JumpEnd");
+            }
+            wasGrounded = grounded;
+            if(grounded)
+            {
+                coyoteTimeCounter = Time.deltaTime;
             }
             else
             {
                 coyoteTimeCounter -= Time.deltaTime;
             }
-
+            
             // Jump buffer logic
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 jumpBufferTimeCounter = jumpBufferTime;
-                Debug.Log("AudioManager instance: " + AudioManager.Instance);
-                Debug.Log("Sounds count: " + AudioManager.Instance.sounds.Length);
                 AudioManager.Instance.Play("Jump");
             }
             else
