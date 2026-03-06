@@ -13,8 +13,8 @@ public class DialogueLine
     [Header("Player Choices (optional):")]
     public string[] choices; // If empty, auto-continues. If filled, shows choice buttons.
     
-    // For future branching:
-    // public DialogueObject[] nextDialogues; //If we want different dialouges when choosing dialouge option
+    [Tooltip("Matching DialogueObject for each choice. Leave null to just continue to next line.")]
+    public DialogueObject[] nextDialogues;
 }
 
 [CreateAssetMenu(fileName = "DialogueObject", menuName = "Scriptable Objects/DialogueObject")]

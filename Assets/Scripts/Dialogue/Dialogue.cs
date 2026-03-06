@@ -152,7 +152,18 @@ public class Dialogue : MonoBehaviour
     private void OnChoiceSelected(int choiceIndex)
     {
         choicesPanel.SetActive(false);
-        NextLine();
+        
+        DialogueLine currentLine = currentDialogue.dialogueLines[currentLineIndex];
+
+        if (currentLine.nextDialogues != null && choiceIndex < currentLine.nextDialogues.Length &&
+            currentLine.nextDialogues[choiceIndex] != null)
+        {
+            DisplayDialogue(currentLine.nextDialogues[choiceIndex]);
+        }
+        else
+        {
+            NextLine();
+        }
     }
 
     void NextLine()
