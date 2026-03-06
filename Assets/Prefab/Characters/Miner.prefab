@@ -286,7 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66d4581b53ce9f840aa7a2eb45a3e9ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::CompanionGiveItem
-  itemObject: {fileID: 11400000, guid: 5b79841ffd0bab1448948deb86ae6d04, type: 2}
+  itemObject: {fileID: 5268927219989098962, guid: 1da58d9b3b87dc1449f311a297e2cb95, type: 3}
   quantity: 12
   interactKey: 116
 --- !u!1 &3786246799249716820

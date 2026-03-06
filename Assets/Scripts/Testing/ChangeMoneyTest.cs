@@ -6,10 +6,6 @@ public class ChangeMoneyTest : MonoBehaviour
 
     private MoneyManager moneyManager;
 
-    private void Awake()
-    {
-        moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
-    }
 
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -18,7 +14,8 @@ public class ChangeMoneyTest : MonoBehaviour
 
             if (Input.GetKey(KeyCode.F))
             {
-                moneyManager.ChangeMoneyAmount(changeAmount);
+                Debug.Log(moneyManager.ChangeMoneyAmount(changeAmount));
+
             }
         }
         

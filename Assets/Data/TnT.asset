@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48245dbdf5f93854e8c71387c75b24dd, type: 3}
-  m_Name: TnT
+  m_Name: TNT
   m_EditorClassIdentifier: Main::Items.ItemObject
   <IsStackable>k__BackingField: 0
   <MaxStackSize>k__BackingField: 12
-  <Name>k__BackingField: TnT
-  <Description>k__BackingField: Could be used to blow stuff up
+  <Name>k__BackingField: TNT
+  <Description>k__BackingField: TNT to blow up rocks
   <ItemImage>k__BackingField: {fileID: 3467156571499139007, guid: 9136946f2be331c4b829d9545c4210ea, type: 3}
   <IsUsable>k__BackingField: 1

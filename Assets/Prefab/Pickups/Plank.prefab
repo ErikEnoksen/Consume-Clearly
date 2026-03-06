@@ -8,9 +8,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 763164595874130931, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 6309750097970291182, guid: a06f29a7e17bb81409da8851fc8096c2, type: 3}
+    - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 6309750097970291182, guid: a06f29a7e17bb81409da8851fc8096c2, type: 3}
+    - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: itemName
+      value: Plank
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: itemDescription
+      value: A plank you can use to fix things
+      objectReference: {fileID: 0}
     - target: {fileID: 2274255593806471894, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: m_Name
-      value: Base Item
+      value: Plank
       objectReference: {fileID: 0}
     - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: m_LocalPosition.x
@@ -51,6 +67,14 @@ PrefabInstance:
     - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.1870245
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.97
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

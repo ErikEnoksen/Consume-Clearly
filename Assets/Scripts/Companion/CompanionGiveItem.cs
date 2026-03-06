@@ -7,7 +7,7 @@ using Items;
 public class CompanionGiveItem : MonoBehaviour
 {
     [Header("Item Data")]
-    public ItemObject itemObject;           // Assign item to be given here
+    public Item itemObject;           // Assign item to be given here
     public int quantity = 1;
 
     [Header("Interaction")]
@@ -81,11 +81,13 @@ public class CompanionGiveItem : MonoBehaviour
 
             // assign item data from item object if available
             int leftover = inventoryManager.AddItem(
-                itemObject != null ? itemObject.name : "UnknownItem",
+                itemObject != null ? itemObject.ItemName : "UnknownItem",
                 quantity,
-                itemObject != null ? itemObject.ItemImage : null,
-                itemObject != null ? itemObject.Description : "",
-                itemObject != null ? itemObject.MaxStackSize : 1
+                itemObject != null ? itemObject.Sprite : null,
+                itemObject != null ? itemObject.ItemDescription : "",
+                itemObject != null ? itemObject.MaxStack : 1,
+                itemObject != null ? itemObject.tag : "Untagged",
+                itemObject != null ? itemObject.GiftValue : 20
             );
 
             if (leftover == 0)

@@ -3744,7 +3744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3142699454289771988, guid: 46f91b0242796f246a6d05408d1fb64a, type: 3}
       propertyPath: m_text
-      value: Money Text
+      value: $0
       objectReference: {fileID: 0}
     - target: {fileID: 5137503422337948914, guid: 46f91b0242796f246a6d05408d1fb64a, type: 3}
       propertyPath: m_Pivot.x
