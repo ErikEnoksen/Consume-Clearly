@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e4a66a7e2b0554db1c603c2375e30b, type: 3}
+  m_Name: CollectTNT
+  m_EditorClassIdentifier: Main::Quest
+  questID: 50753b8c-8e58-4055-a1e5-25ddd001b412
+  questName: CollectTNT
+  description: Collect TNT to blow up a childrens hospital
+  objectives:
+  - objectiveID: TnT-0de7db27
+    description: Collect 5 TNT
+    type: 0
+    requiredAmount: 5
+    currentAmount: 0

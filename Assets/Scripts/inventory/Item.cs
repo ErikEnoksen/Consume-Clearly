@@ -1,7 +1,11 @@
 using UnityEngine;
+using Items;
 
 public class Item : MonoBehaviour
 {
+    [SerializeField]
+    private ItemObject itemObject; // assign the ScriptableObject for TNT prefab
+
     [SerializeField]
     private string itemName;
     [SerializeField]
@@ -61,4 +65,5 @@ public class Item : MonoBehaviour
         }
     }
 
+    public string ItemId => itemObject != null ? itemObject.Id : itemName; // fallback to name
 }
