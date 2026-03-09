@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: -8249197410289733627}
   - component: {fileID: 3325875414331394727}
   - component: {fileID: 2895222603076180700}
+  - component: {fileID: 9030670482226901276}
+  - component: {fileID: 4104854468654939902}
   m_Layer: 3
   m_Name: player
   m_TagString: Player
@@ -261,6 +263,41 @@ MonoBehaviour:
   pushOffHorizontal: 6
   pushOffVertical: 3
   jumpOffVertical: 8
+--- !u!114 &9030670482226901276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823572384380113146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efcff75c4817dae4588d721d9f36b453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::SwingingController
+  swingForce: 0.2
+  maxSpeed: 10
+  jumpReleaseForce: 8
+--- !u!232 &4104854468654939902
+DistanceJoint2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823572384380113146}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_BreakAction: 2
+  m_AutoConfigureConnectedAnchor: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_AutoConfigureDistance: 0
+  m_Distance: 0.005
+  m_MaxDistanceOnly: 0
 --- !u!1 &2287662028223444186
 GameObject:
   m_ObjectHideFlags: 0
