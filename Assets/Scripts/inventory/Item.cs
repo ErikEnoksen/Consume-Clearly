@@ -1,11 +1,11 @@
-using UnityEngine;
 using Items;
+using System;
+using UnityEngine;
 
 public class Item : MonoBehaviour
 {
     [SerializeField]
-    private ItemObject itemObject; // assign the ScriptableObject for TNT prefab
-
+    private string itemID; 
     [SerializeField]
     private string itemName;
     [SerializeField]
@@ -17,6 +17,16 @@ public class Item : MonoBehaviour
     [SerializeField]
     private int giftValue;
 
+    [SerializeField]
+    public string Id
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(itemID))
+                GenerateId();
+            return itemID;
+        }
+    }
     public string ItemName {  get { return itemName; } set { itemName = value; } }
     public int Quantity { get { return quantity; } set { quantity = value; } }
     public Sprite Sprite { get { return sprite; } set { sprite = value; } }
@@ -35,6 +45,12 @@ public class Item : MonoBehaviour
     void Start()
     {
         inventory = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
+    }
+
+    private void OnValidate()
+    {
+        if (string.IsNullOrEmpty(itemID) || itemID == "1")
+            GenerateId();
     }
 
     public void Initialize(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, int giftValue)
@@ -68,5 +84,9 @@ public class Item : MonoBehaviour
         }
     }
 
-    public string ItemId => itemObject != null ? itemObject.Id : itemName; // fallback to name
+    private void GenerateId()
+    {
+        // Keep IDs short but unique: name + GUID fragment
+        itemID = $"{(string.IsNullOrEmpty(ItemName) ? "item" : ItemName)}-{Guid.NewGuid().ToString("N").Substring(0, 8)}";
+    }
 }

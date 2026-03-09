@@ -13,6 +13,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3467156571499139007, guid: 9136946f2be331c4b829d9545c4210ea, type: 3}
     - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: itemID
+      value: TNT-c38ccd8f
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: sprite
       value: 
       objectReference: {fileID: 3467156571499139007, guid: 9136946f2be331c4b829d9545c4210ea, type: 3}
