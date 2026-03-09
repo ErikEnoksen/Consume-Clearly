@@ -86,8 +86,7 @@ public class CompanionGiveItem : MonoBehaviour
                 itemObject != null ? itemObject.Sprite : null,
                 itemObject != null ? itemObject.ItemDescription : "",
                 itemObject != null ? itemObject.MaxStack : 1,
-                itemObject != null ? itemObject.tag : "Untagged",
-                itemObject != null ? itemObject.GiftValue : 20
+                itemObject != null ? itemObject.tag : "Untagged"
             );
 
             if (leftover == 0)
