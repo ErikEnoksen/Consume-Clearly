@@ -1,0 +1,40 @@
+using UnityEngine;
+using UnityEngine.UI;
+
+public class CircularSatisfactionMeter : MonoBehaviour
+{
+    [SerializeField]
+    private Slider slider;
+    [SerializeField]
+    private Image sliderFill;
+
+    public void ChangeSatisfactionValue(float satisfactionValue)
+    {
+        if (satisfactionValue > 0)
+        {
+            slider.value += satisfactionValue;
+        }
+        else if(satisfactionValue < 0)
+        {
+            slider.value += satisfactionValue;
+        }
+        SatisfactionColor();
+    }
+
+    private void SatisfactionColor()
+    {
+        if(slider.value < 75 &&  slider.value > 0)
+        {
+            sliderFill.color = Color.lightSkyBlue;
+        }
+        else if (slider.value <= 0)
+        {
+            sliderFill.color = Color.red;
+        }
+        else if (slider.value >= 75)
+        {
+            sliderFill.color = Color.green;
+        }
+    }
+
+}
