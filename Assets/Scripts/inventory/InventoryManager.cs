@@ -23,7 +23,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public int AddItem(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string tag, int giftValue)
+    public int AddItem(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string tag)
     {
         //checks the slots of the inventory and selects the first empty one it finds to store the item
         for (int i = 0; i < inventoryItems.Length; i++)
@@ -31,16 +31,28 @@ public class InventoryManager : MonoBehaviour
             if (!inventoryItems[i].isFull &&
                 (inventoryItems[i].itemName == itemName || inventoryItems[i].quantity == 0)) 
             {
-                int exceccItems = inventoryItems[i].AddItem(itemName, quantity, sprite, itemDescription, maxStack, tag, giftValue);
+                int exceccItems = inventoryItems[i].AddItem(itemName, quantity, sprite, itemDescription, maxStack, tag);
                 if (exceccItems > 0)
                 {
-                    exceccItems = AddItem(itemName, exceccItems, sprite, itemDescription, maxStack, tag, giftValue);
+                    exceccItems = AddItem(itemName, exceccItems, sprite, itemDescription, maxStack, tag);
                 }
                 return exceccItems;
             }
         }
 
         return quantity;
+    }
+
+    public void LookForGift(string itemName, int affectionIncrease)
+    {
+        for (int i = 0; i < inventoryItems.Length; i++)
+        {
+            if (inventoryItems[i].itemName == itemName)
+            {
+                inventoryItems[i].GiveGift(affectionIncrease);
+            }
+        }
+        Debug.Log("looked for gift");
     }
 
     //undoes the borders on the selected itemslot

@@ -51,6 +51,7 @@ MonoBehaviour:
   maxStack: 10
   sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   giftValue: 20
+  itemTag: Untagged
   itemDescription: Just an item
 --- !u!61 &4768837072606002413
 BoxCollider2D:

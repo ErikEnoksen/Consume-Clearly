@@ -14,8 +14,6 @@ public class Item : MonoBehaviour
     private int maxStack = 10;
     [SerializeField]
     private Sprite sprite;
-    [SerializeField]
-    private int giftValue;
 
     [SerializeField]
     public string Id
@@ -31,7 +29,6 @@ public class Item : MonoBehaviour
     public int Quantity { get { return quantity; } set { quantity = value; } }
     public Sprite Sprite { get { return sprite; } set { sprite = value; } }
     public int MaxStack { get { return maxStack; } set { maxStack = value; } }
-    public int GiftValue { get { return giftValue; } set { giftValue = value; } }
 
     [TextArea]
     [SerializeField]
@@ -60,7 +57,7 @@ public class Item : MonoBehaviour
         Sprite = sprite;
         ItemDescription = itemDescription;
         MaxStack = maxStack;
-        GiftValue = giftValue;
+        tag = itemTag;
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -71,7 +68,7 @@ public class Item : MonoBehaviour
 
             if (Input.GetKey(KeyCode.F))
             {
-                int exceccItems = inventory.AddItem(itemName, quantity, sprite, itemDescription, maxStack, gameObject.tag, giftValue);
+                int exceccItems = inventory.AddItem(itemName, quantity, sprite, itemDescription, maxStack, gameObject.tag);
                 if (exceccItems <= 0)
                 {
                     Destroy(gameObject);
