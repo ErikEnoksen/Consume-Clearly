@@ -21,3 +21,13 @@ MonoBehaviour:
     type: 0
     requiredAmount: 5
     currentAmount: 0
+  - objectiveID: TNT-c38ccd8f
+    description: Collect rope
+    type: 0
+    requiredAmount: 5
+    currentAmount: 0
+  - objectiveID: TNT-c38ccd8f
+    description: Collect TNT
+    type: 0
+    requiredAmount: 10
+    currentAmount: 0

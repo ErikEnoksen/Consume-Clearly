@@ -50,7 +50,7 @@ public class Item : MonoBehaviour
             GenerateId();
     }
 
-    public void Initialize(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, int giftValue)
+    public void Initialize(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string itemTag)
     {
         ItemName = itemName;
         Quantity = quantity;
