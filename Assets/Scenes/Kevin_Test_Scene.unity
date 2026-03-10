@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.40639442, g: 0.8962264, b: 0.038047332, a: 1}
+  m_Color: {r: 0, g: 0.7490196, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -636,7 +636,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.291
+  m_FillAmount: 0.5273333
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -2697,7 +2697,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4165791057986964120, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1645810768}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6070593244686426588, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1563779723}
   m_SourcePrefab: {fileID: 100100000, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
 --- !u!224 &1286173357 stripped
 RectTransform:
@@ -3283,11 +3286,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &1563779721 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6070593244686426588, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+  m_PrefabInstance: {fileID: 1286173356}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1563779722 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4165791057986964120, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
   m_PrefabInstance: {fileID: 1286173356}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1563779723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563779721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d59c45401bf33c4e8dd10c911d968a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::CircularSatisfactionMeter
+  slider: {fileID: 1645810769}
+  sliderFill: {fileID: 249978198}
 --- !u!1 &1645810767
 GameObject:
   m_ObjectHideFlags: 0
@@ -3371,7 +3393,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 249978197}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: -50
   m_MaxValue: 100
   m_WholeNumbers: 0
   m_Value: 29.1

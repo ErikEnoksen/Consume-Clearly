@@ -25,7 +25,7 @@ public class CircularSatisfactionMeter : MonoBehaviour
     {
         if(slider.value < 75 &&  slider.value > 0)
         {
-            sliderFill.color = Color.lightSkyBlue;
+            sliderFill.color = Color.deepSkyBlue;
         }
         else if (slider.value <= 0)
         {
