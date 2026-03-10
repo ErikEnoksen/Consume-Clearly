@@ -15,10 +15,17 @@ public class DialogueLine
     
     [Tooltip("Matching DialogueObject for each choice. Leave null to just continue to next line.")]
     public DialogueObject[] nextDialogues;
+
+    public bool[] givesQuest;
 }
 
 [CreateAssetMenu(fileName = "DialogueObject", menuName = "Scriptable Objects/DialogueObject")]
 public class DialogueObject : ScriptableObject
 {
     public DialogueLine[] dialogueLines;
+
+    public int questInProgressIndex; // what line gets triggered if talking again while quest is active
+    public int questCompletedIndex; // what line gets triggered if quest is completed
+    public int initialDialogueEndIndex; // end dialogue at this index of first time speaking
+    public Quest quest;
 }

@@ -1,3 +1,4 @@
+using Assets.Scripts.Quests;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -31,7 +32,7 @@ public class QuestUI : MonoBehaviour
         }
 
         //build quest entries
-        foreach (var quest in testQuests)
+        foreach (var quest in QuestController.Instance.ActivateQuests)
         {
             GameObject entry = Instantiate(questEntryPrefab, questListContent);
             TMP_Text questNameText = entry.transform.Find("QuestNameText").GetComponent<TMP_Text>();

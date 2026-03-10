@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Assets.Scripts.Quests;
 
 public class Dialogue : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class Dialogue : MonoBehaviour
     [Header("Dialogue Data:")]
     public DialogueObject currentDialogue;
 
+    private bool singleLineDialogue = false;
     private int currentLineIndex;
     private bool isDialogueActive = false;
     private bool isTyping = false;
@@ -57,17 +59,45 @@ public class Dialogue : MonoBehaviour
             }
         }
     }
- void StartDialogue()
+    void StartDialogue()
     {
         currentLineIndex = 0;
-        dialogueText.text = string.Empty;
+        singleLineDialogue = false;
+
+        if (currentDialogue.quest != null)
+        {
+            var controller = QuestController.Instance;
+
+            if (controller != null)
+            {
+                var activeQuest = controller.ActivateQuests
+                    .Find(q => q.QuestID == currentDialogue.quest.questID);
+
+                if (activeQuest != null)
+                {
+                    if (activeQuest.IsCompleted)
+                    {
+                        currentLineIndex = currentDialogue.questCompletedIndex;
+                        singleLineDialogue = true;
+                    }
+                    else
+                    {
+                        currentLineIndex = currentDialogue.questInProgressIndex;
+                        singleLineDialogue = true;
+                    }
+                }
+            }
+        }
+
+        dialogueText.text = "";
         isDialogueActive = true;
 
         if (!dialogueBox.activeSelf)
             dialogueBox.SetActive(true);
 
         choicesPanel.SetActive(false);
-        ApplyLineVisuals(currentDialogue.dialogueLines[0]);
+
+        ApplyLineVisuals(currentDialogue.dialogueLines[currentLineIndex]);
         StartCoroutine(TypeLine());
     }
 
@@ -152,10 +182,24 @@ public class Dialogue : MonoBehaviour
     private void OnChoiceSelected(int choiceIndex)
     {
         choicesPanel.SetActive(false);
-        
+
         DialogueLine currentLine = currentDialogue.dialogueLines[currentLineIndex];
 
-        if (currentLine.nextDialogues != null && choiceIndex < currentLine.nextDialogues.Length &&
+        // QUEST GIVING
+        if (currentLine.givesQuest != null &&
+            choiceIndex < currentLine.givesQuest.Length &&
+            currentLine.givesQuest[choiceIndex])
+        {
+            if (currentDialogue.quest != null)
+            {
+                QuestController.Instance.AcceptQuest(currentDialogue.quest);
+                Debug.Log("Quest accepted: " + currentDialogue.quest.questName);
+            }
+        }
+
+        // Continue dialogue
+        if (currentLine.nextDialogues != null &&
+            choiceIndex < currentLine.nextDialogues.Length &&
             currentLine.nextDialogues[choiceIndex] != null)
         {
             DisplayDialogue(currentLine.nextDialogues[choiceIndex]);
@@ -168,6 +212,21 @@ public class Dialogue : MonoBehaviour
 
     void NextLine()
     {
+        // If this dialogue is a single-line quest state
+        if (singleLineDialogue)
+        {
+            EndDialogue();
+            return;
+        }
+
+        // Stop at the end of the initial conversation
+        if (currentDialogue.quest != null &&
+            currentLineIndex >= currentDialogue.initialDialogueEndIndex)
+        {
+            EndDialogue();
+            return;
+        }
+
         if (currentLineIndex < currentDialogue.dialogueLines.Length - 1)
         {
             currentLineIndex++;
@@ -194,25 +253,3 @@ public class Dialogue : MonoBehaviour
         return isDialogueActive;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
