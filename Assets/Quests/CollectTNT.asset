@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e4a66a7e2b0554db1c603c2375e30b, type: 3}
   m_Name: CollectTNT
   m_EditorClassIdentifier: Main::Quest
-  questID: 
-  questName: 
-  description: 
-  objectives: []
+  questID: CollectTNT
+  questName: Collect TNT
+  description: Collect TNT to blow up a hospital
+  objectives:
+  - objectiveID: TNT-c38ccd8f
+    description: Collect TNT
+    type: 0
+    requiredAmount: 5
+    currentAmount: 0
