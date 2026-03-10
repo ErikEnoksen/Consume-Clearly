@@ -58,4 +58,5 @@ MonoBehaviour:
     givesQuest: 
   questInProgressIndex: 3
   questCompletedIndex: 4
+  initialDialogueEndIndex: 2
   quest: {fileID: 11400000, guid: 3a0d5b840f7e58744a14b053bc2d6d13, type: 2}
