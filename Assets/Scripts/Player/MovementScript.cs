@@ -92,15 +92,7 @@ namespace Player
                 enabled = true;
             }
         }
-
-        private void Update()
-        {
-
-            animationController.FlipSprite(horizontal);
-
-            jump();
-        }
-
+        
         private void FixedUpdate()
         {
             Move();
@@ -133,6 +125,24 @@ namespace Player
                 float currentX = rb.linearVelocity.x;
                 rb.linearVelocity = new Vector2(currentX, climbVerticalVelocity);
             }
+            if (!IsClimbing)
+            {
+                if (rb.linearVelocity.y < 0)
+                {
+                    // Fall faster for more normal feeling
+                    rb.gravityScale = 3f;
+                }
+                else if (rb.linearVelocity.y > 0 && !Input.GetButton("Jump"))
+                {
+                    // Released jump early - pull down faster for shorter jump
+                    rb.gravityScale = 2f;
+                }
+                else
+                {
+                    // Holding jump or on ground - normal gravity
+                    rb.gravityScale = 1f;
+                }
+            }   
 
             // Remove immediate animation trigger here; we'll trigger and wait from jump logic so the physics jump occurs only after the animation completes.
 
@@ -172,7 +182,18 @@ namespace Player
             float newX = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, accelRate * Time.fixedDeltaTime);
             rb.linearVelocity = new Vector2(newX, rb.linearVelocity.y);
         }
-
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (IsGrounded())
+                {
+                    jumpBufferTimeCounter = jumpBufferTime;
+                }
+                AudioManager.Instance.Play("Jump");
+            }
+        }
+        
         public void jump()
         {
             
@@ -186,24 +207,12 @@ namespace Player
             wasGrounded = grounded;
             if(grounded)
             {
-                coyoteTimeCounter = Time.deltaTime;
+                coyoteTimeCounter = coyoteTime;
             }
             else
             {
                 coyoteTimeCounter -= Time.deltaTime;
             }
-            
-            // Jump buffer logic
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                jumpBufferTimeCounter = jumpBufferTime;
-                AudioManager.Instance.Play("Jump");
-            }
-            else
-            {
-                jumpBufferTimeCounter -= Time.deltaTime;
-            }
-
             jumpAction();
         }
 
@@ -233,7 +242,7 @@ namespace Player
             // Variable jump height
             if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0f)
             {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.1f);
             }
         }
 
