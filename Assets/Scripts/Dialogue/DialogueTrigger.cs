@@ -22,6 +22,7 @@ public class DialogueTrigger : MonoBehaviour
     private Dialogue dialogueManager;
     private FriendshipBar friendshipBar;
     private CompanionFriendship friendship;
+    private InventoryManager inventory; 
 
     private bool isPlayerInRange = false;
     private bool isDialogueActive = false;
@@ -35,6 +36,7 @@ public class DialogueTrigger : MonoBehaviour
         dialogueManager = FindObjectOfType<Dialogue>();
         friendshipBar = FindObjectOfType<FriendshipBar>();
         friendship = GetComponent<CompanionFriendship>();
+        inventory = FindObjectOfType<InventoryManager>();
 
     }
     
@@ -65,6 +67,9 @@ public class DialogueTrigger : MonoBehaviour
                 friendship.IncreaseFriendship(100);// Example: Increase friendship by 100 points
                 dailyConversation = true;
             }
+
+            if (inventory != null)
+                inventory.LookForGift("Rope", 50);
         }
 
 

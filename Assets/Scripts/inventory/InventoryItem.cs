@@ -13,6 +13,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     private int maxStack;
     //replace with friendship mechanics later
     private int affectionLevel;
+    private CompanionFriendship friendship;
 
     [SerializeField]
     private TMP_Text quantityText;
@@ -32,13 +33,15 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     private void Start()
     {
         inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
+        friendship = GetComponent<CompanionFriendship>();
     }
 
     public void GiveGift(int affectionIncrease)
     {
         if(CompareTag("Gift"))
         {
-            affectionLevel += affectionIncrease;
+            friendship.IncreaseFriendship(affectionIncrease);
+            //affectionLevel += affectionIncrease;
             RemoveItem(1);
             Debug.Log(affectionLevel);
         }
