@@ -74,12 +74,12 @@ Material:
     m_Floats:
     - _AtmosphereThickness: 1
     - _EnableExternalAlpha: 0
-    - _Exposure: 1.4994315
+    - _Exposure: 1.5
     - _ImageType: 0
     - _Layout: 0
     - _Mapping: 1
     - _MirrorOnBack: 1
-    - _Rotation: 4.1299906
+    - _Rotation: 0
     - _SunDisk: 1
     - _SunSize: 0.299
     - _SunSizeConvergence: 5

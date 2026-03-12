@@ -25,4 +25,10 @@ public class SkyCycle : MonoBehaviour
         //changes the exposure of the material to simulate light and darkness
         skybox.SetFloat(Exposure, Mathf.Clamp(Mathf.Abs(Mathf.Cos(slowedTime))* (float)1.5, 0.15f, 1.5f));
     }
+
+    private void OnDisable()
+    {
+        skybox.SetFloat(Rotation, 0);
+        skybox.SetFloat(Exposure, (float)1.5);
+    }
 }
