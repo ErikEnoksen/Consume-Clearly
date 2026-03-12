@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class DialogueTrigger : MonoBehaviour
@@ -19,16 +20,22 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private KeyCode interactKey = KeyCode.F;
     
     private Dialogue dialogueManager;
+    private FriendshipBar friendshipBar;
+    private CompanionFriendship friendship;
 
     private bool isPlayerInRange = false;
     private bool isDialogueActive = false;
     private bool hasAutoTriggered = false;
+    private bool dailyConversation = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         dialogueManager = FindObjectOfType<Dialogue>();
+        friendshipBar = FindObjectOfType<FriendshipBar>();
+        friendship = GetComponent<CompanionFriendship>();
+
     }
     
     // Update is called once per frame
@@ -47,11 +54,24 @@ public class DialogueTrigger : MonoBehaviour
 
     private void StartConversation()
     {
-        if (dialogueManager != null && dialogueToPlay != null)
+        if (dialogueManager == null || dialogueToPlay == null) return;
+
+        // Show friendship UI (if available) and subscribe to the dialogue end event once.
+        if (friendship != null && friendshipBar != null)
         {
-            dialogueManager.DisplayDialogue(dialogueToPlay);
+            friendshipBar.ShowFriendshipBar(friendship, dialogueToPlay);
+            if (!dailyConversation)
+            {
+                friendship.IncreaseFriendship(100);// Example: Increase friendship by 100 points
+                dailyConversation = true;
+            }
         }
+
+
+        dialogueManager.DisplayDialogue(dialogueToPlay);
     }
+
+    
 
     private void OnTriggerEnter2D(Collider2D other)
     {

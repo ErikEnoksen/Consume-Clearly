@@ -300,6 +300,7 @@ GameObject:
   - component: {fileID: 5122346430342354860}
   - component: {fileID: 5327721085626401849}
   - component: {fileID: 6559476994735948643}
+  - component: {fileID: 8985960376940174906}
   m_Layer: 8
   m_Name: DialogueTriggerBox
   m_TagString: Untagged
@@ -373,6 +374,20 @@ MonoBehaviour:
   dialogueToPlay: {fileID: 11400000, guid: 7986fb9a283fe844dbd5794b543e6a75, type: 2}
   triggerType: 0
   interactKey: 102
+--- !u!114 &8985960376940174906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3786246799249716820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e0e483042e26f43b515e2caf1ef6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::CompanionFriendship
+  MaxFriendshipLevel: 1000
+  CurrentFriendshipLevel: 0
 --- !u!1 &7993382541483594524
 GameObject:
   m_ObjectHideFlags: 0
