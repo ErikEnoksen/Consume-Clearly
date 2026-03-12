@@ -8,8 +8,10 @@ namespace Assets.Scripts.Quests
     public class QuestController : MonoBehaviour
     {
         public static QuestController Instance { get; private set; }
-        public List<QuestProgress> ActivateQuests = new();
+        public List<QuestProgress> ActiveQuests = new();
         private QuestUI questUI;
+        
+        public bool IsQuestActive(string questID) => ActiveQuests.Exists(q => q.QuestID == questID);
 
         private void Awake()
         {
@@ -28,11 +30,32 @@ namespace Assets.Scripts.Quests
         {
             if (IsQuestActive(quest.questID)) return;
 
-            ActivateQuests.Add(new QuestProgress(quest));
+            ActiveQuests.Add(new QuestProgress(quest));
 
             questUI.UpdateQuestUI();
         }
 
-        public bool IsQuestActive(string questID) => ActivateQuests.Exists(q => q.QuestID == questID);
+        public void UpdateObjectiveProgress(string objectiveID, int amount)
+        {
+            foreach (var quest in ActiveQuests)
+            {
+                foreach (var objective in quest.objectives)
+                {
+                    if (objective.objectiveID == objectiveID && !objective.IsCompleted)
+                    {
+                        objective.currentAmount += amount;
+
+                        if (objective.currentAmount > objective.requiredAmount)
+                            objective.currentAmount = objective.requiredAmount;
+
+                        Debug.Log($"Quest progress updated: {objective.description} ({objective.currentAmount}/{objective.requiredAmount})");
+
+                        questUI.UpdateQuestUI();
+                    }
+                }
+            }
+        }
+
+        
     }
 }

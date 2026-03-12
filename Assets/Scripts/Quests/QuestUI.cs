@@ -9,17 +9,9 @@ public class QuestUI : MonoBehaviour
     public GameObject questEntryPrefab;
     public GameObject objectiveTextPrefab;
 
-    public Quest testQuest;
-    public int testQuestAmount;
-    private List<QuestProgress> testQuests = new();
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        for (int i = 0; i < testQuestAmount; i++)
-        {
-            testQuests.Add(new QuestProgress(testQuest));
-        }
         UpdateQuestUI();
     }
 
@@ -32,7 +24,7 @@ public class QuestUI : MonoBehaviour
         }
 
         //build quest entries
-        foreach (var quest in QuestController.Instance.ActivateQuests)
+        foreach (var quest in QuestController.Instance.ActiveQuests)
         {
             GameObject entry = Instantiate(questEntryPrefab, questListContent);
             TMP_Text questNameText = entry.transform.Find("QuestNameText").GetComponent<TMP_Text>();

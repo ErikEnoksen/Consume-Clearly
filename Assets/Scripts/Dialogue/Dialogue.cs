@@ -70,7 +70,7 @@ public class Dialogue : MonoBehaviour
 
             if (controller != null)
             {
-                var activeQuest = controller.ActivateQuests
+                var activeQuest = controller.ActiveQuests
                     .Find(q => q.QuestID == currentDialogue.quest.questID);
 
                 if (activeQuest != null)

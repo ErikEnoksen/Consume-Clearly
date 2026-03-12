@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class InventoryItem : MonoBehaviour, IPointerClickHandler
 {
+    public string itemID;
     public string itemName;
     public int quantity;
     public Sprite sprite;
@@ -50,12 +51,13 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
 
 
     //method for adding items to the inventory
-    public int AddItem(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string tag)
+    public int AddItem(string itemID, string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string tag)
     {
         if (isFull)
         {
             return quantity;
         }
+        this.itemID = itemID;
 
         //updates the slot in the inventory to make the data visible in the inventory
         this.itemName = itemName;

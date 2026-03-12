@@ -68,7 +68,7 @@ public class Item : MonoBehaviour
 
             if (Input.GetKey(KeyCode.F))
             {
-                int exceccItems = inventory.AddItem(itemName, quantity, sprite, itemDescription, maxStack, gameObject.tag);
+                int exceccItems = inventory.AddItem(itemID, itemName, quantity, sprite, itemDescription, maxStack, gameObject.tag);
                 if (exceccItems <= 0)
                 {
                     Destroy(gameObject);
@@ -83,7 +83,7 @@ public class Item : MonoBehaviour
 
     private void GenerateId()
     {
-        // Keep IDs short but unique: name + GUID fragment
+        // name + GUID fragment
         itemID = $"{(string.IsNullOrEmpty(ItemName) ? "item" : ItemName)}-{Guid.NewGuid().ToString("N").Substring(0, 8)}";
     }
 }

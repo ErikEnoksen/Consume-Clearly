@@ -1,3 +1,4 @@
+using Assets.Scripts.Quests;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -23,7 +24,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public int AddItem(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string tag)
+    public int AddItem(string itemID,string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string tag)
     {
         //checks the slots of the inventory and selects the first empty one it finds to store the item
         for (int i = 0; i < inventoryItems.Length; i++)
@@ -31,10 +32,14 @@ public class InventoryManager : MonoBehaviour
             if (!inventoryItems[i].isFull &&
                 (inventoryItems[i].itemName == itemName || inventoryItems[i].quantity == 0)) 
             {
-                int exceccItems = inventoryItems[i].AddItem(itemName, quantity, sprite, itemDescription, maxStack, tag);
+                int exceccItems = inventoryItems[i].AddItem(itemID, itemName, quantity, sprite, itemDescription, maxStack, tag);
+                if (QuestController.Instance != null)
+                {
+                    QuestController.Instance.UpdateObjectiveProgress(itemID, quantity);
+                }
                 if (exceccItems > 0)
                 {
-                    exceccItems = AddItem(itemName, exceccItems, sprite, itemDescription, maxStack, tag);
+                    exceccItems = AddItem(itemID, itemName, exceccItems, sprite, itemDescription, maxStack, tag);
                 }
                 return exceccItems;
             }
