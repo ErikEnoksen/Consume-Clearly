@@ -16,15 +16,7 @@ public class Item : MonoBehaviour
     private Sprite sprite;
 
     [SerializeField]
-    public string Id
-    {
-        get
-        {
-            if (string.IsNullOrEmpty(itemID))
-                GenerateId();
-            return itemID;
-        }
-    }
+    public string Id { get { return itemName; } }
     public string ItemName {  get { return itemName; } set { itemName = value; } }
     public int Quantity { get { return quantity; } set { quantity = value; } }
     public Sprite Sprite { get { return sprite; } set { sprite = value; } }
@@ -83,7 +75,7 @@ public class Item : MonoBehaviour
 
     private void GenerateId()
     {
-        // name + GUID fragment
-        itemID = $"{(string.IsNullOrEmpty(ItemName) ? "item" : ItemName)}-{Guid.NewGuid().ToString("N").Substring(0, 8)}";
+        //Just name
+        itemID = $"{(string.IsNullOrEmpty(ItemName) ? "item" : ItemName)}";
     }
 }

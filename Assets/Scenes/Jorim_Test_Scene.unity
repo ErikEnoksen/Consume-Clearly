@@ -494,7 +494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 148646ccaa2d2884aa915a3517a6f5e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::Assets.Scripts.Quests.QuestController
-  ActivateQuests: []
+  ActiveQuests: []
 --- !u!4 &85584181
 Transform:
   m_ObjectHideFlags: 0
@@ -525,7 +525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &134618121
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1466,8 +1466,6 @@ MonoBehaviour:
   questListContent: {fileID: 415725823}
   questEntryPrefab: {fileID: 4547241807088729877, guid: c195bb7dfcdb9924bb1f412842d66ce1, type: 3}
   objectiveTextPrefab: {fileID: 7227885993739449263, guid: 2bacccc96fede58458ccc8accc50add1, type: 3}
-  testQuest: {fileID: 11400000, guid: 3a0d5b840f7e58744a14b053bc2d6d13, type: 2}
-  testQuestAmount: 5
 --- !u!1 &772973291
 GameObject:
   m_ObjectHideFlags: 0
@@ -4171,6 +4169,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3965078556234555075, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4032705507437411698, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4295,6 +4297,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7231137429175794959, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7231137429175794959, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7428884907118033759, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -4318,6 +4328,14 @@ PrefabInstance:
     - target: {fileID: 7428884907118033759, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -454.30386
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180494040080587573, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180494040080587573, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8576171484678218434, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -5198,8 +5216,6 @@ MonoBehaviour:
   questListContent: {fileID: 415725823}
   questEntryPrefab: {fileID: 4547241807088729877, guid: c195bb7dfcdb9924bb1f412842d66ce1, type: 3}
   objectiveTextPrefab: {fileID: 7227885993739449263, guid: 2bacccc96fede58458ccc8accc50add1, type: 3}
-  testQuest: {fileID: 0}
-  testQuestAmount: 0
 --- !u!4 &2143140954
 Transform:
   m_ObjectHideFlags: 0
