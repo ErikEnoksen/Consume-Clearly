@@ -7,6 +7,8 @@ public class SkyCycle : MonoBehaviour
     [SerializeField]
     private float elapsedTime;
     [SerializeField]
+    private float exposureModifier = 1.5f;
+    [SerializeField]
     private float timeScale = 2.5f;
     [SerializeField]
     private float slowScale = 60;
@@ -23,12 +25,12 @@ public class SkyCycle : MonoBehaviour
         //rotates the sky at a set rate
         skybox.SetFloat(Rotation, elapsedTime * timeScale);
         //changes the exposure of the material to simulate light and darkness
-        skybox.SetFloat(Exposure, Mathf.Clamp(Mathf.Abs(Mathf.Cos(slowedTime))* (float)1.5, 0.15f, 1.5f));
+        skybox.SetFloat(Exposure, Mathf.Clamp(Mathf.Abs(Mathf.Cos(slowedTime))* exposureModifier, (0.1f * exposureModifier), exposureModifier));
     }
 
     private void OnDisable()
     {
         skybox.SetFloat(Rotation, 0);
-        skybox.SetFloat(Exposure, (float)1.5);
+        skybox.SetFloat(Exposure, exposureModifier);
     }
 }
