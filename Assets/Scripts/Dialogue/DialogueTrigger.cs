@@ -69,7 +69,10 @@ public class DialogueTrigger : MonoBehaviour
             }
 
             if (inventory != null)
-                inventory.LookForGift("Rope", 50);
+            {
+                int affectionIncrease = inventory.LookForGift("Rope", 50);
+                friendship.IncreaseFriendship(affectionIncrease);
+            }
         }
 
 

@@ -43,16 +43,18 @@ public class InventoryManager : MonoBehaviour
         return quantity;
     }
 
-    public void LookForGift(string itemName, int affectionIncrease)
+    public int LookForGift(string itemName, int affectionIncrease)
     {
         for (int i = 0; i < inventoryItems.Length; i++)
         {
-            if (inventoryItems[i].itemName == itemName)
+            if (inventoryItems[i].itemName == itemName && inventoryItems[i].CompareTag("Gift"))
             {
-                inventoryItems[i].GiveGift(affectionIncrease);
+                inventoryItems[i].RemoveItem(1);
+                return affectionIncrease;
             }
         }
         Debug.Log("looked for gift");
+        return 0;
     }
 
     //undoes the borders on the selected itemslot
