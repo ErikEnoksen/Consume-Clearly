@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2abd3817e2547a24286d70ef8391116a
+guid: 59f50d8387bd1634f8247d56c12c736b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6531748983728695655
-    second: dead tree_0
+      213: 605162050437240712
+    second: sun_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dead tree_0
+      name: sun_0
       rect:
         serializedVersion: 2
-        x: 474
+        x: 83
         y: 0
-        width: 401
-        height: 743
+        width: 516
+        height: 490
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 99615dee7e09a55a0800000000000000
-      internalID: -6531748983728695655
+      spriteID: 887dbd7bda7f56800800000000000000
+      internalID: 605162050437240712
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dead tree_0: -6531748983728695655
+      sun_0: 605162050437240712
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
