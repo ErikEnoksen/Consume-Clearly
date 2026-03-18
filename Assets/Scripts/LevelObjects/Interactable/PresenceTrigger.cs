@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 namespace LevelObjects.Interactable
 {
@@ -30,11 +32,16 @@ namespace LevelObjects.Interactable
 
         private void Start()
         {
-            // If we don't need to wait for first exit, activate immediately
             if (!activateAfterFirstExit)
             {
-                isActivated = true;
+                StartCoroutine(ActivateAfterDelay());
             }
+        }
+
+        private IEnumerator ActivateAfterDelay()
+        {
+            yield return new WaitForSeconds(0.5f);
+            isActivated = true;
         }
 
         private void Reset()
@@ -49,13 +56,14 @@ namespace LevelObjects.Interactable
             {
                 if (!string.IsNullOrEmpty(sceneToLoad))
                 {
-                    GameManager.Instance?.SaveProgress(sceneToLoad);
+                    GameManager.Instance?.SaveProgress(SceneManager.GetActiveScene().name);
                     GameManager.Instance?.LoadScene(sceneToLoad);
+                    GameManager.Instance?.LoadProgress(sceneToLoad);
                 }
                 else
-                    GameManager.Instance?.GoToMainMenu();
-            
-                onTriggerEnter?.Invoke();
+                {
+                    onTriggerEnter?.Invoke();
+                }
             }
         }
 

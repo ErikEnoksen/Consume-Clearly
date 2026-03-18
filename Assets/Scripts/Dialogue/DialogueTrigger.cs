@@ -25,7 +25,6 @@ public class DialogueTrigger : MonoBehaviour
     private InventoryManager inventory; 
 
     private bool isPlayerInRange = false;
-    private bool isDialogueActive = false;
     private bool hasAutoTriggered = false;
     private bool dailyConversation = false;
 
@@ -43,6 +42,11 @@ public class DialogueTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (dialogueManager == null)
+        {
+            return;
+        }
+
         if (triggerType == TriggerType.KeyPress && isPlayerInRange && Input.GetKeyDown(interactKey))
         {
             Debug.Log("F pressed, dialogue active: " + dialogueManager.IsDialogueActive());
@@ -83,22 +87,16 @@ public class DialogueTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Trigger entered by: " + other.gameObject.name + " Tag: " + other.tag);
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = true;
 
-            if (triggerType == TriggerType.AutoTrigger && !dialogueManager.IsDialogueActive()&& hasAutoTriggered == false)
+            if (dialogueManager != null && triggerType == TriggerType.AutoTrigger && !dialogueManager.IsDialogueActive() && !hasAutoTriggered)
             {
                 StartConversation();
                 hasAutoTriggered = true;
             }
         }
-
-        //if(triggerType == TriggerType.AutoTrigger && other.CompareTag("Player") && !dialogueManager.IsDialogueActive())
-        //{
-        //    StartConversation();
-        //}
     }
     
     private void OnTriggerExit2D(Collider2D other)
@@ -106,11 +104,6 @@ public class DialogueTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
-            isDialogueActive = false;
-            // Optional: Hide interaction prompt UI here
         }
     }
-
-
-
 }

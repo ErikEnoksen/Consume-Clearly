@@ -6,11 +6,15 @@ namespace LevelObjects.Interactable
     public abstract class Interactable : MonoBehaviour, ISaveable
     {
         [SerializeField] protected bool requiresLever = false;
-
+        
+        [Header("Interactable Settings")]
+        [SerializeField] protected float interactionRange = 0.6f;
+        
         [Header("Save System")] [SerializeField]
         private string uniqueId;
 
         public bool RequiresLever => requiresLever;
+        public float InteractionRange => interactionRange;
 
         private void OnValidate()
         {
@@ -18,7 +22,9 @@ namespace LevelObjects.Interactable
             {
                 uniqueId = System.Guid.NewGuid().ToString();
             }
-
+            
+            interactionRange = Mathf.Max(0.1f, interactionRange);
+            
             // Ensure objects that require a lever are on the Default layer (0)
             if (requiresLever)
             {

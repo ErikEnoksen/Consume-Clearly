@@ -10,14 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9e4a66a7e2b0554db1c603c2375e30b, type: 3}
-  m_Name: CollectTNT
+  m_Name: CollectTNTtestQuest
   m_EditorClassIdentifier: Main::Quest
-  questID: 50753b8c-8e58-4055-a1e5-25ddd001b412
-  questName: CollectTNT
-  description: Collect TNT to blow up a childrens hospital
+  questID: CollectTNT
+  questName: Collect TNT
+  description: Collect TNT to blow up a hospital
   objectives:
-  - objectiveID: TnT-0de7db27
-    description: Collect 5 TNT
+  - objectiveID: TNT
+    description: Collect TNT
     type: 0
     requiredAmount: 5
+    currentAmount: 0
+  - objectiveID: Rope
+    description: Collect rope
+    type: 0
+    requiredAmount: 5
+    currentAmount: 0
+  - objectiveID: TNT
+    description: Collect TNT
+    type: 0
+    requiredAmount: 10
     currentAmount: 0

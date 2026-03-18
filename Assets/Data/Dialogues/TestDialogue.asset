@@ -19,6 +19,8 @@ MonoBehaviour:
     textColor: {r: 0, g: 0, b: 0, a: 1}
     dialogueBoxSprite: {fileID: 0}
     choices: []
+    nextDialogues: []
+    givesQuest: 
   - text: General Kenobi!
     speakerName: Grevious
     dialogueBoxColor: {r: 0.8050314, g: 0.79955167, b: 0.6354178, a: 1}
@@ -28,9 +30,16 @@ MonoBehaviour:
     - Bread
     - No
     - 'Okay Buddy '
+    nextDialogues: []
+    givesQuest: 
   - text: You're shorter than I expected...
     speakerName: Obi Wan Kenobi
     dialogueBoxColor: {r: 0.7019608, g: 0.99215686, b: 1, a: 1}
     textColor: {r: 0, g: 0, b: 0, a: 1}
     dialogueBoxSprite: {fileID: 0}
     choices: []
+    nextDialogues: []
+    givesQuest: 
+  questInProgressIndex: 0
+  questCompletedIndex: 0
+  quest: {fileID: 0}

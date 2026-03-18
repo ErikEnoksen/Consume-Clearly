@@ -81,6 +81,7 @@ public class CompanionGiveItem : MonoBehaviour
 
             // assign item data from item object if available
             int leftover = inventoryManager.AddItem(
+                itemObject != null ? itemObject.Id : "1",
                 itemObject != null ? itemObject.ItemName : "UnknownItem",
                 quantity,
                 itemObject != null ? itemObject.Sprite : null,

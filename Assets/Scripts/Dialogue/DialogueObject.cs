@@ -1,6 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum DialogueChoiceType
+{
+    Talk,
+    GetQuest,
+    GiveGift,
+    LeaveConversation
+}
+[System.Serializable]
+public class DialogueChoice
+{
+    public string choiceText;
+    public DialogueChoiceType choiceType = DialogueChoiceType.Talk;
+    public DialogueObject nextDialogue;
+}
 [System.Serializable]
 public class DialogueLine
 {
@@ -10,15 +24,17 @@ public class DialogueLine
     public Color textColor = Color.black;
     public Sprite dialogueBoxSprite;
     
-    [Header("Player Choices (optional):")]
-    public string[] choices; // If empty, auto-continues. If filled, shows choice buttons.
-    
-    [Tooltip("Matching DialogueObject for each choice. Leave null to just continue to next line.")]
-    public DialogueObject[] nextDialogues;
+    [Header("Player Choices:")]
+    public DialogueChoice[] choices; // If empty, auto-continues. If filled, shows choice buttons.
 }
 
 [CreateAssetMenu(fileName = "DialogueObject", menuName = "Scriptable Objects/DialogueObject")]
 public class DialogueObject : ScriptableObject
 {
     public DialogueLine[] dialogueLines;
+    [Header("Quest Settings:")]
+    public Quest quest;
+    public int questInProgressIndex;
+    public int questCompletedIndex;
+    public int initialDialogueEndIndex;
 }

@@ -10,14 +10,8 @@ public class CircularSatisfactionMeter : MonoBehaviour
 
     public void ChangeSatisfactionValue(float satisfactionValue)
     {
-        if (satisfactionValue > 0)
-        {
-            slider.value += satisfactionValue;
-        }
-        else if(satisfactionValue < 0)
-        {
-            slider.value += satisfactionValue;
-        }
+        slider.value += satisfactionValue;
+
         SatisfactionColor();
     }
 
