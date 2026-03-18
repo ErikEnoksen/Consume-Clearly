@@ -8,7 +8,6 @@ public enum DialogueChoiceType
     GiveGift,
     LeaveConversation
 }
-
 [System.Serializable]
 public class DialogueChoice
 {
@@ -33,4 +32,9 @@ public class DialogueLine
 public class DialogueObject : ScriptableObject
 {
     public DialogueLine[] dialogueLines;
+    [Header("Quest Settings:")]
+    public Quest quest;
+    public int questInProgressIndex;
+    public int questCompletedIndex;
+    public int initialDialogueEndIndex;
 }

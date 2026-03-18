@@ -19,6 +19,7 @@ public class Dialogue : MonoBehaviour
     [Header("Speed of Typing:")]
     [Tooltip("Speed of the Dialogue Text being typed out. (Lower value makes text type out faster)")]
     [SerializeField] private float dialogueSpeed;
+    
     [Header("Dialogue Data:")]
     public DialogueObject currentDialogue;
 
@@ -29,9 +30,7 @@ public class Dialogue : MonoBehaviour
     private bool isDialogueActive = false;
     private bool isTyping = false; 
     public static event System.Action<DialogueObject> OnDialogueEnded;
-    public static event System.Action OnQuestRequested;
-    public static event System.Action OnGiftRequested;
-
+    
     void Start()
     {
         if (dialogueBox != null)
@@ -73,6 +72,11 @@ public class Dialogue : MonoBehaviour
     
     void StartDialogue()
     {
+        if (currentDialogue == null || currentDialogue.dialogueLines == null ||
+            currentDialogue.dialogueLines.Length == 0)
+        {
+            return;
+        }
         currentLineIndex = 0;
         dialogueText.text = string.Empty;
         isDialogueActive = true;
@@ -150,7 +154,9 @@ public class Dialogue : MonoBehaviour
     private void ShowChoices(DialogueChoice[] choices)
     {
         if (choicesPanel != null)
+        {
             choicesPanel.SetActive(true);
+        }
 
         for (int i = 0; i < choiceButtons.Length; i++)
         {
@@ -173,9 +179,7 @@ public class Dialogue : MonoBehaviour
     private void OnChoiceSelected(int choiceIndex)
     {
         if (choicesPanel != null)
-        {
             choicesPanel.SetActive(false);
-        }
 
         DialogueLine currentLine = currentDialogue.dialogueLines[currentLineIndex];
         if (currentLine.choices == null || choiceIndex >= currentLine.choices.Length)
@@ -186,9 +190,11 @@ public class Dialogue : MonoBehaviour
 
         DialogueChoice chosenChoice = currentLine.choices[choiceIndex];
 
+        // The handler is responsible for gameplay reactions:
+        // quest acceptance, gift logic, future special actions.
         if (choiceHandler != null)
         {
-            choiceHandler.HandleChoice(chosenChoice.choiceType);
+            choiceHandler.HandleChoice(chosenChoice.choiceType, currentDialogue);
         }
 
         switch (chosenChoice.choiceType)
@@ -205,13 +211,7 @@ public class Dialogue : MonoBehaviour
                 break;
 
             case DialogueChoiceType.GetQuest:
-            case DialogueChoiceType.GiveGift:
-            case DialogueChoiceType.LeaveConversation:
-                if (chosenChoice.choiceType == DialogueChoiceType.LeaveConversation)
-                {
-                    EndDialogue();
-                }
-                else if (chosenChoice.nextDialogue != null)
+                if (chosenChoice.nextDialogue != null)
                 {
                     DisplayDialogue(chosenChoice.nextDialogue);
                 }
@@ -219,6 +219,22 @@ public class Dialogue : MonoBehaviour
                 {
                     EndDialogue();
                 }
+                break;
+
+            case DialogueChoiceType.GiveGift:
+
+                if (chosenChoice.nextDialogue != null)
+                {
+                    DisplayDialogue(chosenChoice.nextDialogue);
+                }
+                else
+                {
+                    EndDialogue();
+                }
+                break;
+
+            case DialogueChoiceType.LeaveConversation:
+                EndDialogue();
                 break;
         }
     }

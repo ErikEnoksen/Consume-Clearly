@@ -3,6 +3,8 @@ using UnityEngine;
 public class ShopItem : MonoBehaviour
 {
     [SerializeField]
+    private string itemID;
+    [SerializeField]
     private string itemName;
     [SerializeField]
     private int maxStack = 10;
@@ -30,16 +32,16 @@ public class ShopItem : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.G))
             {
-                BuyItem(itemName, sprite, itemDescription, maxStack, tag);
+                BuyItem(itemID, itemName, sprite, itemDescription, maxStack, gameObject.tag);
             }
         }
     }
 
-    public void BuyItem(string itemName, Sprite sprite, string itemDescription, int maxStack, string tag)
+    public void BuyItem(string itemID, string itemName, Sprite sprite, string itemDescription, int maxStack, string tag)
     {
         if (moneyManager.ChangeMoneyAmount(-price))
         {
-            inventoryManager.AddItem(itemName, 1, sprite, itemDescription, maxStack, tag);
+            inventoryManager.AddItem(itemID, itemName, 1, sprite, itemDescription, maxStack, tag);
         }
         else
         {

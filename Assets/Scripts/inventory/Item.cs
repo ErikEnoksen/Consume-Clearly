@@ -1,11 +1,11 @@
-using UnityEngine;
 using Items;
+using System;
+using UnityEngine;
 
 public class Item : MonoBehaviour
 {
     [SerializeField]
-    private ItemObject itemObject;
-
+    private string itemID; 
     [SerializeField]
     private string itemName;
     [SerializeField]
@@ -15,11 +15,12 @@ public class Item : MonoBehaviour
     [SerializeField]
     private Sprite sprite;
 
-    public string ItemName { get { return itemName; } set { itemName = value; } }
+    [SerializeField]
+    public string Id { get { return itemName; } }
+    public string ItemName {  get { return itemName; } set { itemName = value; } }
     public int Quantity { get { return quantity; } set { quantity = value; } }
     public Sprite Sprite { get { return sprite; } set { sprite = value; } }
     public int MaxStack { get { return maxStack; } set { maxStack = value; } }
-    public string ItemId => itemObject != null ? itemObject.Id : itemName;
 
     [TextArea]
     [SerializeField]
@@ -29,9 +30,16 @@ public class Item : MonoBehaviour
 
     private InventoryManager inventory;
 
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         inventory = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
+    }
+
+    private void OnValidate()
+    {
+        if (string.IsNullOrEmpty(itemID) || itemID == "1")
+            GenerateId();
     }
 
     public void Initialize(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string itemTag)
@@ -46,20 +54,28 @@ public class Item : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
+
         if (other.gameObject.tag == "Player")
         {
+
             if (Input.GetKey(KeyCode.F))
             {
-                int excessItems = inventory.AddItem(ItemId, itemName, quantity, sprite, itemDescription, maxStack, gameObject.tag);
-                if (excessItems <= 0)
+                int exceccItems = inventory.AddItem(itemID, itemName, quantity, sprite, itemDescription, maxStack, gameObject.tag);
+                if (exceccItems <= 0)
                 {
                     Destroy(gameObject);
                 }
                 else
                 {
-                    quantity = excessItems;
+                    quantity = exceccItems;
                 }
             }
         }
+    }
+
+    private void GenerateId()
+    {
+        //Just name
+        itemID = $"{(string.IsNullOrEmpty(ItemName) ? "item" : ItemName)}";
     }
 }
