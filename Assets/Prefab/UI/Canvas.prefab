@@ -1796,7 +1796,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -4287482453976731394, guid: f341703afae0aac4885246fe87e94d51, type: 3}
+  m_Sprite: {fileID: 8715401230924701078, guid: 59d145434629c874b988971c8cba2bef, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5773,6 +5773,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5520032671610910812, guid: 1fbdb195cf269354faea9cd54de38771, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5520032671610910812, guid: 1fbdb195cf269354faea9cd54de38771, type: 3}
       propertyPath: GameManagerObject
       value: 
       objectReference: {fileID: 0}
@@ -5903,6 +5907,10 @@ PrefabInstance:
     - target: {fileID: 7335587012500442164, guid: 1fbdb195cf269354faea9cd54de38771, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7370526785540984449, guid: 1fbdb195cf269354faea9cd54de38771, type: 3}
+      propertyPath: inventory
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7370526785540984449, guid: 1fbdb195cf269354faea9cd54de38771, type: 3}
       propertyPath: GameManagerObject

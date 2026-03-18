@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2abd3817e2547a24286d70ef8391116a
+guid: 59d145434629c874b988971c8cba2bef
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6531748983728695655
-    second: dead tree_0
+      213: 8715401230924701078
+    second: Bread_Icon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dead tree_0
+      name: Bread_Icon_0
       rect:
         serializedVersion: 2
-        x: 474
-        y: 0
-        width: 401
-        height: 743
+        x: 1043
+        y: 680
+        width: 157
+        height: 126
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 99615dee7e09a55a0800000000000000
-      internalID: -6531748983728695655
+      spriteID: 69dd44c4e3353f870800000000000000
+      internalID: 8715401230924701078
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dead tree_0: -6531748983728695655
+      Bread_Icon_0: 8715401230924701078
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

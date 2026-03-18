@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using Assets.Scripts.Quests;
 
 public class Dialogue : MonoBehaviour
 {
@@ -20,28 +19,39 @@ public class Dialogue : MonoBehaviour
     [Header("Speed of Typing:")]
     [Tooltip("Speed of the Dialogue Text being typed out. (Lower value makes text type out faster)")]
     [SerializeField] private float dialogueSpeed;
+    
     [Header("Dialogue Data:")]
     public DialogueObject currentDialogue;
 
-    private bool singleLineDialogue = false;
+    [Header("System Connections:")]
+    [SerializeField] private DialogueChoiceHandler choiceHandler;
+    
     private int currentLineIndex;
     private bool isDialogueActive = false;
-    private bool isTyping = false;
+    private bool isTyping = false; 
     public static event System.Action<DialogueObject> OnDialogueEnded;
-
+    
     void Start()
     {
         if (dialogueBox != null)
+        {
             dialogueBox.SetActive(false);
+        }
 
         if (choicesPanel != null)
+        {
             choicesPanel.SetActive(false);
+        }
+
+        if (choiceHandler == null)
+        {
+            choiceHandler = FindObjectOfType<DialogueChoiceHandler>();
+        }
     }
     
     void Update()
     {
-      
-        if (isDialogueActive && !choicesPanel.activeSelf && Input.GetMouseButtonDown(0))
+        if (isDialogueActive && choicesPanel != null && !choicesPanel.activeSelf && Input.GetMouseButtonDown(0))
         {
             if (currentDialogue == null || currentDialogue.dialogueLines.Length == 0)
                 return;
@@ -59,53 +69,29 @@ public class Dialogue : MonoBehaviour
             }
         }
     }
+    
     void StartDialogue()
     {
-        currentLineIndex = 0;
-        singleLineDialogue = false;
-
-        if (currentDialogue.quest != null)
+        if (currentDialogue == null || currentDialogue.dialogueLines == null ||
+            currentDialogue.dialogueLines.Length == 0)
         {
-            var controller = QuestController.Instance;
-
-            if (controller != null)
-            {
-                var activeQuest = controller.ActiveQuests
-                    .Find(q => q.questID == currentDialogue.quest.questID);
-
-                if (activeQuest != null)
-                {
-                    if (activeQuest.IsCompleted)
-                    {
-                        // AUTO TURN IN QUEST
-                        var inventory = FindObjectOfType<InventoryManager>();
-                        if (inventory != null)
-                        {
-                            controller.TurnInQuest(currentDialogue.quest.questID, inventory);
-                            Debug.Log("Quest automatically turned in: " + currentDialogue.quest.questName);
-                        }
-
-                        currentLineIndex = currentDialogue.questCompletedIndex;
-                        singleLineDialogue = true;
-                    }
-                    else
-                    {
-                        currentLineIndex = currentDialogue.questInProgressIndex;
-                        singleLineDialogue = true;
-                    }
-                }
-            }
+            return;
         }
-
-        dialogueText.text = "";
+        currentLineIndex = 0;
+        dialogueText.text = string.Empty;
         isDialogueActive = true;
 
-        if (!dialogueBox.activeSelf)
+        if (dialogueBox != null && !dialogueBox.activeSelf)
+        {
             dialogueBox.SetActive(true);
+        }
 
-        choicesPanel.SetActive(false);
+        if (choicesPanel != null)
+        {
+            choicesPanel.SetActive(false);
+        }
 
-        ApplyLineVisuals(currentDialogue.dialogueLines[currentLineIndex]);
+        ApplyLineVisuals(currentDialogue.dialogueLines[0]);
         StartCoroutine(TypeLine());
     }
 
@@ -165,16 +151,19 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    private void ShowChoices(string[] choices)
+    private void ShowChoices(DialogueChoice[] choices)
     {
-        choicesPanel.SetActive(true);
+        if (choicesPanel != null)
+        {
+            choicesPanel.SetActive(true);
+        }
 
         for (int i = 0; i < choiceButtons.Length; i++)
         {
             if (i < choices.Length)
             {
                 choiceButtons[i].gameObject.SetActive(true);
-                choiceButtons[i].GetComponentInChildren<TMP_Text>().text = choices[i];
+                choiceButtons[i].GetComponentInChildren<TMP_Text>().text = choices[i].choiceText;
 
                 int index = i;
                 choiceButtons[i].onClick.RemoveAllListeners();
@@ -189,56 +178,77 @@ public class Dialogue : MonoBehaviour
 
     private void OnChoiceSelected(int choiceIndex)
     {
-        choicesPanel.SetActive(false);
+        if (choicesPanel != null)
+            choicesPanel.SetActive(false);
 
         DialogueLine currentLine = currentDialogue.dialogueLines[currentLineIndex];
-
-        // QUEST GIVING
-        if (currentLine.givesQuest != null &&
-            choiceIndex < currentLine.givesQuest.Length &&
-            currentLine.givesQuest[choiceIndex])
-        {
-            if (currentDialogue.quest != null)
-            {
-                QuestController.Instance.AcceptQuest(currentDialogue.quest);
-                Debug.Log("Quest accepted: " + currentDialogue.quest.questName);
-            }
-        }
-
-        // Continue dialogue
-        if (currentLine.nextDialogues != null &&
-            choiceIndex < currentLine.nextDialogues.Length &&
-            currentLine.nextDialogues[choiceIndex] != null)
-        {
-            DisplayDialogue(currentLine.nextDialogues[choiceIndex]);
-        }
-        else
+        if (currentLine.choices == null || choiceIndex >= currentLine.choices.Length)
         {
             NextLine();
+            return;
+        }
+
+        DialogueChoice chosenChoice = currentLine.choices[choiceIndex];
+
+        // The handler is responsible for gameplay reactions:
+        // quest acceptance, gift logic, future special actions.
+        if (choiceHandler != null)
+        {
+            choiceHandler.HandleChoice(chosenChoice.choiceType, currentDialogue);
+        }
+
+        switch (chosenChoice.choiceType)
+        {
+            case DialogueChoiceType.Talk:
+                if (chosenChoice.nextDialogue != null)
+                {
+                    DisplayDialogue(chosenChoice.nextDialogue);
+                }
+                else
+                {
+                    NextLine();
+                }
+                break;
+
+            case DialogueChoiceType.GetQuest:
+                if (chosenChoice.nextDialogue != null)
+                {
+                    DisplayDialogue(chosenChoice.nextDialogue);
+                }
+                else
+                {
+                    EndDialogue();
+                }
+                break;
+
+            case DialogueChoiceType.GiveGift:
+
+                if (chosenChoice.nextDialogue != null)
+                {
+                    DisplayDialogue(chosenChoice.nextDialogue);
+                }
+                else
+                {
+                    EndDialogue();
+                }
+                break;
+
+            case DialogueChoiceType.LeaveConversation:
+                EndDialogue();
+                break;
         }
     }
 
     void NextLine()
     {
-        // If this dialogue is a single-line quest state
-        if (singleLineDialogue)
-        {
-            EndDialogue();
-            return;
-        }
-
-        // Stop at the end of the initial conversation
-        if (currentDialogue.quest != null &&
-            currentLineIndex >= currentDialogue.initialDialogueEndIndex)
-        {
-            EndDialogue();
-            return;
-        }
-
         if (currentLineIndex < currentDialogue.dialogueLines.Length - 1)
         {
             currentLineIndex++;
-            choicesPanel.SetActive(false);
+            if (choicesPanel != null)
+            {
+                choicesPanel.SetActive(false);
+            }
+
             ApplyLineVisuals(currentDialogue.dialogueLines[currentLineIndex]);
             StartCoroutine(TypeLine());
         }
@@ -251,8 +261,17 @@ public class Dialogue : MonoBehaviour
     void EndDialogue()
     {
         isDialogueActive = false;
-        choicesPanel.SetActive(false);
-        dialogueBox.SetActive(false);
+
+        if (choicesPanel != null)
+        {
+            choicesPanel.SetActive(false);
+        }
+
+        if (dialogueBox != null)
+        {
+            dialogueBox.SetActive(false);
+        }
+
         OnDialogueEnded?.Invoke(currentDialogue);
     }
 
@@ -261,3 +280,25 @@ public class Dialogue : MonoBehaviour
         return isDialogueActive;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

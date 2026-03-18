@@ -103,10 +103,10 @@ TextureImporter:
       name: tree with flowers_0
       rect:
         serializedVersion: 2
-        x: 209
+        x: 467
         y: 0
-        width: 196
-        height: 346
+        width: 471
+        height: 828
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
