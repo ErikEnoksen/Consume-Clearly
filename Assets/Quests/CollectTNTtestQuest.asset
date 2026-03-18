@@ -21,11 +21,6 @@ MonoBehaviour:
     type: 0
     requiredAmount: 5
     currentAmount: 0
-  - objectiveID: Rope
-    description: Collect rope
-    type: 0
-    requiredAmount: 5
-    currentAmount: 0
   - objectiveID: TNT
     description: Collect TNT
     type: 0
