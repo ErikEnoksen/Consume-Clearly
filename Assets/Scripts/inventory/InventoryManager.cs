@@ -59,7 +59,10 @@ public class InventoryManager : MonoBehaviour
             {
                 int removeAmount = Mathf.Min(remaining, inventoryItems[i].quantity);
 
-                inventoryItems[i].RemoveItem(removeAmount);
+                int excess = inventoryItems[i].RemoveItem(remaining);
+
+                if (excess > 0)
+                    inventoryItems[i].RemoveItem(excess);
 
                 remaining -= removeAmount;
 

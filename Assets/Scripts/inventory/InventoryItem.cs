@@ -80,7 +80,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
             
             //return excess items
             int excessItems = this.quantity - maxStack;
-            this.quantity = excessItems;
+            this.quantity = maxStack;
             return excessItems;
         }
 
@@ -91,21 +91,25 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         
     }
 
-    public void RemoveItem(int quantity)
+    public int RemoveItem(int quantity)
     {
         if (quantity < this.quantity)
         {
             this.quantity -= quantity;
             quantityText.text = this.quantity.ToString();
+            return 0;
         }
         else if (quantity == this.quantity)
         {
             this.quantity = 0;
             EmptySlot();
+            return 0;
         }
-        else if(quantity > this.quantity)
+        else 
         {
-            return;
+            this.quantity = 0;
+            EmptySlot();
+            return quantity - this.quantity;
         }
 }
 
