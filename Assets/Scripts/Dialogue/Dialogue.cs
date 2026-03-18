@@ -22,24 +22,37 @@ public class Dialogue : MonoBehaviour
     [Header("Dialogue Data:")]
     public DialogueObject currentDialogue;
 
+    [Header("System Connections:")]
+    [SerializeField] private DialogueChoiceHandler choiceHandler;
+    
     private int currentLineIndex;
     private bool isDialogueActive = false;
-    private bool isTyping = false;
+    private bool isTyping = false; 
     public static event System.Action<DialogueObject> OnDialogueEnded;
+    public static event System.Action OnQuestRequested;
+    public static event System.Action OnGiftRequested;
 
     void Start()
     {
         if (dialogueBox != null)
+        {
             dialogueBox.SetActive(false);
+        }
 
         if (choicesPanel != null)
+        {
             choicesPanel.SetActive(false);
+        }
+
+        if (choiceHandler == null)
+        {
+            choiceHandler = FindObjectOfType<DialogueChoiceHandler>();
+        }
     }
     
     void Update()
     {
-      
-        if (isDialogueActive && !choicesPanel.activeSelf && Input.GetMouseButtonDown(0))
+        if (isDialogueActive && choicesPanel != null && !choicesPanel.activeSelf && Input.GetMouseButtonDown(0))
         {
             if (currentDialogue == null || currentDialogue.dialogueLines.Length == 0)
                 return;
@@ -57,16 +70,23 @@ public class Dialogue : MonoBehaviour
             }
         }
     }
- void StartDialogue()
+    
+    void StartDialogue()
     {
         currentLineIndex = 0;
         dialogueText.text = string.Empty;
         isDialogueActive = true;
 
-        if (!dialogueBox.activeSelf)
+        if (dialogueBox != null && !dialogueBox.activeSelf)
+        {
             dialogueBox.SetActive(true);
+        }
 
-        choicesPanel.SetActive(false);
+        if (choicesPanel != null)
+        {
+            choicesPanel.SetActive(false);
+        }
+
         ApplyLineVisuals(currentDialogue.dialogueLines[0]);
         StartCoroutine(TypeLine());
     }
@@ -127,16 +147,17 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    private void ShowChoices(string[] choices)
+    private void ShowChoices(DialogueChoice[] choices)
     {
-        choicesPanel.SetActive(true);
+        if (choicesPanel != null)
+            choicesPanel.SetActive(true);
 
         for (int i = 0; i < choiceButtons.Length; i++)
         {
             if (i < choices.Length)
             {
                 choiceButtons[i].gameObject.SetActive(true);
-                choiceButtons[i].GetComponentInChildren<TMP_Text>().text = choices[i];
+                choiceButtons[i].GetComponentInChildren<TMP_Text>().text = choices[i].choiceText;
 
                 int index = i;
                 choiceButtons[i].onClick.RemoveAllListeners();
@@ -151,18 +172,54 @@ public class Dialogue : MonoBehaviour
 
     private void OnChoiceSelected(int choiceIndex)
     {
-        choicesPanel.SetActive(false);
-        
-        DialogueLine currentLine = currentDialogue.dialogueLines[currentLineIndex];
-
-        if (currentLine.nextDialogues != null && choiceIndex < currentLine.nextDialogues.Length &&
-            currentLine.nextDialogues[choiceIndex] != null)
+        if (choicesPanel != null)
         {
-            DisplayDialogue(currentLine.nextDialogues[choiceIndex]);
+            choicesPanel.SetActive(false);
         }
-        else
+
+        DialogueLine currentLine = currentDialogue.dialogueLines[currentLineIndex];
+        if (currentLine.choices == null || choiceIndex >= currentLine.choices.Length)
         {
             NextLine();
+            return;
+        }
+
+        DialogueChoice chosenChoice = currentLine.choices[choiceIndex];
+
+        if (choiceHandler != null)
+        {
+            choiceHandler.HandleChoice(chosenChoice.choiceType);
+        }
+
+        switch (chosenChoice.choiceType)
+        {
+            case DialogueChoiceType.Talk:
+                if (chosenChoice.nextDialogue != null)
+                {
+                    DisplayDialogue(chosenChoice.nextDialogue);
+                }
+                else
+                {
+                    NextLine();
+                }
+                break;
+
+            case DialogueChoiceType.GetQuest:
+            case DialogueChoiceType.GiveGift:
+            case DialogueChoiceType.LeaveConversation:
+                if (chosenChoice.choiceType == DialogueChoiceType.LeaveConversation)
+                {
+                    EndDialogue();
+                }
+                else if (chosenChoice.nextDialogue != null)
+                {
+                    DisplayDialogue(chosenChoice.nextDialogue);
+                }
+                else
+                {
+                    EndDialogue();
+                }
+                break;
         }
     }
 
@@ -171,7 +228,11 @@ public class Dialogue : MonoBehaviour
         if (currentLineIndex < currentDialogue.dialogueLines.Length - 1)
         {
             currentLineIndex++;
-            choicesPanel.SetActive(false);
+            if (choicesPanel != null)
+            {
+                choicesPanel.SetActive(false);
+            }
+
             ApplyLineVisuals(currentDialogue.dialogueLines[currentLineIndex]);
             StartCoroutine(TypeLine());
         }
@@ -184,8 +245,17 @@ public class Dialogue : MonoBehaviour
     void EndDialogue()
     {
         isDialogueActive = false;
-        choicesPanel.SetActive(false);
-        dialogueBox.SetActive(false);
+
+        if (choicesPanel != null)
+        {
+            choicesPanel.SetActive(false);
+        }
+
+        if (dialogueBox != null)
+        {
+            dialogueBox.SetActive(false);
+        }
+
         OnDialogueEnded?.Invoke(currentDialogue);
     }
 
