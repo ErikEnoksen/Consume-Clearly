@@ -35,7 +35,8 @@ public class InventoryManager : MonoBehaviour
                 int exceccItems = inventoryItems[i].AddItem(itemID, itemName, quantity, sprite, itemDescription, maxStack, tag);
                 if (QuestController.Instance != null)
                 {
-                    QuestController.Instance.UpdateObjectiveProgress(itemID, quantity);
+                    int pickedUp = quantity - exceccItems;
+                    QuestController.Instance.UpdateObjectiveProgress(itemID, pickedUp);
                 }
                 if (exceccItems > 0)
                 {
@@ -46,6 +47,28 @@ public class InventoryManager : MonoBehaviour
         }
 
         return quantity;
+    }
+
+    public bool RemoveItem(string itemID, int quantity)
+    {
+        int remaining = quantity;
+
+        for (int i = 0; i < inventoryItems.Length; i++)
+        {
+            if (inventoryItems[i].itemID == itemID && inventoryItems[i].quantity > 0)
+            {
+                int removeAmount = Mathf.Min(remaining, inventoryItems[i].quantity);
+
+                inventoryItems[i].RemoveItem(removeAmount);
+
+                remaining -= removeAmount;
+
+                if (remaining <= 0)
+                    return true;
+            }
+        }
+
+        return false;
     }
 
     public void LookForGift(string itemName, int affectionIncrease)

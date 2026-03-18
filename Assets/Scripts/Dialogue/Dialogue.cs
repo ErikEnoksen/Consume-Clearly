@@ -71,12 +71,20 @@ public class Dialogue : MonoBehaviour
             if (controller != null)
             {
                 var activeQuest = controller.ActiveQuests
-                    .Find(q => q.QuestID == currentDialogue.quest.questID);
+                    .Find(q => q.questID == currentDialogue.quest.questID);
 
                 if (activeQuest != null)
                 {
                     if (activeQuest.IsCompleted)
                     {
+                        // AUTO TURN IN QUEST
+                        var inventory = FindObjectOfType<InventoryManager>();
+                        if (inventory != null)
+                        {
+                            controller.TurnInQuest(currentDialogue.quest.questID, inventory);
+                            Debug.Log("Quest automatically turned in: " + currentDialogue.quest.questName);
+                        }
+
                         currentLineIndex = currentDialogue.questCompletedIndex;
                         singleLineDialogue = true;
                     }
