@@ -4,7 +4,7 @@ using Items;
 public class Item : MonoBehaviour
 {
     [SerializeField]
-    private ItemObject itemObject; // assign the ScriptableObject for TNT prefab
+    private ItemObject itemObject;
 
     [SerializeField]
     private string itemName;
@@ -15,10 +15,11 @@ public class Item : MonoBehaviour
     [SerializeField]
     private Sprite sprite;
 
-    public string ItemName {  get { return itemName; } set { itemName = value; } }
+    public string ItemName { get { return itemName; } set { itemName = value; } }
     public int Quantity { get { return quantity; } set { quantity = value; } }
     public Sprite Sprite { get { return sprite; } set { sprite = value; } }
     public int MaxStack { get { return maxStack; } set { maxStack = value; } }
+    public string ItemId => itemObject != null ? itemObject.Id : itemName;
 
     [TextArea]
     [SerializeField]
@@ -28,7 +29,6 @@ public class Item : MonoBehaviour
 
     private InventoryManager inventory;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         inventory = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
@@ -46,24 +46,20 @@ public class Item : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-
         if (other.gameObject.tag == "Player")
         {
-
             if (Input.GetKey(KeyCode.F))
             {
-                int exceccItems = inventory.AddItem(itemName, quantity, sprite, itemDescription, maxStack, gameObject.tag);
-                if (exceccItems <= 0)
+                int excessItems = inventory.AddItem(ItemId, itemName, quantity, sprite, itemDescription, maxStack, gameObject.tag);
+                if (excessItems <= 0)
                 {
                     Destroy(gameObject);
                 }
                 else
                 {
-                    quantity = exceccItems;
+                    quantity = excessItems;
                 }
             }
         }
     }
-
-    public string ItemId => itemObject != null ? itemObject.Id : itemName; // fallback to name
 }
