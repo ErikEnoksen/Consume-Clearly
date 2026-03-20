@@ -341,6 +341,7 @@ MonoBehaviour:
   - {fileID: 0}
   dialogueSpeed: 0.05
   currentDialogue: {fileID: 11400000, guid: a24edcb7dffbdde448331ff6107c7362, type: 2}
+  choiceHandler: {fileID: 0}
 --- !u!4 &139289839
 Transform:
   m_ObjectHideFlags: 0
@@ -998,6 +999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b03fc58ca925b7e4f81e34a3e3f2d1d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::ShopItem
+  itemID: 
   itemName: Rope
   maxStack: 10
   sprite: {fileID: -4570153536982545689, guid: 756f2426d9db9c8499593cf1f529a608, type: 3}
@@ -2613,8 +2615,8 @@ MonoBehaviour:
   skybox: {fileID: 2100000, guid: f6081480486d9a14eafba096e2b118ab, type: 2}
   elapsedTime: 0
   exposureModifier: 1.5
-  timeScale: 2.5
-  slowScale: 1
+  timeScale: 1.5
+  slowScale: 60
 --- !u!4 &1730951674
 Transform:
   m_ObjectHideFlags: 0
