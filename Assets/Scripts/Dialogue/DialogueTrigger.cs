@@ -23,6 +23,7 @@ public class DialogueTrigger : MonoBehaviour
     private FriendshipBar friendshipBar;
     private CompanionFriendship friendship;
     private InventoryManager inventory; 
+    private CommunityMeter communityMeter;
 
     private bool isPlayerInRange = false;
     private bool hasAutoTriggered = false;
@@ -36,6 +37,7 @@ public class DialogueTrigger : MonoBehaviour
         friendshipBar = FindObjectOfType<FriendshipBar>();
         friendship = GetComponent<CompanionFriendship>();
         inventory = FindObjectOfType<InventoryManager>();
+            communityMeter = FindObjectOfType<CommunityMeter>();
 
     }
     
@@ -61,6 +63,11 @@ public class DialogueTrigger : MonoBehaviour
     private void StartConversation()
     {
         if (dialogueManager == null || dialogueToPlay == null) return;
+
+        if (communityMeter != null)
+        {
+            communityMeter.IncreaseCommunityLevel(100); // Example: Increase community level by 10 points
+        }
 
         // Show friendship UI (if available) and subscribe to the dialogue end event once.
         if (friendship != null && friendshipBar != null)

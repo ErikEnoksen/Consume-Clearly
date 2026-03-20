@@ -1,14 +1,28 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class FriendshipBar : MonoBehaviour
 {
+    [System.Serializable]
+    private class MoodSprite
+    {
+        public CompanionFriendship.CompanionMood mood;
+        public Sprite sprite;
+    }
+
     [SerializeField] private Slider friendshipBar;
+    [SerializeField] private List<MoodSprite> moodSprites;
 
     private CompanionFriendship friendship;
     private Action<DialogueObject> dialogueEndedHandler;
     private DialogueObject matchedDialogue;
+    private Image handleImage;
+    private void Awake()
+    {
+        handleImage = friendshipBar.handleRect.GetComponent<Image>();
+    }
 
     void Start()
     {
@@ -71,21 +85,22 @@ public class FriendshipBar : MonoBehaviour
             friendshipBar.gameObject.SetActive(false);
     }
 
-   
+
 
     private void UpdateFriendshipBar(int current)
     {
         if (friendshipBar == null) return;
         friendshipBar.value = current;
+
+        foreach (var entry in moodSprites)
+        {
+            if (entry.mood == friendship.CurrentMood)
+            {
+                handleImage.sprite = entry.sprite;
+                break;
+            }
+        }
+
     }
 
-    //private void OnDestroy()
-    //{
-    //    if (friendship != null)
-    //        friendship.OnFriendshipLevelChanged -= UpdateFriendshipBar;
-
-    //    if (dialogueEndedHandler != null)
-    //        Dialogue.OnDialogueEnded -= dialogueEndedHandler;
-    //}
 }
-
