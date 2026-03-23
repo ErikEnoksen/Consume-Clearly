@@ -245,6 +245,7 @@ MonoBehaviour:
   pressE: {fileID: 8784308139853095190}
   originOffset: 0.1
   circleRadius: 0.7
+  maxSearchRadius: 5
 --- !u!114 &2895222603076180700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,7 +431,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

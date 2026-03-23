@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: df255e81c84f90044996bf7f344aa677
+guid: cca8307e01c37f5468c7fd6083be0f8b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3972577786638363168
-    second: JaffaJaffa_0
+      213: -2050104452962061079
+    second: JaffaJaffa (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: JaffaJaffa_0
+      name: JaffaJaffa (1)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1080
+        width: 1771
+        height: 988
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0e510d8fc819ed8c0800000000000000
-      internalID: -3972577786638363168
+      spriteID: 9e4ffb8acd09c83e0800000000000000
+      internalID: -2050104452962061079
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      JaffaJaffa_0: -3972577786638363168
+      JaffaJaffa (1)_0: -2050104452962061079
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
