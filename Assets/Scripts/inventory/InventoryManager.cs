@@ -8,6 +8,8 @@ public class InventoryManager : MonoBehaviour
     private bool inventoryActive;
     public InventoryItem[] inventoryItems;
 
+    public ItemSO[] itemSOs;
+
     // Update is called once per frame
     void Update()
     {
@@ -47,6 +49,21 @@ public class InventoryManager : MonoBehaviour
         }
 
         return quantity;
+    }
+
+    public bool UseItem(string itemName)
+    {
+        for (int i = 0; i < itemSOs.Length; i++)
+        {
+            if (itemSOs[i].itemName == itemName)
+            {
+                bool usable = itemSOs[i].UseItem();
+                return usable;
+            }
+        }
+       
+        return false; 
+
     }
 
     public bool RemoveItem(string itemID, int quantity)

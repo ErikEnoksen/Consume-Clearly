@@ -29,7 +29,7 @@ public class Item : MonoBehaviour
     public string ItemDescription { get { return itemDescription; } set { itemDescription = value; } }
 
     private InventoryManager inventory;
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
