@@ -1,49 +1,62 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Inventory;
 using Items;
 
-
 public class CompanionGiveItem : MonoBehaviour
 {
-    [Header("Item Data")]
-    public Item itemObject;           // Assign item to be given here
-    public int quantity = 1;
+    public enum GiftTriggerType
+    {
+        OnDialogueEnd,
+        OnFriendshipStateChanged,
+        Weekly
+    }
+
+    [Header("Gifts")]
+    public List<CompanionGift> gifts = new List<CompanionGift>();
 
     [Header("Interaction")]
-    public KeyCode interactKey = KeyCode.T; // kept for testing, but main trigger is now dialogue end event
+    public KeyCode interactKey = KeyCode.T; // optional manual trigger
 
     private bool playerInRange = false;
-    private bool hasGivenItem = false;      // ensures item(s) are only given once
 
     private InventoryManager inventoryManager;
-
+    private CompanionFriendship friendship;
 
     private void Start()
     {
-
-        // fallback to test manager (existing behavior)
         inventoryManager = GameObject.Find("InventorySelector")?.GetComponent<InventoryManager>();
         if (inventoryManager == null)
         {
             Debug.LogWarning("No InventoryManager found in scene.");
         }
 
-        // Subscribe to dialogue end event
+        friendship = FindObjectOfType<CompanionFriendship>();
+
+        if (friendship != null)
+        {
+            friendship.OnStateChanged += OnFriendshipStateChanged;
+        }
+
         Dialogue.OnDialogueEnded += OnDialogueEnded;
     }
 
     private void OnDestroy()
     {
         Dialogue.OnDialogueEnded -= OnDialogueEnded;
+
+        if (friendship != null)
+        {
+            friendship.OnStateChanged -= OnFriendshipStateChanged;
+        }
     }
 
     private void Update()
     {
-        // keep old manual input behavior if desired (optional)
-        if (!hasGivenItem && playerInRange && inventoryManager != null && Input.GetKeyDown(interactKey))
+        // Optional manual trigger for testing
+        if (playerInRange && inventoryManager != null && Input.GetKeyDown(interactKey))
         {
-            GiveItem();
+            TryGiveGift(GiftTriggerType.OnDialogueEnd);
         }
     }
 
@@ -59,50 +72,80 @@ public class CompanionGiveItem : MonoBehaviour
             playerInRange = false;
     }
 
+    //give gift when dialogue ends
     private void OnDialogueEnded(DialogueObject endedDialogue)
     {
-        // When any dialogue ends give item if player is still in range
-        if (playerInRange && !hasGivenItem)
-        {
-            GiveItem();
-        }
+        TryGiveGift(GiftTriggerType.OnDialogueEnd);
     }
 
-    private void GiveItem()
+    //give gift when friendship state changes
+    private void OnFriendshipStateChanged(CompanionFriendship.FriendshipState newState)
     {
-        if (hasGivenItem) return;
-
-        if (inventoryManager != null)
-        {
-            if (itemObject == null)
-            {
-                Debug.LogWarning("No ItemObject assigned and cannot add ItemObject");
-            }
-
-            // assign item data from item object if available
-            int leftover = inventoryManager.AddItem(
-                itemObject != null ? itemObject.Id : "1",
-                itemObject != null ? itemObject.ItemName : "UnknownItem",
-                quantity,
-                itemObject != null ? itemObject.Sprite : null,
-                itemObject != null ? itemObject.ItemDescription : "",
-                itemObject != null ? itemObject.MaxStack : 1,
-                itemObject != null ? itemObject.tag : "Untagged"
-            );
-
-            if (leftover == 0)
-            {
-                hasGivenItem = true;
-                Debug.Log("Companion gave item successfully");
-            }
-            else
-            {
-                Debug.Log("Not enough inventory space.");
-            }
-
-            return;
-        }
-
-        Debug.LogWarning("No inventory system found to give item.");
+        TryGiveGift(GiftTriggerType.OnFriendshipStateChanged);
     }
+
+    // Core logic to check conditions and give gifts
+    private void TryGiveGift(GiftTriggerType trigger)
+    {
+        if (!playerInRange || inventoryManager == null) return;
+
+        foreach (var gift in gifts)
+        {
+            if (gift.triggerType != trigger)
+                continue;
+
+            if (gift.giveOnce && gift.hasBeenGiven)
+                continue;
+            // Check friendship state and checks off lower and the same state
+            if (friendship != null && friendship.CurrentState <= gift.requiredState)
+                continue;
+
+            GiveItem(gift);
+        }
+    }
+
+    // Handles the actual item giving logic
+    private void GiveItem(CompanionGift gift)
+    {
+        if (gift.item == null) return;
+
+        int leftover = inventoryManager.AddItem(
+            gift.item.Id,
+            gift.item.ItemName,
+            gift.quantity,
+            gift.item.Sprite,
+            gift.item.ItemDescription,
+            gift.item.MaxStack,
+            gift.item.tag
+        );
+
+        if (leftover == 0)
+        {
+            gift.hasBeenGiven = true;
+            Debug.Log($"Companion gave: {gift.item.ItemName}");
+        }
+        else
+        {
+            Debug.Log("Not enough inventory space.");
+        }
+    }
+}
+
+// Serializable class to define gifts and their conditions
+[System.Serializable]
+public class CompanionGift
+{
+    public CompanionGiveItem.GiftTriggerType triggerType;
+
+    public CompanionFriendship.FriendshipState requiredState;
+
+    [Header("Item")]
+    public Item item;
+    public int quantity = 1;
+
+    [Header("Behavior")]
+    public bool giveOnce = true;
+
+    [HideInInspector]
+    public bool hasBeenGiven = false;
 }
