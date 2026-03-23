@@ -15,8 +15,15 @@ public class Item : MonoBehaviour
     [SerializeField]
     private Sprite sprite;
 
-    [SerializeField]
-    public string Id { get { return itemName; } }
+    public string Id
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(itemID))
+                GenerateId();
+            return itemID;
+        }
+    }
     public string ItemName {  get { return itemName; } set { itemName = value; } }
     public int Quantity { get { return quantity; } set { quantity = value; } }
     public Sprite Sprite { get { return sprite; } set { sprite = value; } }

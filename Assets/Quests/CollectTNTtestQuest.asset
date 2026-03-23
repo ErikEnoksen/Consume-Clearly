@@ -26,3 +26,13 @@ MonoBehaviour:
     type: 0
     requiredAmount: 10
     currentAmount: 0
+  rewards:
+    money: 100
+    communitySpirit: 0
+    items:
+    - item: {fileID: 11400000, guid: 079ae63275cd6984f802b5da1f2b44a7, type: 2}
+      quantity: 3
+      inventoryTag: Untagged
+    - item: {fileID: 11400000, guid: 5b79841ffd0bab1448948deb86ae6d04, type: 2}
+      quantity: 24
+      inventoryTag: Untagged
