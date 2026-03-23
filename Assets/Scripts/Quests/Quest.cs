@@ -26,7 +26,7 @@ public class Quest : ScriptableObject
 public class QuestReward
 {
     public int money;
-    public float communitySpirit;
+    public float circularSatisfaction;
     public List<QuestRewardItem> items;
 }
 

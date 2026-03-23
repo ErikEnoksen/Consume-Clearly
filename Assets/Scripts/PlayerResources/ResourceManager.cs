@@ -102,11 +102,8 @@ namespace PlayerResources
             DecreaseRSOverTime();
             DecreaseMSOverTime();
             ChangeCsOverTime();
-
-            if (TextMoney != null)
-            {
-                TextMoney.text = "€" + Money;
-            }
+            
+            TextMoney.text = "€" + Money;
         }
         
         
@@ -116,20 +113,9 @@ namespace PlayerResources
             float rsFillAmount = RS / STotalLimit;
             float msFillAmount = MS / STotalLimit;
 
-            if (SliderRS != null)
-            {
-                AnimateMeter(ref rsAnimRoutine, SliderRS, rsFillAmount);
-            }
-
-            if (SliderMS != null)
-            {
-                AnimateMeter(ref msAnimRoutine, SliderMS, msFillAmount);
-            }
-
-            if (AddictiveShader == null)
-            {
-                return;
-            }
+            
+            AnimateMeter(ref rsAnimRoutine, SliderRS, rsFillAmount);
+            AnimateMeter(ref msAnimRoutine, SliderMS, msFillAmount);
 
             if (MS >= STotalLimit / 2 && MS > RS)
             {
@@ -223,10 +209,7 @@ namespace PlayerResources
         {
             float csFillAmount = CS / 100;
 
-            if (SliderCS != null)
-            {
-                AnimateMeter(ref csAnimRoutine, SliderCS, csFillAmount);
-            }
+            AnimateMeter(ref csAnimRoutine, SliderCS, csFillAmount);
         }
         
         private void ChangeCsOverTime()
@@ -255,10 +238,7 @@ namespace PlayerResources
         }
         private void UpdateMoneyText()
         {
-            if (TextMoney != null)
-            {
-                TextMoney.text = "€" + Money.ToString("F2");
-            }
+            TextMoney.text = "€" + Money.ToString("F2");
         }
         //MONEY LOGIC: END
         
@@ -266,9 +246,6 @@ namespace PlayerResources
         //EASING ANIMATION LOGIC: START
         private void AnimateMeter(ref Coroutine routine, Image image, float target)
         {
-            if (image == null)
-                return;
-
             if (routine != null)
                 StopCoroutine(routine);
             routine = StartCoroutine(AnimateMeterRoutine(image, target));

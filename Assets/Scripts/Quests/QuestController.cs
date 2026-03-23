@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using PlayerResources;
 
 namespace Assets.Scripts.Quests
 {
@@ -143,7 +142,7 @@ namespace Assets.Scripts.Quests
                 return;
 
             GrantMoneyReward(quest.rewards.money);
-            GrantCommunitySpiritReward(quest.rewards.communitySpirit);
+            GrantCircularSatisfactionReward(quest.rewards.circularSatisfaction);
             GrantItemRewards(quest.rewards.items);
         }
 
@@ -159,29 +158,22 @@ namespace Assets.Scripts.Quests
                 return;
             }
 
-            ResourceManager resourceManager = FindObjectOfType<ResourceManager>();
-            if (resourceManager != null)
-            {
-                resourceManager.UpdateMoney(amount);
-                return;
-            }
-
             Debug.LogWarning($"QuestController: Could not grant money reward of {amount}. No money manager found.");
         }
 
-        private void GrantCommunitySpiritReward(float amount)
+        private void GrantCircularSatisfactionReward(float amount)
         {
             if (Mathf.Approximately(amount, 0f))
                 return;
 
-            ResourceManager resourceManager = FindObjectOfType<ResourceManager>();
-            if (resourceManager != null)
+            CircularSatisfactionMeter satisfactionMeter = FindObjectOfType<CircularSatisfactionMeter>();
+            if (satisfactionMeter != null)
             {
-                resourceManager.UpdateCommunitySpirit(amount);
+                satisfactionMeter.ChangeSatisfactionValue(amount);
                 return;
             }
 
-            Debug.LogWarning($"QuestController: Could not grant community spirit reward of {amount}. No ResourceManager found.");
+            Debug.LogWarning($"QuestController: Could not grant community spirit reward of {amount}. No CircularSatisfactionMeter found.");
         }
 
         private void GrantItemRewards(List<QuestRewardItem> rewardItems)
