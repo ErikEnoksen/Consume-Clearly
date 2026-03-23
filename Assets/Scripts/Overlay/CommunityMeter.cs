@@ -13,10 +13,10 @@ public class CommunityMeter : MonoBehaviour
     private CompanionFriendship friendship;
     private event Action<CommunityState> OnCommunityStateChanged;
     private CommunityState CurrentState;
-    private int FriendCount = 0; 
+    public int FriendCount = 0; 
 
     private readonly int[] thresholds = { 0,25, 50, 75 }; // Example thresholds for each state
-    private void Start()
+    private void Awake()
     {
         friendship = FindObjectOfType<CompanionFriendship>();
         if (friendship != null)
@@ -25,6 +25,9 @@ public class CommunityMeter : MonoBehaviour
         }
         CurrentState = GetCommunityState();
         UpdateCommunityMeter();
+
+        if (DayCycleManager.Instance != null)
+            DayCycleManager.Instance.OnNewDay += OnNewDay;
     }
 
     private CommunityState GetCommunityState() 
@@ -37,6 +40,20 @@ public class CommunityMeter : MonoBehaviour
             return CommunityState.Growing;
         else
             return CommunityState.Fragmented;
+    }
+    private int GetDailyCommunityIncrease()
+    {
+        switch (CurrentState)
+        {
+            case CommunityState.Growing:
+                return 5;
+            case CommunityState.Connecting:
+                return 10;
+            case CommunityState.Thriving:
+                return 15;
+            default:
+                return 0;
+        }
     }
 
     public void IncreaseCommunityLevel(int amount)
@@ -91,6 +108,7 @@ public class CommunityMeter : MonoBehaviour
         }
         else if (CurrentState == CommunityState.Growing)
         {
+
             communityMeter.fillRect.GetComponent<Image>().color = Color.yellow;
         }
         else if (CurrentState == CommunityState.Connecting)
@@ -109,34 +127,25 @@ public class CommunityMeter : MonoBehaviour
         int nextThreshold = thresholds[Math.Min(stage + 1, thresholds.Length - 1)];
         int pointsToAdd = amount;
 
-        // Only allow points to be added if the friend requirement for the next stage is met
-        while (pointsToAdd > 0 && stage < thresholds.Length - 1)
+        // Always add points up to the cap for the current stage
+        int maxForStage = nextThreshold - CommunityLevel;
+        int addNow = Mathf.Min(pointsToAdd, maxForStage);
+
+        CommunityLevel += addNow;
+        pointsToAdd -= addNow;
+
+        // If we can't advance to the next stage, store the rest as overflow
+        if (!CanAdvanceToNextStage(stage))
         {
-            // If not enough friends for next stage, cap at current threshold
-            if (!CanAdvanceToNextStage(stage))
+            OverflowPoints += pointsToAdd;
+        }
+        else
+        {
+            // If we can advance, try to apply the rest recursively
+            if (pointsToAdd > 0 && stage < thresholds.Length - 1)
             {
-                int maxForStage = nextThreshold - CommunityLevel;
-                int addNow = Mathf.Min(pointsToAdd, maxForStage);
-                CommunityLevel += addNow;
-                pointsToAdd -= addNow;
-                OverflowPoints += pointsToAdd; // Save any extra for later
-                break;
-            }
-            else
-            {
-                int maxForStage = nextThreshold - CommunityLevel;
-                if (pointsToAdd < maxForStage)
-                {
-                    CommunityLevel += pointsToAdd;
-                    pointsToAdd = 0;
-                }
-                else
-                {
-                    CommunityLevel += maxForStage;
-                    pointsToAdd -= maxForStage;
-                    stage++;
-                    nextThreshold = thresholds[Math.Min(stage + 1, thresholds.Length - 1)];
-                }
+                stage++;
+                AddPointsWithOverflow(pointsToAdd);
             }
         }
 
@@ -165,6 +174,15 @@ public class CommunityMeter : MonoBehaviour
             int overflow = OverflowPoints;
             OverflowPoints = 0;
             IncreaseCommunityLevel(overflow);
+        }
+    }
+
+    private void OnNewDay(int dayNumber)
+    {
+        int dailyIncrease = GetDailyCommunityIncrease();
+        if (dailyIncrease > 0)
+        {
+            IncreaseCommunityLevel(dailyIncrease);
         }
     }
 }

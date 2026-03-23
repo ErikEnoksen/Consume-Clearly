@@ -8,6 +8,9 @@ public class CompanionFriendship : MonoBehaviour
 
     public int MaxFriendshipLevel = 1000;
     public int CurrentFriendshipLevel = 0;
+    public int DailyConversationReward = 25;
+
+    private bool DailyConversationGiven = false;
     public enum CompanionMood { Happy, Neutral, Angry }
     public CompanionMood CurrentMood;
 
@@ -45,11 +48,14 @@ public class CompanionFriendship : MonoBehaviour
                 return FriendshipState.BestFriend;
         }
     }
-
+    
     private void Start()
     {
         previousState = CurrentState;
+        if (DayCycleManager.Instance != null)
+            DayCycleManager.Instance.OnNewDay += ResetDailyBonus;
     }
+
     private void CheckStateChange()
     {
         var newState = CurrentState;
@@ -90,6 +96,25 @@ public class CompanionFriendship : MonoBehaviour
                 //cant receive quests when angry and acquaintance
             }
         }
+    }
+
+    public void GiveDailyConversationBonus()
+    {
+        if (!DailyConversationGiven)
+        {
+            IncreaseFriendship(25);
+            DailyConversationGiven = true;
+        }
+    }
+
+    private void ResetDailyBonus(int day)
+    {
+        if (!DailyConversationGiven)
+        {
+            // Penalize the player for missing the daily conversation
+            DecreaseFriendship(10);
+        }
+        DailyConversationGiven = false;
     }
 
 }

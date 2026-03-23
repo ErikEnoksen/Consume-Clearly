@@ -73,11 +73,8 @@ public class DialogueTrigger : MonoBehaviour
         if (friendship != null && friendshipBar != null)
         {
             friendshipBar.ShowFriendshipBar(friendship, dialogueToPlay);
-            if (!dailyConversation)
-            {
-                friendship.IncreaseFriendship(100);// Example: Increase friendship by 100 points
-                dailyConversation = true;
-            }
+            friendship.GiveDailyConversationBonus();
+
 
             if (inventory != null)
             {
@@ -88,6 +85,7 @@ public class DialogueTrigger : MonoBehaviour
 
 
         dialogueManager.DisplayDialogue(dialogueToPlay);
+        Debug.Log("Started conversation with: " + friendship.CurrentState);
     }
 
     
