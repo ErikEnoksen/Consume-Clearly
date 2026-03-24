@@ -7266,6 +7266,9 @@ MonoBehaviour:
   - {fileID: 3902734210577653871}
   - {fileID: 2180673521014881085}
   - {fileID: 7354183198023871676}
+  itemSOs:
+  - {fileID: 11400000, guid: a21d0152855b5a24a80cf002718e633d, type: 2}
+  - {fileID: 11400000, guid: 43dca60900779a043a664c5a2324e48e, type: 2}
 --- !u!1001 &9089050654567753782
 PrefabInstance:
   m_ObjectHideFlags: 0

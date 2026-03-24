@@ -1,4 +1,13 @@
 using UnityEngine;
+public enum ItemType
+{
+    None,
+    Food,
+    Consumable,
+    Money,
+    Tool
+}
+
 
 [CreateAssetMenu]
 public class ItemSO : ScriptableObject
@@ -9,22 +18,29 @@ public class ItemSO : ScriptableObject
 
     public bool UseItem()
     {
-        if(itemType == ItemType.Food)
+        switch (itemType)
         {
-            PlayerHunger playerHunger = GameObject.Find("Sliders").GetComponent<PlayerHunger>();
-            playerHunger.ChangeHungerValue(amountToChangeStat);
-            return true;
+            case ItemType.None:
+                Debug.Log("Not usable");
+                return false;
+            case ItemType.Food:
+                PlayerHunger playerHunger = GameObject.Find("Sliders").GetComponent<PlayerHunger>();
+                playerHunger.ChangeHungerValue(amountToChangeStat);
+                return true;
+            case ItemType.Consumable:
+                //Consumable behaviour
+                return true;
+            case ItemType.Money:
+                MoneyManager moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
+                moneyManager.ChangeMoneyAmount(amountToChangeStat);
+                return true;
+            case ItemType.Tool:
+                //Tool behaviour
+                return true;
+                
         }
-        else
-        {
-            Debug.Log("Not usable");
-            return false;
-        }
+
+        return false;
     }
 
-    public enum ItemType
-    {
-        None,
-        Food
-    }
 }

@@ -31,8 +31,17 @@ public class InventoryManager : MonoBehaviour
         //checks the slots of the inventory and selects the first empty one it finds to store the item
         for (int i = 0; i < inventoryItems.Length; i++)
         {
-            if (!inventoryItems[i].isFull &&
-                (inventoryItems[i].itemName == itemName || inventoryItems[i].quantity == 0)) 
+            for (int j = 0; j < itemSOs.Length; j++)
+            {
+                if (itemSOs[j].itemName == itemName && itemSOs[j].itemType == ItemType.Money)
+                {
+                    itemSOs[j].UseItem();
+                    return 0;
+                } 
+                
+            }
+             if (!inventoryItems[i].isFull &&
+            (inventoryItems[i].itemName == itemName || inventoryItems[i].quantity == 0)) 
             {
                 int exceccItems = inventoryItems[i].AddItem(itemID, itemName, quantity, sprite, itemDescription, maxStack, tag);
                 if (QuestController.Instance != null)
