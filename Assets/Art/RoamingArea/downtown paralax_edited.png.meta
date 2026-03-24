@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a7c957d043681c04998db551f4087868
+guid: dad7171217ba44b48a66aa738db84817
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1310819851947857698
-    second: JaffaJaffa (3)_0
+      213: -3320602640607062212
+    second: downtown paralax_edited_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: JaffaJaffa (3)_0
+      name: downtown paralax_edited_0
       rect:
         serializedVersion: 2
-        x: 15
+        x: 0
         y: 0
-        width: 1820
-        height: 1022
+        width: 2360
+        height: 1132
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ed82e182a480fcde0800000000000000
-      internalID: -1310819851947857698
+      spriteID: c37546edd79dae1d0800000000000000
+      internalID: -3320602640607062212
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      JaffaJaffa (3)_0: -1310819851947857698
+      downtown paralax_edited_0: -3320602640607062212
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

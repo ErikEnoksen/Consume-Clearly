@@ -1,28 +1,16 @@
 fileFormatVersion: 2
-guid: 0ae5d0442ed0a5849b9adafa6dd1221f
+guid: 4b56e5a727ab1384081c339823143c9e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2501237580414956072
-    second: 4 jacks casino logo_0
+      213: 7946963243083766262
+    second: 4 jacks casino logo (1)_0
   - first:
-      213: 7150809451899185109
-    second: 4 jacks casino logo_1
+      213: 1978930439416845986
+    second: 4 jacks casino logo (1)_1
   - first:
-      213: -8581601178811567500
-    second: 4 jacks casino logo_2
-  - first:
-      213: 6936566434557598457
-    second: 4 jacks casino logo_3
-  - first:
-      213: 3360203468349457974
-    second: 4 jacks casino logo_4
-  - first:
-      213: -8466234752383767542
-    second: 4 jacks casino logo_5
-  - first:
-      213: -7582452816222278180
-    second: 4 jacks casino logo_6
+      213: 3623186727740984043
+    second: 4 jacks casino logo (1)_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -118,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 4 jacks casino logo_0
+      name: 4 jacks casino logo (1)_0
       rect:
         serializedVersion: 2
-        x: 1216
-        y: 623
-        width: 1075
-        height: 1165
+        x: 1205
+        y: 466
+        width: 1096
+        height: 1332
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,20 +121,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8dd42883ca1d94dd0800000000000000
-      internalID: -2501237580414956072
+      spriteID: 6f9181bf6f8494e60800000000000000
+      internalID: 7946963243083766262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 4 jacks casino logo_1
+      name: 4 jacks casino logo (1)_1
       rect:
         serializedVersion: 2
-        x: 1401
-        y: 477
-        width: 150
-        height: 139
+        x: 1389
+        y: 465
+        width: 173
+        height: 163
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,86 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5d7e4f45f47cc3360800000000000000
-      internalID: 7150809451899185109
+      spriteID: 2a616a4ffb2967b10800000000000000
+      internalID: 1978930439416845986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 4 jacks casino logo_2
+      name: 4 jacks casino logo (1)_2
       rect:
         serializedVersion: 2
-        x: 1564
-        y: 479
-        width: 171
-        height: 137
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 472fcd4f13708e880800000000000000
-      internalID: -8581601178811567500
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 4 jacks casino logo_3
-      rect:
-        serializedVersion: 2
-        x: 1752
-        y: 477
-        width: 140
-        height: 139
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9fa14b4bb62a34060800000000000000
-      internalID: 6936566434557598457
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 4 jacks casino logo_4
-      rect:
-        serializedVersion: 2
-        x: 1907
-        y: 479
-        width: 90
-        height: 134
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 63641085047d1ae20800000000000000
-      internalID: 3360203468349457974
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 4 jacks casino logo_5
-      rect:
-        serializedVersion: 2
-        x: 2009
-        y: 478
+        x: 2204
+        y: 465
         width: 194
-        height: 135
+        height: 163
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -243,30 +165,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a0c29174954e18a80800000000000000
-      internalID: -8466234752383767542
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 4 jacks casino logo_6
-      rect:
-        serializedVersion: 2
-        x: 2216
-        y: 477
-        width: 170
-        height: 139
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cdd29e25657b5c690800000000000000
-      internalID: -7582452816222278180
+      spriteID: bea49e5e125284230800000000000000
+      internalID: 3623186727740984043
       vertices: []
       indices: 
       edges: []
@@ -285,13 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      4 jacks casino logo_0: -2501237580414956072
-      4 jacks casino logo_1: 7150809451899185109
-      4 jacks casino logo_2: -8581601178811567500
-      4 jacks casino logo_3: 6936566434557598457
-      4 jacks casino logo_4: 3360203468349457974
-      4 jacks casino logo_5: -8466234752383767542
-      4 jacks casino logo_6: -7582452816222278180
+      4 jacks casino logo (1)_0: 7946963243083766262
+      4 jacks casino logo (1)_1: 1978930439416845986
+      4 jacks casino logo (1)_2: 3623186727740984043
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
