@@ -9,6 +9,7 @@ public class Quest : ScriptableObject
     public string questName;
     public string description;
     public List<QuestObjective> objectives;
+    public QuestReward rewards;
 
     //called when scriptable obj is edited
     public void OnValidate()
@@ -19,6 +20,22 @@ public class Quest : ScriptableObject
         }
     }
 
+}
+
+[Serializable]
+public class QuestReward
+{
+    public int money;
+    public float circularSatisfaction;
+    public List<QuestRewardItem> items;
+}
+
+[Serializable]
+public class QuestRewardItem
+{
+    public Item itemPrefab;
+    public int quantity = 1;
+    public string inventoryTag = "Untagged";
 }
 
 [Serializable]

@@ -112,6 +112,7 @@ namespace PlayerResources
         {
             float rsFillAmount = RS / STotalLimit;
             float msFillAmount = MS / STotalLimit;
+
             
             AnimateMeter(ref rsAnimRoutine, SliderRS, rsFillAmount);
             AnimateMeter(ref msAnimRoutine, SliderMS, msFillAmount);
@@ -207,6 +208,7 @@ namespace PlayerResources
         private void UpdateCS()
         {
             float csFillAmount = CS / 100;
+
             AnimateMeter(ref csAnimRoutine, SliderCS, csFillAmount);
         }
         

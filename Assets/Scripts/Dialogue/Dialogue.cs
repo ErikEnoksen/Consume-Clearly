@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Assets.Scripts.Quests;
 
 public class Dialogue : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private DialogueChoiceHandler choiceHandler;
     
     private int currentLineIndex;
+    private int currentDialogueEndIndex;
     private bool isDialogueActive = false;
     private bool isTyping = false; 
     public static event System.Action<DialogueObject> OnDialogueEnded;
@@ -77,7 +79,9 @@ public class Dialogue : MonoBehaviour
         {
             return;
         }
-        currentLineIndex = 0;
+
+        currentLineIndex = GetStartLineIndex(currentDialogue);
+        currentDialogueEndIndex = GetEndLineIndex(currentDialogue);
         dialogueText.text = string.Empty;
         isDialogueActive = true;
 
@@ -91,7 +95,7 @@ public class Dialogue : MonoBehaviour
             choicesPanel.SetActive(false);
         }
 
-        ApplyLineVisuals(currentDialogue.dialogueLines[0]);
+        ApplyLineVisuals(currentDialogue.dialogueLines[currentLineIndex]);
         StartCoroutine(TypeLine());
     }
 
@@ -241,7 +245,7 @@ public class Dialogue : MonoBehaviour
 
     void NextLine()
     {
-        if (currentLineIndex < currentDialogue.dialogueLines.Length - 1)
+        if (currentLineIndex < currentDialogueEndIndex)
         {
             currentLineIndex++;
             if (choicesPanel != null)
@@ -258,6 +262,75 @@ public class Dialogue : MonoBehaviour
         }
     }
 
+    private int GetStartLineIndex(DialogueObject dialogueObject)
+    {
+        if (dialogueObject == null || dialogueObject.dialogueLines == null || dialogueObject.dialogueLines.Length == 0)
+        {
+            return 0;
+        }
+
+        int lastLineIndex = dialogueObject.dialogueLines.Length - 1;
+
+        if (dialogueObject.quest != null && QuestController.Instance != null)
+        {
+            string questID = dialogueObject.quest.questID;
+
+            if (QuestController.Instance.IsQuestCompleted(questID))
+            {
+                return ClampLineIndex(dialogueObject.questCompletedIndex, lastLineIndex);
+            }
+
+            if (QuestController.Instance.IsQuestActive(questID))
+            {
+                return ClampLineIndex(dialogueObject.questInProgressIndex, lastLineIndex);
+            }
+        }
+
+        return 0;
+    }
+
+    private int GetEndLineIndex(DialogueObject dialogueObject)
+    {
+        if (dialogueObject == null || dialogueObject.dialogueLines == null || dialogueObject.dialogueLines.Length == 0)
+        {
+            return 0;
+        }
+
+        int lastLineIndex = dialogueObject.dialogueLines.Length - 1;
+
+        if (dialogueObject.quest != null && QuestController.Instance != null)
+        {
+            string questID = dialogueObject.quest.questID;
+
+            if (QuestController.Instance.IsQuestCompleted(questID))
+            {
+                return lastLineIndex;
+            }
+
+            if (QuestController.Instance.IsQuestActive(questID))
+            {
+                if (dialogueObject.questCompletedIndex > dialogueObject.questInProgressIndex)
+                {
+                    return ClampLineIndex(dialogueObject.questCompletedIndex - 1, lastLineIndex);
+                }
+
+                return lastLineIndex;
+            }
+        }
+
+        if (dialogueObject.initialDialogueEndIndex > 0)
+        {
+            return ClampLineIndex(dialogueObject.initialDialogueEndIndex, lastLineIndex);
+        }
+
+        return lastLineIndex;
+    }
+
+    private int ClampLineIndex(int index, int lastLineIndex)
+    {
+        return Mathf.Clamp(index, 0, lastLineIndex);
+    }
+
     void EndDialogue()
     {
         isDialogueActive = false;
@@ -270,6 +343,11 @@ public class Dialogue : MonoBehaviour
         if (dialogueBox != null)
         {
             dialogueBox.SetActive(false);
+        }
+
+        if (choiceHandler != null)
+        {
+            choiceHandler.HandleDialogueEnded(currentDialogue);
         }
 
         OnDialogueEnded?.Invoke(currentDialogue);

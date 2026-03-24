@@ -46,6 +46,29 @@ public class DialogueChoiceHandler : MonoBehaviour
         }
     }
 
+    public void HandleDialogueEnded(DialogueObject dialogueObject)
+    {
+        if (dialogueObject == null || dialogueObject.quest == null || QuestController.Instance == null)
+        {
+            return;
+        }
+
+        if (!QuestController.Instance.IsQuestActive(dialogueObject.quest.questID))
+        {
+            return;
+        }
+
+        if (!QuestController.Instance.IsQuestCompleted(dialogueObject.quest.questID))
+        {
+            return;
+        }
+
+        bool turnedIn = QuestController.Instance.TurnInQuest(dialogueObject.quest);
+        Debug.Log(turnedIn
+            ? "Quest turned in after dialogue end: " + dialogueObject.quest.questName
+            : "Dialogue ended, but quest could not be turned in: " + dialogueObject.quest.questName);
+    }
+
     private void HandleGiveGift()
     {
         Debug.Log("Gift system should handle the gift data and affection here.");
