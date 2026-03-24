@@ -47,10 +47,17 @@ namespace Assets.Scripts.Quests
                         objective.currentAmount += amount;
 
                         if (objective.currentAmount > objective.requiredAmount)
+                        {
+                            int excessAmount = objective.currentAmount - objective.requiredAmount;
+
                             objective.currentAmount = objective.requiredAmount;
 
-                        Debug.Log($"Quest progress updated: {objective.description} ({objective.currentAmount}/{objective.requiredAmount})");
+                            questUI?.UpdateQuestUI();
 
+                            UpdateObjectiveProgress(objectiveID, excessAmount);
+                        }
+                        Debug.Log($"Quest progress updated: {objective.description} ({objective.currentAmount}/{objective.requiredAmount})");
+                        
                         questUI?.UpdateQuestUI();
                         return;  // ADD THIS - Only update the first incomplete objective, then stop
                     }
