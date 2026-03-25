@@ -8,11 +8,19 @@ public enum DialogueChoiceType
     GiveGift,
     LeaveConversation
 }
+
+public enum ChoiceQuality
+{
+    Good,
+    Neutral,
+    Bad
+}
 [System.Serializable]
 public class DialogueChoice
 {
     public string choiceText;
     public DialogueChoiceType choiceType = DialogueChoiceType.Talk;
+    public ChoiceQuality choiceQuality = ChoiceQuality.Neutral;
     public DialogueObject nextDialogue;
 }
 [System.Serializable]

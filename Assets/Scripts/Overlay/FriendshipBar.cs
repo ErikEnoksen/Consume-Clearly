@@ -39,12 +39,20 @@ public class FriendshipBar : MonoBehaviour
     {
         if (companion == null || friendshipBar == null) return;
 
+        if (friendship != null)
+        {
+            friendship.OnFriendshipLevelChanged -= UpdateFriendshipBar;
+            friendship.OnMoodChanged -= UpdateMoodSprite;
+        }
+
         friendship = companion;
         friendshipBar.maxValue = companion.MaxFriendshipLevel;
         friendshipBar.value = companion.CurrentFriendshipLevel;//set to current level immediately to 0
 
         friendship.OnFriendshipLevelChanged += UpdateFriendshipBar;//subscribe to the new companion
+        friendship.OnMoodChanged += UpdateMoodSprite;
 
+        UpdateMoodSprite(friendship.CurrentMood);
         // Create and subscribe a handler that hides the bar when the appropriate dialogue ends
         if (dialogueToMatch != null)
         {
@@ -70,6 +78,7 @@ public class FriendshipBar : MonoBehaviour
         if (friendship != null)
         {
             friendship.OnFriendshipLevelChanged -= UpdateFriendshipBar;
+            friendship.OnMoodChanged -= UpdateMoodSprite;
             friendship = null;
         }
 
@@ -92,15 +101,18 @@ public class FriendshipBar : MonoBehaviour
         if (friendshipBar == null) return;
         friendshipBar.value = current;
 
+    }
+
+    private void UpdateMoodSprite(CompanionFriendship.CompanionMood newMood)
+    {
         foreach (var entry in moodSprites)
         {
-            if (entry.mood == friendship.CurrentMood)
+            if (entry.mood == newMood)
             {
                 handleImage.sprite = entry.sprite;
                 break;
             }
         }
-
     }
 
 }

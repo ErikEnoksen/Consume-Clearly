@@ -20,3 +20,26 @@ MonoBehaviour:
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
     dialogueBoxSprite: {fileID: -7506325772429207559, guid: 2f483ba8dfe496d459b7d79443b00343, type: 3}
     choices: []
+  - text: 'These rocks are to hard to break with your bare hands. You need a tool
+      like TNT. '
+    speakerName: Mentor
+    dialogueBoxColor: {r: 1, g: 0.8705883, b: 0.6784314, a: 1}
+    textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+    dialogueBoxSprite: {fileID: -7506325772429207559, guid: 2f483ba8dfe496d459b7d79443b00343, type: 3}
+    choices:
+    - choiceText: Good
+      choiceType: 0
+      choiceQuality: 0
+      nextDialogue: {fileID: 11400000, guid: 2251b63e1378ad941b9fe2ba23a7a65c, type: 2}
+    - choiceText: Meh
+      choiceType: 0
+      choiceQuality: 1
+      nextDialogue: {fileID: 11400000, guid: 2251b63e1378ad941b9fe2ba23a7a65c, type: 2}
+    - choiceText: Bad
+      choiceType: 0
+      choiceQuality: 2
+      nextDialogue: {fileID: 11400000, guid: 2251b63e1378ad941b9fe2ba23a7a65c, type: 2}
+  quest: {fileID: 0}
+  questInProgressIndex: 0
+  questCompletedIndex: 0
+  initialDialogueEndIndex: 0

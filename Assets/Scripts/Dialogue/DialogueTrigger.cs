@@ -27,7 +27,6 @@ public class DialogueTrigger : MonoBehaviour
 
     private bool isPlayerInRange = false;
     private bool hasAutoTriggered = false;
-    private bool dailyConversation = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -73,7 +72,7 @@ public class DialogueTrigger : MonoBehaviour
         if (friendship != null && friendshipBar != null)
         {
             friendshipBar.ShowFriendshipBar(friendship, dialogueToPlay);
-            friendship.GiveDailyConversationBonus();
+            //friendship.GiveDailyConversationBonus();
 
 
             if (inventory != null)

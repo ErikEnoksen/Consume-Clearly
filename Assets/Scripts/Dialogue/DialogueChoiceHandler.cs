@@ -3,12 +3,31 @@ using Assets.Scripts.Quests;
 
 public class DialogueChoiceHandler : MonoBehaviour
 {
-    public void HandleChoice(DialogueChoiceType choiceType, DialogueObject dialogueObject)
+    public void HandleChoice(DialogueChoiceType choiceType, DialogueObject dialogueObject, CompanionFriendship friendship, ChoiceQuality quality)
     {
         switch (choiceType)
         {
             case DialogueChoiceType.Talk:
                 Debug.Log("Talk choice selected.");
+                if (friendship != null)
+                {
+                    switch(quality)
+                    {
+                        case ChoiceQuality.Good:
+                            friendship.MoodSwitching(CompanionFriendship.CompanionMood.Happy);
+                            Debug.Log("Good choice!");
+                            break;
+                        case ChoiceQuality.Neutral:
+                            friendship.MoodSwitching(CompanionFriendship.CompanionMood.Neutral);
+                            Debug.Log("Neutral choice.");
+                            break;
+                        case ChoiceQuality.Bad:
+                            friendship.MoodSwitching(CompanionFriendship.CompanionMood.Angry);
+                            Debug.Log("Bad choice!");
+                            break;
+                    }
+                    friendship.GiveDailyConversationBonus();
+                }
                 break;
 
             case DialogueChoiceType.GetQuest:

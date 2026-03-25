@@ -9,10 +9,22 @@ public class CompanionFriendship : MonoBehaviour
     public int MaxFriendshipLevel = 1000;
     public int CurrentFriendshipLevel = 0;
     public int DailyConversationReward = 25;
+    public int MissedConversationSubstraction = 10;
 
     private bool DailyConversationGiven = false;
     public enum CompanionMood { Happy, Neutral, Angry }
-    public CompanionMood CurrentMood;
+    public event Action<CompanionMood> OnMoodChanged;
+    private CompanionMood _currentMood;
+    public CompanionMood CurrentMood
+    {
+        get => _currentMood;
+        set {             if (_currentMood != value)
+            {
+                _currentMood = value;
+                OnMoodChanged?.Invoke(_currentMood);
+            }
+        }
+    }
 
     public double multiplier
     {
@@ -53,7 +65,7 @@ public class CompanionFriendship : MonoBehaviour
     {
         previousState = CurrentState;
         if (DayCycleManager.Instance != null)
-            DayCycleManager.Instance.OnNewDay += ResetDailyBonus;
+            DayCycleManager.Instance.OnNewDay += ResetDaily;
     }
 
     private void CheckStateChange()
@@ -81,20 +93,12 @@ public class CompanionFriendship : MonoBehaviour
         OnFriendshipLevelChanged?.Invoke(CurrentFriendshipLevel);
     }
 
-    private void MoodSwitching()
+    public void MoodSwitching(CompanionMood mood)
     {
-        //dialogue can change mood of the companion
-        if (CurrentMood == CompanionMood.Angry)
+        Debug.Log(CurrentMood + " -> " + mood);
+        if (CurrentMood != mood)
         {
-            if (CurrentState == FriendshipState.Stranger)
-            {
-                //go to neutral when circular sytisfaction is increased
-                //cant talk to companion when angry and stranger
-            }
-            if (CurrentState == FriendshipState.Acquaintance)
-            {
-                //cant receive quests when angry and acquaintance
-            }
+            CurrentMood = mood;
         }
     }
 
@@ -102,19 +106,21 @@ public class CompanionFriendship : MonoBehaviour
     {
         if (!DailyConversationGiven)
         {
-            IncreaseFriendship(25);
+            IncreaseFriendship(DailyConversationReward);
             DailyConversationGiven = true;
+            Debug.Log("Daily conversation bonus given.");
         }
     }
 
-    private void ResetDailyBonus(int day)
+    private void ResetDaily(int day)
     {
         if (!DailyConversationGiven)
         {
             // Penalize the player for missing the daily conversation
-            DecreaseFriendship(10);
+            DecreaseFriendship(MissedConversationSubstraction);
         }
         DailyConversationGiven = false;
+        MoodSwitching(CompanionMood.Neutral);
     }
 
 }

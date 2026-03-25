@@ -30,7 +30,8 @@ public class Dialogue : MonoBehaviour
     private bool isDialogueActive = false;
     private bool isTyping = false; 
     public static event System.Action<DialogueObject> OnDialogueEnded;
-    
+    private CompanionFriendship friendship;
+
     void Start()
     {
         if (dialogueBox != null)
@@ -46,6 +47,11 @@ public class Dialogue : MonoBehaviour
         if (choiceHandler == null)
         {
             choiceHandler = FindObjectOfType<DialogueChoiceHandler>();
+        }
+
+        if (friendship == null)
+        {
+            friendship = FindObjectOfType<CompanionFriendship>();
         }
     }
     
@@ -194,7 +200,7 @@ public class Dialogue : MonoBehaviour
         // quest acceptance, gift logic, future special actions.
         if (choiceHandler != null)
         {
-            choiceHandler.HandleChoice(chosenChoice.choiceType, currentDialogue);
+            choiceHandler.HandleChoice(chosenChoice.choiceType, currentDialogue, friendship, chosenChoice.choiceQuality);
         }
 
         switch (chosenChoice.choiceType)
