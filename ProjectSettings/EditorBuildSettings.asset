@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Menus_Videos/MainMenu.unity
     guid: f9cbfb0815d94914291cfc6b3d18df78
   - enabled: 1
-    path: Assets/Scenes/Unused_Scenes/MineLevel.unity
-    guid: bdc37d2348c8de0499f0af7ced2c9929
+    path: Assets/Scenes/Levels/TutorialLevel/TutorialLevel.unity
+    guid: 9a9609ae42d202544a3fe0f050f5b17c
   - enabled: 1
     path: Assets/Scenes/Menus_Videos/Credits.unity
     guid: a131dc663e1b3484eba7725d68eb752c
@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CompanionArea/CompanionHouses/InsideGreenHouse.unity
     guid: e0d942746ee8c534a80271d436468c0c
+  - enabled: 1
+    path: Assets/Scenes/Levels/PeperBus/InsidePeperBus.unity
+    guid: 81c45ddae4f120e40a39183c4ddd9be2
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

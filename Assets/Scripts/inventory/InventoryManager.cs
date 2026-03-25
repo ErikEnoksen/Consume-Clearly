@@ -8,6 +8,8 @@ public class InventoryManager : MonoBehaviour
     private bool inventoryActive;
     public InventoryItem[] inventoryItems;
 
+    public ItemSO[] itemSOs;
+
     // Update is called once per frame
     void Update()
     {
@@ -29,8 +31,17 @@ public class InventoryManager : MonoBehaviour
         //checks the slots of the inventory and selects the first empty one it finds to store the item
         for (int i = 0; i < inventoryItems.Length; i++)
         {
-            if (!inventoryItems[i].isFull &&
-                (inventoryItems[i].itemName == itemName || inventoryItems[i].quantity == 0)) 
+            for (int j = 0; j < itemSOs.Length; j++)
+            {
+                if (itemSOs[j].itemName == itemName && itemSOs[j].itemType == ItemType.Money)
+                {
+                    itemSOs[j].UseItem();
+                    return 0;
+                } 
+                
+            }
+             if (!inventoryItems[i].isFull &&
+            (inventoryItems[i].itemName == itemName || inventoryItems[i].quantity == 0)) 
             {
                 int exceccItems = inventoryItems[i].AddItem(itemID, itemName, quantity, sprite, itemDescription, maxStack, tag);
                 if (QuestController.Instance != null)
@@ -47,6 +58,21 @@ public class InventoryManager : MonoBehaviour
         }
 
         return quantity;
+    }
+
+    public bool UseItem(string itemName)
+    {
+        for (int i = 0; i < itemSOs.Length; i++)
+        {
+            if (itemSOs[i].itemName == itemName)
+            {
+                bool usable = itemSOs[i].UseItem();
+                return usable;
+            }
+        }
+       
+        return false; 
+
     }
 
     public bool RemoveItem(string itemID, int quantity)

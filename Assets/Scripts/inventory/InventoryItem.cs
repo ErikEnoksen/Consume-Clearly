@@ -114,17 +114,35 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     //highlights the selected itembox and deselects the previous selected spots
     public void OnLeftClick()
     {
-        inventoryManager.DeselectAllSlots();
-        selectedShaders.SetActive(true);
-        infoImage.gameObject.SetActive(true);
-        thisItemSelected = true;
+        if (thisItemSelected)
+        {
+            bool usable = inventoryManager.UseItem(itemName);
+
+            if (usable)
+            {
+                quantity -= 1;
+                quantityText.text = quantity.ToString();
+            
+                if(quantity == 0)
+                {
+                    EmptySlot();
+                }
+            }
+        }
+        else
+        {
+            inventoryManager.DeselectAllSlots();
+            selectedShaders.SetActive(true);
+            infoImage.gameObject.SetActive(true);
+            thisItemSelected = true;
         
-        itemDescriptionTitle.text = itemName;
-        itemDescriptionText.text = itemDescription;
-        infoImage.sprite = itemImage.sprite;
+            itemDescriptionTitle.text = itemName;
+            itemDescriptionText.text = itemDescription;
+            infoImage.sprite = itemImage.sprite;
         
-        if (infoImage.sprite != null) infoImage.enabled = true;
-        else infoImage.enabled = false;
+            if (infoImage.sprite != null) infoImage.enabled = true;
+            else infoImage.enabled = false; 
+        }
     }
 
     public void OnRightClick()
@@ -177,5 +195,9 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         tag = "Untagged";
 
         isFull = false;
+
+        itemDescriptionText.text = null;
+        itemDescriptionTitle.text = null;
+        infoImage.sprite = null;
     }
 }
