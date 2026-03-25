@@ -3312,6 +3312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Main::rock
   requiresLever: 0
+  interactionRange: 0.6
   uniqueId: 4588b5fd-a3a3-4100-a6b4-170ce676cbde
   tntItemId: TNT
 --- !u!95 &366992977
@@ -4780,6 +4781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Main::rock
   requiresLever: 0
+  interactionRange: 0.6
   uniqueId: 9b32a4a5-81c0-4212-99ea-bb8e6b19cb58
   tntItemId: TNT
 --- !u!95 &824329529
@@ -5210,6 +5212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Main::rock
   requiresLever: 0
+  interactionRange: 0.6
   uniqueId: f7fc6ab9-9ab1-4a75-b586-3909464f9d76
   tntItemId: TNT
 --- !u!95 &859835706
@@ -5592,6 +5595,7 @@ MonoBehaviour:
   - {fileID: 1086024245}
   dialogueSpeed: 0.05
   currentDialogue: {fileID: 11400000, guid: a24edcb7dffbdde448331ff6107c7362, type: 2}
+  choiceHandler: {fileID: 1664875277}
 --- !u!4 &999680900
 Transform:
   m_ObjectHideFlags: 0
@@ -8989,6 +8993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Main::rock
   requiresLever: 0
+  interactionRange: 0.6
   uniqueId: 20750e37-a05f-44c2-97fe-97927f68dcc6
   tntItemId: TNT
 --- !u!95 &1382250565
@@ -9381,6 +9386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Main::rock
   requiresLever: 0
+  interactionRange: 0.6
   uniqueId: e08936db-7367-45b7-8dda-66c3d0160408
   tntItemId: TNT
 --- !u!95 &1394403525
@@ -9633,7 +9639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7264101159942444807, guid: a37cad1638bf380459a25c0f2e6aa825, type: 3}
       propertyPath: activateAfterFirstExit
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8559603078208366587, guid: a37cad1638bf380459a25c0f2e6aa825, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11184,6 +11190,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec530d5e6ac1574d831bbf0ed2b8001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::InventoryItemTest
+--- !u!1 &1664875276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1664875278}
+  - component: {fileID: 1664875277}
+  m_Layer: 0
+  m_Name: DialogueChoiceHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1664875277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664875276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154b94140c455df439208f322ec67635, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::DialogueChoiceHandler
+--- !u!4 &1664875278
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664875276}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 709.53326, y: 80.82446, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1677244458
 GameObject:
   m_ObjectHideFlags: 0
@@ -11232,6 +11282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Main::LevelObjects.Interactable.Bridge
   requiresLever: 0
+  interactionRange: 0.6
   uniqueId: f3f508f9-e08a-4192-8cb1-38df089d22c3
   brokenBridge: {fileID: 466567612}
   fixedBridge: {fileID: 1938967015}
@@ -12655,6 +12706,7 @@ MonoBehaviour:
   - {fileID: 1002466699}
   - {fileID: 915898103}
   - {fileID: 693386535}
+  itemSOs: []
 --- !u!1 &1835870382
 GameObject:
   m_ObjectHideFlags: 0
@@ -14493,3 +14545,4 @@ SceneRoots:
   - {fileID: 999680900}
   - {fileID: 355150105}
   - {fileID: 134116082}
+  - {fileID: 1664875278}

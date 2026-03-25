@@ -6,7 +6,7 @@ using Save;
 
 public class introManager : MonoBehaviour
 {
-    private const string ROAMING_AREA = "RoamingAreaCenter";
+    private const string Tutorial = "TutorialLevel";
 
     [SerializeField] private VideoPlayer videoPlayer;
 
@@ -28,6 +28,6 @@ public class introManager : MonoBehaviour
     {
         Debug.Log("Intro finished");
         SaveSystem.ClearAllData();
-        SceneManager.LoadScene(ROAMING_AREA);
+        SceneManager.LoadScene(Tutorial);
     }
 }

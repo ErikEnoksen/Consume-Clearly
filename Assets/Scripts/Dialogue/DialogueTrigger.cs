@@ -82,10 +82,9 @@ public class DialogueTrigger : MonoBehaviour
                 friendship.IncreaseFriendship(affectionIncrease);
             }
         }
-
-
         dialogueManager.DisplayDialogue(dialogueToPlay);
-        Debug.Log("Started conversation with: " + friendship.CurrentState);
+        if (friendship != null)
+            Debug.Log("Started conversation with: " + friendship.CurrentState);
     }
 
     
