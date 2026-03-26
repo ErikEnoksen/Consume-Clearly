@@ -37,7 +37,7 @@ public class DialogueTrigger : MonoBehaviour
         friendshipBar = FindObjectOfType<FriendshipBar>();
         friendship = GetComponent<CompanionFriendship>();
         inventory = FindObjectOfType<InventoryManager>();
-            communityMeter = FindObjectOfType<CommunityMeter>();
+        communityMeter = FindObjectOfType<CommunityMeter>();
 
     }
     
