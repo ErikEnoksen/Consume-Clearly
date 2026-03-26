@@ -16,11 +16,20 @@ public class WorkshopRecipe : ScriptableObject
     [System.Serializable]
     public class ItemStack
     {
-        public ItemSO item;
+        public string itemName;
         public int amount;
+        public Sprite icon;
     }
 
     public StationType stationType;
     public List<ItemStack> inputs;
-    public List<ItemStack> outputs;
+
+    [System.Serializable]
+    public class ItemOutput
+    {
+        public GameObject itemPrefab;
+        public int amount;
+    }
+
+    public List<ItemOutput> outputPrefabs;
 }
