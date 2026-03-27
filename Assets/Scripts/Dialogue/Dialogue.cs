@@ -26,13 +26,16 @@ public class Dialogue : MonoBehaviour
 
     [Header("System Connections:")]
     [SerializeField] private DialogueChoiceHandler choiceHandler;
-    
+
+    private CompanionFriendship currentCompanion;
+
     private int currentLineIndex;
     private int currentDialogueEndIndex;
     private bool isDialogueActive = false;
     private bool isTyping = false; 
     public static event System.Action<DialogueObject> OnDialogueEnded;
-    private CompanionFriendship friendship;
+    public static event System.Action<CompanionFriendship> OnDialogueStarted;
+    public static event System.Action<CompanionFriendship> OnDialogueEndedCompanion;
 
     void Start()
     {
@@ -49,11 +52,6 @@ public class Dialogue : MonoBehaviour
         if (choiceHandler == null)
         {
             choiceHandler = FindObjectOfType<DialogueChoiceHandler>();
-        }
-
-        if (friendship == null)
-        {
-            friendship = FindObjectOfType<CompanionFriendship>();
         }
     }
     
@@ -85,6 +83,9 @@ public class Dialogue : MonoBehaviour
         {
             return;
         }
+        Debug.Log($"Dialogue: Starting dialogue for companion: {currentCompanion?.gameObject.name}");
+
+        OnDialogueStarted?.Invoke(currentCompanion);
 
         currentLineIndex = GetStartLineIndex(currentDialogue);
         currentDialogueEndIndex = GetEndLineIndex(currentDialogue);
@@ -105,9 +106,10 @@ public class Dialogue : MonoBehaviour
         StartCoroutine(TypeLine());
     }
 
-    public void DisplayDialogue(DialogueObject dialogueObject)
+    public void DisplayDialogue(DialogueObject dialogueObject, CompanionFriendship companion = null)
     {
         currentDialogue = dialogueObject;
+        currentCompanion = companion;
         StartDialogue();
     }
 
@@ -199,12 +201,20 @@ public class Dialogue : MonoBehaviour
         }
 
         DialogueChoice chosenChoice = currentLine.choices[choiceIndex];
+       
 
         // The handler is responsible for gameplay reactions:
         // quest acceptance, gift logic, future special actions.
         if (choiceHandler != null)
         {
-            choiceHandler.HandleChoice(chosenChoice.choiceType, currentDialogue, friendship, chosenChoice.choiceQuality);
+            choiceHandler.HandleChoice(new DialogueChoiceContext
+            {
+                Choice = chosenChoice,
+                DialogueObject = currentDialogue,
+                Friendship = currentCompanion,
+                Player = Player.PlayerManager.Instance
+                // ... add more as needed
+            });
         }
 
         switch (chosenChoice.choiceType)
@@ -357,6 +367,8 @@ public class Dialogue : MonoBehaviour
         }
 
         OnDialogueEnded?.Invoke(currentDialogue);
+        OnDialogueEndedCompanion?.Invoke(currentCompanion);
+        currentCompanion = null;
     }
 
     public bool IsDialogueActive()
@@ -364,25 +376,3 @@ public class Dialogue : MonoBehaviour
         return isDialogueActive;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

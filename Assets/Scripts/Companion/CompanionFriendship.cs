@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CompanionFriendship : MonoBehaviour
@@ -22,6 +23,7 @@ public class CompanionFriendship : MonoBehaviour
             {
                 _currentMood = value;
                 OnMoodChanged?.Invoke(_currentMood);
+                Debug.Log("Mood changed to: " + _currentMood);
             }
         }
     }
@@ -54,13 +56,12 @@ public class CompanionFriendship : MonoBehaviour
                 return FriendshipState.Stranger;
             else if (CurrentFriendshipLevel < 400)
                 return FriendshipState.Acquaintance;
-            else if (CurrentFriendshipLevel < 850 && CurrentMood != CompanionMood.Angry)
+            else if (CurrentFriendshipLevel < 850)
                 return FriendshipState.Friend;
             else
                 return FriendshipState.BestFriend;
         }
     }
-    
     private void Start()
     {
         previousState = CurrentState;
@@ -70,6 +71,7 @@ public class CompanionFriendship : MonoBehaviour
 
     private void CheckStateChange()
     {
+        Debug.Log($"Checking state change. Current friendship level: {CurrentFriendshipLevel}, Current mood: {CurrentMood}, Current state: {CurrentState}, Previous state: {previousState}");
         var newState = CurrentState;
 
         if (newState != previousState)
@@ -85,6 +87,7 @@ public class CompanionFriendship : MonoBehaviour
         CurrentFriendshipLevel = Mathf.Min(CurrentFriendshipLevel + increasedAmount, MaxFriendshipLevel);
         CheckStateChange();
         OnFriendshipLevelChanged?.Invoke(CurrentFriendshipLevel);
+        Debug.Log($"Increased friendship by {increasedAmount} (base: {amount}, multiplier: {multiplier}). Current level: {CurrentFriendshipLevel}, {CurrentState}");
     }
 
     public void DecreaseFriendship(int amount)

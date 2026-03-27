@@ -3,15 +3,18 @@ using Assets.Scripts.Quests;
 
 public class DialogueChoiceHandler : MonoBehaviour
 {
-    public void HandleChoice(DialogueChoiceType choiceType, DialogueObject dialogueObject, CompanionFriendship friendship, ChoiceQuality quality)
+    public void HandleChoice(DialogueChoiceContext context)
     {
-        switch (choiceType)
+        var choice = context.Choice;
+        var dialogueObject = context.DialogueObject;
+        var friendship = context.Friendship;
+        switch (choice.choiceType)
         {
             case DialogueChoiceType.Talk:
                 Debug.Log("Talk choice selected.");
                 if (friendship != null)
                 {
-                    switch(quality)
+                    switch(choice.choiceQuality)
                     {
                         case ChoiceQuality.Good:
                             friendship.MoodSwitching(CompanionFriendship.CompanionMood.Happy);
@@ -92,4 +95,12 @@ public class DialogueChoiceHandler : MonoBehaviour
     {
         Debug.Log("Gift system should handle the gift data and affection here.");
     }
+}
+
+public class DialogueChoiceContext
+{
+    public DialogueChoice Choice { get; set; }
+    public DialogueObject DialogueObject { get; set; }
+    public CompanionFriendship Friendship { get; set; }
+    public Player.PlayerManager Player { get; set; }
 }

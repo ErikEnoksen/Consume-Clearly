@@ -15,96 +15,106 @@ public class FriendshipBar : MonoBehaviour
     [SerializeField] private Slider friendshipBar;
     [SerializeField] private List<MoodSprite> moodSprites;
 
-    private CompanionFriendship friendship;
-    private Action<DialogueObject> dialogueEndedHandler;
-    private DialogueObject matchedDialogue;
+    private CompanionFriendship currentCompanion;
     private Image handleImage;
-    private void Awake()
+
+    private void Start()
     {
-        handleImage = friendshipBar.handleRect.GetComponent<Image>();
-    }
-
-    void Start()
-    {
-        if (friendshipBar == null)
-        {
-            Debug.LogError("FriendshipBar: No Slider component assigned.");
-            return;
-        }
-        friendshipBar.gameObject.SetActive(false);
-    }
-
-    // Now accepts optional DialogueObject to match. If null -> hides on any dialogue end.
-    public void ShowFriendshipBar(CompanionFriendship companion, DialogueObject dialogueToMatch = null)
-    {
-        if (companion == null || friendshipBar == null) return;
-
-        if (friendship != null)
-        {
-            friendship.OnFriendshipLevelChanged -= UpdateFriendshipBar;
-            friendship.OnMoodChanged -= UpdateMoodSprite;
-        }
-
-        friendship = companion;
-        friendshipBar.maxValue = companion.MaxFriendshipLevel;
-        friendshipBar.value = companion.CurrentFriendshipLevel;//set to current level immediately to 0
-
-        friendship.OnFriendshipLevelChanged += UpdateFriendshipBar;//subscribe to the new companion
-        friendship.OnMoodChanged += UpdateMoodSprite;
-
-        UpdateMoodSprite(friendship.CurrentMood);
-        // Create and subscribe a handler that hides the bar when the appropriate dialogue ends
-        if (dialogueToMatch != null)
-        {
-            matchedDialogue = dialogueToMatch;
-            dialogueEndedHandler = (ended) =>
-            {
-                if (ended == matchedDialogue)
-                {
-                    HideFriendshipBar();
-                }
-            };
-        }
-
-        Dialogue.OnDialogueEnded += dialogueEndedHandler;
-
-        friendshipBar.gameObject.SetActive(true);
-    }
-
-    public void HideFriendshipBar()
-    {
-
-        // Unsubscribe companion event
-        if (friendship != null)
-        {
-            friendship.OnFriendshipLevelChanged -= UpdateFriendshipBar;
-            friendship.OnMoodChanged -= UpdateMoodSprite;
-            friendship = null;
-        }
-
-        // Unsubscribe dialogue end handler
-        if (dialogueEndedHandler != null)
-        {
-            Dialogue.OnDialogueEnded -= dialogueEndedHandler;
-            dialogueEndedHandler = null;
-            matchedDialogue = null;
-        }
-
         if (friendshipBar != null)
+        {
             friendshipBar.gameObject.SetActive(false);
+        }
+
+        // Subscribe to dialogue events (these now pass CompanionFriendship)
+        Dialogue.OnDialogueEndedCompanion += OnDialogueEnded;
+        Dialogue.OnDialogueStarted += OnDialogueStarted;
     }
 
-
-
-    private void UpdateFriendshipBar(int current)
+    private void OnDialogueStarted(CompanionFriendship companion)
     {
-        if (friendshipBar == null) return;
-        friendshipBar.value = current;
+        Debug.Log($"FriendshipBar: OnDialogueStarted called with companion: {companion?.gameObject.name}");
+        if (companion != null)
+        {
+            // Unsubscribe from previous companion if there was one
+            if (currentCompanion != null)
+            {
+                currentCompanion.OnFriendshipLevelChanged -= UpdateFriendshipLevel;
+                currentCompanion.OnMoodChanged -= UpdateMoodSprite;
+            }
 
+            // Set new companion and subscribe to its events
+            currentCompanion = companion;
+            Debug.Log($"FriendshipBar: Now using companion: {currentCompanion.gameObject.name}");
+            currentCompanion.OnFriendshipLevelChanged += UpdateFriendshipLevel;
+            currentCompanion.OnMoodChanged += UpdateMoodSprite;
+
+            // Update UI with current values
+            UpdateFriendshipLevel(currentCompanion.CurrentFriendshipLevel);
+            UpdateMoodSprite(currentCompanion.CurrentMood);
+
+            // Show the friendship bar
+            ShowFriendshipBar();
+        }
+        else
+        {
+            Debug.LogWarning("Dialogue started with null companion reference!");
+        }
+    }
+
+    private void OnDialogueEnded(CompanionFriendship companion)
+    {
+        // Hide the friendship bar
+        HideFriendshipBar();
+
+        // Unsubscribe from events
+        if (currentCompanion != null)
+        {
+            currentCompanion.OnFriendshipLevelChanged -= UpdateFriendshipLevel;
+            currentCompanion.OnMoodChanged -= UpdateMoodSprite;
+            currentCompanion = null;
+        }
+    }
+
+    private void ShowFriendshipBar()
+    {
+        if (friendshipBar != null)
+        {
+            friendshipBar.gameObject.SetActive(true);
+        }
+    }
+
+    private void HideFriendshipBar()
+    {
+        if (friendshipBar != null)
+        {
+            friendshipBar.gameObject.SetActive(false);
+        }
+    }
+
+    private void UpdateFriendshipLevel(int newLevel)
+    {
+        if (friendshipBar != null && currentCompanion != null)
+        {
+            friendshipBar.maxValue = currentCompanion.MaxFriendshipLevel;
+            friendshipBar.value = newLevel;
+        }
     }
 
     private void UpdateMoodSprite(CompanionFriendship.CompanionMood newMood)
     {
+        // Get the handle image if not already cached
+        if (handleImage == null && friendshipBar != null)
+        {
+            handleImage = friendshipBar.handleRect?.GetComponent<Image>();
+        }
+
+        if (handleImage == null)
+        {
+            Debug.LogError("FriendshipBar: Handle Image component not found.");
+            return;
+        }
+
+        // Find and apply the sprite for the current mood
         foreach (var entry in moodSprites)
         {
             if (entry.mood == newMood)
@@ -115,4 +125,16 @@ public class FriendshipBar : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        // Clean up event subscriptions
+        if (currentCompanion != null)
+        {
+            currentCompanion.OnFriendshipLevelChanged -= UpdateFriendshipLevel;
+            currentCompanion.OnMoodChanged -= UpdateMoodSprite;
+        }
+
+        Dialogue.OnDialogueStarted -= OnDialogueStarted;
+        Dialogue.OnDialogueEndedCompanion -= OnDialogueEnded;
+    }
 }
