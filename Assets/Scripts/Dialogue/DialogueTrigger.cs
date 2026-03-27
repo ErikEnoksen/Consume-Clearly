@@ -27,7 +27,6 @@ public class DialogueTrigger : MonoBehaviour
 
     private bool isPlayerInRange = false;
     private bool hasAutoTriggered = false;
-    private bool dailyConversation = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -39,6 +38,14 @@ public class DialogueTrigger : MonoBehaviour
         inventory = FindObjectOfType<InventoryManager>();
         communityMeter = FindObjectOfType<CommunityMeter>();
 
+        if(friendship != null)
+        {
+            Debug.Log($"DialogueTrigger on {gameObject.name} found companion: {friendship.gameObject.name}");
+        }
+        else
+        {
+            Debug.LogError($"DialogueTrigger on {gameObject.name} has no CompanionFriendship component!");
+        }
     }
     
     // Update is called once per frame
@@ -69,20 +76,7 @@ public class DialogueTrigger : MonoBehaviour
             communityMeter.IncreaseCommunityLevel(100); // Example: Increase community level by 10 points
         }
 
-        // Show friendship UI (if available) and subscribe to the dialogue end event once.
-        if (friendship != null && friendshipBar != null)
-        {
-            friendshipBar.ShowFriendshipBar(friendship, dialogueToPlay);
-            friendship.GiveDailyConversationBonus();
-
-
-            if (inventory != null)
-            {
-                int affectionIncrease = inventory.LookForGift("Rope", 50);
-                friendship.IncreaseFriendship(affectionIncrease);
-            }
-        }
-        dialogueManager.DisplayDialogue(dialogueToPlay);
+        dialogueManager.DisplayDialogue(dialogueToPlay, friendship);
         if (friendship != null)
             Debug.Log("Started conversation with: " + friendship.CurrentState);
     }

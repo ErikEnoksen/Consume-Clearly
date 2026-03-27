@@ -31,8 +31,8 @@ MonoBehaviour:
     circularSatisfaction: 50
     items:
     - itemPrefab: {fileID: 1257049138564397804, guid: 6446e36d35701e64ebadd08732385b2e, type: 3}
-      quantity: 3
+      quantity: 1
       inventoryTag: Untagged
     - itemPrefab: {fileID: 5268927219989098962, guid: 1da58d9b3b87dc1449f311a297e2cb95, type: 3}
-      quantity: 24
+      quantity: 2
       inventoryTag: Untagged
