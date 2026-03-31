@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9008851390828774649}
   - component: {fileID: 5097356337060430902}
   m_Layer: 0
-  m_Name: CommunityMeter
+  m_Name: CommunityMeterController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
