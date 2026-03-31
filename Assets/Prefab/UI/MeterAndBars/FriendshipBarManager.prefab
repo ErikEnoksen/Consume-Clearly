@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2870000162902981992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9087254260321157682}
+  - component: {fileID: 9153380708127341492}
+  m_Layer: 0
+  m_Name: FriendshipBarManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9087254260321157682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2870000162902981992}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 159.2963, y: 107.0787, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9153380708127341492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2870000162902981992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a730356a18f1bc0409d13c8ad54e1275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::FriendshipBar
+  friendshipBar: {fileID: 0}
+  moodSprites:
+  - mood: 0
+    sprite: {fileID: 8323125581172391828, guid: 68af4bca5322c7343ad61e9ed027a7e9, type: 3}
+  - mood: 2
+    sprite: {fileID: 8457050925789122355, guid: 0a764adeb39ed9046976facb7074bfca, type: 3}
+  - mood: 1
+    sprite: {fileID: -4529448275472350946, guid: 56dd8612054e61649a7774758e57c32d, type: 3}
