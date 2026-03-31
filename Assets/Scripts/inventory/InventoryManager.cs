@@ -14,12 +14,12 @@ public class InventoryManager : MonoBehaviour
     void Update()
     {
         //Listens for when q is pressed and opens or closes the inventory
-       if(Input.GetKeyDown(KeyCode.Q) && !inventoryActive) 
+        if (Input.GetKeyDown(KeybindManager.Instance.GetKey("Inventory")) && !inventoryActive) 
         {
             inventoryMenu.SetActive(true);
             inventoryActive = true;
         }
-       else if(Input.GetKeyDown(KeyCode.Q) && inventoryActive)
+       else if(Input.GetKeyDown(KeybindManager.Instance.GetKey("Inventory")) && inventoryActive)
         {
             inventoryMenu.SetActive(false);
             inventoryActive = false;

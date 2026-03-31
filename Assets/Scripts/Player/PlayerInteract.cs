@@ -5,7 +5,6 @@ namespace Player
 {
     public class PlayerInteract : MonoBehaviour
     {
-        public KeyCode interactKey = KeyCode.E;
         public LayerMask interactableLayer;
 
         public GameObject pressE;
@@ -39,7 +38,7 @@ namespace Player
             {
                 pressE.SetActive(true);
 
-                if (Input.GetKeyDown(interactKey))
+                if (Input.GetKeyDown(KeybindManager.Instance.GetKey("Interact")))
                 {
                     interactable.Interact();
                 }
