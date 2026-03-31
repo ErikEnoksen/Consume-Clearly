@@ -10,6 +10,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     public int quantity;
     public Sprite sprite;
     public bool isFull;
+    [TextArea]
     public string itemDescription;
     private int maxStack;
 

@@ -28,6 +28,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private DialogueChoiceHandler choiceHandler;
 
     private CompanionFriendship currentCompanion;
+    private InventoryManager inventoryManager;
 
     private int currentLineIndex;
     private int currentDialogueEndIndex;
@@ -53,6 +54,7 @@ public class Dialogue : MonoBehaviour
         {
             choiceHandler = FindObjectOfType<DialogueChoiceHandler>();
         }
+        inventoryManager = FindFirstObjectByType<InventoryManager>();
     }
     
     void Update()
@@ -245,6 +247,9 @@ public class Dialogue : MonoBehaviour
 
                 if (chosenChoice.nextDialogue != null)
                 {
+                    int giftValue = inventoryManager.LookForGift("Rope", 50);
+                    Debug.Log(giftValue);
+                    currentCompanion.IncreaseFriendship(giftValue);
                     DisplayDialogue(chosenChoice.nextDialogue);
                 }
                 else
