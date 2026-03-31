@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Assets.Scripts.Quests;
+using System.Linq;
 
 public class Dialogue : MonoBehaviour
 {
@@ -247,10 +248,22 @@ public class Dialogue : MonoBehaviour
 
                 if (chosenChoice.nextDialogue != null)
                 {
-                    int giftValue = inventoryManager.LookForGift("Rope", 50);
-                    Debug.Log(giftValue);
-                    currentCompanion.IncreaseFriendship(giftValue);
-                    DisplayDialogue(chosenChoice.nextDialogue);
+                    System.Random random = new System.Random();
+                    Item[] gifts = currentDialogue.giftableItems.OrderBy(x => random.Next()).ToArray();
+                    foreach (Item item in gifts)
+                    {
+                        int giftValue = inventoryManager.LookForGift(item.ItemName, 50);
+                        if (giftValue > 0)
+                        {
+                            currentCompanion.IncreaseFriendship(giftValue);
+                            DisplayDialogue(chosenChoice.nextDialogue);
+                            break;
+                        }
+                        else
+                        {
+                            Debug.Log("Value not saved");
+                        }
+                    }
                 }
                 else
                 {

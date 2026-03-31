@@ -31,3 +31,4 @@ MonoBehaviour:
   questInProgressIndex: 0
   questCompletedIndex: 0
   initialDialogueEndIndex: 0
+  giftableItems: []
