@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using Assets.Scripts.Quests;
-using System.Linq;
 
 public class Dialogue : MonoBehaviour
 {
@@ -27,7 +25,7 @@ public class Dialogue : MonoBehaviour
 
     [Header("System Connections:")]
     [SerializeField] private DialogueChoiceHandler choiceHandler;
-
+    
     private CompanionFriendship currentCompanion;
     private InventoryManager inventoryManager;
 
@@ -225,7 +223,7 @@ public class Dialogue : MonoBehaviour
             case DialogueChoiceType.Talk:
                 if (chosenChoice.nextDialogue != null)
                 {
-                    DisplayDialogue(chosenChoice.nextDialogue);
+                    DisplayDialogue(chosenChoice.nextDialogue, currentCompanion);
                 }
                 else
                 {
@@ -248,22 +246,13 @@ public class Dialogue : MonoBehaviour
 
                 if (chosenChoice.nextDialogue != null)
                 {
-                    System.Random random = new System.Random();
-                    Item[] gifts = currentDialogue.giftableItems.OrderBy(x => random.Next()).ToArray();
-                    foreach (Item item in gifts)
-                    {
-                        int giftValue = inventoryManager.LookForGift(item.ItemName, 50);
-                        if (giftValue > 0)
-                        {
-                            currentCompanion.IncreaseFriendship(giftValue);
-                            DisplayDialogue(chosenChoice.nextDialogue);
-                            break;
-                        }
-                        else
-                        {
-                            Debug.Log("Value not saved");
-                        }
-                    }
+                    string itemName = chosenChoice.choiceText;
+
+                    int giftValue = inventoryManager.LookForGift(itemName, 50);
+                    Debug.Log(giftValue);
+                    currentCompanion.IncreaseFriendship(giftValue);
+
+                    DisplayDialogue(chosenChoice.nextDialogue, currentCompanion);
                 }
                 else
                 {

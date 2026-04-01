@@ -45,7 +45,4 @@ public class DialogueObject : ScriptableObject
     public int questInProgressIndex;
     public int questCompletedIndex;
     public int initialDialogueEndIndex;
-
-    [Header("GiveGift items")]
-    public Item[] giftableItems;
 }
