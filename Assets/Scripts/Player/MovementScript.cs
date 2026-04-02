@@ -184,7 +184,7 @@ namespace Player
         }
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeybindManager.Instance.GetKey("Jump")))
             {
                 if (IsGrounded())
                 {
@@ -240,7 +240,7 @@ namespace Player
             }
 
             // Variable jump height
-            if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0f)
+            if (Input.GetKeyUp(KeybindManager.Instance.GetKey("Jump")) && rb.linearVelocity.y > 0f)
             {
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.1f);
             }
