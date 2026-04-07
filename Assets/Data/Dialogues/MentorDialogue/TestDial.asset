@@ -46,19 +46,51 @@ MonoBehaviour:
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
     dialogueBoxSprite: {fileID: -7506325772429207559, guid: 2f483ba8dfe496d459b7d79443b00343, type: 3}
     choices:
-    - choiceText: 
+    - choiceText: Talk
       choiceType: 0
+      choiceQuality: 2
       nextDialogue: {fileID: 0}
     - choiceText: Get Quest
       choiceType: 1
+      choiceQuality: 1
       nextDialogue: {fileID: 0}
   - text: "Go on, I don\u2019t have all day."
     speakerName: Mentor
     dialogueBoxColor: {r: 0.9607844, g: 0.8705883, b: 0.7019608, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
     dialogueBoxSprite: {fileID: -7506325772429207559, guid: 2f483ba8dfe496d459b7d79443b00343, type: 3}
-    choices: []
+    choices:
+    - choiceText: good
+      choiceType: 0
+      choiceQuality: 0
+      nextDialogue: {fileID: 0}
+    - choiceText: meh
+      choiceType: 0
+      choiceQuality: 1
+      nextDialogue: {fileID: 0}
+    - choiceText: bad
+      choiceType: 0
+      choiceQuality: 2
+      nextDialogue: {fileID: 0}
+  - text: "Go on, I don\u2019t have all day."
+    speakerName: Mentor
+    dialogueBoxColor: {r: 0.9607844, g: 0.8705883, b: 0.7019608, a: 1}
+    textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+    dialogueBoxSprite: {fileID: -7506325772429207559, guid: 2f483ba8dfe496d459b7d79443b00343, type: 3}
+    choices:
+    - choiceText: good
+      choiceType: 0
+      choiceQuality: 0
+      nextDialogue: {fileID: 0}
+    - choiceText: meh
+      choiceType: 0
+      choiceQuality: 1
+      nextDialogue: {fileID: 0}
+    - choiceText: bad
+      choiceType: 0
+      choiceQuality: 2
+      nextDialogue: {fileID: 0}
   quest: {fileID: 11400000, guid: 3a0d5b840f7e58744a14b053bc2d6d13, type: 2}
   questInProgressIndex: 2
   questCompletedIndex: 1
-  initialDialogueEndIndex: 3
+  initialDialogueEndIndex: 4

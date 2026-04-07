@@ -104,7 +104,7 @@ public class InventoryManager : MonoBehaviour
     {
         for (int i = 0; i < inventoryItems.Length; i++)
         {
-            if (inventoryItems[i].itemName == itemName && inventoryItems[i].CompareTag("Gift"))
+            if (inventoryItems[i].itemName == itemName)
             {
                 inventoryItems[i].RemoveItem(1);
                 return affectionIncrease;

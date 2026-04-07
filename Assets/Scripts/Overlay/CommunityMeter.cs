@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,19 +11,21 @@ public class CommunityMeter : MonoBehaviour
     public int OverflowPoints = 0;
     private enum CommunityState { Fragmented, Growing, Connecting, Thriving }
     private event Action<int> OnCommunityLevelChanged;
-    private CompanionFriendship friendship;
     private event Action<CommunityState> OnCommunityStateChanged;
     private CommunityState CurrentState;
-    public int FriendCount = 0; 
+    public int FriendCount = 0;
 
-    private readonly int[] thresholds = { 0,25, 50, 75 }; // Example thresholds for each state
+    private readonly int[] thresholds = { 0, 25, 50, 75, 100 }; // Example thresholds for each state
+
+    // Store all companions and track their states
+    private List<CompanionFriendship> allCompanions = new List<CompanionFriendship>();
+    private Dictionary<CompanionFriendship, CompanionFriendship.FriendshipState> companionStates = new Dictionary<CompanionFriendship, CompanionFriendship.FriendshipState>();
+    private HashSet<CompanionFriendship> countedFriends = new HashSet<CompanionFriendship>();
     private void Awake()
     {
-        friendship = FindObjectOfType<CompanionFriendship>();
-        if (friendship != null)
-        {
-            friendship.OnStateChanged += HandleStateChange;
-        }
+        // Find all companions in the scene
+        FindAndRegisterAllCompanions();
+
         CurrentState = GetCommunityState();
         UpdateCommunityMeter();
 
@@ -30,17 +33,126 @@ public class CommunityMeter : MonoBehaviour
             DayCycleManager.Instance.OnNewDay += OnNewDay;
     }
 
-    private CommunityState GetCommunityState() 
+    private void FindAndRegisterAllCompanions()
     {
-        if (FriendCount >= 3 && CommunityLevel >= thresholds[3])
-            return CommunityState.Thriving;
-        else if (FriendCount >= 2 && CommunityLevel >= thresholds[2])
-            return CommunityState.Connecting;
-        else if (FriendCount >= 1 && CommunityLevel >= thresholds[1])
-            return CommunityState.Growing;
-        else
-            return CommunityState.Fragmented;
+        // Find all CompanionFriendship components in the scene
+        allCompanions.Clear();
+        companionStates.Clear();
+        countedFriends.Clear();
+        FriendCount = 0;
+
+        CompanionFriendship[] companions = FindObjectsOfType<CompanionFriendship>();
+        foreach (var companion in companions)
+        {
+            RegisterCompanion(companion);
+        }
+
+        Debug.Log($"CommunityMeter registered {allCompanions.Count} companions");
     }
+
+    private void RegisterCompanion(CompanionFriendship companion)
+    {
+        if (!allCompanions.Contains(companion))
+        {
+            allCompanions.Add(companion);
+            companionStates[companion] = companion.CurrentState;
+
+            // Subscribe to state changes
+            companion.OnStateChanged += OnCompanionStateChanged;
+
+            // Check if this companion is already a friend
+            if (IsActualFriend(companion.CurrentState))
+            {
+                if (!countedFriends.Contains(companion))
+                {
+                    countedFriends.Add(companion);
+                    FriendCount++;
+                    Debug.Log($"Initial friend found: {companion.gameObject.name}.(State: {companion.CurrentState}, FriendCount: {FriendCount}");
+                } 
+            }
+        }
+    }
+
+    private bool IsActualFriend(CompanionFriendship.FriendshipState state)
+    {
+        // Only count as friend if it's Friend or BestFriend state
+        return state == CompanionFriendship.FriendshipState.Friend ||
+               state == CompanionFriendship.FriendshipState.BestFriend;
+    }
+
+    private void OnCompanionStateChanged(CompanionFriendship.FriendshipState newState)
+    {
+        // Find which companion triggered this
+        CompanionFriendship companion = null;
+        foreach (var c in allCompanions)
+        {
+            if (c.CurrentState == newState && companionStates[c] != newState)
+            {
+                companion = c;
+                break;
+            }
+        }
+
+        if (companion == null) return;
+
+        Debug.Log($"CommunityMeter: {companion.gameObject.name} state changed from {companionStates[companion]} to {newState}");
+
+        // Check if it changed TO Friend or BestFriend
+        bool wasFriend = companionStates[companion] == CompanionFriendship.FriendshipState.Friend ||
+                        companionStates[companion] == CompanionFriendship.FriendshipState.BestFriend;
+        bool isFriend = newState == CompanionFriendship.FriendshipState.Friend ||
+                       newState == CompanionFriendship.FriendshipState.BestFriend;
+
+        if (!wasFriend && isFriend)
+        {
+            if (!countedFriends.Contains(companion))
+            {
+                countedFriends.Add(companion);
+                FriendCount++;
+                Debug.Log($"New friend added! FriendCount: {FriendCount}");
+                TryApplyOverflow(); // Try to apply overflow points
+                EvaluateCommunityState();
+            }
+        }
+        else if (wasFriend && !isFriend)
+        {
+            if (countedFriends.Contains(companion))
+            {
+                countedFriends.Remove(companion);
+                FriendCount = Mathf.Max(0, FriendCount - 1);
+                Debug.Log($"Friend lost! FriendCount: {FriendCount}");
+                EvaluateCommunityState();
+            }
+        }
+
+        // Update the stored state
+        companionStates[companion] = newState;
+
+        // Re-evaluate community state
+        EvaluateCommunityState();
+    }
+
+    private CommunityState GetCommunityState()
+    {
+        // Growing: Need at least 1 friend AND level 25+
+        if (FriendCount >= 1 && CommunityLevel >= thresholds[1])
+        {
+            // Connecting: Need at least 2 friends AND level 50+
+            if (FriendCount >= 2 && CommunityLevel >= thresholds[2])
+            {
+                // Thriving: Need at least 3 friends AND level 75+
+                if (FriendCount >= 3 && CommunityLevel >= thresholds[3])
+                {
+                    return CommunityState.Thriving;
+                }
+                return CommunityState.Connecting;
+            }
+            return CommunityState.Growing;
+        }
+        return CommunityState.Fragmented;
+
+    }
+
     private int GetDailyCommunityIncrease()
     {
         switch (CurrentState)
@@ -61,6 +173,8 @@ public class CommunityMeter : MonoBehaviour
         AddPointsWithOverflow(amount);
         OnCommunityLevelChanged?.Invoke(CommunityLevel);
         EvaluateCommunityState();
+        UpdateCommunityMeter();
+        Debug.Log($"Community level increased by {amount}. Current level: {CommunityLevel}, FriendCount: {FriendCount}, CurrentState: {CurrentState}");
     }
 
     public void DecreaseCommunityLevel(int amount)
@@ -68,21 +182,6 @@ public class CommunityMeter : MonoBehaviour
         CommunityLevel = Mathf.Max(0, CommunityLevel - amount);
         UpdateCommunityMeter();
         OnCommunityLevelChanged?.Invoke(CommunityLevel);
-        EvaluateCommunityState();
-    }
-
-    private void HandleStateChange(CompanionFriendship.FriendshipState newState)
-    {
-        if (newState == CompanionFriendship.FriendshipState.Friend)
-        {
-            FriendCount++;
-            TryApplyOverflow(); // Try to apply any overflow points when a new friend is added
-        }
-        else if (newState != CompanionFriendship.FriendshipState.Friend)
-        {
-            FriendCount = Mathf.Max(0, FriendCount - 1);
-        }
-
         EvaluateCommunityState();
     }
 
@@ -95,74 +194,89 @@ public class CommunityMeter : MonoBehaviour
             CurrentState = newState;
             OnCommunityStateChanged?.Invoke(CurrentState);
             UpdateCommunityMeter();
+            Debug.Log($"Community state changed to: {CurrentState}");
         }
     }
 
     private void UpdateCommunityMeter()
     {
         if (communityMeter == null) return;
-        communityMeter.value = CommunityLevel;
-        if (CurrentState == CommunityState.Fragmented)
-        {
-            communityMeter.fillRect.GetComponent<Image>().color = Color.red;
-        }
-        else if (CurrentState == CommunityState.Growing)
-        {
 
-            communityMeter.fillRect.GetComponent<Image>().color = Color.yellow;
-        }
-        else if (CurrentState == CommunityState.Connecting)
+        communityMeter.maxValue = thresholds[thresholds.Length - 1];
+        communityMeter.value = CommunityLevel;
+
+        // Update color based on state
+        if (communityMeter.fillRect != null)
         {
-            communityMeter.fillRect.GetComponent<Image>().color = Color.green;
-        }
-        else if (CurrentState == CommunityState.Thriving)
-        {
-            communityMeter.fillRect.GetComponent<Image>().color = Color.purple;
+            Image fillImage = communityMeter.fillRect.GetComponent<Image>();
+            if (fillImage != null)
+            {
+                switch (CurrentState)
+                {
+                    case CommunityState.Fragmented:
+                        fillImage.color = Color.red;
+                        break;
+                    case CommunityState.Growing:
+                        fillImage.color = Color.yellow;
+                        break;
+                    case CommunityState.Connecting:
+                        fillImage.color = Color.green;
+                        break;
+                    case CommunityState.Thriving:
+                        fillImage.color = Color.purple;
+                        break;
+                }
+            }
         }
     }
 
     private void AddPointsWithOverflow(int amount)
     {
-        int stage = (int)GetCommunityState();
-        int nextThreshold = thresholds[Math.Min(stage + 1, thresholds.Length - 1)];
-        int pointsToAdd = amount;
+        if (amount <= 0) return;
 
-        // Always add points up to the cap for the current stage
-        int maxForStage = nextThreshold - CommunityLevel;
-        int addNow = Mathf.Min(pointsToAdd, maxForStage);
+        int currentMax = GetMaxLevelForCurrentFriendCount();
+        int spaceAvailable = currentMax - CommunityLevel;
 
-        CommunityLevel += addNow;
-        pointsToAdd -= addNow;
+        Debug.Log($"AddPoints: Amount={amount}, Current Level={CommunityLevel}, Max={currentMax}, Space={spaceAvailable}, Overflow={OverflowPoints}");
 
-        // If we can't advance to the next stage, store the rest as overflow
-        if (!CanAdvanceToNextStage(stage))
+        if (spaceAvailable >= amount)
         {
-            OverflowPoints += pointsToAdd;
+            // All points fit within current cap
+            CommunityLevel += amount;
+            Debug.Log($"Added all {amount} points. New level: {CommunityLevel}");
         }
         else
         {
-            // If we can advance, try to apply the rest recursively
-            if (pointsToAdd > 0 && stage < thresholds.Length - 1)
+            // Only add what fits
+            if (spaceAvailable > 0)
             {
-                stage++;
-                AddPointsWithOverflow(pointsToAdd);
+                CommunityLevel += spaceAvailable;
+                amount -= spaceAvailable;
+                Debug.Log($"Added {spaceAvailable} points to reach cap. Remaining: {amount}");
             }
+
+            // Store remaining as overflow
+            OverflowPoints += amount;
+            Debug.Log($"Stored {amount} as overflow. Total overflow: {OverflowPoints}");
         }
 
+        // Clamp to max just in case
+        CommunityLevel = Mathf.Min(CommunityLevel, thresholds[thresholds.Length - 1]);
         UpdateCommunityMeter();
     }
 
-    private bool CanAdvanceToNextStage(int currentStage)
+    private int GetMaxLevelForCurrentFriendCount()
     {
-        // Stage 0: Fragmented -> Growing (needs 1 friend)
-        // Stage 1: Growing -> Connecting (needs 2 friends)
-        // Stage 2: Connecting -> Thriving (needs 3 friends)
-        switch (currentStage)
+        switch (FriendCount)
         {
-            case 0: return FriendCount >= 1;
-            case 1: return FriendCount >= 2;
-            case 2: return FriendCount >= 3;
-            default: return false;
+            case 0:
+                return thresholds[1]; // 25
+            case 1:
+                return thresholds[2]; // 50
+            case 2:
+                return thresholds[3]; // 75
+            default:
+                return thresholds[4]; // 100
         }
     }
 
@@ -171,6 +285,7 @@ public class CommunityMeter : MonoBehaviour
     {
         if (OverflowPoints > 0)
         {
+            Debug.Log($"Applying overflow points: {OverflowPoints}");
             int overflow = OverflowPoints;
             OverflowPoints = 0;
             IncreaseCommunityLevel(overflow);
@@ -179,10 +294,27 @@ public class CommunityMeter : MonoBehaviour
 
     private void OnNewDay(int dayNumber)
     {
+        Debug.Log($"New day: {dayNumber}. Checking for daily community increase.{CurrentState}");
         int dailyIncrease = GetDailyCommunityIncrease();
         if (dailyIncrease > 0)
         {
-            IncreaseCommunityLevel(dailyIncrease);
+            Debug.Log($"Daily community increase: {dailyIncrease}");
+            AddPointsWithOverflow(dailyIncrease);
         }
+    }
+
+    private void OnDestroy()
+    {
+        // Clean up subscriptions
+        foreach (var companion in allCompanions)
+        {
+            if (companion != null)
+            {
+                companion.OnStateChanged -= OnCompanionStateChanged;
+            }
+        }
+
+        if (DayCycleManager.Instance != null)
+            DayCycleManager.Instance.OnNewDay -= OnNewDay;
     }
 }

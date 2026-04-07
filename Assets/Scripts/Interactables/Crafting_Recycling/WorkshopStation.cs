@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
+using LevelObjects.Interactable;
 using UnityEngine;
+using Save;
 
-public class WorkshopStation : MonoBehaviour
+public class WorkshopStation : Interactable
 {
     
-    //SationType can expand into like BicylceRepair, Cloting Repair or multiple differen instances.
+    //StationType can expand into like BicycleRepair, Clothing Repair or multiple different instances.
     //[SerializeField] private StationType stationType;
     [SerializeField] private StationType stationType;
     [SerializeField] private List<WorkshopRecipe> recipes;
+    [SerializeField] private GameObject workshopUI;
     
     private InventoryManager inventoryManager;
     
@@ -17,45 +20,52 @@ public class WorkshopStation : MonoBehaviour
     {
         inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
     }
+    public override void Interact()
+    {
+        workshopUI.SetActive(!workshopUI.activeSelf);
+    }
+    public override InteractableObjectState SaveState()
+    {
+        return new InteractableObjectState { uniqueId = GetUniqueId() };
+    }
+    
+    public override void LoadState(InteractableObjectState state) { }
     
     public bool TryProcess(WorkshopRecipe recipe)
     {
-        if (recipe.stationType != stationType) {return false;}
+        if (recipe.stationType != stationType) { return false; }
 
         foreach (var input in recipe.inputs)
         {
-            if (!HasItem(input.item.itemName, input.amount))
+            if (!HasItem(input.itemName, input.amount))
             {
-                Debug.Log($"Missing: {input.item.itemName} x{input.amount}");
+                Debug.Log($"Missing: {input.itemName} x{input.amount}");
                 return false;
             }
         }
 
         foreach (var input in recipe.inputs)
-            inventoryManager.RemoveItem(input.item.itemName, input.amount);
+            inventoryManager.RemoveItem(input.itemName, input.amount);
 
-        foreach (var output in recipe.outputs)
-            // inventoryManager.AddItem(
-            //     output.item.itemName,
-            //     output.item.itemName,
-            //     output.amount,
-            //     output.item.itemImage,
-            //     output.item.itemDescription,
-            //     output.item.maxStackSize,
-            //     "Untagged"
-            //);
-            Debug.Log($"Processed at {stationType}!"); 
+        foreach (var output in recipe.outputPrefabs)
+        {
+            Item item = output.itemPrefab.GetComponent<Item>();
+            inventoryManager.AddItem(
+                item.Id, item.ItemName, output.amount,
+                item.Sprite, item.ItemDescription, item.MaxStack,
+                output.itemPrefab.tag
+            );
+        }
+        Debug.Log($"Processed at {stationType}!");
         return true;
     }
+
     public bool CanProcess(WorkshopRecipe recipe)
     {
         foreach (var input in recipe.inputs)
-            if (!HasItem(input.item.itemName, input.amount))
-            {
+            if (!HasItem(input.itemName, input.amount))
                 return false;
-            } 
         return true;
-        
     }
     
     public List<WorkshopRecipe> GetAvailableRecipes()

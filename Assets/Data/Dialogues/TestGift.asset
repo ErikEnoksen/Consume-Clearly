@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c234f20efd360eb45b89a7d3a2835e3e, type: 3}
+  m_Name: TestGift
+  m_EditorClassIdentifier: Main::DialogueObject
+  dialogueLines:
+  - text: Hello there, can I help you
+    speakerName: Miner
+    dialogueBoxColor: {r: 1, g: 0.8705883, b: 0.6784314, a: 1}
+    textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
+    dialogueBoxSprite: {fileID: -5805635871556436518, guid: 6b9f542dd340d2d48bc8b6e9cb489d01, type: 3}
+    choices:
+    - choiceText: Gift
+      choiceType: 0
+      choiceQuality: 1
+      nextDialogue: {fileID: 11400000, guid: 4e4c2990535189742adb80e9857a25d8, type: 2}
+    - choiceText: Goodbye
+      choiceType: 3
+      choiceQuality: 1
+      nextDialogue: {fileID: 11400000, guid: 7ac03774e74adc54ca0953dfa9d208ad, type: 2}
+  quest: {fileID: 0}
+  questInProgressIndex: 0
+  questCompletedIndex: 0
+  initialDialogueEndIndex: 0
+  giftableItems:
+  - {fileID: 1798963747143233540, guid: 3d9c330ca2a68294588a3d3bf10adf72, type: 3}
+  - {fileID: 1257049138564397804, guid: 6446e36d35701e64ebadd08732385b2e, type: 3}
+  - {fileID: 1403626101363094199, guid: 2320ca8f8b038914288c1ec2910a5302, type: 3}

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -27,12 +26,17 @@ public class Dialogue : MonoBehaviour
     [Header("System Connections:")]
     [SerializeField] private DialogueChoiceHandler choiceHandler;
     
+    private CompanionFriendship currentCompanion;
+    private InventoryManager inventoryManager;
+
     private int currentLineIndex;
     private int currentDialogueEndIndex;
     private bool isDialogueActive = false;
     private bool isTyping = false; 
     public static event System.Action<DialogueObject> OnDialogueEnded;
-    
+    public static event System.Action<CompanionFriendship> OnDialogueStarted;
+    public static event System.Action<CompanionFriendship> OnDialogueEndedCompanion;
+
     void Start()
     {
         if (dialogueBox != null)
@@ -49,6 +53,7 @@ public class Dialogue : MonoBehaviour
         {
             choiceHandler = FindObjectOfType<DialogueChoiceHandler>();
         }
+        inventoryManager = FindFirstObjectByType<InventoryManager>();
     }
     
     void Update()
@@ -79,6 +84,9 @@ public class Dialogue : MonoBehaviour
         {
             return;
         }
+        Debug.Log($"Dialogue: Starting dialogue for companion: {currentCompanion?.gameObject.name}");
+
+        OnDialogueStarted?.Invoke(currentCompanion);
 
         currentLineIndex = GetStartLineIndex(currentDialogue);
         currentDialogueEndIndex = GetEndLineIndex(currentDialogue);
@@ -99,9 +107,10 @@ public class Dialogue : MonoBehaviour
         StartCoroutine(TypeLine());
     }
 
-    public void DisplayDialogue(DialogueObject dialogueObject)
+    public void DisplayDialogue(DialogueObject dialogueObject, CompanionFriendship companion = null)
     {
         currentDialogue = dialogueObject;
+        currentCompanion = companion;
         StartDialogue();
     }
 
@@ -193,12 +202,20 @@ public class Dialogue : MonoBehaviour
         }
 
         DialogueChoice chosenChoice = currentLine.choices[choiceIndex];
+       
 
         // The handler is responsible for gameplay reactions:
         // quest acceptance, gift logic, future special actions.
         if (choiceHandler != null)
         {
-            choiceHandler.HandleChoice(chosenChoice.choiceType, currentDialogue);
+            choiceHandler.HandleChoice(new DialogueChoiceContext
+            {
+                Choice = chosenChoice,
+                DialogueObject = currentDialogue,
+                Friendship = currentCompanion,
+                Player = Player.PlayerManager.Instance
+                // ... add more as needed
+            });
         }
 
         switch (chosenChoice.choiceType)
@@ -206,7 +223,7 @@ public class Dialogue : MonoBehaviour
             case DialogueChoiceType.Talk:
                 if (chosenChoice.nextDialogue != null)
                 {
-                    DisplayDialogue(chosenChoice.nextDialogue);
+                    DisplayDialogue(chosenChoice.nextDialogue, currentCompanion);
                 }
                 else
                 {
@@ -229,7 +246,13 @@ public class Dialogue : MonoBehaviour
 
                 if (chosenChoice.nextDialogue != null)
                 {
-                    DisplayDialogue(chosenChoice.nextDialogue);
+                    string itemName = chosenChoice.choiceText;
+
+                    int giftValue = inventoryManager.LookForGift(itemName, 50);
+                    Debug.Log(giftValue);
+                    currentCompanion.IncreaseFriendship(giftValue);
+
+                    DisplayDialogue(chosenChoice.nextDialogue, currentCompanion);
                 }
                 else
                 {
@@ -351,6 +374,8 @@ public class Dialogue : MonoBehaviour
         }
 
         OnDialogueEnded?.Invoke(currentDialogue);
+        OnDialogueEndedCompanion?.Invoke(currentCompanion);
+        currentCompanion = null;
     }
 
     public bool IsDialogueActive()
@@ -358,25 +383,3 @@ public class Dialogue : MonoBehaviour
         return isDialogueActive;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

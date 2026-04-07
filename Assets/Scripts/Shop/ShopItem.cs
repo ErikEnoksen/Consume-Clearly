@@ -3,19 +3,9 @@ using UnityEngine;
 public class ShopItem : MonoBehaviour
 {
     [SerializeField]
-    private string itemID;
-    [SerializeField]
-    private string itemName;
-    [SerializeField]
-    private int maxStack = 10;
-    [SerializeField]
-    private Sprite sprite;
+    private Item item;
     [SerializeField]
     private int price;
-
-    [TextArea]
-    [SerializeField]
-    private string itemDescription;
 
     private InventoryManager inventoryManager;
     private MoneyManager moneyManager;
@@ -32,16 +22,16 @@ public class ShopItem : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.G))
             {
-                BuyItem(itemID, itemName, sprite, itemDescription, maxStack, gameObject.tag);
+                BuyItem(item);
             }
         }
     }
 
-    public void BuyItem(string itemID, string itemName, Sprite sprite, string itemDescription, int maxStack, string tag)
+    public void BuyItem(Item item)
     {
         if (moneyManager.ChangeMoneyAmount(-price))
         {
-            inventoryManager.AddItem(itemID, itemName, 1, sprite, itemDescription, maxStack, tag);
+            inventoryManager.AddItem(item.ItemName, item.ItemName, 1, item.Sprite, item.ItemDescription, item.MaxStack, item.gameObject.tag);
         }
         else
         {
