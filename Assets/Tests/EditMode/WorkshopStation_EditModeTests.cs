@@ -14,10 +14,18 @@ namespace Tests.EditMode
         private WorkshopStation station;
         private InventoryManager inventoryManager;
         private GameObject inventoryGO;
+        private GameObject keybindGO;
 
         [SetUp]
         public void SetUp()
         {
+            // Stub KeybindManager so InventoryManager.Update() does not NPE if frames are ever ticked
+            if (KeybindManager.Instance != null)
+                Object.DestroyImmediate(KeybindManager.Instance.gameObject);
+            KeybindManager.Instance = null;
+            keybindGO = new GameObject("KeybindManager");
+            keybindGO.AddComponent<KeybindManager>();
+
             // Create a minimal InventoryManager with one slot
             inventoryGO = new GameObject("InventorySelector");
             inventoryManager = inventoryGO.AddComponent<InventoryManager>();
@@ -69,6 +77,8 @@ namespace Tests.EditMode
         {
             Object.DestroyImmediate(stationGO);
             Object.DestroyImmediate(inventoryGO);
+            Object.DestroyImmediate(keybindGO);
+            KeybindManager.Instance = null;
         }
 
         // ── GetAvailableRecipes ───────────────────────────────────────────────────
