@@ -1,6 +1,5 @@
 using UnityEngine;
 using Save;
-using Inventory;
 
 namespace LevelObjects.Interactable
 { 
