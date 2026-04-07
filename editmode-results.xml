@@ -1,0 +1,1331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="153" result="Failed(Child)" total="153" passed="138" failed="15" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:31Z" duration="0.6943538">
+  <test-suite type="TestSuite" id="1000" name="Consume-Clearly" fullname="Consume-Clearly" runstate="Runnable" testcasecount="153" result="Failed" site="Child" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:31Z" duration="0.694354" total="153" passed="138" failed="15" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1173" name="EditModeTests.dll" fullname="C:/Users/erike/Documents/GitHub/Consume-Clearly/Library/ScriptAssemblies/EditModeTests.dll" runstate="Runnable" testcasecount="153" result="Failed" site="Child" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:31Z" duration="0.683702" total="153" passed="138" failed="15" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="54528" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1174" name="Tests" fullname="Tests" runstate="Runnable" testcasecount="153" result="Failed" site="Child" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:31Z" duration="0.682877" total="153" passed="138" failed="15" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1175" name="EditMode" fullname="Tests.EditMode" runstate="Runnable" testcasecount="153" result="Failed" site="Child" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:31Z" duration="0.682282" total="153" passed="138" failed="15" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1001" name="CommunityMeter_EditModeTests" fullname="Tests.EditMode.CommunityMeter_EditModeTests" classname="Tests.EditMode.CommunityMeter_EditModeTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.087802" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1006" name="DecreaseCommunityLevel_ClampsAtZero" fullname="Tests.EditMode.CommunityMeter_EditModeTests.DecreaseCommunityLevel_ClampsAtZero" methodname="DecreaseCommunityLevel_ClampsAtZero" classname="Tests.EditMode.CommunityMeter_EditModeTests" runstate="Runnable" seed="1603040398" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.025149" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1005" name="DecreaseCommunityLevel_DecreasesLevel" fullname="Tests.EditMode.CommunityMeter_EditModeTests.DecreaseCommunityLevel_DecreasesLevel" methodname="DecreaseCommunityLevel_DecreasesLevel" classname="Tests.EditMode.CommunityMeter_EditModeTests" runstate="Runnable" seed="1036794058" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000609" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1010" name="IncreaseCommunityLevel_CapIs100WithThreeOrMoreFriends" fullname="Tests.EditMode.CommunityMeter_EditModeTests.IncreaseCommunityLevel_CapIs100WithThreeOrMoreFriends" methodname="IncreaseCommunityLevel_CapIs100WithThreeOrMoreFriends" classname="Tests.EditMode.CommunityMeter_EditModeTests" runstate="Runnable" seed="1234108603" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.005409" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[AddPoints: Amount=110, Current Level=0, Max=100, Space=100, Overflow=0
+Added 100 points to reach cap. Remaining: 10
+Stored 10 as overflow. Total overflow: 10
+Community state changed to: Thriving
+Community level increased by 110. Current level: 100, FriendCount: 3, CurrentState: Thriving
+]]></output>
+            </test-case>
+            <test-case id="1007" name="IncreaseCommunityLevel_CapIs25WithNoFriends" fullname="Tests.EditMode.CommunityMeter_EditModeTests.IncreaseCommunityLevel_CapIs25WithNoFriends" methodname="IncreaseCommunityLevel_CapIs25WithNoFriends" classname="Tests.EditMode.CommunityMeter_EditModeTests" runstate="Runnable" seed="1251439640" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.002900" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[AddPoints: Amount=50, Current Level=0, Max=25, Space=25, Overflow=0
+Added 25 points to reach cap. Remaining: 25
+Stored 25 as overflow. Total overflow: 25
+Community level increased by 50. Current level: 25, FriendCount: 0, CurrentState: Fragmented
+]]></output>
+            </test-case>
+            <test-case id="1008" name="IncreaseCommunityLevel_CapIs50WithOneFriend" fullname="Tests.EditMode.CommunityMeter_EditModeTests.IncreaseCommunityLevel_CapIs50WithOneFriend" methodname="IncreaseCommunityLevel_CapIs50WithOneFriend" classname="Tests.EditMode.CommunityMeter_EditModeTests" runstate="Runnable" seed="312878664" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.003493" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[AddPoints: Amount=60, Current Level=0, Max=50, Space=50, Overflow=0
+Added 50 points to reach cap. Remaining: 10
+Stored 10 as overflow. Total overflow: 10
+Community state changed to: Growing
+Community level increased by 60. Current level: 50, FriendCount: 1, CurrentState: Growing
+]]></output>
+            </test-case>
+            <test-case id="1009" name="IncreaseCommunityLevel_CapIs75WithTwoFriends" fullname="Tests.EditMode.CommunityMeter_EditModeTests.IncreaseCommunityLevel_CapIs75WithTwoFriends" methodname="IncreaseCommunityLevel_CapIs75WithTwoFriends" classname="Tests.EditMode.CommunityMeter_EditModeTests" runstate="Runnable" seed="1543433869" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.003264" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[AddPoints: Amount=80, Current Level=0, Max=75, Space=75, Overflow=0
+Added 75 points to reach cap. Remaining: 5
+Stored 5 as overflow. Total overflow: 5
+Community state changed to: Connecting
+Community level increased by 80. Current level: 75, FriendCount: 2, CurrentState: Connecting
+]]></output>
+            </test-case>
+            <test-case id="1004" name="IncreaseCommunityLevel_DoesNotExceedGlobalMax" fullname="Tests.EditMode.CommunityMeter_EditModeTests.IncreaseCommunityLevel_DoesNotExceedGlobalMax" methodname="IncreaseCommunityLevel_DoesNotExceedGlobalMax" classname="Tests.EditMode.CommunityMeter_EditModeTests" runstate="Runnable" seed="740589797" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.016667" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[AddPoints: Amount=200, Current Level=0, Max=100, Space=100, Overflow=0
+Added 100 points to reach cap. Remaining: 100
+Stored 100 as overflow. Total overflow: 100
+Community state changed to: Thriving
+Community level increased by 200. Current level: 100, FriendCount: 10, CurrentState: Thriving
+]]></output>
+            </test-case>
+            <test-case id="1002" name="IncreaseCommunityLevel_IncreasesLevelWhenBelowCap" fullname="Tests.EditMode.CommunityMeter_EditModeTests.IncreaseCommunityLevel_IncreasesLevelWhenBelowCap" methodname="IncreaseCommunityLevel_IncreasesLevelWhenBelowCap" classname="Tests.EditMode.CommunityMeter_EditModeTests" runstate="Runnable" seed="1090862128" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.002680" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[AddPoints: Amount=10, Current Level=0, Max=25, Space=25, Overflow=0
+Added all 10 points. New level: 10
+Community level increased by 10. Current level: 10, FriendCount: 0, CurrentState: Fragmented
+]]></output>
+            </test-case>
+            <test-case id="1003" name="IncreaseCommunityLevel_StoresOverflowWhenAboveCap" fullname="Tests.EditMode.CommunityMeter_EditModeTests.IncreaseCommunityLevel_StoresOverflowWhenAboveCap" methodname="IncreaseCommunityLevel_StoresOverflowWhenAboveCap" classname="Tests.EditMode.CommunityMeter_EditModeTests" runstate="Runnable" seed="2137645745" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.002849" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[AddPoints: Amount=30, Current Level=0, Max=25, Space=25, Overflow=0
+Added 25 points to reach cap. Remaining: 5
+Stored 5 as overflow. Total overflow: 5
+Community level increased by 30. Current level: 25, FriendCount: 0, CurrentState: Fragmented
+]]></output>
+            </test-case>
+            <test-case id="1011" name="OverflowPoints_AccumulateAcrossMultipleCalls" fullname="Tests.EditMode.CommunityMeter_EditModeTests.OverflowPoints_AccumulateAcrossMultipleCalls" methodname="OverflowPoints_AccumulateAcrossMultipleCalls" classname="Tests.EditMode.CommunityMeter_EditModeTests" runstate="Runnable" seed="13844310" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.004448" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[AddPoints: Amount=40, Current Level=0, Max=25, Space=25, Overflow=0
+Added 25 points to reach cap. Remaining: 15
+Stored 15 as overflow. Total overflow: 15
+Community level increased by 40. Current level: 25, FriendCount: 0, CurrentState: Fragmented
+AddPoints: Amount=5, Current Level=25, Max=25, Space=0, Overflow=15
+Stored 5 as overflow. Total overflow: 20
+Community level increased by 5. Current level: 25, FriendCount: 0, CurrentState: Fragmented
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1012" name="CompanionFriendship_EditModeTests" fullname="Tests.EditMode.CompanionFriendship_EditModeTests" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" testcasecount="19" result="Failed" site="Child" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.040451" total="19" passed="16" failed="3" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1021" name="CurrentState_IsAcquaintance_WhenBetween100And399" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.CurrentState_IsAcquaintance_WhenBetween100And399" methodname="CurrentState_IsAcquaintance_WhenBetween100And399" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="1994098239" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.002069" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1023" name="CurrentState_IsBestFriend_At850OrAbove" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.CurrentState_IsBestFriend_At850OrAbove" methodname="CurrentState_IsBestFriend_At850OrAbove" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="1657807665" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000447" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1022" name="CurrentState_IsFriend_WhenBetween400And849" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.CurrentState_IsFriend_WhenBetween400And849" methodname="CurrentState_IsFriend_WhenBetween400And849" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="1343947583" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000374" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1020" name="CurrentState_IsStranger_WhenBelow100" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.CurrentState_IsStranger_WhenBelow100" methodname="CurrentState_IsStranger_WhenBelow100" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="220357092" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000387" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1019" name="DecreaseFriendship_ClampsAtZero" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.DecreaseFriendship_ClampsAtZero" methodname="DecreaseFriendship_ClampsAtZero" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="2106985705" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000412" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1018" name="DecreaseFriendship_DecreasesLevel" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.DecreaseFriendship_DecreasesLevel" methodname="DecreaseFriendship_DecreasesLevel" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="1467655870" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000317" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1027" name="GiveDailyConversationBonus_IncreasesFriendship" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.GiveDailyConversationBonus_IncreasesFriendship" methodname="GiveDailyConversationBonus_IncreasesFriendship" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="857122556" result="Failed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.009297" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 25
+  But was:  31
+]]></message>
+                <stack-trace><![CDATA[at Tests.EditMode.CompanionFriendship_EditModeTests.GiveDailyConversationBonus_IncreasesFriendship () [0x0000b] in C:\Users\erike\Documents\GitHub\Consume-Clearly\Assets\Tests\EditMode\CompanionFriendship_EditModeTests.cs:160
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Checking state change. Current friendship level: 31, Current mood: Happy, Current state: Stranger, Previous state: Stranger
+Increased friendship by 31 (base: 25, multiplier: 1.25). Current level: 31, Stranger
+Daily conversation bonus given.
+]]></output>
+            </test-case>
+            <test-case id="1028" name="GiveDailyConversationBonus_OnlyAppliesToFirstCallPerDay" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.GiveDailyConversationBonus_OnlyAppliesToFirstCallPerDay" methodname="GiveDailyConversationBonus_OnlyAppliesToFirstCallPerDay" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="204528860" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.002484" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Checking state change. Current friendship level: 31, Current mood: Happy, Current state: Stranger, Previous state: Stranger
+Increased friendship by 31 (base: 25, multiplier: 1.25). Current level: 31, Stranger
+Daily conversation bonus given.
+]]></output>
+            </test-case>
+            <test-case id="1016" name="IncreaseFriendship_AppliesAngryMultiplier" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.IncreaseFriendship_AppliesAngryMultiplier" methodname="IncreaseFriendship_AppliesAngryMultiplier" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="1111944290" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.002341" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Mood changed to: Angry
+Checking state change. Current friendship level: 75, Current mood: Angry, Current state: Stranger, Previous state: Stranger
+Increased friendship by 75 (base: 100, multiplier: 0.75). Current level: 75, Stranger
+]]></output>
+            </test-case>
+            <test-case id="1015" name="IncreaseFriendship_AppliesHappyMultiplier" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.IncreaseFriendship_AppliesHappyMultiplier" methodname="IncreaseFriendship_AppliesHappyMultiplier" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="326283963" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001640" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Checking state change. Current friendship level: 125, Current mood: Happy, Current state: Acquaintance, Previous state: Stranger
+Increased friendship by 125 (base: 100, multiplier: 1.25). Current level: 125, Acquaintance
+]]></output>
+            </test-case>
+            <test-case id="1017" name="IncreaseFriendship_AppliesNeutralMultiplier" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.IncreaseFriendship_AppliesNeutralMultiplier" methodname="IncreaseFriendship_AppliesNeutralMultiplier" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="571482980" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.002161" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Mood changed to: Neutral
+Checking state change. Current friendship level: 100, Current mood: Neutral, Current state: Acquaintance, Previous state: Stranger
+Increased friendship by 100 (base: 100, multiplier: 1). Current level: 100, Acquaintance
+]]></output>
+            </test-case>
+            <test-case id="1014" name="IncreaseFriendship_ClampsAtMax" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.IncreaseFriendship_ClampsAtMax" methodname="IncreaseFriendship_ClampsAtMax" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="468698226" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001804" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Checking state change. Current friendship level: 1000, Current mood: Happy, Current state: BestFriend, Previous state: Stranger
+Increased friendship by 6250 (base: 5000, multiplier: 1.25). Current level: 1000, BestFriend
+]]></output>
+            </test-case>
+            <test-case id="1013" name="IncreaseFriendship_IncreasesLevel" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.IncreaseFriendship_IncreasesLevel" methodname="IncreaseFriendship_IncreasesLevel" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="1816818986" result="Failed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001776" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 100
+  But was:  125
+]]></message>
+                <stack-trace><![CDATA[at Tests.EditMode.CompanionFriendship_EditModeTests.IncreaseFriendship_IncreasesLevel () [0x0000d] in C:\Users\erike\Documents\GitHub\Consume-Clearly\Assets\Tests\EditMode\CompanionFriendship_EditModeTests.cs:35
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Checking state change. Current friendship level: 125, Current mood: Happy, Current state: Acquaintance, Previous state: Stranger
+Increased friendship by 125 (base: 100, multiplier: 1.25). Current level: 125, Acquaintance
+]]></output>
+            </test-case>
+            <test-case id="1026" name="Multiplier_Is0Point75_ForAngryMood" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.Multiplier_Is0Point75_ForAngryMood" methodname="Multiplier_Is0Point75_ForAngryMood" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="669391319" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001828" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Mood changed to: Angry
+]]></output>
+            </test-case>
+            <test-case id="1025" name="Multiplier_Is1Point25_ForHappyMood" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.Multiplier_Is1Point25_ForHappyMood" methodname="Multiplier_Is1Point25_ForHappyMood" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="381336050" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000390" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1024" name="Multiplier_IsOne_ForNeutralMood" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.Multiplier_IsOne_ForNeutralMood" methodname="Multiplier_IsOne_ForNeutralMood" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="222081686" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001060" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Mood changed to: Neutral
+]]></output>
+            </test-case>
+            <test-case id="1030" name="OnFriendshipLevelChanged_FiresWhenDecreased" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.OnFriendshipLevelChanged_FiresWhenDecreased" methodname="OnFriendshipLevelChanged_FiresWhenDecreased" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="1617090808" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000612" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1029" name="OnFriendshipLevelChanged_FiresWhenIncreased" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.OnFriendshipLevelChanged_FiresWhenIncreased" methodname="OnFriendshipLevelChanged_FiresWhenIncreased" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="932534705" result="Failed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.002045" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: 50
+  But was:  62
+]]></message>
+                <stack-trace><![CDATA[at Tests.EditMode.CompanionFriendship_EditModeTests.OnFriendshipLevelChanged_FiresWhenIncreased () [0x00031] in C:\Users\erike\Documents\GitHub\Consume-Clearly\Assets\Tests\EditMode\CompanionFriendship_EditModeTests.cs:181
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[Checking state change. Current friendship level: 62, Current mood: Happy, Current state: Stranger, Previous state: Stranger
+Increased friendship by 62 (base: 50, multiplier: 1.25). Current level: 62, Stranger
+]]></output>
+            </test-case>
+            <test-case id="1031" name="OnStateChanged_FiresWhenStateChanges" fullname="Tests.EditMode.CompanionFriendship_EditModeTests.OnStateChanged_FiresWhenStateChanges" methodname="OnStateChanged_FiresWhenStateChanges" classname="Tests.EditMode.CompanionFriendship_EditModeTests" runstate="Runnable" seed="1436708796" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.004527" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Checking state change. Current friendship level: 125, Current mood: Happy, Current state: Acquaintance, Previous state: Stranger
+Increased friendship by 125 (base: 100, multiplier: 1.25). Current level: 125, Acquaintance
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1032" name="DayCycleManager_EditModeTests" fullname="Tests.EditMode.DayCycleManager_EditModeTests" classname="Tests.EditMode.DayCycleManager_EditModeTests" runstate="Runnable" testcasecount="7" result="Failed" site="Child" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.010541" total="7" passed="5" failed="2" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1038" name="CurrentDay_IncrementedWhenDayTimerElapsed" fullname="Tests.EditMode.DayCycleManager_EditModeTests.CurrentDay_IncrementedWhenDayTimerElapsed" methodname="CurrentDay_IncrementedWhenDayTimerElapsed" classname="Tests.EditMode.DayCycleManager_EditModeTests" runstate="Runnable" seed="605481128" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001785" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1033" name="CurrentDay_StartsAtOne" fullname="Tests.EditMode.DayCycleManager_EditModeTests.CurrentDay_StartsAtOne" methodname="CurrentDay_StartsAtOne" classname="Tests.EditMode.DayCycleManager_EditModeTests" runstate="Runnable" seed="919676526" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000393" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1034" name="DayLength_HasPositiveDefaultValue" fullname="Tests.EditMode.DayCycleManager_EditModeTests.DayLength_HasPositiveDefaultValue" methodname="DayLength_HasPositiveDefaultValue" classname="Tests.EditMode.DayCycleManager_EditModeTests" runstate="Runnable" seed="491556153" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001464" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1037" name="OnNewDay_CanSubscribeAndUnsubscribe_WithoutException" fullname="Tests.EditMode.DayCycleManager_EditModeTests.OnNewDay_CanSubscribeAndUnsubscribe_WithoutException" methodname="OnNewDay_CanSubscribeAndUnsubscribe_WithoutException" classname="Tests.EditMode.DayCycleManager_EditModeTests" runstate="Runnable" seed="1403857265" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001664" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1039" name="OnNewDay_EventFiredWithCorrectDay" fullname="Tests.EditMode.DayCycleManager_EditModeTests.OnNewDay_EventFiredWithCorrectDay" methodname="OnNewDay_EventFiredWithCorrectDay" classname="Tests.EditMode.DayCycleManager_EditModeTests" runstate="Runnable" seed="1876436805" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000570" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1035" name="Singleton_IsSetToManagerAfterAwake" fullname="Tests.EditMode.DayCycleManager_EditModeTests.Singleton_IsSetToManagerAfterAwake" methodname="Singleton_IsSetToManagerAfterAwake" classname="Tests.EditMode.DayCycleManager_EditModeTests" runstate="Runnable" seed="1308987857" result="Failed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001164" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: <DayCycleManager (DayCycleManager)>
+  But was:  null
+]]></message>
+                <stack-trace><![CDATA[at Tests.EditMode.DayCycleManager_EditModeTests.Singleton_IsSetToManagerAfterAwake () [0x00000] in C:\Users\erike\Documents\GitHub\Consume-Clearly\Assets\Tests\EditMode\DayCycleManager_EditModeTests.cs:51
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1036" name="Singleton_SecondInstanceIsDestroyed" fullname="Tests.EditMode.DayCycleManager_EditModeTests.Singleton_SecondInstanceIsDestroyed" methodname="Singleton_SecondInstanceIsDestroyed" classname="Tests.EditMode.DayCycleManager_EditModeTests" runstate="Runnable" seed="484951567" result="Failed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001080" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Instance should remain the first manager when a duplicate is added
+  Expected: <DayCycleManager (DayCycleManager)>
+  But was:  null
+]]></message>
+                <stack-trace><![CDATA[at Tests.EditMode.DayCycleManager_EditModeTests.Singleton_SecondInstanceIsDestroyed () [0x00011] in C:\Users\erike\Documents\GitHub\Consume-Clearly\Assets\Tests\EditMode\DayCycleManager_EditModeTests.cs:61
+]]></stack-trace>
+              </failure>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1040" name="GameManager_EditModeTests" fullname="Tests.EditMode.GameManager_EditModeTests" classname="Tests.EditMode.GameManager_EditModeTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.008510" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1041" name="FindSceneBackground_ByName_ReturnsSpriteRenderer" fullname="Tests.EditMode.GameManager_EditModeTests.FindSceneBackground_ByName_ReturnsSpriteRenderer" methodname="FindSceneBackground_ByName_ReturnsSpriteRenderer" classname="Tests.EditMode.GameManager_EditModeTests" runstate="Runnable" seed="895119899" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.005205" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1042" name="IsSceneValidForCamera_ReturnsFalseForMainMenu" fullname="Tests.EditMode.GameManager_EditModeTests.IsSceneValidForCamera_ReturnsFalseForMainMenu" methodname="IsSceneValidForCamera_ReturnsFalseForMainMenu" classname="Tests.EditMode.GameManager_EditModeTests" runstate="Runnable" seed="1390567631" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001437" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1043" name="InstanceIdentifier_EditModeTests" fullname="Tests.EditMode.InstanceIdentifier_EditModeTests" classname="Tests.EditMode.InstanceIdentifier_EditModeTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.005090" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1044" name="Id_IsAssignedAfterAwake" fullname="Tests.EditMode.InstanceIdentifier_EditModeTests.Id_IsAssignedAfterAwake" methodname="Id_IsAssignedAfterAwake" classname="Tests.EditMode.InstanceIdentifier_EditModeTests" runstate="Runnable" seed="1272568253" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001300" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1045" name="Id_IsValidGuid" fullname="Tests.EditMode.InstanceIdentifier_EditModeTests.Id_IsValidGuid" methodname="Id_IsValidGuid" classname="Tests.EditMode.InstanceIdentifier_EditModeTests" runstate="Runnable" seed="1183142394" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000766" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1047" name="Id_RemainsStableOnRepeatedAccess" fullname="Tests.EditMode.InstanceIdentifier_EditModeTests.Id_RemainsStableOnRepeatedAccess" methodname="Id_RemainsStableOnRepeatedAccess" classname="Tests.EditMode.InstanceIdentifier_EditModeTests" runstate="Runnable" seed="1592447077" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000410" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1046" name="TwoIdentifiers_HaveUniqueIds" fullname="Tests.EditMode.InstanceIdentifier_EditModeTests.TwoIdentifiers_HaveUniqueIds" methodname="TwoIdentifiers_HaveUniqueIds" classname="Tests.EditMode.InstanceIdentifier_EditModeTests" runstate="Runnable" seed="544251140" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000768" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1048" name="InteractableObjectState_EditModeTests" fullname="Tests.EditMode.InteractableObjectState_EditModeTests" classname="Tests.EditMode.InteractableObjectState_EditModeTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.008069" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1049" name="DefaultState_HasEmptyUniqueId" fullname="Tests.EditMode.InteractableObjectState_EditModeTests.DefaultState_HasEmptyUniqueId" methodname="DefaultState_HasEmptyUniqueId" classname="Tests.EditMode.InteractableObjectState_EditModeTests" runstate="Runnable" seed="1697127233" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000238" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1050" name="DefaultState_IsActiveIsFalse" fullname="Tests.EditMode.InteractableObjectState_EditModeTests.DefaultState_IsActiveIsFalse" methodname="DefaultState_IsActiveIsFalse" classname="Tests.EditMode.InteractableObjectState_EditModeTests" runstate="Runnable" seed="1096232244" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000134" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1051" name="DefaultState_PositionIsZero" fullname="Tests.EditMode.InteractableObjectState_EditModeTests.DefaultState_PositionIsZero" methodname="DefaultState_PositionIsZero" classname="Tests.EditMode.InteractableObjectState_EditModeTests" runstate="Runnable" seed="1973463504" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000997" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1053" name="DefaultState_RopeVariantNameIsNull" fullname="Tests.EditMode.InteractableObjectState_EditModeTests.DefaultState_RopeVariantNameIsNull" methodname="DefaultState_RopeVariantNameIsNull" classname="Tests.EditMode.InteractableObjectState_EditModeTests" runstate="Runnable" seed="190958194" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000255" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1052" name="FieldAssignment_PersistsAllValues" fullname="Tests.EditMode.InteractableObjectState_EditModeTests.FieldAssignment_PersistsAllValues" methodname="FieldAssignment_PersistsAllValues" classname="Tests.EditMode.InteractableObjectState_EditModeTests" runstate="Runnable" seed="653979482" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001171" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1054" name="InventoryItem_EditModeTests" fullname="Tests.EditMode.InventoryItem_EditModeTests" classname="Tests.EditMode.InventoryItem_EditModeTests" runstate="Runnable" testcasecount="12" result="Failed" site="Child" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.221615" total="12" passed="11" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1061" name="AddItem_ClampsQuantityToMaxStack" fullname="Tests.EditMode.InventoryItem_EditModeTests.AddItem_ClampsQuantityToMaxStack" methodname="AddItem_ClampsQuantityToMaxStack" classname="Tests.EditMode.InventoryItem_EditModeTests" runstate="Runnable" seed="861495163" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.203082" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1062" name="AddItem_ReturnsAllQuantityWhenSlotIsAlreadyFull" fullname="Tests.EditMode.InventoryItem_EditModeTests.AddItem_ReturnsAllQuantityWhenSlotIsAlreadyFull" methodname="AddItem_ReturnsAllQuantityWhenSlotIsAlreadyFull" classname="Tests.EditMode.InventoryItem_EditModeTests" runstate="Runnable" seed="525842718" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001705" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1059" name="AddItem_ReturnsExcessWhenOverMaxStack" fullname="Tests.EditMode.InventoryItem_EditModeTests.AddItem_ReturnsExcessWhenOverMaxStack" methodname="AddItem_ReturnsExcessWhenOverMaxStack" classname="Tests.EditMode.InventoryItem_EditModeTests" runstate="Runnable" seed="7348934" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001315" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1055" name="AddItem_ReturnsZeroWhenSpaceAvailable" fullname="Tests.EditMode.InventoryItem_EditModeTests.AddItem_ReturnsZeroWhenSpaceAvailable" methodname="AddItem_ReturnsZeroWhenSpaceAvailable" classname="Tests.EditMode.InventoryItem_EditModeTests" runstate="Runnable" seed="1158597991" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001217" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1060" name="AddItem_SetsIsFullWhenAtMaxStack" fullname="Tests.EditMode.InventoryItem_EditModeTests.AddItem_SetsIsFullWhenAtMaxStack" methodname="AddItem_SetsIsFullWhenAtMaxStack" classname="Tests.EditMode.InventoryItem_EditModeTests" runstate="Runnable" seed="1495339408" result="Failed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.002206" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at Tests.EditMode.InventoryItem_EditModeTests.AddItem_SetsIsFullWhenAtMaxStack () [0x00025] in C:\Users\erike\Documents\GitHub\Consume-Clearly\Assets\Tests\EditMode\InventoryItem_EditModeTests.cs:115
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1058" name="AddItem_SetsItemId" fullname="Tests.EditMode.InventoryItem_EditModeTests.AddItem_SetsItemId" methodname="AddItem_SetsItemId" classname="Tests.EditMode.InventoryItem_EditModeTests" runstate="Runnable" seed="1905644312" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001412" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1057" name="AddItem_SetsItemName" fullname="Tests.EditMode.InventoryItem_EditModeTests.AddItem_SetsItemName" methodname="AddItem_SetsItemName" classname="Tests.EditMode.InventoryItem_EditModeTests" runstate="Runnable" seed="862268368" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001246" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1056" name="AddItem_SetsQuantityCorrectly" fullname="Tests.EditMode.InventoryItem_EditModeTests.AddItem_SetsQuantityCorrectly" methodname="AddItem_SetsQuantityCorrectly" classname="Tests.EditMode.InventoryItem_EditModeTests" runstate="Runnable" seed="1970263861" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001312" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1065" name="RemoveItem_EmptiesSlotWhenExactAmount" fullname="Tests.EditMode.InventoryItem_EditModeTests.RemoveItem_EmptiesSlotWhenExactAmount" methodname="RemoveItem_EmptiesSlotWhenExactAmount" classname="Tests.EditMode.InventoryItem_EditModeTests" runstate="Runnable" seed="1815989406" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001550" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1063" name="RemoveItem_ReducesQuantity" fullname="Tests.EditMode.InventoryItem_EditModeTests.RemoveItem_ReducesQuantity" methodname="RemoveItem_ReducesQuantity" classname="Tests.EditMode.InventoryItem_EditModeTests" runstate="Runnable" seed="863072140" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001242" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1066" name="RemoveItem_ReturnsZeroOnExactRemove" fullname="Tests.EditMode.InventoryItem_EditModeTests.RemoveItem_ReturnsZeroOnExactRemove" methodname="RemoveItem_ReturnsZeroOnExactRemove" classname="Tests.EditMode.InventoryItem_EditModeTests" runstate="Runnable" seed="1151079764" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001248" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1064" name="RemoveItem_ReturnsZeroOnPartialRemove" fullname="Tests.EditMode.InventoryItem_EditModeTests.RemoveItem_ReturnsZeroOnPartialRemove" methodname="RemoveItem_ReturnsZeroOnPartialRemove" classname="Tests.EditMode.InventoryItem_EditModeTests" runstate="Runnable" seed="1915677964" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001231" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1067" name="Item_EditModeTests" fullname="Tests.EditMode.Item_EditModeTests" classname="Tests.EditMode.Item_EditModeTests" runstate="Runnable" testcasecount="10" result="Failed" site="Child" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.017756" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1074" name="Id_FallsBackToItemLiteral_WhenNameIsEmpty" fullname="Tests.EditMode.Item_EditModeTests.Id_FallsBackToItemLiteral_WhenNameIsEmpty" methodname="Id_FallsBackToItemLiteral_WhenNameIsEmpty" classname="Tests.EditMode.Item_EditModeTests" runstate="Runnable" seed="1213171995" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001030" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1075" name="Id_IsStableOnRepeatedAccess" fullname="Tests.EditMode.Item_EditModeTests.Id_IsStableOnRepeatedAccess" methodname="Id_IsStableOnRepeatedAccess" classname="Tests.EditMode.Item_EditModeTests" runstate="Runnable" seed="263889225" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000471" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1073" name="Id_UsesItemNameWhenAvailable" fullname="Tests.EditMode.Item_EditModeTests.Id_UsesItemNameWhenAvailable" methodname="Id_UsesItemNameWhenAvailable" classname="Tests.EditMode.Item_EditModeTests" runstate="Runnable" seed="1705512745" result="Failed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.002047" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected string length 5 but was 4. Strings differ at index 0.
+  Expected: "Plank"
+  But was:  "item"
+  -----------^
+]]></message>
+                <stack-trace><![CDATA[at Tests.EditMode.Item_EditModeTests.Id_UsesItemNameWhenAvailable () [0x0001e] in C:\Users\erike\Documents\GitHub\Consume-Clearly\Assets\Tests\EditMode\Item_EditModeTests.cs:75
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1071" name="Initialize_SetsDescription" fullname="Tests.EditMode.Item_EditModeTests.Initialize_SetsDescription" methodname="Initialize_SetsDescription" classname="Tests.EditMode.Item_EditModeTests" runstate="Runnable" seed="1235592114" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000444" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1068" name="Initialize_SetsItemName" fullname="Tests.EditMode.Item_EditModeTests.Initialize_SetsItemName" methodname="Initialize_SetsItemName" classname="Tests.EditMode.Item_EditModeTests" runstate="Runnable" seed="1528813214" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000374" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1070" name="Initialize_SetsMaxStack" fullname="Tests.EditMode.Item_EditModeTests.Initialize_SetsMaxStack" methodname="Initialize_SetsMaxStack" classname="Tests.EditMode.Item_EditModeTests" runstate="Runnable" seed="191654164" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000354" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1069" name="Initialize_SetsQuantity" fullname="Tests.EditMode.Item_EditModeTests.Initialize_SetsQuantity" methodname="Initialize_SetsQuantity" classname="Tests.EditMode.Item_EditModeTests" runstate="Runnable" seed="782428105" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000335" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1072" name="Initialize_SetsSprite" fullname="Tests.EditMode.Item_EditModeTests.Initialize_SetsSprite" methodname="Initialize_SetsSprite" classname="Tests.EditMode.Item_EditModeTests" runstate="Runnable" seed="435701837" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.005635" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1077" name="MaxStack_CanBeSetViaProperty" fullname="Tests.EditMode.Item_EditModeTests.MaxStack_CanBeSetViaProperty" methodname="MaxStack_CanBeSetViaProperty" classname="Tests.EditMode.Item_EditModeTests" runstate="Runnable" seed="891706306" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000434" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1076" name="Quantity_CanBeSetViaProperty" fullname="Tests.EditMode.Item_EditModeTests.Quantity_CanBeSetViaProperty" methodname="Quantity_CanBeSetViaProperty" classname="Tests.EditMode.Item_EditModeTests" runstate="Runnable" seed="1933999117" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.000341" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1078" name="KeybindManager_EditModeTests" fullname="Tests.EditMode.KeybindManager_EditModeTests" classname="Tests.EditMode.KeybindManager_EditModeTests" runstate="Runnable" testcasecount="11" result="Failed" site="Child" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:31Z" duration="0.030236" total="11" passed="4" failed="7" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1080" name="GetKey_DefaultInteract_IsE" fullname="Tests.EditMode.KeybindManager_EditModeTests.GetKey_DefaultInteract_IsE" methodname="GetKey_DefaultInteract_IsE" classname="Tests.EditMode.KeybindManager_EditModeTests" runstate="Runnable" seed="692901041" result="Failed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.005151" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: E
+  But was:  None
+]]></message>
+                <stack-trace><![CDATA[at Tests.EditMode.KeybindManager_EditModeTests.GetKey_DefaultInteract_IsE () [0x00000] in C:\Users\erike\Documents\GitHub\Consume-Clearly\Assets\Tests\EditMode\KeybindManager_EditModeTests.cs:47
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[No keybind found for Interact
+]]></output>
+            </test-case>
+            <test-case id="1081" name="GetKey_DefaultInventory_IsQ" fullname="Tests.EditMode.KeybindManager_EditModeTests.GetKey_DefaultInventory_IsQ" methodname="GetKey_DefaultInventory_IsQ" classname="Tests.EditMode.KeybindManager_EditModeTests" runstate="Runnable" seed="1623231162" result="Failed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.002789" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: Q
+  But was:  None
+]]></message>
+                <stack-trace><![CDATA[at Tests.EditMode.KeybindManager_EditModeTests.GetKey_DefaultInventory_IsQ () [0x00000] in C:\Users\erike\Documents\GitHub\Consume-Clearly\Assets\Tests\EditMode\KeybindManager_EditModeTests.cs:53
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[No keybind found for Inventory
+]]></output>
+            </test-case>
+            <test-case id="1079" name="GetKey_DefaultJump_IsSpace" fullname="Tests.EditMode.KeybindManager_EditModeTests.GetKey_DefaultJump_IsSpace" methodname="GetKey_DefaultJump_IsSpace" classname="Tests.EditMode.KeybindManager_EditModeTests" runstate="Runnable" seed="1693899918" result="Failed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.002226" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: Space
+  But was:  None
+]]></message>
+                <stack-trace><![CDATA[at Tests.EditMode.KeybindManager_EditModeTests.GetKey_DefaultJump_IsSpace () [0x00000] in C:\Users\erike\Documents\GitHub\Consume-Clearly\Assets\Tests\EditMode\KeybindManager_EditModeTests.cs:41
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[No keybind found for Jump
+]]></output>
+            </test-case>
+            <test-case id="1082" name="GetKey_DefaultPause_IsP" fullname="Tests.EditMode.KeybindManager_EditModeTests.GetKey_DefaultPause_IsP" methodname="GetKey_DefaultPause_IsP" classname="Tests.EditMode.KeybindManager_EditModeTests" runstate="Runnable" seed="580573486" result="Failed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.002399" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: P
+  But was:  None
+]]></message>
+                <stack-trace><![CDATA[at Tests.EditMode.KeybindManager_EditModeTests.GetKey_DefaultPause_IsP () [0x00000] in C:\Users\erike\Documents\GitHub\Consume-Clearly\Assets\Tests\EditMode\KeybindManager_EditModeTests.cs:59
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[No keybind found for Pause
+]]></output>
+            </test-case>
+            <test-case id="1083" name="GetKey_UnknownAction_ReturnsNone" fullname="Tests.EditMode.KeybindManager_EditModeTests.GetKey_UnknownAction_ReturnsNone" methodname="GetKey_UnknownAction_ReturnsNone" classname="Tests.EditMode.KeybindManager_EditModeTests" runstate="Runnable" seed="1496150703" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.002027" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[No keybind found for NonExistentAction
+]]></output>
+            </test-case>
+            <test-case id="1088" name="GetKeyAsString_ReflectsAfterSetKey" fullname="Tests.EditMode.KeybindManager_EditModeTests.GetKeyAsString_ReflectsAfterSetKey" methodname="GetKeyAsString_ReflectsAfterSetKey" classname="Tests.EditMode.KeybindManager_EditModeTests" runstate="Runnable" seed="1548303826" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.002476" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1087" name="GetKeyAsString_ReturnsCorrectDefaultName" fullname="Tests.EditMode.KeybindManager_EditModeTests.GetKeyAsString_ReturnsCorrectDefaultName" methodname="GetKeyAsString_ReturnsCorrectDefaultName" classname="Tests.EditMode.KeybindManager_EditModeTests" runstate="Runnable" seed="115491404" result="Failed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.002234" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected string length 5 but was 4. Strings differ at index 0.
+  Expected: "Space"
+  But was:  "None"
+  -----------^
+]]></message>
+                <stack-trace><![CDATA[at Tests.EditMode.KeybindManager_EditModeTests.GetKeyAsString_ReturnsCorrectDefaultName () [0x00000] in C:\Users\erike\Documents\GitHub\Consume-Clearly\Assets\Tests\EditMode\KeybindManager_EditModeTests.cs:98
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[No keybind found for Jump
+]]></output>
+            </test-case>
+            <test-case id="1084" name="SetKey_ChangesBinding" fullname="Tests.EditMode.KeybindManager_EditModeTests.SetKey_ChangesBinding" methodname="SetKey_ChangesBinding" classname="Tests.EditMode.KeybindManager_EditModeTests" runstate="Runnable" seed="1702951700" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.001802" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1086" name="SetKey_PersistsToPlayerPrefs" fullname="Tests.EditMode.KeybindManager_EditModeTests.SetKey_PersistsToPlayerPrefs" methodname="SetKey_PersistsToPlayerPrefs" classname="Tests.EditMode.KeybindManager_EditModeTests" runstate="Runnable" seed="390383509" result="Passed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:30Z" duration="0.002831" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1085" name="SetKey_PreventsDuplicateBinding" fullname="Tests.EditMode.KeybindManager_EditModeTests.SetKey_PreventsDuplicateBinding" methodname="SetKey_PreventsDuplicateBinding" classname="Tests.EditMode.KeybindManager_EditModeTests" runstate="Runnable" seed="938055715" result="Failed" start-time="2026-04-07 12:25:30Z" end-time="2026-04-07 12:25:31Z" duration="0.001638" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Jump should stay on Space when E is already bound to Interact
+  Expected: Space
+  But was:  E
+]]></message>
+                <stack-trace><![CDATA[at Tests.EditMode.KeybindManager_EditModeTests.SetKey_PreventsDuplicateBinding () [0x00012] in C:\Users\erike\Documents\GitHub\Consume-Clearly\Assets\Tests\EditMode\KeybindManager_EditModeTests.cs:82
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1089" name="Singleton_IsAssignedAfterAwake" fullname="Tests.EditMode.KeybindManager_EditModeTests.Singleton_IsAssignedAfterAwake" methodname="Singleton_IsAssignedAfterAwake" classname="Tests.EditMode.KeybindManager_EditModeTests" runstate="Runnable" seed="1367124279" result="Failed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001465" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: <KeybindManager (KeybindManager)>
+  But was:  null
+]]></message>
+                <stack-trace><![CDATA[at Tests.EditMode.KeybindManager_EditModeTests.Singleton_IsAssignedAfterAwake () [0x00000] in C:\Users\erike\Documents\GitHub\Consume-Clearly\Assets\Tests\EditMode\KeybindManager_EditModeTests.cs:113
+]]></stack-trace>
+              </failure>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1090" name="MenuButtonEffect_EditModeTests" fullname="Tests.EditMode.MenuButtonEffect_EditModeTests" classname="Tests.EditMode.MenuButtonEffect_EditModeTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.036013" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1093" name="OnPointerEnter_ChangesTextForEnabledButton" fullname="Tests.EditMode.MenuButtonEffect_EditModeTests.OnPointerEnter_ChangesTextForEnabledButton" methodname="OnPointerEnter_ChangesTextForEnabledButton" classname="Tests.EditMode.MenuButtonEffect_EditModeTests" runstate="Runnable" seed="939009758" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.012854" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Setting up test environment...
+Setup complete: ButtonObject = TestButton, TextComponent = ButtonText
+Running OnPointerEnter_ChangesTextForEnabledButton...
+Initial text: Test
+Text after OnPointerEnter: >Test
+Tearing down test environment for ButtonObject: TestButton
+]]></output>
+            </test-case>
+            <test-case id="1094" name="OnPointerEnter_DoesNothingForDisabledButton" fullname="Tests.EditMode.MenuButtonEffect_EditModeTests.OnPointerEnter_DoesNothingForDisabledButton" methodname="OnPointerEnter_DoesNothingForDisabledButton" classname="Tests.EditMode.MenuButtonEffect_EditModeTests" runstate="Runnable" seed="8938327" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.004664" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Setting up test environment...
+Setup complete: ButtonObject = TestButton, TextComponent = ButtonText
+Running OnPointerEnter_DoesNothingForDisabledButton...
+Initial text: Test
+Text after OnPointerEnter: Test
+Tearing down test environment for ButtonObject: TestButton
+]]></output>
+            </test-case>
+            <test-case id="1095" name="OnPointerExit_RevertsText" fullname="Tests.EditMode.MenuButtonEffect_EditModeTests.OnPointerExit_RevertsText" methodname="OnPointerExit_RevertsText" classname="Tests.EditMode.MenuButtonEffect_EditModeTests" runstate="Runnable" seed="1011080593" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.004356" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Setting up test environment...
+Setup complete: ButtonObject = TestButton, TextComponent = ButtonText
+Running OnPointerExit_RevertsText...
+Initial text: >Test
+Text after OnPointerExit: Test
+Tearing down test environment for ButtonObject: TestButton
+]]></output>
+            </test-case>
+            <test-case id="1091" name="SetEnabled_DisablesButtonWhenFalse" fullname="Tests.EditMode.MenuButtonEffect_EditModeTests.SetEnabled_DisablesButtonWhenFalse" methodname="SetEnabled_DisablesButtonWhenFalse" classname="Tests.EditMode.MenuButtonEffect_EditModeTests" runstate="Runnable" seed="989489979" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.006562" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Setting up test environment...
+Setup complete: ButtonObject = TestButton, TextComponent = ButtonText
+Running SetEnabled_DisablesButtonWhenFalse...
+Button interactable: False
+Text color: RGBA(0.500, 0.500, 0.500, 1.000)
+Tearing down test environment for ButtonObject: TestButton
+]]></output>
+            </test-case>
+            <test-case id="1092" name="SetEnabled_EnablesButtonWhenTrue" fullname="Tests.EditMode.MenuButtonEffect_EditModeTests.SetEnabled_EnablesButtonWhenTrue" methodname="SetEnabled_EnablesButtonWhenTrue" classname="Tests.EditMode.MenuButtonEffect_EditModeTests" runstate="Runnable" seed="1832511337" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.004652" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Setting up test environment...
+Setup complete: ButtonObject = TestButton, TextComponent = ButtonText
+Running SetEnabled_EnablesButtonWhenTrue...
+Button interactable: True
+Text color: RGBA(1.000, 1.000, 1.000, 1.000)
+Tearing down test environment for ButtonObject: TestButton
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1096" name="MoneyManager_EditModeTests" fullname="Tests.EditMode.MoneyManager_EditModeTests" classname="Tests.EditMode.MoneyManager_EditModeTests" runstate="Runnable" testcasecount="9" result="Failed" site="Child" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.012217" total="9" passed="8" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1097" name="Awake_SetsInitialDisplayText" fullname="Tests.EditMode.MoneyManager_EditModeTests.Awake_SetsInitialDisplayText" methodname="Awake_SetsInitialDisplayText" classname="Tests.EditMode.MoneyManager_EditModeTests" runstate="Runnable" seed="420774449" result="Failed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001752" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: "$0"
+  But was:  null
+]]></message>
+                <stack-trace><![CDATA[at Tests.EditMode.MoneyManager_EditModeTests.Awake_SetsInitialDisplayText () [0x00000] in C:\Users\erike\Documents\GitHub\Consume-Clearly\Assets\Tests\EditMode\MoneyManager_EditModeTests.cs:46
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1105" name="ChangeMoneyAmount_ExactBalance_ReturnsTrue" fullname="Tests.EditMode.MoneyManager_EditModeTests.ChangeMoneyAmount_ExactBalance_ReturnsTrue" methodname="ChangeMoneyAmount_ExactBalance_ReturnsTrue" classname="Tests.EditMode.MoneyManager_EditModeTests" runstate="Runnable" seed="1823779061" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001112" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1101" name="ChangeMoneyAmount_Negative_DecreasesMoneyCount" fullname="Tests.EditMode.MoneyManager_EditModeTests.ChangeMoneyAmount_Negative_DecreasesMoneyCount" methodname="ChangeMoneyAmount_Negative_DecreasesMoneyCount" classname="Tests.EditMode.MoneyManager_EditModeTests" runstate="Runnable" seed="1327372895" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000757" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1102" name="ChangeMoneyAmount_Negative_UpdatesDisplayText" fullname="Tests.EditMode.MoneyManager_EditModeTests.ChangeMoneyAmount_Negative_UpdatesDisplayText" methodname="ChangeMoneyAmount_Negative_UpdatesDisplayText" classname="Tests.EditMode.MoneyManager_EditModeTests" runstate="Runnable" seed="2030814231" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000692" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1104" name="ChangeMoneyAmount_NegativeBeyondBalance_DoesNotChangeMoney" fullname="Tests.EditMode.MoneyManager_EditModeTests.ChangeMoneyAmount_NegativeBeyondBalance_DoesNotChangeMoney" methodname="ChangeMoneyAmount_NegativeBeyondBalance_DoesNotChangeMoney" classname="Tests.EditMode.MoneyManager_EditModeTests" runstate="Runnable" seed="392085151" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001495" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Not enough money
+]]></output>
+            </test-case>
+            <test-case id="1103" name="ChangeMoneyAmount_NegativeBeyondBalance_ReturnsFalse" fullname="Tests.EditMode.MoneyManager_EditModeTests.ChangeMoneyAmount_NegativeBeyondBalance_ReturnsFalse" methodname="ChangeMoneyAmount_NegativeBeyondBalance_ReturnsFalse" classname="Tests.EditMode.MoneyManager_EditModeTests" runstate="Runnable" seed="1439625674" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001389" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Not enough money
+]]></output>
+            </test-case>
+            <test-case id="1098" name="ChangeMoneyAmount_Positive_IncreasesMoneyCount" fullname="Tests.EditMode.MoneyManager_EditModeTests.ChangeMoneyAmount_Positive_IncreasesMoneyCount" methodname="ChangeMoneyAmount_Positive_IncreasesMoneyCount" classname="Tests.EditMode.MoneyManager_EditModeTests" runstate="Runnable" seed="368367451" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000737" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1100" name="ChangeMoneyAmount_Positive_ReturnsTrue" fullname="Tests.EditMode.MoneyManager_EditModeTests.ChangeMoneyAmount_Positive_ReturnsTrue" methodname="ChangeMoneyAmount_Positive_ReturnsTrue" classname="Tests.EditMode.MoneyManager_EditModeTests" runstate="Runnable" seed="1037865193" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000682" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1099" name="ChangeMoneyAmount_Positive_UpdatesDisplayText" fullname="Tests.EditMode.MoneyManager_EditModeTests.ChangeMoneyAmount_Positive_UpdatesDisplayText" methodname="ChangeMoneyAmount_Positive_UpdatesDisplayText" classname="Tests.EditMode.MoneyManager_EditModeTests" runstate="Runnable" seed="853049858" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000639" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1106" name="MovementScript_EditModeTests" fullname="Tests.EditMode.MovementScript_EditModeTests" classname="Tests.EditMode.MovementScript_EditModeTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.014370" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1107" name="SetupGroundCheckAssignsTransform" fullname="Tests.EditMode.MovementScript_EditModeTests.SetupGroundCheckAssignsTransform" methodname="SetupGroundCheckAssignsTransform" classname="Tests.EditMode.MovementScript_EditModeTests" runstate="Runnable" seed="440646596" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001059" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1110" name="ValidateComponentsMissingAnimationControllerDisablesScript" fullname="Tests.EditMode.MovementScript_EditModeTests.ValidateComponentsMissingAnimationControllerDisablesScript" methodname="ValidateComponentsMissingAnimationControllerDisablesScript" classname="Tests.EditMode.MovementScript_EditModeTests" runstate="Runnable" seed="247984792" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.004603" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Assertion failed on expression: 'ShouldRunBehaviour()'
+AnimationController missing from player!
+]]></output>
+            </test-case>
+            <test-case id="1109" name="ValidateComponentsMissingGroundCheckDisablesScript" fullname="Tests.EditMode.MovementScript_EditModeTests.ValidateComponentsMissingGroundCheckDisablesScript" methodname="ValidateComponentsMissingGroundCheckDisablesScript" classname="Tests.EditMode.MovementScript_EditModeTests" runstate="Runnable" seed="1352482123" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.003791" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Assertion failed on expression: 'ShouldRunBehaviour()'
+Assertion failed on expression: 'ShouldRunBehaviour()'
+Ground Check reference missing from player! Please set it using SetupGroundCheck.
+]]></output>
+            </test-case>
+            <test-case id="1108" name="ValidateComponentsMissingRigidbodyDisablesScript" fullname="Tests.EditMode.MovementScript_EditModeTests.ValidateComponentsMissingRigidbodyDisablesScript" methodname="ValidateComponentsMissingRigidbodyDisablesScript" classname="Tests.EditMode.MovementScript_EditModeTests" runstate="Runnable" seed="1011401630" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.002806" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Assertion failed on expression: 'ShouldRunBehaviour()'
+Assertion failed on expression: 'ShouldRunBehaviour()'
+Rigidbody2D missing from player!
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1111" name="PlayerInteract_EditModeTests" fullname="Tests.EditMode.PlayerInteract_EditModeTests" classname="Tests.EditMode.PlayerInteract_EditModeTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.010992" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1114" name="CircleRadius_HasPositiveDefault" fullname="Tests.EditMode.PlayerInteract_EditModeTests.CircleRadius_HasPositiveDefault" methodname="CircleRadius_HasPositiveDefault" classname="Tests.EditMode.PlayerInteract_EditModeTests" runstate="Runnable" seed="735541290" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000868" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1117" name="GetFacingDirection_ReturnsLeft_WhenSpriteFlipped" fullname="Tests.EditMode.PlayerInteract_EditModeTests.GetFacingDirection_ReturnsLeft_WhenSpriteFlipped" methodname="GetFacingDirection_ReturnsLeft_WhenSpriteFlipped" classname="Tests.EditMode.PlayerInteract_EditModeTests" runstate="Runnable" seed="126049142" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.002034" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1116" name="GetFacingDirection_ReturnsRight_WhenSpriteNotFlipped" fullname="Tests.EditMode.PlayerInteract_EditModeTests.GetFacingDirection_ReturnsRight_WhenSpriteNotFlipped" methodname="GetFacingDirection_ReturnsRight_WhenSpriteNotFlipped" classname="Tests.EditMode.PlayerInteract_EditModeTests" runstate="Runnable" seed="1587263562" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000660" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1113" name="MaxSearchRadius_HasPositiveDefault" fullname="Tests.EditMode.PlayerInteract_EditModeTests.MaxSearchRadius_HasPositiveDefault" methodname="MaxSearchRadius_HasPositiveDefault" classname="Tests.EditMode.PlayerInteract_EditModeTests" runstate="Runnable" seed="910164000" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000347" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1112" name="OriginOffset_HasPositiveDefault" fullname="Tests.EditMode.PlayerInteract_EditModeTests.OriginOffset_HasPositiveDefault" methodname="OriginOffset_HasPositiveDefault" classname="Tests.EditMode.PlayerInteract_EditModeTests" runstate="Runnable" seed="993168468" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000344" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1115" name="Update_DoesNotThrowWhenKeybindManagerInstanceIsNull" fullname="Tests.EditMode.PlayerInteract_EditModeTests.Update_DoesNotThrowWhenKeybindManagerInstanceIsNull" methodname="Update_DoesNotThrowWhenKeybindManagerInstanceIsNull" classname="Tests.EditMode.PlayerInteract_EditModeTests" runstate="Runnable" seed="1129792969" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.004673" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1135" name="Quest_EditModeTests" fullname="Tests.EditMode.Quest_EditModeTests" classname="Tests.EditMode.Quest_EditModeTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.007195" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1139" name="QuestObjective_IsCompleted_FalseAtZero" fullname="Tests.EditMode.Quest_EditModeTests.QuestObjective_IsCompleted_FalseAtZero" methodname="QuestObjective_IsCompleted_FalseAtZero" classname="Tests.EditMode.Quest_EditModeTests" runstate="Runnable" seed="2098188509" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000253" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1138" name="QuestObjective_IsCompleted_FalseWhenNotMet" fullname="Tests.EditMode.Quest_EditModeTests.QuestObjective_IsCompleted_FalseWhenNotMet" methodname="QuestObjective_IsCompleted_FalseWhenNotMet" classname="Tests.EditMode.Quest_EditModeTests" runstate="Runnable" seed="148102888" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000139" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1137" name="QuestObjective_IsCompleted_TrueWhenCurrentExceedsRequired" fullname="Tests.EditMode.Quest_EditModeTests.QuestObjective_IsCompleted_TrueWhenCurrentExceedsRequired" methodname="QuestObjective_IsCompleted_TrueWhenCurrentExceedsRequired" classname="Tests.EditMode.Quest_EditModeTests" runstate="Runnable" seed="315800750" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000111" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1136" name="QuestObjective_IsCompleted_WhenCurrentMeetsRequired" fullname="Tests.EditMode.Quest_EditModeTests.QuestObjective_IsCompleted_WhenCurrentMeetsRequired" methodname="QuestObjective_IsCompleted_WhenCurrentMeetsRequired" classname="Tests.EditMode.Quest_EditModeTests" runstate="Runnable" seed="1849438308" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000099" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1141" name="QuestProgress_Constructor_CopiesAllObjectiveFields" fullname="Tests.EditMode.Quest_EditModeTests.QuestProgress_Constructor_CopiesAllObjectiveFields" methodname="QuestProgress_Constructor_CopiesAllObjectiveFields" classname="Tests.EditMode.Quest_EditModeTests" runstate="Runnable" seed="1377687253" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001602" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1140" name="QuestProgress_Constructor_DeepCopiesObjectives" fullname="Tests.EditMode.Quest_EditModeTests.QuestProgress_Constructor_DeepCopiesObjectives" methodname="QuestProgress_Constructor_DeepCopiesObjectives" classname="Tests.EditMode.Quest_EditModeTests" runstate="Runnable" seed="1147816889" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000466" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1144" name="QuestProgress_IsCompleted_FalseWhenOneObjectiveUnmet" fullname="Tests.EditMode.Quest_EditModeTests.QuestProgress_IsCompleted_FalseWhenOneObjectiveUnmet" methodname="QuestProgress_IsCompleted_FalseWhenOneObjectiveUnmet" classname="Tests.EditMode.Quest_EditModeTests" runstate="Runnable" seed="929953060" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000818" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1145" name="QuestProgress_IsCompleted_FalseWithNoObjectives" fullname="Tests.EditMode.Quest_EditModeTests.QuestProgress_IsCompleted_FalseWithNoObjectives" methodname="QuestProgress_IsCompleted_FalseWithNoObjectives" classname="Tests.EditMode.Quest_EditModeTests" runstate="Runnable" seed="1536325826" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000349" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1143" name="QuestProgress_IsCompleted_TrueWhenAllObjectivesMet" fullname="Tests.EditMode.Quest_EditModeTests.QuestProgress_IsCompleted_TrueWhenAllObjectivesMet" methodname="QuestProgress_IsCompleted_TrueWhenAllObjectivesMet" classname="Tests.EditMode.Quest_EditModeTests" runstate="Runnable" seed="1255545449" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000336" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1142" name="QuestProgress_QuestId_MatchesSourceQuest" fullname="Tests.EditMode.Quest_EditModeTests.QuestProgress_QuestId_MatchesSourceQuest" methodname="QuestProgress_QuestId_MatchesSourceQuest" classname="Tests.EditMode.Quest_EditModeTests" runstate="Runnable" seed="958566052" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000318" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1118" name="QuestController_EditModeTests" fullname="Tests.EditMode.QuestController_EditModeTests" classname="Tests.EditMode.QuestController_EditModeTests" runstate="Runnable" testcasecount="16" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.028835" total="16" passed="16" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1119" name="AcceptQuest_AddsQuestToActiveList" fullname="Tests.EditMode.QuestController_EditModeTests.AcceptQuest_AddsQuestToActiveList" methodname="AcceptQuest_AddsQuestToActiveList" classname="Tests.EditMode.QuestController_EditModeTests" runstate="Runnable" seed="1646739097" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001886" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1120" name="AcceptQuest_DoesNotAddDuplicate" fullname="Tests.EditMode.QuestController_EditModeTests.AcceptQuest_DoesNotAddDuplicate" methodname="AcceptQuest_DoesNotAddDuplicate" classname="Tests.EditMode.QuestController_EditModeTests" runstate="Runnable" seed="1703695905" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000469" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1122" name="AcceptQuest_IgnoresAlreadyCompletedQuest" fullname="Tests.EditMode.QuestController_EditModeTests.AcceptQuest_IgnoresAlreadyCompletedQuest" methodname="AcceptQuest_IgnoresAlreadyCompletedQuest" classname="Tests.EditMode.QuestController_EditModeTests" runstate="Runnable" seed="1750112850" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.005821" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Quest progress updated: Collect 3 wood (3/3)
+Objective: Collect 3 wood, ID: collect_wood, Required: 3
+Removing 3 of item ID: collect_wood
+Quest turned in: quest_001
+]]></output>
+            </test-case>
+            <test-case id="1121" name="AcceptQuest_NullQuestIsIgnored" fullname="Tests.EditMode.QuestController_EditModeTests.AcceptQuest_NullQuestIsIgnored" methodname="AcceptQuest_NullQuestIsIgnored" classname="Tests.EditMode.QuestController_EditModeTests" runstate="Runnable" seed="44635175" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000481" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1133" name="HasQuestBeenCompleted_FalseForFreshController" fullname="Tests.EditMode.QuestController_EditModeTests.HasQuestBeenCompleted_FalseForFreshController" methodname="HasQuestBeenCompleted_FalseForFreshController" classname="Tests.EditMode.QuestController_EditModeTests" runstate="Runnable" seed="1070067664" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000384" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1134" name="HasQuestBeenCompleted_TrueAfterTurnIn" fullname="Tests.EditMode.QuestController_EditModeTests.HasQuestBeenCompleted_TrueAfterTurnIn" methodname="HasQuestBeenCompleted_TrueAfterTurnIn" classname="Tests.EditMode.QuestController_EditModeTests" runstate="Runnable" seed="1287466488" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.002906" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Quest progress updated: Collect 3 wood (3/3)
+Objective: Collect 3 wood, ID: collect_wood, Required: 3
+Removing 3 of item ID: collect_wood
+Quest turned in: quest_001
+]]></output>
+            </test-case>
+            <test-case id="1128" name="IsQuestCompleted_ReturnsFalseForUnknownQuest" fullname="Tests.EditMode.QuestController_EditModeTests.IsQuestCompleted_ReturnsFalseForUnknownQuest" methodname="IsQuestCompleted_ReturnsFalseForUnknownQuest" classname="Tests.EditMode.QuestController_EditModeTests" runstate="Runnable" seed="484466526" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000427" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1127" name="IsQuestCompleted_ReturnsFalseWhenNotEnoughProgress" fullname="Tests.EditMode.QuestController_EditModeTests.IsQuestCompleted_ReturnsFalseWhenNotEnoughProgress" methodname="IsQuestCompleted_ReturnsFalseWhenNotEnoughProgress" classname="Tests.EditMode.QuestController_EditModeTests" runstate="Runnable" seed="154183893" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001131" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Quest progress updated: Collect 3 wood (1/3)
+]]></output>
+            </test-case>
+            <test-case id="1129" name="IsQuestCompleted_ReturnsTrueForAlreadyCompletedQuest" fullname="Tests.EditMode.QuestController_EditModeTests.IsQuestCompleted_ReturnsTrueForAlreadyCompletedQuest" methodname="IsQuestCompleted_ReturnsTrueForAlreadyCompletedQuest" classname="Tests.EditMode.QuestController_EditModeTests" runstate="Runnable" seed="1552560501" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.002780" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Quest progress updated: Collect 3 wood (3/3)
+Objective: Collect 3 wood, ID: collect_wood, Required: 3
+Removing 3 of item ID: collect_wood
+Quest turned in: quest_001
+]]></output>
+            </test-case>
+            <test-case id="1126" name="IsQuestCompleted_ReturnsTrueWhenAllObjectivesMet" fullname="Tests.EditMode.QuestController_EditModeTests.IsQuestCompleted_ReturnsTrueWhenAllObjectivesMet" methodname="IsQuestCompleted_ReturnsTrueWhenAllObjectivesMet" classname="Tests.EditMode.QuestController_EditModeTests" runstate="Runnable" seed="432247282" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001233" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Quest progress updated: Collect 3 wood (3/3)
+]]></output>
+            </test-case>
+            <test-case id="1130" name="TurnInQuest_RemovesFromActiveAndMarksCompleted" fullname="Tests.EditMode.QuestController_EditModeTests.TurnInQuest_RemovesFromActiveAndMarksCompleted" methodname="TurnInQuest_RemovesFromActiveAndMarksCompleted" classname="Tests.EditMode.QuestController_EditModeTests" runstate="Runnable" seed="55427479" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.002935" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Quest progress updated: Collect 3 wood (3/3)
+Objective: Collect 3 wood, ID: collect_wood, Required: 3
+Removing 3 of item ID: collect_wood
+Quest turned in: quest_001
+]]></output>
+            </test-case>
+            <test-case id="1132" name="TurnInQuest_ReturnsFalseIfObjectivesNotComplete" fullname="Tests.EditMode.QuestController_EditModeTests.TurnInQuest_ReturnsFalseIfObjectivesNotComplete" methodname="TurnInQuest_ReturnsFalseIfObjectivesNotComplete" classname="Tests.EditMode.QuestController_EditModeTests" runstate="Runnable" seed="1649051665" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000454" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1131" name="TurnInQuest_ReturnsFalseIfQuestNotActive" fullname="Tests.EditMode.QuestController_EditModeTests.TurnInQuest_ReturnsFalseIfQuestNotActive" methodname="TurnInQuest_ReturnsFalseIfQuestNotActive" classname="Tests.EditMode.QuestController_EditModeTests" runstate="Runnable" seed="901037293" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000378" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1124" name="UpdateObjectiveProgress_ClampsAtRequired" fullname="Tests.EditMode.QuestController_EditModeTests.UpdateObjectiveProgress_ClampsAtRequired" methodname="UpdateObjectiveProgress_ClampsAtRequired" classname="Tests.EditMode.QuestController_EditModeTests" runstate="Runnable" seed="614515484" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001550" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Quest progress updated: Collect 3 wood (3/3)
+]]></output>
+            </test-case>
+            <test-case id="1125" name="UpdateObjectiveProgress_DoesNothingForUnknownObjective" fullname="Tests.EditMode.QuestController_EditModeTests.UpdateObjectiveProgress_DoesNothingForUnknownObjective" methodname="UpdateObjectiveProgress_DoesNothingForUnknownObjective" classname="Tests.EditMode.QuestController_EditModeTests" runstate="Runnable" seed="1440939133" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000603" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1123" name="UpdateObjectiveProgress_IncrementsObjective" fullname="Tests.EditMode.QuestController_EditModeTests.UpdateObjectiveProgress_IncrementsObjective" methodname="UpdateObjectiveProgress_IncrementsObjective" classname="Tests.EditMode.QuestController_EditModeTests" runstate="Runnable" seed="1013984942" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001334" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Quest progress updated: Collect 3 wood (2/3)
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1146" name="ResourceManager_EditModeTests" fullname="Tests.EditMode.ResourceManager_EditModeTests" classname="Tests.EditMode.ResourceManager_EditModeTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.012329" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1149" name="ChangeCsOverTime_RespectsCapsAndTimer" fullname="Tests.EditMode.ResourceManager_EditModeTests.ChangeCsOverTime_RespectsCapsAndTimer" methodname="ChangeCsOverTime_RespectsCapsAndTimer" classname="Tests.EditMode.ResourceManager_EditModeTests" runstate="Runnable" seed="2071920510" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.007386" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[[TestDiag] csChangeInterval=0, CStimer=1, CSInc=7, satisfaction=200
+[TestDiag] CS before=0, after=7
+]]></output>
+            </test-case>
+            <test-case id="1147" name="UpdateMoney_FormatsText" fullname="Tests.EditMode.ResourceManager_EditModeTests.UpdateMoney_FormatsText" methodname="UpdateMoney_FormatsText" classname="Tests.EditMode.ResourceManager_EditModeTests" runstate="Runnable" seed="1059132852" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001486" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1148" name="UpdateRS_WithClampRMS_RespectsRSMax" fullname="Tests.EditMode.ResourceManager_EditModeTests.UpdateRS_WithClampRMS_RespectsRSMax" methodname="UpdateRS_WithClampRMS_RespectsRSMax" classname="Tests.EditMode.ResourceManager_EditModeTests" runstate="Runnable" seed="139034936" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001618" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1150" name="SaveSystem_EditModeTests" fullname="Tests.EditMode.SaveSystem_EditModeTests" classname="Tests.EditMode.SaveSystem_EditModeTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.099139" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1155" name="SaveData_ExcludesInvalidScenes" fullname="Tests.EditMode.SaveSystem_EditModeTests.SaveData_ExcludesInvalidScenes" methodname="SaveData_ExcludesInvalidScenes" classname="Tests.EditMode.SaveSystem_EditModeTests" runstate="Runnable" seed="225864749" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.011781" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1152" name="SaveSystem_AbortsSavingInvalidScenes" fullname="Tests.EditMode.SaveSystem_EditModeTests.SaveSystem_AbortsSavingInvalidScenes" methodname="SaveSystem_AbortsSavingInvalidScenes" classname="Tests.EditMode.SaveSystem_EditModeTests" runstate="Runnable" seed="2135354437" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.003898" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Save aborted: Scene is excluded from saving.
+Save file not found.
+]]></output>
+            </test-case>
+            <test-case id="1154" name="SaveSystem_ClearSaveFile" fullname="Tests.EditMode.SaveSystem_EditModeTests.SaveSystem_ClearSaveFile" methodname="SaveSystem_ClearSaveFile" classname="Tests.EditMode.SaveSystem_EditModeTests" runstate="Runnable" seed="1829475419" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.005947" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Game saved successfully!
+Save data cleared.
+Save file not found.
+]]></output>
+            </test-case>
+            <test-case id="1153" name="SaveSystem_IsSaveFileValid_WhenFileExists" fullname="Tests.EditMode.SaveSystem_EditModeTests.SaveSystem_IsSaveFileValid_WhenFileExists" methodname="SaveSystem_IsSaveFileValid_WhenFileExists" classname="Tests.EditMode.SaveSystem_EditModeTests" runstate="Runnable" seed="1057320683" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.026670" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Game saved successfully!
+Game loaded successfully!
+Save data cleared.
+]]></output>
+            </test-case>
+            <test-case id="1151" name="SaveSystem_SavesDataCorrectly" fullname="Tests.EditMode.SaveSystem_EditModeTests.SaveSystem_SavesDataCorrectly" methodname="SaveSystem_SavesDataCorrectly" classname="Tests.EditMode.SaveSystem_EditModeTests" runstate="Runnable" seed="1321253383" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.024989" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Game saved successfully!
+Game loaded successfully!
+Save data cleared.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1156" name="WorkshopRecipe_EditModeTests" fullname="Tests.EditMode.WorkshopRecipe_EditModeTests" classname="Tests.EditMode.WorkshopRecipe_EditModeTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.005481" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1162" name="AllStationTypes_AreDistinct" fullname="Tests.EditMode.WorkshopRecipe_EditModeTests.AllStationTypes_AreDistinct" methodname="AllStationTypes_AreDistinct" classname="Tests.EditMode.WorkshopRecipe_EditModeTests" runstate="Runnable" seed="82822987" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001088" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1157" name="DefaultStationType_IsRecyclingBin" fullname="Tests.EditMode.WorkshopRecipe_EditModeTests.DefaultStationType_IsRecyclingBin" methodname="DefaultStationType_IsRecyclingBin" classname="Tests.EditMode.WorkshopRecipe_EditModeTests" runstate="Runnable" seed="1665565545" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000313" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1159" name="Inputs_CanBePopulated" fullname="Tests.EditMode.WorkshopRecipe_EditModeTests.Inputs_CanBePopulated" methodname="Inputs_CanBePopulated" classname="Tests.EditMode.WorkshopRecipe_EditModeTests" runstate="Runnable" seed="670645247" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000817" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1161" name="ItemStack_FieldsAreReadable" fullname="Tests.EditMode.WorkshopRecipe_EditModeTests.ItemStack_FieldsAreReadable" methodname="ItemStack_FieldsAreReadable" classname="Tests.EditMode.WorkshopRecipe_EditModeTests" runstate="Runnable" seed="183879220" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000378" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1160" name="OutputPrefabs_CanBePopulated" fullname="Tests.EditMode.WorkshopRecipe_EditModeTests.OutputPrefabs_CanBePopulated" methodname="OutputPrefabs_CanBePopulated" classname="Tests.EditMode.WorkshopRecipe_EditModeTests" runstate="Runnable" seed="275722597" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000648" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1158" name="StationType_CanBeAssigned" fullname="Tests.EditMode.WorkshopRecipe_EditModeTests.StationType_CanBeAssigned" methodname="StationType_CanBeAssigned" classname="Tests.EditMode.WorkshopRecipe_EditModeTests" runstate="Runnable" seed="1616911670" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.000290" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1163" name="WorkshopStation_EditModeTests" fullname="Tests.EditMode.WorkshopStation_EditModeTests" classname="Tests.EditMode.WorkshopStation_EditModeTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.021231" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1166" name="CanProcess_ReturnsFalse_WhenRequiredItemsNotInInventory" fullname="Tests.EditMode.WorkshopStation_EditModeTests.CanProcess_ReturnsFalse_WhenRequiredItemsNotInInventory" methodname="CanProcess_ReturnsFalse_WhenRequiredItemsNotInInventory" classname="Tests.EditMode.WorkshopStation_EditModeTests" runstate="Runnable" seed="256471246" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.004439" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1167" name="CanProcess_ReturnsTrue_WhenRequiredItemsPresent" fullname="Tests.EditMode.WorkshopStation_EditModeTests.CanProcess_ReturnsTrue_WhenRequiredItemsPresent" methodname="CanProcess_ReturnsTrue_WhenRequiredItemsPresent" classname="Tests.EditMode.WorkshopStation_EditModeTests" runstate="Runnable" seed="671471345" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001728" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1165" name="GetAvailableRecipes_EmptyWhenNoRecipesRegistered" fullname="Tests.EditMode.WorkshopStation_EditModeTests.GetAvailableRecipes_EmptyWhenNoRecipesRegistered" methodname="GetAvailableRecipes_EmptyWhenNoRecipesRegistered" classname="Tests.EditMode.WorkshopStation_EditModeTests" runstate="Runnable" seed="1549443261" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001875" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1164" name="GetAvailableRecipes_ReturnsOnlyMatchingStationType" fullname="Tests.EditMode.WorkshopStation_EditModeTests.GetAvailableRecipes_ReturnsOnlyMatchingStationType" methodname="GetAvailableRecipes_ReturnsOnlyMatchingStationType" classname="Tests.EditMode.WorkshopStation_EditModeTests" runstate="Runnable" seed="517061090" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.002043" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1170" name="GetUniqueId_IsNonEmpty_AfterAwake" fullname="Tests.EditMode.WorkshopStation_EditModeTests.GetUniqueId_IsNonEmpty_AfterAwake" methodname="GetUniqueId_IsNonEmpty_AfterAwake" classname="Tests.EditMode.WorkshopStation_EditModeTests" runstate="Runnable" seed="2040636962" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001372" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1172" name="LoadState_DoesNotThrow" fullname="Tests.EditMode.WorkshopStation_EditModeTests.LoadState_DoesNotThrow" methodname="LoadState_DoesNotThrow" classname="Tests.EditMode.WorkshopStation_EditModeTests" runstate="Runnable" seed="1261204677" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001514" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1171" name="SaveState_ReturnsStateWithMatchingUniqueId" fullname="Tests.EditMode.WorkshopStation_EditModeTests.SaveState_ReturnsStateWithMatchingUniqueId" methodname="SaveState_ReturnsStateWithMatchingUniqueId" classname="Tests.EditMode.WorkshopStation_EditModeTests" runstate="Runnable" seed="455964888" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001270" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1169" name="TryProcess_ReturnsFalse_WhenItemsMissing" fullname="Tests.EditMode.WorkshopStation_EditModeTests.TryProcess_ReturnsFalse_WhenItemsMissing" methodname="TryProcess_ReturnsFalse_WhenItemsMissing" classname="Tests.EditMode.WorkshopStation_EditModeTests" runstate="Runnable" seed="1012409178" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.003048" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Missing: Wood x5
+]]></output>
+            </test-case>
+            <test-case id="1168" name="TryProcess_ReturnsFalse_WhenStationTypeMismatch" fullname="Tests.EditMode.WorkshopStation_EditModeTests.TryProcess_ReturnsFalse_WhenStationTypeMismatch" methodname="TryProcess_ReturnsFalse_WhenStationTypeMismatch" classname="Tests.EditMode.WorkshopStation_EditModeTests" runstate="Runnable" seed="1658332607" result="Passed" start-time="2026-04-07 12:25:31Z" end-time="2026-04-07 12:25:31Z" duration="0.001599" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[Saving results to: C:/Users/erike/AppData/LocalLow/o38-games/Consume-Clearly\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
