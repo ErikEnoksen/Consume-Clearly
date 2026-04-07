@@ -28,7 +28,13 @@ namespace Tests.EditMode
                 .GetField("moneyDisplay", BindingFlags.NonPublic | BindingFlags.Instance)
                 .SetValue(manager, display);
 
-            go.SetActive(true); // Awake runs here: moneyDisplay.text = "$0"
+            // In edit-mode tests AddComponent may call Awake immediately (before the
+            // field is wired). Invoke Awake explicitly now that moneyDisplay is set.
+            typeof(MoneyManager)
+                .GetMethod("Awake", BindingFlags.NonPublic | BindingFlags.Instance)
+                .Invoke(manager, null);
+
+            go.SetActive(true);
         }
 
         [TearDown]

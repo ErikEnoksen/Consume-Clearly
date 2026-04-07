@@ -31,6 +31,7 @@ namespace Tests.EditMode
         [Test]
         public void IncreaseFriendship_IncreasesLevel()
         {
+            friendship.CurrentMood = CompanionFriendship.CompanionMood.Neutral;
             friendship.IncreaseFriendship(100);
             Assert.AreEqual(100, friendship.CurrentFriendshipLevel);
         }

@@ -15,7 +15,7 @@ public class DayCycleManager : MonoBehaviour
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(gameObject);
+            DestroyImmediate(gameObject);
             return;
         }
         Instance = this;

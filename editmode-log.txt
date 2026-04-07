@@ -1,9 +1,9 @@
 [Licensing::Module] Trying to connect to existing licensing client channel...
 Built from '6000.2/respin/6000.2.6f2-cc51a95c03' branch; Version is '6000.2.6f2 (4a4dcaec6541) revision 4869578'; Using compiler version '194234433'; Build Type 'Release'
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-erike" at "2026-04-07T12:57:22.1682276Z"
 OS: 'Windows 11  (10.0.26200) 64bit Core' Language: 'en' Physical Memory: 16123 MB
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-erike" at "2026-04-07T12:22:57.2287092Z"
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1
-Date: 2026-04-07T12:22:57Z
+Date: 2026-04-07T12:57:22Z
 
 COMMAND LINE ARGUMENTS:
 C:\Users\erike\Documents\Unity\6000.2.6f2\Editor\Unity.exe
@@ -54,25 +54,25 @@ C:/Users/erike/Documents/GitHub/Consume-Clearly
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [57456]  Target information:
+Player connection [23200]  Target information:
 
-Player connection [57456]  * "[IP] 145.44.148.212 [Port] 55504 [Flags] 2 [Guid] 3813349249 [EditorId] 3813349249 [Version] 1048832 [Id] WindowsEditor(7,Erik) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [23200]  * "[IP] 145.44.148.212 [Port] 55504 [Flags] 2 [Guid] 2240828343 [EditorId] 2240828343 [Version] 1048832 [Id] WindowsEditor(7,Erik) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [57456] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [57456] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [23200] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [23200] Host joined alternative multi-casting on [225.0.0.222:34997]...
+[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 7300, path: "C:/Program Files/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
+[Licensing::Module] LicensingClient has failed validation; ignoring
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
 [Physics::Module] Id: 0xdecafbad
-[Licensing::Client] Code 10 while verifying Licensing Client signature (process Id: 7300, path: "C:/Program Files/Unity Hub/UnityLicensingClient_V1/Unity.Licensing.Client.exe")
-[Licensing::Module] LicensingClient has failed validation; ignoring
 [Licensing::Client] Handshaking with LicensingClient:
   Version:                 1.17.4+4293ba1
-  Session Id:              bd2cb9e691404e12b1d82dca82ea25ca
+  Session Id:              6629568480f3480e9ba66f523bbe2455
   Correlation Id:          b5223d0a5d712874bdad4a13822c92d2
-  External correlation Id: 8320898614719574242
+  External correlation Id: 1013437487702429147
   Machine Id:              f91jJ2euxeXmhmu9keMifauLD3c=
-[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-erike" (connect: 0.00s, validation: 0.00s, handshake: 0.09s)
-[Licensing::IpcConnector] Successfully connected to: "LicenseClient-erike-notifications" at "2026-04-07T12:22:57.3193818Z"
+[Licensing::Module] Successfully connected to LicensingClient on channel: "LicenseClient-erike" (connect: 0.00s, validation: 0.01s, handshake: 0.05s)
+[Licensing::IpcConnector] Successfully connected to: "LicenseClient-erike-notifications" at "2026-04-07T12:57:22.2328101Z"
 [Licensing::Module] Error: Access token is unavailable; failed to update
 [Licensing::Client] Successfully resolved entitlement details
 [Licensing::Module] License group:
@@ -85,9 +85,9 @@ Input System module state changed to: Initialized.
   Product: Unity Personal
   Type: Assigned
   Expiration: Unlimited
-[Licensing::Client] Successfully updated license, isAsync: True, time: 0.02
-[Licensing::Module] Licensing Background thread has ended after 0.12s
-[Package Manager] Connected to IPC stream "Upm-54528" after 3.1 seconds.
+[Licensing::Client] Successfully updated license, isAsync: True, time: 0.01
+[Licensing::Module] Licensing Background thread has ended after 0.09s
+[Package Manager] Connected to IPC stream "Upm-44324" after 0.5 seconds.
 Library Redirect Path: Library/
 [Physics::Module] Selected backend.
 [Physics::Module] Name: PhysX
@@ -95,8 +95,8 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Artifact Garbage Collection - Removed 51 unused hashed content files
-Refreshing native plugins compatible for Editor in 1.00 ms, found 0 plugins.
+Artifact Garbage Collection - Removed 1 unused hashed content files
+Refreshing native plugins compatible for Editor in 1.06 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.2.6f2 (4a4dcaec6541)
 [Subsystems] Discovering subsystems at path C:/Users/erike/Documents/Unity/6000.2.6f2/Editor/Data/Resources/UnitySubsystems
@@ -112,7 +112,7 @@ Initialize mono
 Mono path[0] = 'C:/Users/erike/Documents/Unity/6000.2.6f2/Editor/Data/Managed'
 Mono path[1] = 'C:/Users/erike/Documents/Unity/6000.2.6f2/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Users/erike/Documents/Unity/6000.2.6f2/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56528
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56324
 Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
 Using cacheserver namespaces - metadata:defaultmetadata, artifacts:defaultartifacts
 ImportWorker Server TCP listen port: 0
@@ -120,39 +120,39 @@ AcceleratorClientConnectionCallback - disconnected - :0
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Users/erike/Documents/Unity/6000.2.6f2/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.410256 seconds.
-- Loaded All Assemblies, in 43.975 seconds
+Registered in 0.004039 seconds.
+- Loaded All Assemblies, in  0.643 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.580 seconds
-Domain Reload Profiling: 44553ms
-	BeginReloadAssembly (38296ms)
+- Finished resetting the current domain, in  0.502 seconds
+Domain Reload Profiling: 1142ms
+	BeginReloadAssembly (250ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (4ms)
-	RebuildCommonClasses (1697ms)
-	RebuildNativeTypeToScriptingClass (19ms)
-	initialDomainReloadingComplete (493ms)
-	LoadAllAssembliesAndSetupDomain (3467ms)
-		LoadAssemblies (38285ms)
+		CreateAndSetChildDomain (3ms)
+	RebuildCommonClasses (62ms)
+	RebuildNativeTypeToScriptingClass (18ms)
+	initialDomainReloadingComplete (80ms)
+	LoadAllAssembliesAndSetupDomain (230ms)
+		LoadAssemblies (241ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (3462ms)
-			TypeCache.Refresh (3458ms)
-				TypeCache.ScanAssembly (2505ms)
-			BuildScriptInfoCaches (1ms)
-			ResolveRequiredComponents (2ms)
-	FinalizeReload (582ms)
+		AnalyzeDomain (225ms)
+			TypeCache.Refresh (223ms)
+				TypeCache.ScanAssembly (203ms)
+			BuildScriptInfoCaches (0ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (503ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (523ms)
+		SetupLoadedEditorAssemblies (449ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (93ms)
+			InitializePlatformSupportModulesInManaged (79ms)
 			SetLoadedEditorAssemblies (6ms)
-			BeforeProcessingInitializeOnLoad (100ms)
-			ProcessInitializeOnLoadAttributes (207ms)
-			ProcessInitializeOnLoadMethodAttributes (118ms)
+			BeforeProcessingInitializeOnLoad (90ms)
+			ProcessInitializeOnLoadAttributes (187ms)
+			ProcessInitializeOnLoadMethodAttributes (87ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -241,23 +241,14 @@ Package Manager log level set to [2]
     com.unity.2d.tilemap@1.0.0 (location: C:\Users\erike\Documents\GitHub\Consume-Clearly\Library\PackageCache\com.unity.2d.tilemap@aa5f5491174d)
     com.unity.rendering.light-transport@1.0.1 (location: C:\Users\erike\Documents\GitHub\Consume-Clearly\Library\PackageCache\com.unity.rendering.light-transport@2c9279f90d7c)
 [Subsystems] No new subsystems found in resolved package list.
-[Package Manager] Done registering packages in 0.03 seconds
+[Package Manager] Done registering packages in 0.04 seconds
 [ScriptCompilation] Requested script compilation because: Assetdatabase observed changes in script compilation related files
 Starting: C:\Users\erike\Documents\Unity\6000.2.6f2\Editor\Data\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --profile="Library/Bee/backend1.traceevents" ScriptAssemblies
 WorkingDir: C:/Users/erike/Documents/GitHub/Consume-Clearly
 DisplayProgressbar: Compiling Scripts
-ExitCode: 4 Duration: 0s392ms
-Rebuilding DAG because FileSignature timestamp changed: Library/Bee/1900b0aE-inputdata.json
-*** Tundra requires additional run (0.33 seconds), 0 items updated, 537 evaluated
-Starting: C:\Users\erike\Documents\Unity\6000.2.6f2\Editor\Data\Tools\netcorerun\netcorerun.exe "C:\Users\erike\Documents\Unity\6000.2.6f2\Editor\Data\Tools\BuildPipeline\ScriptCompilationBuildProgram.exe" "Library/Bee/1900b0aE.dag.json" "Library/Bee/1900b0aE-inputdata.json" "Library\Bee\buildprogram0.traceevents"
-WorkingDir: C:/Users/erike/Documents/GitHub/Consume-Clearly
-ExitCode: 0 Duration: 8s915ms
-Starting: C:\Users\erike\Documents\Unity\6000.2.6f2\Editor\Data\bee_backend.exe --ipc --defer-dag-verification --dagfile="Library/Bee/1900b0aE.dag" --continue-on-failure --dagfilejson="Library\Bee\1900b0aE.dag.json" --profile="Library/Bee/backend2.traceevents" ScriptAssemblies
-WorkingDir: C:/Users/erike/Documents/GitHub/Consume-Clearly
-ExitCode: 0 Duration: 29s
-Finished compiling graph: 1005 nodes, 17637 flattened edges (14475 ToBuild, 162 ToUse), maximum node priority 1135
-[ 771/1001  2s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
-[ 985/1001  5s] Csc Library/Bee/artifacts/1900b0aE.dag/Main.dll (+2 others)
+ExitCode: 0 Duration: 6s346ms
+[ 771/1001  0s] ILPP-Configuration Library/ilpp-configuration.nevergeneratedoutput
+[ 985/1001  2s] Csc Library/Bee/artifacts/1900b0aE.dag/Main.dll (+2 others)
 Assets\Scripts\Shop\OpenShop.cs(10,28): warning CS0108: 'OpenShop.collider' hides inherited member 'Component.collider'. Use the new keyword if hiding was intended.
 
 Assets\Scripts\Companion\CompanionGiveItem.cs(33,22): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
@@ -278,23 +269,13 @@ Assets\Scripts\Overlay\CommunityMeter.cs(44,44): warning CS0618: 'Object.FindObj
 
 Assets\Scripts\Companion\CompanionManager.cs(71,31): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
 
-Assets\Scripts\Quests\QuestController.cs(27,23): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
-
-Assets\Scripts\Quests\QuestController.cs(142,49): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
-
-Assets\Scripts\Quests\QuestController.cs(161,41): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
-
-Assets\Scripts\Quests\QuestController.cs(176,59): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
-
 Assets\Scripts\GameManager.cs(86,57): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
 
-Assets\Scripts\Player\PlayerManager.cs(111,46): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
-
-Assets\Scripts\Quests\QuestController.cs(191,49): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+Assets\Scripts\Quests\QuestController.cs(27,23): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
 
 Assets\Scripts\GameManager.cs(121,47): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
 
-Assets\Scripts\Player\PlayerManager.cs(220,39): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
+Assets\Scripts\Player\PlayerManager.cs(111,46): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
 
 Assets\Scripts\Companion\CompanionManager.cs(124,34): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
 
@@ -304,16 +285,43 @@ Assets\Scripts\Companion\CompanionManager.cs(165,31): warning CS0618: 'Object.Fi
 
 Assets\Scripts\Companion\CompanionManager.cs(175,22): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
 
+Assets\Scripts\Player\PlayerManager.cs(220,39): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
+
+Assets\Scripts\Quests\QuestController.cs(142,49): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+
+Assets\Scripts\Quests\QuestController.cs(161,41): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+
+Assets\Scripts\Quests\QuestController.cs(176,59): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+
+Assets\Scripts\Quests\QuestController.cs(191,49): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+
 Assets\Scripts\Companion\CompanionManager.cs(396,28): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+
+Assets\Scripts\Player\MovementScript.cs(35,22): warning CS0414: The field 'MovementScript.jumpApplied' is assigned but its value is never used
 
 Assets\Scripts\Companion\CompanionFollow2D.cs(23,40): warning CS0414: The field 'CompanionFollow2D.lookAheadDistance' is assigned but its value is never used
 
 Assets\Scripts\Player\Controller\SwingingController.cs(10,36): warning CS0414: The field 'SwingingController.maxSpeed' is assigned but its value is never used
+[ 987/1001  0s] Csc Library/Bee/artifacts/1900b0aE.dag/EditModeTests.dll (+2 others)
+[ 989/1001  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Main.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/Main.dll, with 134 defines and 259 references
 
-Assets\Scripts\Player\MovementScript.cs(35,22): warning CS0414: The field 'MovementScript.jumpApplied' is assigned but its value is never used
-[BUSY       6s] Csc Library/Bee/artifacts/1900b0aE.dag/EditModeTests.dll (+2 others)
-[ 993/1001 10s] Csc Library/Bee/artifacts/1900b0aE.dag/EditModeTests.dll (+2 others)
-[ 994/1001  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/EditModeTests.dll (+pdb)
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[ 990/1001  0s] CopyFiles Library/ScriptAssemblies/Main.pdb
+[ 991/1001  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/PlayModeTests.dll (+pdb)
+Processing assembly Library/Bee/artifacts/1900b0aE.dag/PlayModeTests.dll, with 134 defines and 251 references
+
+processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
+
+running Unity.Jobs.CodeGen.JobsILPostProcessor
+
+running zzzUnity.Burst.CodeGen.BurstILPostProcessor
+[ 994/1001  0s] CopyFiles Library/ScriptAssemblies/Main.dll
+[ 995/1001  0s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/EditModeTests.dll (+pdb)
 Processing assembly Library/Bee/artifacts/1900b0aE.dag/EditModeTests.dll, with 132 defines and 267 references
 
 processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
@@ -321,11 +329,9 @@ processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.Burst
 running Unity.Jobs.CodeGen.JobsILPostProcessor
 
 running zzzUnity.Burst.CodeGen.BurstILPostProcessor
-[ 995/1001  0s] CopyFiles Library/ScriptAssemblies/EditModeTests.pdb
-[ 996/1001  0s] CopyFiles Library/ScriptAssemblies/EditModeTests.dll
-[ 997/1001  5s] Csc Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll (+2 others)
-[BUSY       6s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp.dll (+pdb)
-[ 998/1001  7s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp.dll (+pdb)
+[ 996/1001  0s] CopyFiles Library/ScriptAssemblies/EditModeTests.pdb
+[ 997/1001  0s] CopyFiles Library/ScriptAssemblies/EditModeTests.dll
+[ 998/1001  1s] ILPostProcess Library/Bee/artifacts/1900b0aE.dag/post-processed/Assembly-CSharp.dll (+pdb)
 Processing assembly Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp.dll, with 134 defines and 316 references
 
 processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.BurstILPostProcessor
@@ -333,9 +339,7 @@ processors: Unity.Jobs.CodeGen.JobsILPostProcessor, zzzUnity.Burst.CodeGen.Burst
 running Unity.Jobs.CodeGen.JobsILPostProcessor
 
 running zzzUnity.Burst.CodeGen.BurstILPostProcessor
-[ 999/1001  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.pdb
-[1000/1001  0s] CopyFiles Library/ScriptAssemblies/Assembly-CSharp.dll
-*** Tundra build success (29.52 seconds), 10 items updated, 1001 evaluated
+*** Tundra build success (6.26 seconds), 11 items updated, 1001 evaluated
 Assets\Scripts\Shop\OpenShop.cs(10,28): warning CS0108: 'OpenShop.collider' hides inherited member 'Component.collider'. Use the new keyword if hiding was intended.
 Assets\Scripts\Companion\CompanionGiveItem.cs(33,22): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
 Assets\Scripts\Dialogue\DialogueTrigger.cs(35,27): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
@@ -346,151 +350,128 @@ Assets\Scripts\Dialogue\Dialogue.cs(54,29): warning CS0618: 'Object.FindObjectOf
 Assets\Scripts\Shop\OpenShop.cs(20,18): warning CS0618: 'GameObject.active' is obsolete: 'GameObject.active is obsolete. Use GameObject.SetActive(), GameObject.activeSelf or GameObject.activeInHierarchy.'
 Assets\Scripts\Overlay\CommunityMeter.cs(44,44): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
 Assets\Scripts\Companion\CompanionManager.cs(71,31): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
-Assets\Scripts\Quests\QuestController.cs(27,23): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
-Assets\Scripts\Quests\QuestController.cs(142,49): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
-Assets\Scripts\Quests\QuestController.cs(161,41): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
-Assets\Scripts\Quests\QuestController.cs(176,59): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
 Assets\Scripts\GameManager.cs(86,57): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
-Assets\Scripts\Player\PlayerManager.cs(111,46): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
-Assets\Scripts\Quests\QuestController.cs(191,49): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+Assets\Scripts\Quests\QuestController.cs(27,23): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
 Assets\Scripts\GameManager.cs(121,47): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
-Assets\Scripts\Player\PlayerManager.cs(220,39): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
+Assets\Scripts\Player\PlayerManager.cs(111,46): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
 Assets\Scripts\Companion\CompanionManager.cs(124,34): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
 Assets\Scripts\Companion\CompanionManager.cs(136,31): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
 Assets\Scripts\Companion\CompanionManager.cs(165,31): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
 Assets\Scripts\Companion\CompanionManager.cs(175,22): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
+Assets\Scripts\Player\PlayerManager.cs(220,39): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'
+Assets\Scripts\Quests\QuestController.cs(142,49): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+Assets\Scripts\Quests\QuestController.cs(161,41): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+Assets\Scripts\Quests\QuestController.cs(176,59): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+Assets\Scripts\Quests\QuestController.cs(191,49): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
 Assets\Scripts\Companion\CompanionManager.cs(396,28): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'
+Assets\Scripts\Player\MovementScript.cs(35,22): warning CS0414: The field 'MovementScript.jumpApplied' is assigned but its value is never used
 Assets\Scripts\Companion\CompanionFollow2D.cs(23,40): warning CS0414: The field 'CompanionFollow2D.lookAheadDistance' is assigned but its value is never used
 Assets\Scripts\Player\Controller\SwingingController.cs(10,36): warning CS0414: The field 'SwingingController.maxSpeed' is assigned but its value is never used
-Assets\Scripts\Player\MovementScript.cs(35,22): warning CS0414: The field 'MovementScript.jumpApplied' is assigned but its value is never used
-AssetDatabase: script compilation time: 40.842047s
+AssetDatabase: script compilation time: 7.342597s
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in 37.864 seconds
-Refreshing native plugins compatible for Editor in 125.13 ms, found 3 plugins.
+- Loaded All Assemblies, in  4.354 seconds
+Refreshing native plugins compatible for Editor in 13.37 ms, found 3 plugins.
 Native extension for WindowsStandalone target not found
-[Licensing::Client] Successfully resolved entitlement details
-[Licensing::Module] License group:
-  Id: F4-ZJ76-5M2C-883M-GUN2-XXXX
-  Product: Unity Personal
-  Type: ULF
-  Expiration: Unlimited
-[Licensing::Module] License group:
-  Id: 1375776284852-UnityPersXXXX
-  Product: Unity Personal
-  Type: Assigned
-  Expiration: Unlimited
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  7.549 seconds
-Domain Reload Profiling: 45406ms
-	BeginReloadAssembly (382ms)
+- Finished resetting the current domain, in 17.320 seconds
+Domain Reload Profiling: 21639ms
+	BeginReloadAssembly (800ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (17ms)
+		DisableScriptedObjects (37ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (153ms)
-	RebuildCommonClasses (51ms)
-	RebuildNativeTypeToScriptingClass (18ms)
-	initialDomainReloadingComplete (43ms)
-	LoadAllAssembliesAndSetupDomain (37363ms)
-		LoadAssemblies (36086ms)
+		CreateAndSetChildDomain (216ms)
+	RebuildCommonClasses (131ms)
+	RebuildNativeTypeToScriptingClass (52ms)
+	initialDomainReloadingComplete (136ms)
+	LoadAllAssembliesAndSetupDomain (3199ms)
+		LoadAssemblies (2637ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (1423ms)
-			TypeCache.Refresh (1326ms)
-				TypeCache.ScanAssembly (1312ms)
-			BuildScriptInfoCaches (79ms)
-			ResolveRequiredComponents (15ms)
-	FinalizeReload (7550ms)
+		AnalyzeDomain (933ms)
+			TypeCache.Refresh (632ms)
+				TypeCache.ScanAssembly (598ms)
+			BuildScriptInfoCaches (248ms)
+			ResolveRequiredComponents (42ms)
+	FinalizeReload (17322ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (6308ms)
+		SetupLoadedEditorAssemblies (16223ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (32ms)
-			SetLoadedEditorAssemblies (5ms)
-			BeforeProcessingInitializeOnLoad (220ms)
-			ProcessInitializeOnLoadAttributes (5951ms)
-			ProcessInitializeOnLoadMethodAttributes (90ms)
-			AfterProcessingInitializeOnLoad (9ms)
-			EditorAssembliesLoaded (0ms)
+			InitializePlatformSupportModulesInManaged (92ms)
+			SetLoadedEditorAssemblies (16ms)
+			BeforeProcessingInitializeOnLoad (771ms)
+			ProcessInitializeOnLoadAttributes (15048ms)
+			ProcessInitializeOnLoadMethodAttributes (263ms)
+			AfterProcessingInitializeOnLoad (31ms)
+			EditorAssembliesLoaded (2ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (12ms)
-Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Roboto-Bold SDF.asset using Guid(5302535af1044152a457ed104f1f4b91) (NativeFormatImporter) -> (artifact id: 'f8c2323cb86f0e28e12059c0f6f0e89f') in 0.1154439 seconds
-Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Anton SDF.asset using Guid(8a89fa14b10d46a99122fd4f73fca9a2) (NativeFormatImporter) -> (artifact id: '69dad0ad66e191ddd7a227fdb0f889e2') in 0.0467218 seconds
-Refreshing native plugins compatible for Editor in 2.16 ms, found 3 plugins.
+		AwakeInstancesAfterBackupRestoration (43ms)
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Roboto-Bold SDF.asset using Guid(5302535af1044152a457ed104f1f4b91) (NativeFormatImporter) -> (artifact id: 'f8c2323cb86f0e28e12059c0f6f0e89f') in 0.3330872 seconds
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Anton SDF.asset using Guid(8a89fa14b10d46a99122fd4f73fca9a2) (NativeFormatImporter) -> (artifact id: '69dad0ad66e191ddd7a227fdb0f889e2') in 0.0575048 seconds
+Refreshing native plugins compatible for Editor in 6.18 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Asset Pipeline Refresh (id=4387f7d4946be7a4a8d0c6b3cd0f679f): Total: 95.437 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
+Asset Pipeline Refresh (id=716f58b2548887b489b60a29750eb940): Total: 32.340 seconds - Initiated by InitialRefreshV2(ForceSynchronousImport)
 	Summary:
 		Imports: total=0 (actual=0, local cache=0, cache server=0)
-		Asset DB Process Time: managed=8 ms, native=16180 ms
-		Asset DB Callback time: managed=342 ms, native=111 ms
-		Scripting: domain reloads=1, domain reload time=37865 ms, compile time=40844 ms, other=84 ms
+		Asset DB Process Time: managed=19 ms, native=19559 ms
+		Asset DB Callback time: managed=899 ms, native=77 ms
+		Scripting: domain reloads=1, domain reload time=4356 ms, compile time=7348 ms, other=79 ms
 		Project Asset Count: scripts=1418, non-scripts=3877
-		Asset File Changes: new=0, changed=4, moved=0, deleted=0
+		Asset File Changes: new=0, changed=8, moved=0, deleted=0
 		Scan Filter Count: 0
-	InvokeCustomDependenciesCallbacks: 0.003ms
-	InvokePackagesCallback: 103.469ms
-	ApplyChangesToAssetFolders: 1.450ms
-	Scan: 671.360ms
-	OnSourceAssetsModified: 1.817ms
-	CategorizeAssetsWithTransientArtifact: 5112.461ms
-	ProcessAssetsWithTransientArtifactChanges: 105.020ms
-	CategorizeAssets: 206.826ms
-	ImportOutOfDateAssets: 7884.117ms (-33136.554ms without children)
-		ImportManagerImport: 171.810ms (5.323ms without children)
-			ImportInProcess: 166.487ms
-		CompileScripts: 40844.277ms
-		ReloadNativeAssets: 0.077ms
-		UnloadImportedAssets: 1.287ms
-		ReloadImportedAssets: 0.000ms
-		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 1.775ms
-		InitializingProgressBar: 0.013ms
-		PostProcessAllAssetNotificationsAddChangedAssets: 0.002ms
-		OnDemandSchedulerStart: 1.431ms
-	PostProcessAllAssets: 346.545ms
-	Hotreload: 5.372ms
-	GatherAllCurrentPrimaryArtifactRevisions: 0.007ms
-	UnloadStreamsBegin: 2.658ms
-	PersistCurrentRevisions: 0.602ms
-	UnloadStreamsEnd: 0.002ms
-	GenerateScriptTypeHashes: 28.754ms
-	Untracked: 80995.632ms
+	InvokeCustomDependenciesCallbacks: 0.004ms
+	InvokePackagesCallback: 54.818ms
+	ApplyChangesToAssetFolders: 1.789ms
+	Scan: 680.831ms
+	OnSourceAssetsModified: 1.337ms
+	CategorizeAssetsWithTransientArtifact: 72.016ms
+	ProcessAssetsWithTransientArtifactChanges: 276.977ms
+	CategorizeAssets: 368.901ms
+	ImportOutOfDateAssets: 17776.294ms (10018.502ms without children)
+		ImportManagerImport: 398.684ms (5.104ms without children)
+			ImportInProcess: 393.579ms
+		CompileScripts: 7347.799ms
+		ReloadNativeAssets: 0.155ms
+		UnloadImportedAssets: 3.436ms
+		ReloadImportedAssets: 0.001ms
+		EnsureUptoDateAssetsAreRegisteredWithGuidPM: 4.955ms
+		InitializingProgressBar: 0.047ms
+		PostProcessAllAssetNotificationsAddChangedAssets: 0.003ms
+		OnDemandSchedulerStart: 2.711ms
+	PostProcessAllAssets: 915.368ms
+	Hotreload: 12.800ms
+	GatherAllCurrentPrimaryArtifactRevisions: 0.004ms
+	UnloadStreamsBegin: 1.875ms
+	PersistCurrentRevisions: 0.771ms
+	UnloadStreamsEnd: 0.711ms
+	GenerateScriptTypeHashes: 51.019ms
+	Untracked: 12175.763ms
 
 Application.AssetDatabase Initial Refresh End
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
-Scanning for USB devices : 3.875ms
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
+Scanning for USB devices : 7.567ms
 Initializing Unity extensions:
 [MODES] ModeService[none].Initialize
 [MODES] ModeService[none].LoadModes
 [MODES] Loading mode Default (0) for mode-current-id-Consume-Clearly
 Unloading 17 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5420 unused Assets / (4.4 MB). Loaded Objects now: 6178.
-Memory consumption went from 190.6 MB to 186.2 MB.
-Total: 16.896900 ms (FindLiveObjects: 0.595300 ms CreateObjectMapping: 0.489500 ms MarkObjects: 13.426800 ms  DeleteObjects: 2.383400 ms)
+Unloading 5420 unused Assets / (3.6 MB). Loaded Objects now: 6177.
+Memory consumption went from 184.9 MB to 181.4 MB.
+Total: 37.830400 ms (FindLiveObjects: 1.205000 ms CreateObjectMapping: 0.936700 ms MarkObjects: 30.175500 ms  DeleteObjects: 5.510700 ms)
 
-[Project] Loading completed in 152.503 seconds
-	Project init time: 				151.125 seconds
+[Project] Loading completed in 40.206 seconds
+	Project init time: 				37.901 seconds
 		Template init time: 		0.000 seconds
-		Package Manager init time: 		3.121 seconds
-		Asset Database init time: 		1.679 seconds
-		Global illumination init time: 	0.015 seconds
-		Assemblies load time: 			44.646 seconds
-		Unity extensions init time: 	0.009 seconds
-		Asset Database refresh time: 	95.438 seconds
-	Scene opening time: 			1.268 seconds
-##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1775564729711,"processId":54528,"projectLoad":152.5025794,"projectInit":151.1249795,"templateInit":0.0,"packageManagerInit":3.1210919,"assetDatabaseInit":1.6786129,"globalIlluminationInit":0.0148371,"assembliesLoad":44.6462818,"unityExtensionsInit":0.0087705,"assetDatabaseRefresh":95.4379527,"sceneOpening":1.2676711}
-##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1775564729711,"processId":54528,"editorVersion":"6000.2.6f2 (4a4dcaec6541)","branch":"6000.2/respin/6000.2.6f2-cc51a95c03","buildType":"Release","platform":"Windows"}
-[Licensing::Client] Successfully resolved entitlement details
-[Licensing::Module] License group:
-  Id: F4-ZJ76-5M2C-883M-GUN2-XXXX
-  Product: Unity Personal
-  Type: ULF
-  Expiration: Unlimited
-[Licensing::Module] License group:
-  Id: 1375776284852-UnityPersXXXX
-  Product: Unity Personal
-  Type: Assigned
-  Expiration: Unlimited
-Asset Pipeline Refresh (id=29b66333bb8066241be4b909d873eb19): Total: 0.073 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
-[Licensing::Client] Successfully resolved entitlement details
+		Package Manager init time: 		0.521 seconds
+		Asset Database init time: 		1.346 seconds
+		Global illumination init time: 	0.012 seconds
+		Assemblies load time: 			1.182 seconds
+		Unity extensions init time: 	0.022 seconds
+		Asset Database refresh time: 	32.341 seconds
+	Scene opening time: 			2.085 seconds
+##utp:{"type":"ProjectInfo","version":2,"phase":"Immediate","time":1775566682341,"processId":44324,"projectLoad":40.2060375,"projectInit":37.9005112,"templateInit":0.0,"packageManagerInit":0.5207833,"assetDatabaseInit":1.3455538,"globalIlluminationInit":0.0122076,"assembliesLoad":1.1823373,"unityExtensionsInit":0.0218095,"assetDatabaseRefresh":32.3412415,"sceneOpening":2.0852815}
+##utp:{"type":"EditorInfo","version":2,"phase":"Immediate","time":1775566682341,"processId":44324,"editorVersion":"6000.2.6f2 (4a4dcaec6541)","branch":"6000.2/respin/6000.2.6f2-cc51a95c03","buildType":"Release","platform":"Windows"}
+Asset Pipeline Refresh (id=0370a8b87e6f4d047b04a837315f2062): Total: 0.131 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
 Running tests for ExecutionSettings with details:
 targetPlatform = 
 playerHeartbeatTimeout = 600
@@ -518,11 +499,11 @@ UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
 (Filename: ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEditor.TestRunner/CommandLineTest/Executer.cs Line: 53)
 
 [UnityConnectServicesConfig] config is NOT valid, switching to default
-Created GICache directory at C:/Users/erike/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.035s, timestamps: [152.521 - 152.556]
+Created GICache directory at C:/Users/erike/AppData/LocalLow/Unity/Caches/GiCache. Took: 0.121s, timestamps: [40.237 - 40.359]
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 1 unused Assets / (0.5 KB). Loaded Objects now: 6216.
-Memory consumption went from 163.8 MB to 163.8 MB.
-Total: 11.237100 ms (FindLiveObjects: 0.296800 ms CreateObjectMapping: 0.139200 ms MarkObjects: 10.763500 ms  DeleteObjects: 0.036200 ms)
+Unloading 1 unused Assets / (0.5 KB). Loaded Objects now: 6215.
+Memory consumption went from 158.0 MB to 158.0 MB.
+Total: 35.596000 ms (FindLiveObjects: 0.747900 ms CreateObjectMapping: 0.372600 ms MarkObjects: 34.404200 ms  DeleteObjects: 0.069100 ms)
 
 Executing IPrebuildSetup for: Unity.PerformanceTesting.Editor.TestRunBuilder.
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
@@ -2516,7 +2497,7 @@ UnityEngine.Debug:Log (object)
 CompanionFriendship:CheckStateChange () (at Assets/Scripts/Companion/CompanionFriendship.cs:74)
 CompanionFriendship:IncreaseFriendship (int) (at Assets/Scripts/Companion/CompanionFriendship.cs:88)
 CompanionFriendship:GiveDailyConversationBonus () (at Assets/Scripts/Companion/CompanionFriendship.cs:112)
-Tests.EditMode.CompanionFriendship_EditModeTests:GiveDailyConversationBonus_IncreasesFriendship () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:159)
+Tests.EditMode.CompanionFriendship_EditModeTests:GiveDailyConversationBonus_IncreasesFriendship () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:160)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -2568,7 +2549,7 @@ UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:IncreaseFriendship (int) (at Assets/Scripts/Companion/CompanionFriendship.cs:90)
 CompanionFriendship:GiveDailyConversationBonus () (at Assets/Scripts/Companion/CompanionFriendship.cs:112)
-Tests.EditMode.CompanionFriendship_EditModeTests:GiveDailyConversationBonus_IncreasesFriendship () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:159)
+Tests.EditMode.CompanionFriendship_EditModeTests:GiveDailyConversationBonus_IncreasesFriendship () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:160)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -2619,7 +2600,7 @@ UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,st
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:GiveDailyConversationBonus () (at Assets/Scripts/Companion/CompanionFriendship.cs:114)
-Tests.EditMode.CompanionFriendship_EditModeTests:GiveDailyConversationBonus_IncreasesFriendship () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:159)
+Tests.EditMode.CompanionFriendship_EditModeTests:GiveDailyConversationBonus_IncreasesFriendship () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:160)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -2672,7 +2653,7 @@ UnityEngine.Debug:Log (object)
 CompanionFriendship:CheckStateChange () (at Assets/Scripts/Companion/CompanionFriendship.cs:74)
 CompanionFriendship:IncreaseFriendship (int) (at Assets/Scripts/Companion/CompanionFriendship.cs:88)
 CompanionFriendship:GiveDailyConversationBonus () (at Assets/Scripts/Companion/CompanionFriendship.cs:112)
-Tests.EditMode.CompanionFriendship_EditModeTests:GiveDailyConversationBonus_OnlyAppliesToFirstCallPerDay () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:166)
+Tests.EditMode.CompanionFriendship_EditModeTests:GiveDailyConversationBonus_OnlyAppliesToFirstCallPerDay () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:167)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -2724,7 +2705,7 @@ UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:IncreaseFriendship (int) (at Assets/Scripts/Companion/CompanionFriendship.cs:90)
 CompanionFriendship:GiveDailyConversationBonus () (at Assets/Scripts/Companion/CompanionFriendship.cs:112)
-Tests.EditMode.CompanionFriendship_EditModeTests:GiveDailyConversationBonus_OnlyAppliesToFirstCallPerDay () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:166)
+Tests.EditMode.CompanionFriendship_EditModeTests:GiveDailyConversationBonus_OnlyAppliesToFirstCallPerDay () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:167)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -2775,7 +2756,7 @@ UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,st
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:GiveDailyConversationBonus () (at Assets/Scripts/Companion/CompanionFriendship.cs:114)
-Tests.EditMode.CompanionFriendship_EditModeTests:GiveDailyConversationBonus_OnlyAppliesToFirstCallPerDay () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:166)
+Tests.EditMode.CompanionFriendship_EditModeTests:GiveDailyConversationBonus_OnlyAppliesToFirstCallPerDay () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:167)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -2826,7 +2807,7 @@ UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,st
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:set_CurrentMood (CompanionFriendship/CompanionMood) (at Assets/Scripts/Companion/CompanionFriendship.cs:26)
-Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_AppliesAngryMultiplier () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:57)
+Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_AppliesAngryMultiplier () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:58)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -2878,7 +2859,7 @@ UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:CheckStateChange () (at Assets/Scripts/Companion/CompanionFriendship.cs:74)
 CompanionFriendship:IncreaseFriendship (int) (at Assets/Scripts/Companion/CompanionFriendship.cs:88)
-Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_AppliesAngryMultiplier () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:58)
+Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_AppliesAngryMultiplier () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:59)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -2929,7 +2910,7 @@ UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,st
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:IncreaseFriendship (int) (at Assets/Scripts/Companion/CompanionFriendship.cs:90)
-Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_AppliesAngryMultiplier () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:58)
+Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_AppliesAngryMultiplier () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:59)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -2981,7 +2962,7 @@ UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:CheckStateChange () (at Assets/Scripts/Companion/CompanionFriendship.cs:74)
 CompanionFriendship:IncreaseFriendship (int) (at Assets/Scripts/Companion/CompanionFriendship.cs:88)
-Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_AppliesHappyMultiplier () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:49)
+Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_AppliesHappyMultiplier () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:50)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -3032,7 +3013,7 @@ UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,st
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:IncreaseFriendship (int) (at Assets/Scripts/Companion/CompanionFriendship.cs:90)
-Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_AppliesHappyMultiplier () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:49)
+Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_AppliesHappyMultiplier () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:50)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -3083,7 +3064,7 @@ UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,st
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:set_CurrentMood (CompanionFriendship/CompanionMood) (at Assets/Scripts/Companion/CompanionFriendship.cs:26)
-Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_AppliesNeutralMultiplier () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:66)
+Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_AppliesNeutralMultiplier () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:67)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -3135,7 +3116,7 @@ UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:CheckStateChange () (at Assets/Scripts/Companion/CompanionFriendship.cs:74)
 CompanionFriendship:IncreaseFriendship (int) (at Assets/Scripts/Companion/CompanionFriendship.cs:88)
-Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_AppliesNeutralMultiplier () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:67)
+Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_AppliesNeutralMultiplier () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:68)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -3186,7 +3167,7 @@ UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,st
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:IncreaseFriendship (int) (at Assets/Scripts/Companion/CompanionFriendship.cs:90)
-Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_AppliesNeutralMultiplier () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:67)
+Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_AppliesNeutralMultiplier () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:68)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -3238,7 +3219,7 @@ UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:CheckStateChange () (at Assets/Scripts/Companion/CompanionFriendship.cs:74)
 CompanionFriendship:IncreaseFriendship (int) (at Assets/Scripts/Companion/CompanionFriendship.cs:88)
-Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_ClampsAtMax () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:41)
+Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_ClampsAtMax () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:42)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -3289,7 +3270,7 @@ UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,st
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:IncreaseFriendship (int) (at Assets/Scripts/Companion/CompanionFriendship.cs:90)
-Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_ClampsAtMax () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:41)
+Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_ClampsAtMax () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:42)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -3332,7 +3313,58 @@ UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
 
 (Filename: Assets/Scripts/Companion/CompanionFriendship.cs Line: 90)
 
-Checking state change. Current friendship level: 125, Current mood: Happy, Current state: Acquaintance, Previous state: Stranger
+Mood changed to: Neutral
+UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
+UnityEngine.StackTraceUtility:ExtractStackTrace ()
+UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
+UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
+UnityEngine.Logger:Log (UnityEngine.LogType,object)
+UnityEngine.Debug:Log (object)
+CompanionFriendship:set_CurrentMood (CompanionFriendship/CompanionMood) (at Assets/Scripts/Companion/CompanionFriendship.cs:26)
+Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_IncreasesLevel () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:34)
+System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
+System.Reflection.MethodBase:Invoke (object,object[])
+NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
+NUnit.Framework.Internal.MethodWrapper:Invoke (object,object[])
+NUnit.Framework.Internal.Commands.TestMethodCommand:RunNonAsyncTestMethod (NUnit.Framework.Internal.ITestExecutionContext)
+NUnit.Framework.Internal.Commands.TestMethodCommand:RunTestMethod (NUnit.Framework.Internal.ITestExecutionContext)
+NUnit.Framework.Internal.Commands.TestMethodCommand:Execute (NUnit.Framework.Internal.ITestExecutionContext)
+UnityEngine.TestTools.UnityTestMethodCommand:Execute (NUnit.Framework.Internal.ITestExecutionContext) (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Commands/UnityTestMethodCommand.cs:19)
+UnityEngine.TestRunner.NUnitExtensions.Runner.UnityLogCheckDelegatingCommand/<>c__DisplayClass2_0:<Execute>b__0 () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Runner/UnityLogCheckDelegatingCommand.cs:24)
+UnityEngine.TestRunner.NUnitExtensions.Runner.UnityLogCheckDelegatingCommand:CaptureException (NUnit.Framework.Internal.TestResult,System.Action) (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Runner/UnityLogCheckDelegatingCommand.cs:72)
+UnityEngine.TestRunner.NUnitExtensions.Runner.UnityLogCheckDelegatingCommand:ExecuteAndCheckLog (UnityEngine.TestTools.Logging.LogScope,NUnit.Framework.Internal.TestResult,System.Action) (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Runner/UnityLogCheckDelegatingCommand.cs:83)
+UnityEngine.TestRunner.NUnitExtensions.Runner.UnityLogCheckDelegatingCommand:Execute (NUnit.Framework.Internal.ITestExecutionContext) (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Runner/UnityLogCheckDelegatingCommand.cs:24)
+UnityEngine.TestRunner.NUnitExtensions.Runner.UnityLogCheckDelegatingCommand/<ExecuteEnumerable>d__3:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Runner/UnityLogCheckDelegatingCommand.cs:35)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<NUnit.Framework.ITestAction>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:212)
+UnityEngine.TestTools.ImmediateEnumerableCommand:Execute (NUnit.Framework.Internal.ITestExecutionContext) (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Commands/ImmediateEnumerableCommand.cs:18)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<System.Reflection.MethodInfo>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:219)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<System.Reflection.MethodInfo>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:212)
+UnityEngine.TestTools.BeforeAfterTestCommandBase`1/<ExecuteEnumerable>d__16<UnityEngine.TestTools.IOuterUnityTestAction>:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Commands/BeforeAfterTestCommandBase.cs:212)
+UnityEngine.TestTools.RetryCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Commands/RetryCommand.cs:37)
+UnityEngine.TestTools.RepeatCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Commands/RepeatCommand.cs:36)
+UnityEngine.TestTools.IgnoreTestCommand/<ExecuteEnumerable>d__3:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Commands/IgnoreTestCommand.cs:42)
+UnityEngine.TestTools.StrictCheckCommand/<ExecuteEnumerable>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Commands/StrictCheckCommand.cs:29)
+UnityEngine.TestRunner.NUnitExtensions.Runner.DefaultTestWorkItem/<PerformWork>d__2:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Runner/DefaultTestWorkItem.cs:50)
+UnityEngine.TestRunner.NUnitExtensions.Runner.CompositeWorkItem/<RunChildren>d__17:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Runner/CompositeWorkItem.cs:207)
+UnityEngine.TestRunner.NUnitExtensions.Runner.CompositeWorkItem/<PerformWork>d__13:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Runner/CompositeWorkItem.cs:82)
+UnityEngine.TestRunner.NUnitExtensions.Runner.CompositeWorkItem/<RunChildren>d__17:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Runner/CompositeWorkItem.cs:207)
+UnityEngine.TestRunner.NUnitExtensions.Runner.CompositeWorkItem/<PerformWork>d__13:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Runner/CompositeWorkItem.cs:82)
+UnityEngine.TestRunner.NUnitExtensions.Runner.CompositeWorkItem/<RunChildren>d__17:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Runner/CompositeWorkItem.cs:207)
+UnityEngine.TestRunner.NUnitExtensions.Runner.CompositeWorkItem/<PerformWork>d__13:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Runner/CompositeWorkItem.cs:82)
+UnityEngine.TestRunner.NUnitExtensions.Runner.CompositeWorkItem/<RunChildren>d__17:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Runner/CompositeWorkItem.cs:207)
+UnityEngine.TestRunner.NUnitExtensions.Runner.CompositeWorkItem/<PerformWork>d__13:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Runner/CompositeWorkItem.cs:82)
+UnityEngine.TestRunner.NUnitExtensions.Runner.CompositeWorkItem/<RunChildren>d__17:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Runner/CompositeWorkItem.cs:207)
+UnityEngine.TestRunner.NUnitExtensions.Runner.CompositeWorkItem/<PerformWork>d__13:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEngine.TestRunner/NUnitExtensions/Runner/CompositeWorkItem.cs:82)
+UnityEditor.TestTools.TestRunner.EditModeRunner:MoveNextAndUpdateYieldObject () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEditor.TestRunner/TestRunner/EditModeRunner.cs:167)
+UnityEditor.TestTools.TestRunner.EditModeRunner:TestConsumer (UnityEditor.TestTools.TestRunner.TestRunnerStateSerializer) (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEditor.TestRunner/TestRunner/EditModeRunner.cs:200)
+UnityEditor.TestTools.TestRunner.TestRun.Tasks.EditModeRunTask/<Execute>d__1:MoveNext () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEditor.TestRunner/TestRun/Tasks/EditModeRunTask.cs:48)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:173)
+UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:108)
+UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
+
+(Filename: Assets/Scripts/Companion/CompanionFriendship.cs Line: 26)
+
+Checking state change. Current friendship level: 100, Current mood: Neutral, Current state: Acquaintance, Previous state: Stranger
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
@@ -3341,7 +3373,7 @@ UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:CheckStateChange () (at Assets/Scripts/Companion/CompanionFriendship.cs:74)
 CompanionFriendship:IncreaseFriendship (int) (at Assets/Scripts/Companion/CompanionFriendship.cs:88)
-Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_IncreasesLevel () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:34)
+Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_IncreasesLevel () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:35)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -3384,7 +3416,7 @@ UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
 
 (Filename: Assets/Scripts/Companion/CompanionFriendship.cs Line: 74)
 
-Increased friendship by 125 (base: 100, multiplier: 1.25). Current level: 125, Acquaintance
+Increased friendship by 100 (base: 100, multiplier: 1). Current level: 100, Acquaintance
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
 UnityEngine.StackTraceUtility:ExtractStackTrace ()
 UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOption,string,UnityEngine.Object)
@@ -3392,7 +3424,7 @@ UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,st
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:IncreaseFriendship (int) (at Assets/Scripts/Companion/CompanionFriendship.cs:90)
-Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_IncreasesLevel () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:34)
+Tests.EditMode.CompanionFriendship_EditModeTests:IncreaseFriendship_IncreasesLevel () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:35)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -3443,7 +3475,7 @@ UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,st
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:set_CurrentMood (CompanionFriendship/CompanionMood) (at Assets/Scripts/Companion/CompanionFriendship.cs:26)
-Tests.EditMode.CompanionFriendship_EditModeTests:Multiplier_Is0Point75_ForAngryMood () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:150)
+Tests.EditMode.CompanionFriendship_EditModeTests:Multiplier_Is0Point75_ForAngryMood () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:151)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -3494,7 +3526,7 @@ UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,st
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:set_CurrentMood (CompanionFriendship/CompanionMood) (at Assets/Scripts/Companion/CompanionFriendship.cs:26)
-Tests.EditMode.CompanionFriendship_EditModeTests:Multiplier_IsOne_ForNeutralMood () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:136)
+Tests.EditMode.CompanionFriendship_EditModeTests:Multiplier_IsOne_ForNeutralMood () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:137)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -3546,7 +3578,7 @@ UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:CheckStateChange () (at Assets/Scripts/Companion/CompanionFriendship.cs:74)
 CompanionFriendship:IncreaseFriendship (int) (at Assets/Scripts/Companion/CompanionFriendship.cs:88)
-Tests.EditMode.CompanionFriendship_EditModeTests:OnFriendshipLevelChanged_FiresWhenIncreased () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:180)
+Tests.EditMode.CompanionFriendship_EditModeTests:OnFriendshipLevelChanged_FiresWhenIncreased () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:181)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -3597,7 +3629,7 @@ UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,st
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:IncreaseFriendship (int) (at Assets/Scripts/Companion/CompanionFriendship.cs:90)
-Tests.EditMode.CompanionFriendship_EditModeTests:OnFriendshipLevelChanged_FiresWhenIncreased () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:180)
+Tests.EditMode.CompanionFriendship_EditModeTests:OnFriendshipLevelChanged_FiresWhenIncreased () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:181)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -3649,7 +3681,7 @@ UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:CheckStateChange () (at Assets/Scripts/Companion/CompanionFriendship.cs:74)
 CompanionFriendship:IncreaseFriendship (int) (at Assets/Scripts/Companion/CompanionFriendship.cs:88)
-Tests.EditMode.CompanionFriendship_EditModeTests:OnStateChanged_FiresWhenStateChanges () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:201)
+Tests.EditMode.CompanionFriendship_EditModeTests:OnStateChanged_FiresWhenStateChanges () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:202)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -3700,7 +3732,7 @@ UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,st
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
 CompanionFriendship:IncreaseFriendship (int) (at Assets/Scripts/Companion/CompanionFriendship.cs:90)
-Tests.EditMode.CompanionFriendship_EditModeTests:OnStateChanged_FiresWhenStateChanges () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:201)
+Tests.EditMode.CompanionFriendship_EditModeTests:OnStateChanged_FiresWhenStateChanges () (at Assets/Tests/EditMode/CompanionFriendship_EditModeTests.cs:202)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -5422,9 +5454,9 @@ UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOpt
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
-MoneyManager:RemoveMoney (int) (at Assets/Scripts/Overlay/MoneyManager.cs:48)
-MoneyManager:ChangeMoneyAmount (int) (at Assets/Scripts/Overlay/MoneyManager.cs:26)
-Tests.EditMode.MoneyManager_EditModeTests:ChangeMoneyAmount_NegativeBeyondBalance_DoesNotChangeMoney () (at Assets/Tests/EditMode/MoneyManager_EditModeTests.cs:107)
+MoneyManager:RemoveMoney (int) (at Assets/Scripts/Overlay/MoneyManager.cs:49)
+MoneyManager:ChangeMoneyAmount (int) (at Assets/Scripts/Overlay/MoneyManager.cs:27)
+Tests.EditMode.MoneyManager_EditModeTests:ChangeMoneyAmount_NegativeBeyondBalance_DoesNotChangeMoney () (at Assets/Tests/EditMode/MoneyManager_EditModeTests.cs:113)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -5465,7 +5497,7 @@ UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Libr
 UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:108)
 UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
 
-(Filename: Assets/Scripts/Overlay/MoneyManager.cs Line: 48)
+(Filename: Assets/Scripts/Overlay/MoneyManager.cs Line: 49)
 
 Not enough money
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
@@ -5474,9 +5506,9 @@ UnityEngine.DebugLogHandler:Internal_Log (UnityEngine.LogType,UnityEngine.LogOpt
 UnityEngine.DebugLogHandler:LogFormat (UnityEngine.LogType,UnityEngine.Object,string,object[])
 UnityEngine.Logger:Log (UnityEngine.LogType,object)
 UnityEngine.Debug:Log (object)
-MoneyManager:RemoveMoney (int) (at Assets/Scripts/Overlay/MoneyManager.cs:48)
-MoneyManager:ChangeMoneyAmount (int) (at Assets/Scripts/Overlay/MoneyManager.cs:26)
-Tests.EditMode.MoneyManager_EditModeTests:ChangeMoneyAmount_NegativeBeyondBalance_ReturnsFalse () (at Assets/Tests/EditMode/MoneyManager_EditModeTests.cs:100)
+MoneyManager:RemoveMoney (int) (at Assets/Scripts/Overlay/MoneyManager.cs:49)
+MoneyManager:ChangeMoneyAmount (int) (at Assets/Scripts/Overlay/MoneyManager.cs:27)
+Tests.EditMode.MoneyManager_EditModeTests:ChangeMoneyAmount_NegativeBeyondBalance_ReturnsFalse () (at Assets/Tests/EditMode/MoneyManager_EditModeTests.cs:106)
 System.Reflection.RuntimeMethodInfo:Invoke (object,System.Reflection.BindingFlags,System.Reflection.Binder,object[],System.Globalization.CultureInfo)
 System.Reflection.MethodBase:Invoke (object,object[])
 NUnit.Framework.Internal.Reflect:InvokeMethod (System.Reflection.MethodInfo,object,object[])
@@ -5517,7 +5549,7 @@ UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteStep () (at ./Libr
 UnityEditor.TestTools.TestRunner.TestRun.TestJobRunner:ExecuteCallback () (at ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEditor.TestRunner/TestRun/TestJobRunner.cs:108)
 UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
 
-(Filename: Assets/Scripts/Overlay/MoneyManager.cs Line: 48)
+(Filename: Assets/Scripts/Overlay/MoneyManager.cs Line: 49)
 
 Assertion failed on expression: 'ShouldRunBehaviour()'
 UnityEngine.Debug:ExtractStackTraceNoAlloc (byte*,int,string)
@@ -7642,11 +7674,11 @@ UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
 
 (Filename: ./Library/PackageCache/com.unity.test-framework@40b8da2bd3e9/UnityEditor.TestRunner/TestRun/Tasks/BuildActionTaskBase.cs Line: 48)
 
-Asset Pipeline Refresh (id=a6d6e393010a51146bce89bc87b6933e): Total: 0.006 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=622a3868c4dcd2e4aa9fe449aa760baf): Total: 0.015 seconds - Initiated by RefreshV2(NoUpdateAssetOptions)
 Unloading 0 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 0 unused Assets / (0 B). Loaded Objects now: 6233.
-Memory consumption went from 166.0 MB to 166.0 MB.
-Total: 13.932400 ms (FindLiveObjects: 0.299300 ms CreateObjectMapping: 0.165200 ms MarkObjects: 13.448000 ms  DeleteObjects: 0.018800 ms)
+Unloading 0 unused Assets / (0 B). Loaded Objects now: 6232.
+Memory consumption went from 160.2 MB to 160.2 MB.
+Total: 34.611900 ms (FindLiveObjects: 0.498500 ms CreateObjectMapping: 0.349500 ms MarkObjects: 33.718700 ms  DeleteObjects: 0.042500 ms)
 
 DisplayProgressbar: Undo
 Test run completed. Exiting with code 2 (Failed). One or more tests failed.
@@ -7692,11 +7724,11 @@ UnityEditor.EditorApplication:Internal_CallUpdateFunctions ()
 
 (Filename: ./Library/PackageCache/com.unity.ugui@e375ff18e90f/Editor/TMP/TMP_EditorResourceManager.cs Line: 36)
 
-Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Roboto-Bold SDF.asset using Guid(5302535af1044152a457ed104f1f4b91) (NativeFormatImporter) -> (artifact id: 'db4cd5c8c8f9c20d2c1b9554d65f39db') in 0.0070877 seconds
-Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Anton SDF.asset using Guid(8a89fa14b10d46a99122fd4f73fca9a2) (NativeFormatImporter) -> (artifact id: '6d8c04ff8c22442c7b811b9ffa58cd64') in 0.0037853 seconds
-Refreshing native plugins compatible for Editor in 2.06 ms, found 3 plugins.
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Roboto-Bold SDF.asset using Guid(5302535af1044152a457ed104f1f4b91) (NativeFormatImporter) -> (artifact id: 'db4cd5c8c8f9c20d2c1b9554d65f39db') in 0.0166511 seconds
+Start importing Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Anton SDF.asset using Guid(8a89fa14b10d46a99122fd4f73fca9a2) (NativeFormatImporter) -> (artifact id: '6d8c04ff8c22442c7b811b9ffa58cd64') in 0.0093187 seconds
+Refreshing native plugins compatible for Editor in 5.72 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Asset Pipeline Refresh (id=a028e1ca80a517b4589031893ab67955): Total: 0.085 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
+Asset Pipeline Refresh (id=b904ce1be42e805429502eef226f5502): Total: 0.213 seconds - Initiated by StopAssetImportingV2(NoUpdateAssetOptions)
 [Physics::Module] Cleanup current backend.
 [Physics::Module] Id: 0xf2b8ea05
 Input System module state changed to: ShutdownInProgress.
@@ -7706,8 +7738,8 @@ Input System module state changed to: Shutdown.
 [Licensing::IpcConnector] LicenseClient-erike channel disconnected successfully.
 AcceleratorClientConnectionCallback - disconnected - :0
 Cleanup mono
-14:25:32.610 |V| RiderPlugin                    | :1                             | AppDomain.CurrentDomain.DomainUnload lifetimeDefinition.Terminate
+14:58:09.516 |V| RiderPlugin                    | :1                             | AppDomain.CurrentDomain.DomainUnload lifetimeDefinition.Terminate
 Checking for leaked weakptr:
   Found no leaked weakptrs.
 [Package Manager] Server process was shutdown
-##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1775564732912,"processId":54528,"allocatedMemory":14800307,"memoryLabels":[{"Default":14265},{"Permanent":15468},{"NewDelete":66121},{"Thread":4230344},{"Manager":33906},{"VertexData":8},{"Geometry":816},{"VFX":-104},{"Texture":296},{"Shader":81119},{"Material":24},{"GfxDevice":55208},{"Animation":392},{"Audio":4040},{"FontEngine":256},{"Physics":2050},{"Serialization":624},{"Input":14824},{"JobScheduler":41272},{"TextLib":160},{"Mono":32},{"MonoCode":64},{"ScriptingNativeRuntime":155060},{"BaseObject":1620608},{"Resource":1304},{"Renderer":2928},{"Transform":4646},{"File":1016},{"WebCam":616},{"Culling":32},{"Terrain":11394},{"Wind":24},{"STL":40},{"String":9530},{"DynamicArray":114226},{"HashMap":78645},{"Utility":2662678},{"Curl":48},{"PoolAlloc":2056},{"AI":40},{"TypeTree":5005},{"ScriptManager":512},{"RuntimeInitializeOnLoadManager":64},{"SpriteAtlas":112},{"GI":7824},{"Director":8240},{"WebRequest":808},{"VR":46114},{"SceneManager":496},{"Video":208},{"LazyScriptCache":32},{"Camera":17},{"Secure":2113},{"SerializationCache":1576},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":256},{"Hierarchy":272},{"CoreStats":12424},{"Identifiers":12384},{"Gui":80},{"EditorUtility":97120},{"VersionControl":4},{"Undo":947},{"AssetDatabase":4989069},{"EditorGi":328},{"UnityConnect":24552},{"Upm":1896},{"DrivenProperties":72},{"LocalIPC":211},{"ProfilerEditor":9746},{"CoreBusinessMetrics":3949},{"Licensing":664},{"AssetReference":32},{"IPCStream":32}]}
+##utp:{"type":"MemoryLeaks","version":2,"phase":"Immediate","time":1775566690129,"processId":44324,"allocatedMemory":14794323,"memoryLabels":[{"Default":14265},{"Permanent":15468},{"NewDelete":66121},{"Thread":4230344},{"Manager":33906},{"VertexData":8},{"Geometry":816},{"VFX":-104},{"Texture":296},{"Shader":81119},{"Material":24},{"GfxDevice":55208},{"Animation":392},{"Audio":4040},{"FontEngine":256},{"Physics":2050},{"Serialization":624},{"Input":14824},{"JobScheduler":35328},{"TextLib":160},{"Mono":32},{"MonoCode":64},{"ScriptingNativeRuntime":155060},{"BaseObject":1620608},{"Resource":1304},{"Renderer":2928},{"Transform":4646},{"File":1016},{"WebCam":616},{"Culling":32},{"Terrain":11394},{"Wind":24},{"STL":40},{"String":9530},{"DynamicArray":114226},{"HashMap":78645},{"Utility":2662678},{"Curl":48},{"PoolAlloc":2056},{"AI":40},{"TypeTree":5005},{"ScriptManager":512},{"RuntimeInitializeOnLoadManager":64},{"SpriteAtlas":112},{"GI":7824},{"Director":8240},{"WebRequest":808},{"VR":46114},{"SceneManager":496},{"Video":208},{"LazyScriptCache":32},{"Camera":17},{"Secure":2113},{"SerializationCache":1576},{"APIUpdating":10320},{"Subsystems":336},{"VirtualTexturing":57888},{"StaticSafetyDebugInfo":278528},{"Analytics":256},{"Hierarchy":272},{"CoreStats":12424},{"Identifiers":12384},{"Gui":80},{"EditorUtility":97080},{"VersionControl":4},{"Undo":947},{"AssetDatabase":4989069},{"EditorGi":328},{"UnityConnect":24552},{"Upm":1896},{"DrivenProperties":72},{"LocalIPC":211},{"ProfilerEditor":9746},{"CoreBusinessMetrics":3949},{"Licensing":664},{"AssetReference":32},{"IPCStream":32}]}

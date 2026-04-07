@@ -52,6 +52,7 @@ public class Item : MonoBehaviour
     public void Initialize(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string itemTag)
     {
         ItemName = itemName;
+        itemID = null; // force GenerateId() to regenerate from the new name on next access
         Quantity = quantity;
         Sprite = sprite;
         ItemDescription = itemDescription;
