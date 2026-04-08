@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PauseSettings : MonoBehaviour
 {
-    public Image resolutionButtonImage;
-    public Sprite[] resolutionSprites;
+    public TMP_Dropdown resolutionDropdown;
 
     public Image musicButtonImage;
     public Sprite musicOnSprite;
@@ -16,16 +16,34 @@ public class PauseSettings : MonoBehaviour
 
     public GameObject settingsContainer;
     public GameObject pauseContainer;
+    public GameObject mainMenuButtons;
 
     void Start()
     {
+        InitializeResolutions();
         UpdateVisuals();
     }
 
-    public void CycleResolution()
+    void InitializeResolutions()
     {
-        SettingsManager.Instance.CycleResolution();
-        UpdateVisuals();
+        resolutionDropdown.options.Clear();
+
+        Resolution[] resolutions = SettingsManager.Instance.GetAvailableResolutions();
+
+        foreach (UnityEngine.Resolution res in resolutions)
+        {
+            Debug.Log(res.ToString());
+        }
+
+        foreach (Resolution resolution in resolutions)
+        {
+            var option = new TMP_Dropdown.OptionData($"{resolution.width}x{resolution.height}");
+            resolutionDropdown.options.Add(option);
+        }
+
+        resolutionDropdown.value = SettingsManager.Instance.resolutionIndex;
+        resolutionDropdown.RefreshShownValue();
+        resolutionDropdown.onValueChanged.AddListener(SettingsManager.Instance.SetResolution);
     }
 
     public void ToggleFullscreen()
@@ -44,16 +62,25 @@ public class PauseSettings : MonoBehaviour
     {
         var settings = SettingsManager.Instance;
 
-        resolutionButtonImage.sprite = resolutionSprites[settings.resolutionIndex];
-
+        if (musicButtonImage.sprite != null)
         musicButtonImage.sprite = settings.musicOn ? musicOnSprite : musicOffSprite;
 
+        if (fullscreenButtonImage.sprite != null)
         fullscreenButtonImage.sprite = settings.fullscreen ? fullscreenOnSprite : fullscreenOffSprite;
     }
 
     public void Back()
     {
-        settingsContainer.SetActive(false);
-        pauseContainer.SetActive(true);
+        if (mainMenuButtons == null) 
+        { 
+            settingsContainer.SetActive(false);
+            pauseContainer.SetActive(true);
+        } 
+        
+        if(pauseContainer == null) 
+        {
+            settingsContainer.SetActive(false);
+            mainMenuButtons.SetActive(true);
+        }
     }
 }
