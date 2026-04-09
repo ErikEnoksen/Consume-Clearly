@@ -126,4 +126,23 @@ public class CompanionFriendship : MonoBehaviour
         MoodSwitching(CompanionMood.Neutral);
     }
 
+    public Color GetFriendshipColor()
+    {
+            if (CurrentState == FriendshipState.Stranger)
+                {
+                    return Color.darkRed; // Stranger - Red
+        }
+                else if (CurrentState == FriendshipState.Acquaintance)
+                {
+                    return Color.yellow; // Acquaintance - Yellow
+        }
+                else if (CurrentState == FriendshipState.Friend)
+                {
+                    return Color.pink; // Friend - Green
+        }
+                else
+                {
+                   return Color.red; // Best Friend - Blue
+        }
+    }
 }

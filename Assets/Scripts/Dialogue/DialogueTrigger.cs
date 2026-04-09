@@ -18,7 +18,9 @@ public class DialogueTrigger : MonoBehaviour
     [Tooltip("Key Press to interact with npc")]
     [SerializeField] private TriggerType triggerType = TriggerType.KeyPress;
     [SerializeField] private KeyCode interactKey = KeyCode.F;
-    
+
+    public GameObject pressF;
+
     private Dialogue dialogueManager;
     private FriendshipBar friendshipBar;
     private CompanionFriendship friendship;
@@ -45,6 +47,11 @@ public class DialogueTrigger : MonoBehaviour
         else
         {
             Debug.LogError($"DialogueTrigger on {gameObject.name} has no CompanionFriendship component!");
+        }
+
+        if (pressF != null)
+        {
+            pressF.SetActive(false);
         }
     }
     
@@ -79,6 +86,11 @@ public class DialogueTrigger : MonoBehaviour
         dialogueManager.DisplayDialogue(dialogueToPlay, friendship);
         if (friendship != null)
             Debug.Log("Started conversation with: " + friendship.CurrentState);
+
+        if (pressF != null)
+        {
+            pressF.SetActive(false);
+        }
     }
 
     
@@ -88,6 +100,10 @@ public class DialogueTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = true;
+                if (pressF != null)
+                {
+                    pressF.SetActive(true);
+            }
 
             if (dialogueManager != null && triggerType == TriggerType.AutoTrigger && !dialogueManager.IsDialogueActive() && !hasAutoTriggered)
             {
@@ -102,6 +118,11 @@ public class DialogueTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
+
+            if (pressF != null)
+            {
+                pressF.SetActive(false);
+            }
         }
     }
 }
