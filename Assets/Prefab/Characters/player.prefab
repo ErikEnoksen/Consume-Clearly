@@ -141,15 +141,18 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2674d0ccafe5884da0788d903ad4f57, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Main::MovementScript
+  m_EditorClassIdentifier: Main::Player.MovementScript
   speed: 8
-  jumpingPower: 7
+  jumpingPower: 10
   landAcceleration: 30
   landDeceleration: 100
   airAcceleration: 30
   airDeceleration: 100
   coyoteTime: 0.2
   jumpBufferTime: 0.2
+  baseGravity: 2.5
+  fallMultiplier: 3.5
+  shortJumpMultiplier: 3
   groundCheck: {fileID: 8132787090314073876}
   groundLayer:
     serializedVersion: 2
@@ -223,8 +226,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 7.961043, y: 13.369999}
+  m_Offset: {x: 0, y: 0.15104413}
+  m_Size: {x: 7.9610434, y: 13.067909}
   m_Direction: 0
 --- !u!114 &3325875414331394727
 MonoBehaviour:
@@ -238,7 +241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a155c56df1849434fbe408cd4705e4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::Player.PlayerInteract
-  interactKey: 101
   interactableLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -355,7 +357,7 @@ Transform:
   m_GameObject: {fileID: 7993382541483594524}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -7, z: 0}
+  m_LocalPosition: {x: 0, y: -6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
