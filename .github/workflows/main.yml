@@ -4,11 +4,18 @@ on: [push, pull_request, workflow_dispatch]
 
 permissions: write-all
 
+env:
+  MSYS2_ARG_CONV_EXCL: "*"
+  MSYS_NO_PATHCONV: 1
+ 
 jobs:
   testAllModes:
     name: Test in ${{ matrix.testMode }}
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     timeout-minutes: 45
+    env:
+      ACTIONS_CACHE_USE_AZURE_CLI: false
+      ACTIONS_CACHE_UPLOAD_CHUNK_SIZE: 32000000
     strategy:
       fail-fast: false
       matrix:
@@ -19,52 +26,41 @@ jobs:
         unityVersion:
           - 6000.2.6f2
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           lfs: true
+
       - name: Debug directory structure
+        shell: powershell
         run: |
           echo "Workflow Directory:"
           pwd
           echo "Root Directory:"
-          ls -la
-          echo "Project Directory:"
-          ls -la ${{ matrix.projectPath }}
+          Get-ChildItem -Force
           echo "ProjectSettings:"
-          ls -la ${{ matrix.projectPath }}/ProjectSettings
-      - uses: actions/cache@v3
+          Get-ChildItem -Force ${{ matrix.projectPath }}/ProjectSettings
+
+      - uses: actions/cache@v5
         with:
-          path: ${{ matrix.projectPath }}/Library
+          path: ${{ github.workspace }}/Library
           key: Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
           restore-keys: |
             Library-${{ matrix.projectPath }}-
             Library-
-      - uses: game-ci/unity-test-runner@v4
-        id: tests
+
+      - name: Run EditMode Tests
+        shell: powershell
         env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        with:
-          projectPath: ${{ matrix.projectPath }}
-          testMode: ${{ matrix.testMode }}
-          unityVersion: ${{ matrix.unityVersion }}
-          artifactsPath: ${{ matrix.testMode }}-artifacts
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: ${{ matrix.testMode }} Test Results
-      - name: Determine artifact path
-        id: artifact_path
+          UNITY_PATH: ${{ secrets.UNITY_PATH }}
         run: |
-          if [ -n "${{ steps.tests.outputs.artifactsPath }}" ]; then
-            echo "artifact_path=${{ steps.tests.outputs.artifactsPath }}" >> $GITHUB_OUTPUT
-          else
-            echo "artifact_path=${{ matrix.testMode }}-artifacts" >> $GITHUB_OUTPUT
-          fi
-      - name: Ensure artifact path exists
-        run: |
-          mkdir -p "${{ steps.artifact_path.outputs.artifact_path }}" || true
-      - uses: actions/upload-artifact@v4
+          $resultsPath = ".\editmode-artifacts\results.xml"
+          New-Item -ItemType Directory -Force -Path ".\editmode-artifacts"
+          Start-Process -FilePath "$env:UNITY_PATH" -ArgumentList "-runTests", "-testPlatform", "${{ matrix.testMode }}", "-projectPath", ".", "-testResults", $resultsPath, "-batchmode", "-nographics" -Wait -NoNewWindow
+          Write-Host "Test results path: $(Resolve-Path .\editmode-artifacts -ErrorAction SilentlyContinue)"
+          exit $LASTEXITCODE
+
+      - uses: actions/upload-artifact@v6
         if: always()
         with:
           name: Test results for ${{ matrix.testMode }}
-          path: ${{ steps.artifact_path.outputs.artifact_path }}
+          path: ${{ github.workspace }}\${{ matrix.testMode }}-artifacts
