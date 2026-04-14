@@ -56,13 +56,7 @@ jobs:
         run: |
           $resultsPath = ".\${{ matrix.testMode }}-artifacts\results.xml"
           New-Item -ItemType Directory -Force -Path ".\${{ matrix.testMode }}-artifacts"
-          & "$env:UNITY_PATH" `
-            -runTests `
-            -testPlatform ${{ matrix.testMode }} `
-            -projectPath . `
-            -testResults $resultsPath `
-            -batchmode `
-            -nographics
+          Start-Process -FilePath "$env:UNITY_PATH" -ArgumentList "-runTests", "-testPlatform", "${{ matrix.testMode }}", "-projectPath", ".", "-testResults", $resultsPath, "-batchmode", "-nographics" -Wait -NoNewWindow
           Write-Host "Test results path: $(Resolve-Path .\editmode-artifacts -ErrorAction SilentlyContinue)"
           exit $LASTEXITCODE
 
