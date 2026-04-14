@@ -48,6 +48,12 @@ Thumbs.db
 # Visual Studio cache directory
 .vs/
 
+# Unity test results
+editmode-results.xml
+editmode-log.txt
+playmode-results.xml
+playmode-log.txt
+
 # Gradle cache directory
 .gradle/
 
