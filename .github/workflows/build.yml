@@ -14,7 +14,6 @@ jobs:
     runs-on: self-hosted
     timeout-minutes: 45
     env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       ACTIONS_CACHE_USE_AZURE_CLI: false
       ACTIONS_CACHE_UPLOAD_CHUNK_SIZE: 32000000
     strategy:
@@ -28,7 +27,7 @@ jobs:
         unityVersion:
           - 6000.2.6f2
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           lfs: true
 
@@ -85,7 +84,7 @@ jobs:
           - StandaloneWindows
           - StandaloneWindows64
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           lfs: true
           fetch-depth: 0
