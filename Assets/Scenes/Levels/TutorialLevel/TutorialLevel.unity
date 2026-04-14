@@ -13286,7 +13286,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1677244459}
   - component: {fileID: 1677244461}
-  - component: {fileID: 1677244460}
+  - component: {fileID: 1677244462}
   m_Layer: 8
   m_Name: Bridge
   m_TagString: Untagged
@@ -13311,25 +13311,6 @@ Transform:
   - {fileID: 1938967016}
   m_Father: {fileID: 453745025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1677244460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1677244458}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f576a5219a279046ad0ee52cfff8a28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Main::LevelObjects.Interactable.Bridge
-  requiresLever: 0
-  interactionRange: 0.6
-  uniqueId: f3f508f9-e08a-4192-8cb1-38df089d22c3
-  brokenBridge: {fileID: 466567612}
-  fixedBridge: {fileID: 1938967015}
-  plankItemId: Plank
-  screwItemId: Screw
 --- !u!61 &1677244461
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13376,6 +13357,26 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5.351389, y: 1.8795357}
   m_EdgeRadius: 0
+--- !u!114 &1677244462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1677244458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f576a5219a279046ad0ee52cfff8a28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::LevelObjects.Interactable.Bridge
+  requiresLever: 0
+  interactionRange: 0.6
+  uniqueId: 936d4995-34b2-4b17-84de-9285a6df53fb
+  brokenBridge: {fileID: 466567612}
+  fixedBridge: {fileID: 1938967015}
+  requiredItems:
+  - {fileID: 1403626101363094199, guid: 2320ca8f8b038914288c1ec2910a5302, type: 3}
+  - {fileID: 1798963747143233540, guid: 3d9c330ca2a68294588a3d3bf10adf72, type: 3}
 --- !u!1 &1694315842
 GameObject:
   m_ObjectHideFlags: 0
@@ -15595,6 +15596,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 80505925353350073, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 564054605266861768, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3541813004625681828, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -15690,6 +15699,10 @@ PrefabInstance:
     - target: {fileID: 4844091971945727059, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -484
+      objectReference: {fileID: 0}
+    - target: {fileID: 5082923678303490229, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6501001952414294923, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchorMax.y

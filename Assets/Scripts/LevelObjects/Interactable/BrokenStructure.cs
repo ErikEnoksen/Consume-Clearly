@@ -1,18 +1,21 @@
 using UnityEngine;
 using Save;
+using System.Collections.Generic;
 
 namespace LevelObjects.Interactable
 { 
     public class Bridge : Interactable
 {
-    [Header("Bridge Objects")]
-    [SerializeField] private GameObject brokenBridge;
-    [SerializeField] private GameObject fixedBridge;
+    [Header("Strucure Objects")]
+    [SerializeField] private GameObject brokenStrucutre;
+    [SerializeField] private GameObject fixedStructure;
 
     [Header("Required Items")]
-    [SerializeField] private string plankItemId = "Plank";
-    [SerializeField] private string screwItemId = "Screw";
-    
+    [SerializeField] private Item[] requiredItems;
+        //[SerializeField] private string screwItemId = "Screw";
+
+
+        List<InventoryItem> items = new List<InventoryItem>();
     private InventoryManager _inventory;
     private bool isRepaired = false;
 
@@ -33,18 +36,29 @@ namespace LevelObjects.Interactable
     {
         if (isRepaired || _inventory == null) return;
         
-        InventoryItem plank = FindItemByName(plankItemId);
-        InventoryItem screw = FindItemByName(screwItemId);
 
-        if (plank == null) {Debug.LogError("No Plank item found in inventory!"); return;}
-        if (screw == null) {Debug.LogError("No screws left in inventory!"); return;}
+            foreach(var item in requiredItems)
+            {
+                InventoryItem inventoryItem = FindItemByName(item.ItemName);
+                
+                if (inventoryItem != null && inventoryItem.quantity > 0)
+                {
+                    items.Add(inventoryItem);
+                }
+            }
+
+            if(!(requiredItems.Length == items.Count))
+            {
+                return;
+            }
+
+            foreach (var item in items)
+            {
+                item.RemoveItem(1);
+            }
+            
+            Repair();
         
-        
-        if (plank.quantity > 0) plank.RemoveItem(1);
-        
-        if (screw.quantity > 0) screw.RemoveItem(1);
-        
-        Repair();
     }
     private InventoryItem FindItemByName(string itemName)
     {
@@ -66,8 +80,8 @@ namespace LevelObjects.Interactable
     
     private void UpdateVisuals()
     {
-        if (brokenBridge != null) brokenBridge.SetActive(!isRepaired);
-        if (fixedBridge  != null) fixedBridge.SetActive(isRepaired);
+        if (brokenStrucutre != null) brokenStrucutre.SetActive(!isRepaired);
+        if (fixedStructure  != null) fixedStructure.SetActive(isRepaired);
     }
     public override InteractableObjectState SaveState()
     {
