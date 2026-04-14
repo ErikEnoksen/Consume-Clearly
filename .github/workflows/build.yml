@@ -8,68 +8,61 @@ jobs:
   testAllModes:
     name: Test in ${{ matrix.testMode }}
     runs-on: self-hosted
+    timeout-minutes: 45
     strategy:
       fail-fast: false
       matrix:
         projectPath:
           - .
         testMode:
-          - playmode
           - editmode
+          - playmode
         unityVersion:
           - 6000.2.6f2
     steps:
       - uses: actions/checkout@v4
         with:
           lfs: true
+
       - name: Debug directory structure
+        shell: powershell
         run: |
           echo "Workflow Directory:"
           pwd
           echo "Root Directory:"
-          ls -la
-          echo "Project Directory:"
-          ls -la ${{ matrix.projectPath }}
+          Get-ChildItem -Force
           echo "ProjectSettings:"
-          ls -la ${{ matrix.projectPath }}/ProjectSettings
+          Get-ChildItem -Force ${{ matrix.projectPath }}/ProjectSettings
+
       - uses: actions/cache@v3
         with:
           path: ${{ matrix.projectPath }}/Library
-          key: Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }} 
+          key: Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
           restore-keys: |
+            Library-${{ matrix.projectPath }}-
             Library-
-      - uses: game-ci/unity-test-runner@v4
-        id: tests
+
+      - name: Run Tests
+        shell: powershell
         env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        with:
-          projectPath: ${{ matrix.projectPath }}
-          testMode: ${{ matrix.testMode }}
-          unityVersion: ${{ matrix.unityVersion }}
-          artifactsPath: ${{ matrix.testMode }}-artifacts
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: ${{ matrix.testMode }} Test Results
-
-      - name: Determine artifact path
-        id: artifact_path
+          UNITY_PATH: ${{ secrets.UNITY_PATH }}
         run: |
-          if [ -n "${{ steps.tests.outputs.artifactsPath }}" ]; then
-            echo "artifact_path=${{ steps.tests.outputs.artifactsPath }}" >> $GITHUB_OUTPUT
-          else
-            echo "artifact_path=${{ matrix.testMode }}-artifacts" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Ensure artifact path exists
-        run: |
-          mkdir -p "${{ steps.artifact_path.outputs.artifact_path }}" || true
+          $resultsPath = ".\${{ matrix.testMode }}-artifacts\results.xml"
+          New-Item -ItemType Directory -Force -Path ".\${{ matrix.testMode }}-artifacts"
+          & "$env:UNITY_PATH" `
+            -runTests `
+            -testPlatform ${{ matrix.testMode }} `
+            -projectPath . `
+            -testResults $resultsPath `
+            -batchmode `
+            -nographics
+          exit $LASTEXITCODE
 
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: Test results for ${{ matrix.testMode }}
-          path: ${{ steps.artifact_path.outputs.artifact_path }}
+          path: ${{ matrix.testMode }}-artifacts
 
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
@@ -83,16 +76,17 @@ jobs:
           - StandaloneWindows
           - StandaloneWindows64
     steps:
-      # If builds do not need LFS, set lfs: false to avoid downloading LFS objects in CI.
       - uses: actions/checkout@v4
         with:
           lfs: true
           fetch-depth: 0
+
       - uses: actions/cache@v3
         with:
           path: Library
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
+
       - name: Build the Project
         uses: game-ci/unity-builder@v4
         env:
@@ -101,6 +95,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: ${{ matrix.targetPlatform }}
+
       - uses: actions/upload-artifact@v4
         with:
           name: Build-${{ matrix.targetPlatform }}
