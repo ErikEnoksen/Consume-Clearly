@@ -4,6 +4,10 @@ on: [workflow_dispatch]
 
 permissions: write-all
 
+env:
+  MSYS2_ARG_CONV_EXCL: "*"
+  MSYS_NO_PATHCONV: 1
+
 jobs:
   testAllModes:
     name: Test in ${{ matrix.testMode }}
@@ -65,7 +69,7 @@ jobs:
         if: always()
         with:
           name: Test results for ${{ matrix.testMode }}
-          path: .\${{ matrix.testMode }}-artifacts
+          path: ${{ github.workspace }}\${{ matrix.testMode }}-artifacts
 
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
