@@ -14,6 +14,7 @@ public class PauseSettings : MonoBehaviour
     public Sprite fullscreenOnSprite;
     public Sprite fullscreenOffSprite;
 
+    public GameObject keybindsMenu;
     public GameObject settingsContainer;
     public GameObject pauseContainer;
     public GameObject mainMenuButtons;
@@ -67,6 +68,12 @@ public class PauseSettings : MonoBehaviour
 
         if (fullscreenButtonImage.sprite != null)
         fullscreenButtonImage.sprite = settings.fullscreen ? fullscreenOnSprite : fullscreenOffSprite;
+    }
+
+    public void Keybinds()
+    {
+        keybindsMenu.SetActive(true);
+        settingsContainer.SetActive(false);
     }
 
     public void Back()

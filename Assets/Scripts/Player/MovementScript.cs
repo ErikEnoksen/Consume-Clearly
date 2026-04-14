@@ -96,8 +96,10 @@ namespace Player
         private void FixedUpdate()
         {
             Move();
-            
-            horizontal = Input.GetAxisRaw("Horizontal");
+
+            float moveLeft = Input.GetKey(KeybindManager.Instance.GetKey("MoveLeft")) ? -1f : 0f;
+            float moveRight = Input.GetKey(KeybindManager.Instance.GetKey("MoveRight")) ? 1f : 0f;
+            horizontal = moveLeft + moveRight;
             bool isGrounded = IsGrounded();
 
             // Handle walking and idle animations
