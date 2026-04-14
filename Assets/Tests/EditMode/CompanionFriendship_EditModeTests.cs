@@ -18,6 +18,7 @@ namespace Tests.EditMode
             friendship.MaxFriendshipLevel = 1000;
             friendship.DailyConversationReward = 25;
             friendship.MissedConversationSubstraction = 10;
+            friendship.CurrentMood = CompanionFriendship.CompanionMood.Neutral;
         }
 
         [TearDown]
