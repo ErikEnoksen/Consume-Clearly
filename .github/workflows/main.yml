@@ -15,7 +15,8 @@ jobs:
     timeout-minutes: 45
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-      TAR_OPTIONS: --force-local
+      ACTIONS_CACHE_USE_AZURE_CLI: false
+      ACTIONS_CACHE_UPLOAD_CHUNK_SIZE: 32000000
     strategy:
       fail-fast: false
       matrix:
@@ -42,7 +43,7 @@ jobs:
 
       - uses: actions/cache@v4
         with:
-          path: ${{ matrix.projectPath }}/Library
+          path: ${{ github.workspace }}/Library
           key: Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
           restore-keys: |
             Library-${{ matrix.projectPath }}-
@@ -62,6 +63,7 @@ jobs:
             -testResults $resultsPath `
             -batchmode `
             -nographics
+          Write-Host "Test results path: $(Resolve-Path .\editmode-artifacts -ErrorAction SilentlyContinue)"
           exit $LASTEXITCODE
 
       - uses: actions/upload-artifact@v4
