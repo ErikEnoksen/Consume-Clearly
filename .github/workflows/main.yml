@@ -40,7 +40,7 @@ jobs:
           echo "ProjectSettings:"
           Get-ChildItem -Force ${{ matrix.projectPath }}/ProjectSettings
 
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         with:
           path: ${{ github.workspace }}/Library
           key: Library-${{ matrix.projectPath }}-${{ matrix.unityVersion }}
@@ -65,7 +65,7 @@ jobs:
           Write-Host "Test results path: $(Resolve-Path .\editmode-artifacts -ErrorAction SilentlyContinue)"
           exit $LASTEXITCODE
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         if: always()
         with:
           name: Test results for ${{ matrix.testMode }}
