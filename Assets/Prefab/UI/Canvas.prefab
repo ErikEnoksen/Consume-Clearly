@@ -7964,6 +7964,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Main::InventoryManagerTest
   inventoryMenu: {fileID: 4444516171661129464}
+  giftingEnabled: 1
   inventoryItems:
   - {fileID: 4156410725025040512}
   - {fileID: 774579655521014668}
@@ -8004,6 +8005,8 @@ MonoBehaviour:
   itemSOs:
   - {fileID: 11400000, guid: a21d0152855b5a24a80cf002718e633d, type: 2}
   - {fileID: 11400000, guid: 43dca60900779a043a664c5a2324e48e, type: 2}
+  - {fileID: 11400000, guid: 47867656cf1ab6f4997778a3b7c7f5d4, type: 2}
+  - {fileID: 11400000, guid: 6a8f8ef05c258c3488e1576b63d50757, type: 2}
 --- !u!1001 &9089050654567753782
 PrefabInstance:
   m_ObjectHideFlags: 0

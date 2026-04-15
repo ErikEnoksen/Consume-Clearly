@@ -20,9 +20,9 @@ MonoBehaviour:
     dialogueBoxSprite: {fileID: -5805635871556436518, guid: 6b9f542dd340d2d48bc8b6e9cb489d01, type: 3}
     choices:
     - choiceText: Gift
-      choiceType: 0
+      choiceType: 2
       choiceQuality: 1
-      nextDialogue: {fileID: 11400000, guid: 4e4c2990535189742adb80e9857a25d8, type: 2}
+      nextDialogue: {fileID: 11400000, guid: 6f5f8f3b9b08b0d44a771661cfa7e77a, type: 2}
     - choiceText: Goodbye
       choiceType: 3
       choiceQuality: 1
@@ -31,7 +31,3 @@ MonoBehaviour:
   questInProgressIndex: 0
   questCompletedIndex: 0
   initialDialogueEndIndex: 0
-  giftableItems:
-  - {fileID: 1798963747143233540, guid: 3d9c330ca2a68294588a3d3bf10adf72, type: 3}
-  - {fileID: 1257049138564397804, guid: 6446e36d35701e64ebadd08732385b2e, type: 3}
-  - {fileID: 1403626101363094199, guid: 2320ca8f8b038914288c1ec2910a5302, type: 3}
