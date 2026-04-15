@@ -57,7 +57,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         
         //checks if the amount of items in the slot and sees if there is space for the rest
         this.quantity += quantity;
-        if(this.quantity > maxStack)
+        if(this.quantity >= maxStack)
         {
             quantityText.text = maxStack.ToString();
             quantityText.enabled = true;

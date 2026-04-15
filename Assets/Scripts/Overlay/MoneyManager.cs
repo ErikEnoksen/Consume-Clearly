@@ -12,7 +12,8 @@ public class MoneyManager : MonoBehaviour
 
     private void Awake()
     {
-        moneyDisplay.text = $"${moneyCount}";
+        if (moneyDisplay != null)
+            moneyDisplay.text = $"${moneyCount}";
     }
 
     public bool ChangeMoneyAmount(int amount)

@@ -1,0 +1,102 @@
+using UnityEngine;
+using Save;
+using System.Collections.Generic;
+
+namespace LevelObjects.Interactable
+{ 
+    public class Bridge : Interactable
+{
+    [Header("Strucure Objects")]
+    [SerializeField] private GameObject brokenStrucutre;
+    [SerializeField] private GameObject fixedStructure;
+
+    [Header("Required Items")]
+    [SerializeField] private Item[] requiredItems;
+        //[SerializeField] private string screwItemId = "Screw";
+
+
+        List<InventoryItem> items = new List<InventoryItem>();
+    private InventoryManager _inventory;
+    private bool isRepaired = false;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        
+        _inventory = FindFirstObjectByType<InventoryManager>();
+        
+        if (_inventory == null) 
+            
+            Debug.LogError("No InventoryManagerTest found in scene!");
+        
+        UpdateVisuals();
+    }
+
+    public override void Interact()
+    {
+        if (isRepaired || _inventory == null) return;
+        
+
+            foreach(var item in requiredItems)
+            {
+                InventoryItem inventoryItem = FindItemByName(item.ItemName);
+                
+                if (inventoryItem != null && inventoryItem.quantity > 0)
+                {
+                    items.Add(inventoryItem);
+                }
+            }
+
+            if(!(requiredItems.Length == items.Count))
+            {
+                return;
+            }
+
+            foreach (var item in items)
+            {
+                item.RemoveItem(1);
+            }
+            
+            Repair();
+        
+    }
+    private InventoryItem FindItemByName(string itemName)
+    {
+        foreach (var slot in _inventory.inventoryItems)
+        {
+            Debug.Log("Checking slot: " + slot.itemName + " qty: " + slot.quantity);
+            if (slot.itemName == itemName && slot.quantity > 0)
+                return slot;
+        }
+        return null;
+    }
+    
+    private void Repair()
+    {
+        isRepaired = true;
+        UpdateVisuals();
+        Debug.Log("Bridge repaired!");
+    }
+    
+    private void UpdateVisuals()
+    {
+        if (brokenStrucutre != null) brokenStrucutre.SetActive(!isRepaired);
+        if (fixedStructure  != null) fixedStructure.SetActive(isRepaired);
+    }
+    public override InteractableObjectState SaveState()
+    {
+        return new InteractableObjectState
+        {
+            uniqueId    = GetUniqueId(),
+            isActive = isRepaired
+        };
+    }
+
+    public override void LoadState(InteractableObjectState state)
+    {
+        isRepaired = state.isActive;
+        UpdateVisuals();
+    }
+
+}
+}
