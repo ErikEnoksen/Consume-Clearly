@@ -4,11 +4,18 @@ on: [workflow_dispatch]
 
 permissions: write-all
 
+env:
+  MSYS2_ARG_CONV_EXCL: "*"
+  MSYS_NO_PATHCONV: 1
+
 jobs:
   testAllModes:
     name: Test in ${{ matrix.testMode }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 60
+    runs-on: self-hosted
+    timeout-minutes: 45
+    env:
+      ACTIONS_CACHE_USE_AZURE_CLI: false
+      ACTIONS_CACHE_UPLOAD_CHUNK_SIZE: 32000000
     strategy:
       fail-fast: false
       matrix:
@@ -24,16 +31,15 @@ jobs:
         with:
           lfs: true
 
-      - name: Free Disk Space
-        uses: jlumbroso/free-disk-space@v1.3.0
-        with:
-          tool-cache: false
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true
-          docker-images: false
-          swap-storage: true
+      - name: Debug directory structure
+        shell: powershell
+        run: |
+          echo "Workflow Directory:"
+          pwd
+          echo "Root Directory:"
+          Get-ChildItem -Force
+          echo "ProjectSettings:"
+          Get-ChildItem -Force ${{ matrix.projectPath }}/ProjectSettings
 
       - uses: actions/cache@v5
         with:
@@ -45,25 +51,21 @@ jobs:
             Library-
 
       - name: Run Tests
-        uses: game-ci/unity-test-runner@v4
-        id: tests
+        shell: powershell
         env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        with:
-          projectPath: ${{ matrix.projectPath }}
-          unityVersion: ${{ matrix.unityVersion }}
-          testMode: ${{ matrix.testMode }}
-          artifactsPath: ${{ matrix.testMode }}-artifacts
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-          checkName: ${{ matrix.testMode }} Test Results
+          UNITY_PATH: ${{ secrets.UNITY_PATH }}
+        run: |
+          $resultsPath = ".\${{ matrix.testMode }}-artifacts\results.xml"
+          New-Item -ItemType Directory -Force -Path ".\${{ matrix.testMode }}-artifacts"
+          Start-Process -FilePath "$env:UNITY_PATH" -ArgumentList "-runTests", "-testPlatform", "${{ matrix.testMode }}", "-projectPath", ".", "-testResults", $resultsPath, "-batchmode", "-nographics" -Wait -NoNewWindow
+          Write-Host "Test results path: $(Resolve-Path .\editmode-artifacts -ErrorAction SilentlyContinue)"
+          exit $LASTEXITCODE
 
       - uses: actions/upload-artifact@v6
         if: always()
         with:
           name: Test results for ${{ matrix.testMode }}
-          path: ${{ matrix.testMode }}-artifacts
+          path: ${{ github.workspace }}\${{ matrix.testMode }}-artifacts
 
   buildForAllSupportedPlatforms:
     name: Build for ${{ matrix.targetPlatform }}
@@ -82,17 +84,6 @@ jobs:
           lfs: true
           fetch-depth: 0
 
-      - name: Free Disk Space
-        uses: jlumbroso/free-disk-space@v1.3.0
-        with:
-          tool-cache: false
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true
-          docker-images: false
-          swap-storage: true
-
       - uses: actions/cache@v5
         with:
           path: Library
@@ -100,7 +91,7 @@ jobs:
           restore-keys: Library-
 
       - name: Build the Project
-        uses: game-ci/unity-builder@v4.8.1
+        uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
