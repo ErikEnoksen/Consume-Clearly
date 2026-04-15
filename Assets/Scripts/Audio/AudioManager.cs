@@ -51,6 +51,7 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        AudioListener.volume = PlayerPrefs.GetFloat("MasterVolume", 1f);
         _soundMap = new Dictionary<string, Sound>();
         
         foreach (Sound s in sounds)
@@ -68,7 +69,12 @@ public class AudioManager : MonoBehaviour
         }
         
     }
-    
+
+    public void SetMasterVolume(float value)
+    {
+        AudioListener.volume = value;
+    }
+
     /*
      * Public API
      */

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using Inventory;
 using Items;
 
 public class CompanionGiveItem : MonoBehaviour

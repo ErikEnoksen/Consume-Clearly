@@ -22,6 +22,10 @@ namespace Tests.EditMode
         public void TearDown()
         {
             if (go != null) Object.DestroyImmediate(go);
+            typeof(GameManager)
+                .GetProperty("Instance", BindingFlags.Public | BindingFlags.Static)
+                .GetSetMethod(nonPublic: true)
+                .Invoke(null, new object[] { null });
         }
 
         [Test]

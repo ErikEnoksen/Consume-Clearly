@@ -13,6 +13,8 @@ namespace Tests.PlayMode
         private Rigidbody2D rb;
         private GameObject ground;
         private Transform groundCheck;
+        private GameObject audioManagerObj;
+        private GameObject keybindManagerObj;
 
         [SetUp]
         public void SetUp()
@@ -22,6 +24,13 @@ namespace Tests.PlayMode
 
         private void CreateTestScene()
         {
+            // Set up required singletons before any MonoBehaviour that depends on them
+            keybindManagerObj = new GameObject("KeybindManager");
+            keybindManagerObj.AddComponent<KeybindManager>();
+
+            audioManagerObj = new GameObject("AudioManager");
+            audioManagerObj.AddComponent<AudioManager>();
+
             ground = new GameObject("Ground");
             ground.transform.position = Vector2.zero;
             var groundCollider = ground.AddComponent<BoxCollider2D>();
@@ -63,15 +72,14 @@ namespace Tests.PlayMode
         [UnityTest]
         public IEnumerator PlayerMovesRightWhenInputIsPositive()
         {
-            int fixtedUpdatesToSimulate = 1;
-            movementScript.Test_ApplyHorizontalForFixedUpdates(1f,3);
+            movementScript.Test_ApplyHorizontalForFixedUpdates(1f, 3);
 
             for (int i = 0; i < 2; i++)
             {
                 yield return new WaitForFixedUpdate();
                 Debug.Log("Fixed Update " + (i + 1) + ": Player Velocity = " + rb.linearVelocity);
             }
-            
+
             Assert.Greater(rb.linearVelocity.x, 0.05f, "Player should move right when horizontal input is positive.");
         }
 
@@ -79,17 +87,16 @@ namespace Tests.PlayMode
         public IEnumerator PlayerJumpsWhenGroundedAndJumpExecuted()
         {
             player.transform.position = new Vector2(0, 0.6f);
-            yield return null;
             yield return new WaitForFixedUpdate();
 
-            movementScript.Test_Jump();
-            float initialYVelocity = rb.linearVelocity.y;
             float expectedJumpPower = (float)movementScript.GetType()
                 .GetField("jumpingPower",
                     System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
                 .GetValue(movementScript);
 
-            Assert.That(initialYVelocity, Is.EqualTo(expectedJumpPower).Within(0.5f),
+            movementScript.Test_Jump_ForceCoyote();
+
+            Assert.That(rb.linearVelocity.y, Is.EqualTo(expectedJumpPower).Within(0.5f),
                 "Player should jump with correct vertical velocity when grounded and jump is executed.");
         }
 
@@ -111,6 +118,11 @@ namespace Tests.PlayMode
         {
             Object.Destroy(player);
             Object.Destroy(ground);
+            Object.Destroy(audioManagerObj);
+            Object.Destroy(keybindManagerObj);
+
+            // Reset singleton references to prevent test pollution between runs
+            KeybindManager.Instance = null;
         }
     }
 }

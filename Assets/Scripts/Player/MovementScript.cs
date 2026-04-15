@@ -8,16 +8,22 @@ namespace Player
         [Header("Movement Settings")] [SerializeField]
         private float speed = 8f;
 
-        [SerializeField] private float jumpingPower = 12f;
-        [SerializeField] private float landAcceleration = 40f;
-        [SerializeField] private float landDeceleration = 50f;
-        [SerializeField] private float airAcceleration = 20f;
-        [SerializeField] private float airDeceleration = 30f;
+        [SerializeField] private float jumpingPower = 14f;
+        [SerializeField] private float landAcceleration = 30f;
+        [SerializeField] private float landDeceleration = 100f;
+        [SerializeField] private float airAcceleration = 30f;
+        [SerializeField] private float airDeceleration = 100f;
 
         [Header("Jump Settings")] [SerializeField]
         private float coyoteTime = 0.2f;
 
         [SerializeField] private float jumpBufferTime = 0.2f;
+
+        [Header("Gravity Multipliers")] [SerializeField]
+        private float baseGravity = 2.5f;
+
+        [SerializeField] private float fallMultiplier = 3.5f;
+        [SerializeField] private float shortJumpMultiplier = 3f;
 
         [Header("Ground Check")] [SerializeField]
         private Transform groundCheck;
@@ -31,8 +37,6 @@ namespace Player
         private float accelRate;
         private float coyoteTimeCounter;
         private float jumpBufferTimeCounter;
-        private bool waitingForJumpAnimation = false;
-        private bool jumpApplied = false;   
         private bool wasGrounded = true;
 
         private AnimationController animationController;
@@ -92,12 +96,29 @@ namespace Player
                 enabled = true;
             }
         }
-        
+
+        // All input is read in Update so GetKeyDown/GetKeyUp are never missed between FixedUpdate frames
+        private void Update()
+        {
+            horizontal = Input.GetAxisRaw("Horizontal");
+
+            // Buffer jump input regardless of ground state so pressing jump slightly before landing still works
+            if (Input.GetKeyDown(KeybindManager.Instance.GetKey("Jump")))
+            {
+                jumpBufferTimeCounter = jumpBufferTime;
+            }
+
+            // Variable jump height: catch key release in Update so it is never missed
+            if (Input.GetKeyUp(KeybindManager.Instance.GetKey("Jump")) && rb.linearVelocity.y > 0f)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.1f);
+            }
+        }
+
         private void FixedUpdate()
         {
             Move();
-            
-            horizontal = Input.GetAxisRaw("Horizontal");
+
             bool isGrounded = IsGrounded();
 
             // Handle walking and idle animations
@@ -117,7 +138,7 @@ namespace Player
                     AudioManager.Instance.Stop("Footstep");
                 }
             }
-            
+
             // If climbing, apply the vertical velocity set by the ClimbController
             if (IsClimbing)
             {
@@ -125,26 +146,26 @@ namespace Player
                 float currentX = rb.linearVelocity.x;
                 rb.linearVelocity = new Vector2(currentX, climbVerticalVelocity);
             }
+
+            // Dynamic gravity for better jump feel
             if (!IsClimbing)
             {
                 if (rb.linearVelocity.y < 0)
                 {
-                    // Fall faster for more normal feeling
-                    rb.gravityScale = 3f;
+                    // Falling - pull down fast for snappy landing
+                    rb.gravityScale = fallMultiplier;
                 }
                 else if (rb.linearVelocity.y > 0 && !Input.GetButton("Jump"))
                 {
-                    // Released jump early - pull down faster for shorter jump
-                    rb.gravityScale = 2f;
+                    // Released early - cut the jump short
+                    rb.gravityScale = shortJumpMultiplier;
                 }
                 else
                 {
-                    // Holding jump or on ground - normal gravity
-                    rb.gravityScale = 1f;
+                    // Holding jump or grounded - still has weight, no floating
+                    rb.gravityScale = baseGravity;
                 }
-            }   
-
-            // Remove immediate animation trigger here; we'll trigger and wait from jump logic so the physics jump occurs only after the animation completes.
+            }
 
             // Handle sprite flipping
             animationController.FlipSprite(horizontal);
@@ -163,140 +184,92 @@ namespace Player
             // While climbing we avoid applying horizontal control. Horizontal remains locked or zero.
             if (IsClimbing)
             {
-                // Option: lock horizontal movement while climbing
+                // Lock horizontal movement while climbing
                 rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
                 return;
             }
 
-            targetSpeed = horizontal * speed;
-
             if (!IsGrounded())
             {
+                // In the air, never freeze X so the player has full air control
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+                targetSpeed = horizontal * speed;
                 accelRate = (Mathf.Abs(horizontal) > 0.01f) ? airAcceleration : airDeceleration;
+                float newX = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, accelRate * Time.fixedDeltaTime);
+                rb.linearVelocity = new Vector2(newX, rb.linearVelocity.y);
             }
             else
             {
-                accelRate = (Mathf.Abs(horizontal) > 0.01f) ? landAcceleration : landDeceleration;
-            }
-
-            float newX = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, accelRate * Time.fixedDeltaTime);
-            rb.linearVelocity = new Vector2(newX, rb.linearVelocity.y);
-        }
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (IsGrounded())
+                if (Mathf.Abs(horizontal) > 0.01f)
                 {
-                    jumpBufferTimeCounter = jumpBufferTime;
+                    // Grounded with input - unfreeze and accelerate
+                    rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+                    targetSpeed = horizontal * speed;
+                    float newX = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, landAcceleration * Time.fixedDeltaTime);
+                    rb.linearVelocity = new Vector2(newX, rb.linearVelocity.y);
                 }
-                AudioManager.Instance.Play("Jump");
+                else
+                {
+                    // Grounded with no input - freeze X so physics can't push us off edges
+                    rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+                    rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+                }
             }
         }
         
         public void jump()
         {
-            
             bool grounded = IsGrounded();
-            
-            // Coyote time logic
+
+            // Play landing sound when we just touched the ground
             if (grounded && !wasGrounded)
             {
                 AudioManager.Instance.Play("JumpEnd");
             }
             wasGrounded = grounded;
-            if(grounded)
+
+            // Coyote time: reset timer while grounded and not rising (prevents re-arming
+            // coyote immediately after a jump while the player is still touching the ground)
+            if (grounded && rb.linearVelocity.y <= 0f)
             {
                 coyoteTimeCounter = coyoteTime;
             }
             else
             {
-                coyoteTimeCounter -= Time.deltaTime;
+                coyoteTimeCounter -= Time.fixedDeltaTime;
             }
+
+            // Decrement jump buffer each fixed frame so it expires naturally
+            jumpBufferTimeCounter -= Time.fixedDeltaTime;
+
             jumpAction();
         }
 
         public void jumpAction()
         {
-            // Allow jump when either within coyote time OR currently grounded (helps tests and tight timing cases).
+            // Allow jump when within coyote time (or grounded) AND the player pressed jump recently (buffer)
             bool canJump = (coyoteTimeCounter > 0f || IsGrounded()) && jumpBufferTimeCounter > 0f;
 
             if (canJump)
             {
-                // Only trigger the jump animation and start the coroutine if we're not already waiting for an animation to finish.
-                if (!waitingForJumpAnimation)
-                {
-                    // Apply the jump physics immediately so movement/physics happen at the same time as the animation.
-                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
-                    jumpApplied = true;
-                    Debug.Log("Jump applied immediately (physics + animation simultaneously) - applied from jumpAction");
+                // Apply jump velocity
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
 
-                    animationController.TriggerJump();
-                    StartCoroutine(ApplyJumpAfterAnimation());
-                }
+                // Play jump sound only when a jump actually happens
+                AudioManager.Instance.Play("Jump");
 
-                // clear buffer so we don't retrigger immediately
+                // Fire-and-forget animation trigger, no coroutine blocking the next jump
+                animationController.TriggerJump();
+
+                // Consume both timers so we cannot double-jump
                 jumpBufferTimeCounter = 0f;
+                coyoteTimeCounter = 0f;
+
+                Debug.Log("Jump applied");
             }
-
-            // Variable jump height
-            if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0f)
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.1f);
-            }
-        }
-
-        private IEnumerator ApplyJumpAfterAnimation()
-        {
-            // Mark that we're waiting for the jump animation to finish so further jumps are blocked.
-            waitingForJumpAnimation = true;
-
-            // We no longer apply physics here; physics was applied synchronously in jumpAction().
-
-            // Wait for the animator to actually enter the Jump state, with a timeout to avoid hanging if something's misconfigured.
-            float timeout = 2f;
-            float elapsed = 0f;
-
-            while (!animationController.IsInJumpState() && elapsed < timeout)
-            {
-                elapsed += Time.deltaTime;
-                yield return null;
-            }
-
-            if (!animationController.IsInJumpState())
-            {
-                Debug.LogWarning("Jump animation didn't start in time. Allowing jump state to clear.");
-                // Even if animation didn't start, we've already applied the jump physics.
-                waitingForJumpAnimation = false;
-                jumpApplied = false;
-                yield break;
-            }
-
-            // Wait until the jump animation has completed (normalizedTime >= 1) or until timeout
-            elapsed = 0f;
-            while (animationController.IsInJumpState() && animationController.GetCurrentStateNormalizedTime() < 1f && elapsed < timeout)
-            {
-                elapsed += Time.deltaTime;
-                yield return null;
-            }
-
-            // Animation finished (or timed out). Allow jumping again.
-            waitingForJumpAnimation = false;
-            jumpApplied = false; // reset so next jump can be applied
-
-        }
-
-        // This public method can be called by an Animation Event placed at the end of the jump animation
-        // to apply the jump exactly when the animation completes.
-        public void ApplyJumpFromAnimation()
-        {
-            // Now that jump physics are applied immediately, this method should only be used to clear the waiting flag
-            // if you prefer to finish the jump from an animation event instead of relying on normalizedTime.
-            if (!waitingForJumpAnimation) return; // only allow if we are expecting a jump
-
-            // Clear waiting state; do not reapply physics if already applied.
-            waitingForJumpAnimation = false;
-            jumpApplied = false;
         }
 
         // Climb control API ------------------
@@ -352,7 +325,7 @@ namespace Player
         public void Test_ApplyHorizontalForFixedUpdates(float horizontalValue, int steps = 3)
         {
             if (rb == null) rb = GetComponent<Rigidbody2D>();
-            
+
             for (int i = 0; i < Mathf.Max(1, steps); i++)
             {
                 horizontal = horizontalValue;
@@ -360,7 +333,7 @@ namespace Player
             }
         }
 
-        
+
         public void Test_Jump()
         {
             // For tests, simulate a jump button press by filling the jump buffer and calling the jump logic.

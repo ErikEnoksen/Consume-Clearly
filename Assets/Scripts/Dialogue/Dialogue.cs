@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
@@ -26,7 +25,7 @@ public class Dialogue : MonoBehaviour
 
     [Header("System Connections:")]
     [SerializeField] private DialogueChoiceHandler choiceHandler;
-
+    
     private CompanionFriendship currentCompanion;
     private InventoryManager inventoryManager;
 
@@ -224,7 +223,7 @@ public class Dialogue : MonoBehaviour
             case DialogueChoiceType.Talk:
                 if (chosenChoice.nextDialogue != null)
                 {
-                    DisplayDialogue(chosenChoice.nextDialogue);
+                    DisplayDialogue(chosenChoice.nextDialogue, currentCompanion);
                 }
                 else
                 {
@@ -247,10 +246,13 @@ public class Dialogue : MonoBehaviour
 
                 if (chosenChoice.nextDialogue != null)
                 {
-                    int giftValue = inventoryManager.LookForGift("Rope", 50);
+                    string itemName = chosenChoice.choiceText;
+
+                    int giftValue = inventoryManager.LookForGift(itemName, 50);
                     Debug.Log(giftValue);
                     currentCompanion.IncreaseFriendship(giftValue);
-                    DisplayDialogue(chosenChoice.nextDialogue);
+
+                    DisplayDialogue(chosenChoice.nextDialogue, currentCompanion);
                 }
                 else
                 {

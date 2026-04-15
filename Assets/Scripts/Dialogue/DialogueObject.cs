@@ -28,8 +28,8 @@ public class DialogueLine
 {
     [TextArea] public string text;
     public string speakerName = "";
-    public Color dialogueBoxColor = Color.navajoWhite;
-    public Color textColor = Color.gray1;
+    public Color dialogueBoxColor = Color.white;
+    public Color textColor = Color.black;
     public Sprite dialogueBoxSprite;
     
     [Header("Player Choices:")]

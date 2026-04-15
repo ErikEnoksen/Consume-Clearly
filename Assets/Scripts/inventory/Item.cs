@@ -52,6 +52,7 @@ public class Item : MonoBehaviour
     public void Initialize(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string itemTag)
     {
         ItemName = itemName;
+        itemID = null; // force GenerateId() to regenerate from the new name on next access
         Quantity = quantity;
         Sprite = sprite;
         ItemDescription = itemDescription;
@@ -65,7 +66,7 @@ public class Item : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
 
-            if (Input.GetKey(KeyCode.F))
+            if (Input.GetKey(KeybindManager.Instance.GetKey("Interact")))
             {
                 int exceccItems = inventory.AddItem(itemID, itemName, quantity, sprite, itemDescription, maxStack, gameObject.tag);
                 if (exceccItems <= 0)
