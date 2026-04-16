@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 93fb89ec0b20c14429493fbab747f095
+guid: 7f4e57880ab569848a940f66bc5dcfc7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7937948082764871005
-    second: trash can grey full_0
+      213: 6011414590209704564
+    second: letter-e-illustration-keyboard-button-on-dark-color-and-transparent-background-png_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,27 +96,40 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: trash can grey full_0
+      name: letter-e-illustration-keyboard-button-on-dark-color-and-transparent-background-png_0
       rect:
         serializedVersion: 2
-        x: 856
-        y: 266
-        width: 555
-        height: 784
-      alignment: 9
-      pivot: {x: 0.04, y: 0.5}
+        x: 169
+        y: 166
+        width: 361
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3aa8e49964eb6d190800000000000000
-      internalID: -7937948082764871005
+      spriteID: 472cc0f48b5dc6350800000000000000
+      internalID: 6011414590209704564
       vertices: []
       indices: 
       edges: []
@@ -125,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 04050285b97bb1b4cb66af8dcb1dfbfa
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      trash can grey full_0: -7937948082764871005
+      letter-e-illustration-keyboard-button-on-dark-color-and-transparent-background-png_0: 6011414590209704564
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

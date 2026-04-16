@@ -95,6 +95,7 @@ public class FriendshipBar : MonoBehaviour
     {
         if (friendshipBar != null && currentCompanion != null)
         {
+            friendshipBar.fillRect.GetComponent<Image>().color = currentCompanion.GetFriendshipColor();
             friendshipBar.maxValue = currentCompanion.MaxFriendshipLevel;
             friendshipBar.value = newLevel;
         }
