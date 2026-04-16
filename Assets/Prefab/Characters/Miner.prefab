@@ -397,6 +397,7 @@ GameObject:
   - component: {fileID: 5327721085626401849}
   - component: {fileID: 6559476994735948643}
   - component: {fileID: 8985960376940174906}
+  - component: {fileID: 5437844398025346150}
   m_Layer: 8
   m_Name: DialogueTriggerBox
   m_TagString: Untagged
@@ -487,6 +488,26 @@ MonoBehaviour:
   CurrentFriendshipLevel: 0
   DailyConversationReward: 25
   MissedConversationSubstraction: 10
+--- !u!114 &5437844398025346150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3786246799249716820}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66d4581b53ce9f840aa7a2eb45a3e9ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::CompanionGiveItem
+  gifts:
+  - triggerType: 0
+    requiredState: 0
+    item: {fileID: 5268927219989098962, guid: 1da58d9b3b87dc1449f311a297e2cb95, type: 3}
+    quantity: 10
+    giveOnce: 1
+    hasBeenGiven: 0
+  interactKey: 116
 --- !u!1 &7993382541483594524
 GameObject:
   m_ObjectHideFlags: 0
