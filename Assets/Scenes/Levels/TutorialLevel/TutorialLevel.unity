@@ -8281,6 +8281,7 @@ GameObject:
   - component: {fileID: 1133526606}
   - component: {fileID: 1133526605}
   - component: {fileID: 1133526604}
+  - component: {fileID: 1133526607}
   m_Layer: 8
   m_Name: Items_DialogueTriggerBox (1)
   m_TagString: Untagged
@@ -8365,60 +8366,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 282084646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1148745845
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1148745847}
-  - component: {fileID: 1148745846}
-  m_Layer: 0
-  m_Name: PauseSettings
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1148745846
+--- !u!114 &1133526607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148745845}
+  m_GameObject: {fileID: 1133526603}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bfe8f679e1cb974d9566782dd2354c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 64e0e483042e26f43b515e2caf1ef6c1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Main::PauseSettings
-  resolutionButtonImage: {fileID: 0}
-  resolutionSprites: []
-  musicButtonImage: {fileID: 0}
-  musicOnSprite: {fileID: 0}
-  musicOffSprite: {fileID: 0}
-  fullscreenButtonImage: {fileID: 0}
-  fullscreenOnSprite: {fileID: 0}
-  fullscreenOffSprite: {fileID: 0}
-  settingsContainer: {fileID: 169462088}
-  pauseContainer: {fileID: 1811588269}
---- !u!4 &1148745847
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148745845}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 478.26688, y: 187.35883, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_EditorClassIdentifier: Main::CompanionFriendship
+  MaxFriendshipLevel: 1000
+  CurrentFriendshipLevel: 0
+  DailyConversationReward: 25
+  MissedConversationSubstraction: 10
 --- !u!1001 &1139428174
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8488,6 +8451,60 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d86e362d588cef647a41c38cbaee130c, type: 3}
+--- !u!1 &1148745845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1148745847}
+  - component: {fileID: 1148745846}
+  m_Layer: 0
+  m_Name: PauseSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1148745846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148745845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfe8f679e1cb974d9566782dd2354c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::PauseSettings
+  resolutionButtonImage: {fileID: 0}
+  resolutionSprites: []
+  musicButtonImage: {fileID: 0}
+  musicOnSprite: {fileID: 0}
+  musicOffSprite: {fileID: 0}
+  fullscreenButtonImage: {fileID: 0}
+  fullscreenOnSprite: {fileID: 0}
+  fullscreenOffSprite: {fileID: 0}
+  settingsContainer: {fileID: 169462088}
+  pauseContainer: {fileID: 1811588269}
+--- !u!4 &1148745847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148745845}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 478.26688, y: 187.35883, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1154705829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10274,10 +10291,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2071692431525032535, guid: bb552bca229a21240ad162798102b57f, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5946685064941159311, guid: bb552bca229a21240ad162798102b57f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1871233006}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb552bca229a21240ad162798102b57f, type: 3}
 --- !u!1001 &1359478086
@@ -11702,6 +11716,7 @@ GameObject:
   - component: {fileID: 1452055554}
   - component: {fileID: 1452055553}
   - component: {fileID: 1452055552}
+  - component: {fileID: 1452055555}
   m_Layer: 8
   m_Name: Rocks_DialogueTriggerBox (2)
   m_TagString: Untagged
@@ -11786,6 +11801,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 282084646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1452055555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452055551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e0e483042e26f43b515e2caf1ef6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::CompanionFriendship
+  MaxFriendshipLevel: 1000
+  CurrentFriendshipLevel: 0
+  DailyConversationReward: 25
+  MissedConversationSubstraction: 10
 --- !u!1 &1492386289
 GameObject:
   m_ObjectHideFlags: 0
@@ -11946,6 +11977,7 @@ GameObject:
   - component: {fileID: 1499419339}
   - component: {fileID: 1499419338}
   - component: {fileID: 1499419337}
+  - component: {fileID: 1499419340}
   m_Layer: 8
   m_Name: Controls_DialogueTriggerBox
   m_TagString: Untagged
@@ -12030,6 +12062,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 282084646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1499419340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499419336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e0e483042e26f43b515e2caf1ef6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::CompanionFriendship
+  MaxFriendshipLevel: 1000
+  CurrentFriendshipLevel: 0
+  DailyConversationReward: 25
+  MissedConversationSubstraction: 10
 --- !u!1001 &1507349874
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12841,6 +12889,7 @@ GameObject:
   - component: {fileID: 1593863584}
   - component: {fileID: 1593863583}
   - component: {fileID: 1593863582}
+  - component: {fileID: 1593863585}
   m_Layer: 8
   m_Name: Storage_DialogueTriggerBox (3)
   m_TagString: Untagged
@@ -12925,6 +12974,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 282084646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1593863585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593863581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e0e483042e26f43b515e2caf1ef6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::CompanionFriendship
+  MaxFriendshipLevel: 1000
+  CurrentFriendshipLevel: 0
+  DailyConversationReward: 25
+  MissedConversationSubstraction: 10
 --- !u!1 &1630305039
 GameObject:
   m_ObjectHideFlags: 0
@@ -13464,8 +13529,8 @@ MonoBehaviour:
   requiresLever: 0
   interactionRange: 0.6
   uniqueId: 936d4995-34b2-4b17-84de-9285a6df53fb
-  brokenBridge: {fileID: 466567612}
-  fixedBridge: {fileID: 1938967015}
+  brokenStrucutre: {fileID: 0}
+  fixedStructure: {fileID: 0}
   requiredItems:
   - {fileID: 1403626101363094199, guid: 2320ca8f8b038914288c1ec2910a5302, type: 3}
   - {fileID: 1798963747143233540, guid: 3d9c330ca2a68294588a3d3bf10adf72, type: 3}
@@ -15173,91 +15238,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1871233005
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1871233006}
-  - component: {fileID: 1871233008}
-  - component: {fileID: 1871233007}
-  m_Layer: 8
-  m_Name: DialogueTriggerBox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1871233006
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871233005}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 106510788}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1871233007
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871233005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c8551f3ab8e73148ae97c061e0b735e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Main::DialogueTrigger
-  dialogueToPlay: {fileID: 11400000, guid: 0faa50e35862873488b4739e3488186c, type: 2}
-  triggerType: 0
-  interactKey: 102
-  pressF: {fileID: 0}
---- !u!58 &1871233008
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871233005}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 3
 --- !u!1 &1883301311
 GameObject:
   m_ObjectHideFlags: 0
