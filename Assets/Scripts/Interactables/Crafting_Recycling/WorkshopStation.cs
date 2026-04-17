@@ -22,7 +22,14 @@ public class WorkshopStation : Interactable
     }
     public override void Interact()
     {
-        workshopUI.SetActive(!workshopUI.activeSelf);
+        if (workshopUI.activeSelf)
+        {
+            workshopUI.SetActive(false);
+        }
+        else
+        {
+            workshopUI.GetComponent<WorkshopUI>().Open(this);
+        }
     }
     public override InteractableObjectState SaveState()
     {

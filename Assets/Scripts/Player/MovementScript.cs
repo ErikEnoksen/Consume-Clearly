@@ -208,7 +208,9 @@ namespace Player
                     rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
                     targetSpeed = horizontal * speed;
-                    float newX = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, landAcceleration * Time.fixedDeltaTime);
+                    bool isChangingDirection = (horizontal > 0f && rb.linearVelocity.x < -0.01f) || (horizontal < 0f && rb.linearVelocity.x > 0.01f);
+                    accelRate = isChangingDirection ? landDeceleration : landAcceleration;
+                    float newX = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, accelRate * Time.fixedDeltaTime);
                     rb.linearVelocity = new Vector2(newX, rb.linearVelocity.y);
                 }
                 else
