@@ -15,9 +15,10 @@ MonoBehaviour:
   dialogueLines:
   - text: WAAAAAAA, how did you get here?
     speakerName: Miner
-    dialogueBoxColor: {r: 1, g: 0.8705883, b: 0.6784314, a: 1}
+    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
-    dialogueBoxSprite: {fileID: -5805635871556436518, guid: 6b9f542dd340d2d48bc8b6e9cb489d01, type: 3}
+    dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
+    speakerPortrait: {fileID: 1176994132114263677, guid: d50d30e09e4869441813ee3cd42fa90d, type: 3}
     choices:
     - choiceText: I walked here...
       choiceType: 0
@@ -33,9 +34,10 @@ MonoBehaviour:
       nextDialogue: {fileID: 0}
   - text: Ohh well, since your here then. Could you help me fix my bridge?
     speakerName: Miner
-    dialogueBoxColor: {r: 1, g: 0.8705883, b: 0.6784314, a: 1}
+    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
-    dialogueBoxSprite: {fileID: -5805635871556436518, guid: 6b9f542dd340d2d48bc8b6e9cb489d01, type: 3}
+    dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
+    speakerPortrait: {fileID: 1176994132114263677, guid: d50d30e09e4869441813ee3cd42fa90d, type: 3}
     choices:
     - choiceText: Umm sure but i need to get out of here too
       choiceType: 0
@@ -45,7 +47,8 @@ MonoBehaviour:
     speakerName: Miner
     dialogueBoxColor: {r: 1, g: 0.8705883, b: 0.6784314, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
-    dialogueBoxSprite: {fileID: -5805635871556436518, guid: 6b9f542dd340d2d48bc8b6e9cb489d01, type: 3}
+    dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
+    speakerPortrait: {fileID: 1176994132114263677, guid: d50d30e09e4869441813ee3cd42fa90d, type: 3}
     choices:
     - choiceText: Yes, but..
       choiceType: 0
@@ -54,9 +57,10 @@ MonoBehaviour:
   - text: 'I see... but thats great because the level to activate the elevator is
       in the storage area after the bridge. '
     speakerName: Miner
-    dialogueBoxColor: {r: 1, g: 0.8705883, b: 0.6784314, a: 1}
+    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
-    dialogueBoxSprite: {fileID: -5805635871556436518, guid: 6b9f542dd340d2d48bc8b6e9cb489d01, type: 3}
+    dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
+    speakerPortrait: {fileID: 1176994132114263677, guid: d50d30e09e4869441813ee3cd42fa90d, type: 3}
     choices:
     - choiceText: Ok then, I'll help
       choiceType: 0
@@ -64,9 +68,10 @@ MonoBehaviour:
       nextDialogue: {fileID: 0}
   - text: 'Nice! Here is some TnT to blow up the rocks in front of the bridge. '
     speakerName: Miner
-    dialogueBoxColor: {r: 1, g: 0.8705883, b: 0.6784314, a: 1}
+    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
-    dialogueBoxSprite: {fileID: -5805635871556436518, guid: 6b9f542dd340d2d48bc8b6e9cb489d01, type: 3}
+    dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
+    speakerPortrait: {fileID: 1176994132114263677, guid: d50d30e09e4869441813ee3cd42fa90d, type: 3}
     choices:
     - choiceText: Ok then, I'll help
       choiceType: 0

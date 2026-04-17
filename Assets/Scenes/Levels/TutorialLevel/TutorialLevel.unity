@@ -7038,8 +7038,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::Dialogue
   dialogueBox: {fileID: 1124609837}
   dialogueText: {fileID: 1349702554}
-  nameText: {fileID: 0}
+  nameText: {fileID: 1016508337}
   dialogueBoxImage: {fileID: 629735416}
+  characterBoxImage: {fileID: 2020937910}
   choicesPanel: {fileID: 216239167}
   choiceButtons:
   - {fileID: 1173643850}
@@ -7188,6 +7189,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec530d5e6ac1574d831bbf0ed2b8001, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::InventoryItemTest
+--- !u!114 &1016508337 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1897526826281012919, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+  m_PrefabInstance: {fileID: 1940241789}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &1035700156
 GameObject:
   m_ObjectHideFlags: 0
@@ -8365,60 +8377,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 282084646}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1148745845
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1148745847}
-  - component: {fileID: 1148745846}
-  m_Layer: 0
-  m_Name: PauseSettings
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1148745846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148745845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bfe8f679e1cb974d9566782dd2354c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Main::PauseSettings
-  resolutionButtonImage: {fileID: 0}
-  resolutionSprites: []
-  musicButtonImage: {fileID: 0}
-  musicOnSprite: {fileID: 0}
-  musicOffSprite: {fileID: 0}
-  fullscreenButtonImage: {fileID: 0}
-  fullscreenOnSprite: {fileID: 0}
-  fullscreenOffSprite: {fileID: 0}
-  settingsContainer: {fileID: 169462088}
-  pauseContainer: {fileID: 1811588269}
---- !u!4 &1148745847
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1148745845}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 478.26688, y: 187.35883, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1139428174
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8488,6 +8446,60 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d86e362d588cef647a41c38cbaee130c, type: 3}
+--- !u!1 &1148745845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1148745847}
+  - component: {fileID: 1148745846}
+  m_Layer: 0
+  m_Name: PauseSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1148745846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148745845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfe8f679e1cb974d9566782dd2354c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::PauseSettings
+  resolutionButtonImage: {fileID: 0}
+  resolutionSprites: []
+  musicButtonImage: {fileID: 0}
+  musicOnSprite: {fileID: 0}
+  musicOffSprite: {fileID: 0}
+  fullscreenButtonImage: {fileID: 0}
+  fullscreenOnSprite: {fileID: 0}
+  fullscreenOffSprite: {fileID: 0}
+  settingsContainer: {fileID: 169462088}
+  pauseContainer: {fileID: 1811588269}
+--- !u!4 &1148745847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148745845}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 478.26688, y: 187.35883, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1154705829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13464,8 +13476,8 @@ MonoBehaviour:
   requiresLever: 0
   interactionRange: 0.6
   uniqueId: 936d4995-34b2-4b17-84de-9285a6df53fb
-  brokenBridge: {fileID: 466567612}
-  fixedBridge: {fileID: 1938967015}
+  brokenStrucutre: {fileID: 0}
+  fixedStructure: {fileID: 0}
   requiredItems:
   - {fileID: 1403626101363094199, guid: 2320ca8f8b038914288c1ec2910a5302, type: 3}
   - {fileID: 1798963747143233540, guid: 3d9c330ca2a68294588a3d3bf10adf72, type: 3}
@@ -15845,6 +15857,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5479505569147268677, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -568
+      objectReference: {fileID: 0}
+    - target: {fileID: 5479505569147268677, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6049964698309464731, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -16568,6 +16588,17 @@ Transform:
   - {fileID: 1072697496}
   m_Father: {fileID: 453745025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2020937910 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3483045514234191499, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+  m_PrefabInstance: {fileID: 1940241789}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!4 &2022762175 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4952245106973457478, guid: 1461acf1a8076ff4caf0e338d349fda8, type: 3}
