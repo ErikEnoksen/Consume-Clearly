@@ -3476,7 +3476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6655553419410872662, guid: 2d6047d7a366f2343a1a7986136590c5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6767,9 +6767,81 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8914616892585617923}
     m_Modifications:
+    - target: {fileID: 402022842199893436, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 402022842199893436, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 980883568864654793, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 980883568864654793, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1142715390307981976, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330688596656403770, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330688596656403770, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330688596656403770, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1330688596656403770, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -17
+      objectReference: {fileID: 0}
     - target: {fileID: 2147631205614402239, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
       propertyPath: m_Name
       value: WorkshopUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 2147631205614402239, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385563289456042780, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2385563289456042780, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740935639523133416, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4267609479007161680, guid: a45433752a172b949898a9b57257dd8b, type: 3}
+    - target: {fileID: 4481002406433120293, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4481002406433120293, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7457127789334402701, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7457127789334402701, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1152465185706427319, guid: 6c66e9bf728ac2d49a8953b5e44368ef, type: 3}
+    - target: {fileID: 7457127789334402701, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9195156981674743969, guid: a17ca815075d72b418c1d69945c434f8, type: 3}
       propertyPath: m_Pivot.x
