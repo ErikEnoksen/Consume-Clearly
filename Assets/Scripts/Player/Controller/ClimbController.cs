@@ -72,12 +72,13 @@ namespace Player
             // While climbing, check for exit inputs
             if (movement.IsClimbing)
             {
-                // Jump exits upward
+                // Jump exits upward — release with zero velocity then grant coyote so
+                // the same key press fires a normal jump via jumpAction next FixedUpdate.
                 if (Input.GetButtonDown("Jump"))
                 {
                     if (debugLogs) Debug.Log("[ClimbController] Jump input while climbing - exiting");
-                    Vector2 exitVel = new Vector2(0f, jumpOffVertical);
-                    movement.ExitClimb(exitVel);
+                    movement.ExitClimb(Vector2.zero);
+                    movement.GrantJumpCoyote();
                     return;
                 }
 
