@@ -62,11 +62,19 @@ public class SettingsManager : MonoBehaviour
             AudioManager.Instance?.Stop("BackgroundMusic");
     }
 
-    public void CycleResolution()
+    public Resolution[] GetAvailableResolutions()
     {
-        resolutionIndex = (resolutionIndex + 1) % resolutions.Length;
-        ApplySettings();
-        SaveSettings();
+        return resolutions;
+    }
+
+    public void SetResolution(int index)
+    {
+        if (index >= 0 && index < resolutions.Length)
+        {
+            resolutionIndex = index;
+            ApplySettings();
+            SaveSettings();
+        }
     }
 
     public void ToggleFullscreen()

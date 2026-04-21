@@ -26,13 +26,16 @@ MonoBehaviour:
     dialogueBoxSprite: {fileID: 0}
     choices:
     - choiceText: ball
-      choiceType: 1
+      choiceType: 0
+      choiceQuality: 1
       nextDialogue: {fileID: 0}
-    - choiceText: bye
-      choiceType: 3
+    - choiceText: Screw
+      choiceType: 2
+      choiceQuality: 0
       nextDialogue: {fileID: 0}
     - choiceText: baller
       choiceType: 1
+      choiceQuality: 1
       nextDialogue: {fileID: 0}
   - text: You're shorter than I expected...
     speakerName: Obi Wan Kenobi

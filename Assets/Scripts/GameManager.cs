@@ -135,11 +135,6 @@
             {
                 GameTime += Time.deltaTime;
         
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    GoToMainMenu();
-                }
-        
                 // Quick save/load shortcuts (optional - remove if not needed)
                 if (Input.GetKeyDown(KeyCode.F5))
                 {
