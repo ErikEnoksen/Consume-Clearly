@@ -275,6 +275,11 @@ namespace Player
         }
 
         // Climb control API ------------------
+        public void GrantJumpCoyote()
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+
         public void EnterClimb(Transform climbTransform, bool isLadder, bool snapToX = true)
         {
             IsClimbing = true;
@@ -293,6 +298,9 @@ namespace Player
             rb.linearVelocity = new Vector2(0f, 0f);
 
             // Notify animator via AnimationController
+            animationController.SetWalking(false);
+            animationController.SetIdle(false);
+            animationController.CancelJump();
             animationController.SetClimbActive(true);
             animationController.SetClimbLadder(isLadder);
             animationController.SetClimbRope(!isLadder);

@@ -9,6 +9,8 @@ namespace LevelObjects.Interactable
         [Header("Animation")]
         [SerializeField] private string unfurlTriggerName = "Unfurl";
         [SerializeField] private string ropeClipName = "RopeShort";
+        [Tooltip("Show the rope immediately on start without playing the unfurl animation. Enable this when placing the rope directly in a scene.")]
+        [SerializeField] private bool showImmediately = true;
 
         private Animator _animator;
         private List<SpriteRenderer> _renderers = new List<SpriteRenderer>();
@@ -19,6 +21,12 @@ namespace LevelObjects.Interactable
         private void Awake()
         {
             EnsureInitialized();
+        }
+
+        private void Start()
+        {
+            if (showImmediately)
+                ShowFinalState();
         }
 
         private void EnsureInitialized()
