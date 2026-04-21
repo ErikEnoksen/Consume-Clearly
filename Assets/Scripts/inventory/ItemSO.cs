@@ -5,7 +5,7 @@ public enum ItemType
     Food,
     Consumable,
     Money,
-    Tool
+    Gift
 }
 
 
@@ -21,7 +21,6 @@ public class ItemSO : ScriptableObject
         switch (itemType)
         {
             case ItemType.None:
-                Debug.Log("Not usable");
                 return false;
             case ItemType.Food:
                 PlayerHunger playerHunger = GameObject.Find("Sliders").GetComponent<PlayerHunger>();
@@ -34,13 +33,24 @@ public class ItemSO : ScriptableObject
                 MoneyManager moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
                 moneyManager.ChangeMoneyAmount(amountToChangeStat);
                 return true;
-            case ItemType.Tool:
-                //Tool behaviour
-                return true;
                 
         }
 
         return false;
+    }
+
+    public bool UseItem(CompanionFriendship companion)
+    {
+        if (itemType == ItemType.Gift)
+        {
+            companion.IncreaseFriendship(amountToChangeStat);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 
 }

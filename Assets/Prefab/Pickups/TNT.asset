@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9525c0c9818184791b9e8f6b179e8d, type: 3}
   m_Name: TNT
   m_EditorClassIdentifier: Main::WorkshopRecipe
-  stationType: 2
+  stationType: 0
   inputs:
   - itemName: Rope
     amount: 1
@@ -20,10 +20,6 @@ MonoBehaviour:
   - itemName: Plank
     amount: 1
     icon: {fileID: 5736930619707861622, guid: ac51451c284c0b44b89026f87301fa1b, type: 3}
-  outputs:
-  - itemName: 
-    amount: 0
-    icon: {fileID: 0}
   outputPrefabs:
   - itemPrefab: {fileID: 5489925412272331661, guid: 1da58d9b3b87dc1449f311a297e2cb95, type: 3}
     amount: 1

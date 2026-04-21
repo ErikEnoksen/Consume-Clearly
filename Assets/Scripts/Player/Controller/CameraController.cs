@@ -1,96 +1,32 @@
+using Unity.Cinemachine;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 namespace Player
 {
     public class CameraController : MonoBehaviour
     {
-        [Header("Target Settings")] public Transform target;
-        public Vector3 offset = new Vector3(0, 0, -10);
+        private CinemachineCamera cinemachineCamera;
 
-        [Header("Background Settings")] public SpriteRenderer backgroundSprite;
+        private Transform player;
 
-        private Camera cam;
-        private float halfHeight;
-        private float halfWidth;
-        private float minX, maxX, minY, maxY;
-        private float spriteWidth, spriteHeight;
 
         private void Start()
         {
-            if (target == null)
-                target = GameObject.FindGameObjectWithTag("Player").transform;
-
-            cam = GetComponent<Camera>();
-            halfHeight = cam.orthographicSize;
-            halfWidth = halfHeight * cam.aspect;
-
-            UpdateBackgroundBounds();
-        }
-
-        public void SetBackgroundSprite(SpriteRenderer sprite)
-        {
-            backgroundSprite = sprite;
-            UpdateBackgroundBounds();
-        }
-
-        private void UpdateBackgroundBounds()
-        {
-            if (backgroundSprite != null)
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+            if(player == null)
             {
-                if (cam == null)
-                    cam = GetComponent<Camera>();
-
-                if (cam != null)
-                {
-                    halfHeight = cam.orthographicSize;
-                    halfWidth = halfHeight * cam.aspect;
-                }
-
-                spriteWidth = backgroundSprite.sprite.bounds.size.x * backgroundSprite.transform.lossyScale.x;
-                spriteHeight = backgroundSprite.sprite.bounds.size.y * backgroundSprite.transform.lossyScale.y;
-
-                Vector3 spritePos = backgroundSprite.transform.position;
-
-                minX = spritePos.x - spriteWidth / 2;
-                maxX = spritePos.x + spriteWidth / 2;
-                minY = spritePos.y - spriteHeight / 2;
-                maxY = spritePos.y + spriteHeight / 2;
+                Debug.Log("not found");
             }
-        }
 
-        private void LateUpdate()
-        {
-            if (target == null) return;
-
-            Vector3 desiredPosition = target.position + offset;
-
-            if (backgroundSprite != null)
-            {
-                float newX = Mathf.Clamp(desiredPosition.x, minX + halfWidth, maxX - halfWidth);
-
-                float newY = Mathf.Clamp(desiredPosition.y, minY + halfHeight, maxY - halfHeight);
-
-
-                transform.position = new Vector3(newX, newY, desiredPosition.z);
+            Camera.main.gameObject.TryGetComponent<CinemachineBrain>(out var brain);
+            if(brain == null) 
+            { 
+                brain = Camera.main.gameObject.GetComponent<CinemachineBrain>(); 
             }
-            else
-            {
-                transform.position = desiredPosition;
-            }
-        }
 
-        private void OnDrawGizmos()
-        {
-            if (backgroundSprite != null)
-            {
-                // Draw the camera bounds in the editor
-                Gizmos.color = Color.green;
-                Gizmos.DrawWireCube(backgroundSprite.transform.position,
-                    new Vector3(
-                        spriteWidth,
-                        spriteHeight,
-                        0));
-            }
+            cinemachineCamera = gameObject.GetComponent<CinemachineCamera>();
+            cinemachineCamera.Follow = player;
         }
     }
 }

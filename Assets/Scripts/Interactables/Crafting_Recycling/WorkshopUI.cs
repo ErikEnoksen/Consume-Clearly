@@ -5,21 +5,29 @@ using System.Collections.Generic;
 
 public class WorkshopUI : MonoBehaviour
 {
-    
-    [SerializeField] private WorkshopStation station;
+
     [SerializeField] private Transform recipeListParent;
     [SerializeField] private Transform ingredientListParent;
     [SerializeField] private GameObject recipeButtonPrefab;
     [SerializeField] private GameObject ingredientRowPrefab;
     [SerializeField] private Button processButton;
     
+    private WorkshopStation station;
     private WorkshopRecipe selectedRecipe;
     private InventoryManager inventoryManager;
-    
+
+    public void Open(WorkshopStation callingStation)
+    {
+        station = callingStation;
+        inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
+        gameObject.SetActive(true);
+        PopulateRecipeList();
+    }
+
     void OnEnable()
     {
-        inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
-        PopulateRecipeList();
+        if (station != null)
+            PopulateRecipeList();
     }
 
     void PopulateRecipeList()

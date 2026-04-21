@@ -8,6 +8,12 @@ namespace Tests.PlayMode
 {
     public class SaveSystem_PlayModeTests
     {
+        [TearDown]
+        public void TearDown()
+        {
+            SaveSystem.ClearSaveData();
+        }
+
         [UnityTest]
         public IEnumerator SaveSystem_SavesAndLoadsGameCorrectly()
         {

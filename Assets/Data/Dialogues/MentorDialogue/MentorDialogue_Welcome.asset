@@ -19,7 +19,6 @@ MonoBehaviour:
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
     dialogueBoxSprite: {fileID: -7506325772429207559, guid: 2f483ba8dfe496d459b7d79443b00343, type: 3}
     choices: []
-    nextDialogues: []
   - text: 'You must have fallen really far to end up here, and already breaking elevators
       I see. '
     speakerName: Mentor
@@ -27,7 +26,6 @@ MonoBehaviour:
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
     dialogueBoxSprite: {fileID: -7506325772429207559, guid: 2f483ba8dfe496d459b7d79443b00343, type: 3}
     choices: []
-    nextDialogues: []
   - text: " Hmmm, I know the miner has something in the storage area to fix it but
       I haven\u2019t seen him for days."
     speakerName: Mentor
@@ -35,7 +33,6 @@ MonoBehaviour:
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
     dialogueBoxSprite: {fileID: 0}
     choices: []
-    nextDialogues: []
   - text: "He should be somewhere in the mines. Why don\u2019t you go look for him
       then you can fix the elevator and get out of here."
     speakerName: Mentor
@@ -43,20 +40,27 @@ MonoBehaviour:
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
     dialogueBoxSprite: {fileID: -7506325772429207559, guid: 2f483ba8dfe496d459b7d79443b00343, type: 3}
     choices: []
-    nextDialogues: []
   - text: "You dont want to get stuck here\u2026. believe me. "
     speakerName: Mentor
     dialogueBoxColor: {r: 0.9607844, g: 0.8705883, b: 0.7019608, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
     dialogueBoxSprite: {fileID: -7506325772429207559, guid: 2f483ba8dfe496d459b7d79443b00343, type: 3}
     choices:
-    - ...
-    - Okay
-    nextDialogues: []
+    - choiceText: Okay, I'll do that
+      choiceType: 1
+      choiceQuality: 1
+      nextDialogue: {fileID: 0}
+    - choiceText: ...
+      choiceType: 0
+      choiceQuality: 1
+      nextDialogue: {fileID: 0}
   - text: "Go on, I don\u2019t have all day."
     speakerName: Mentor
     dialogueBoxColor: {r: 0.9607844, g: 0.8705883, b: 0.7019608, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
     dialogueBoxSprite: {fileID: -7506325772429207559, guid: 2f483ba8dfe496d459b7d79443b00343, type: 3}
     choices: []
-    nextDialogues: []
+  quest: {fileID: 11400000, guid: bd925ad4f1955e64db6b2f7cc15326a2, type: 2}
+  questInProgressIndex: 0
+  questCompletedIndex: 0
+  initialDialogueEndIndex: 6
