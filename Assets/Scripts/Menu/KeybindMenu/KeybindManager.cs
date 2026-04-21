@@ -1,6 +1,7 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class KeybindManager : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class KeybindManager : MonoBehaviour
 
     public GameObject settingsMenu;
     public GameObject keybindsMenu;
+
+    public GameObject? keybindsButton;
+    public GameObject? backButton;
 
     // Event triggered when a keybind is changed
     public static event Action<string, KeyCode> OnKeybindChanged;
@@ -96,6 +100,18 @@ public class KeybindManager : MonoBehaviour
 
     public void Back()
     {
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        string sceneName = currentScene.name;
+
+        if (sceneName == "MainMenu")
+        {
+            keybindsMenu.SetActive(false);
+            backButton.SetActive(true);
+            keybindsButton.SetActive(true);
+            settingsMenu.SetActive(true);
+        }
+
         keybindsMenu.SetActive(false);
         settingsMenu.SetActive(true);
     }
@@ -103,5 +119,17 @@ public class KeybindManager : MonoBehaviour
     public void Reset()
     {
         LoadDefaults();
+        
+        foreach (var action in keybinds.Keys)
+        {
+            PlayerPrefs.DeleteKey(action);
+        }
+        
+        PlayerPrefs.Save();
+        
+        foreach (var pair in keybinds)
+        {
+            OnKeybindChanged?.Invoke(pair.Key, pair.Value);
+        }
     }
 }
