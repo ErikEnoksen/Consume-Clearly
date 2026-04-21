@@ -6,24 +6,43 @@ public class InventoryManager : MonoBehaviour
 {
     public GameObject inventoryMenu;
     private bool inventoryActive;
+    public bool giftingEnabled = false;
     public InventoryItem[] inventoryItems;
 
+    private CompanionFriendship companionFriendship;
     public ItemSO[] itemSOs;
 
     // Update is called once per frame
     void Update()
     {
         //Listens for when q is pressed and opens or closes the inventory
-        if (Input.GetKeyDown(KeybindManager.Instance.GetKey("Inventory")) && !inventoryActive) 
+        if (Input.GetKeyDown(KeybindManager.Instance.GetKey("Inventory")))
+        {
+            ToggleInventory();
+        }
+    }
+
+    public void ToggleInventory()
+    {
+        if (!inventoryActive)
         {
             inventoryMenu.SetActive(true);
             inventoryActive = true;
         }
-       else if(Input.GetKeyDown(KeybindManager.Instance.GetKey("Inventory")) && inventoryActive)
+        else if (inventoryActive)
         {
             inventoryMenu.SetActive(false);
             inventoryActive = false;
+            giftingEnabled = false;
         }
+    }
+
+    public void GiftingMenu(CompanionFriendship companion)
+    {
+        inventoryMenu.SetActive(true);
+        inventoryActive = true;
+        giftingEnabled = true;
+        companionFriendship = companion;
     }
 
     public int AddItem(string itemID,string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string tag)
@@ -62,17 +81,30 @@ public class InventoryManager : MonoBehaviour
 
     public bool UseItem(string itemName)
     {
+        
         for (int i = 0; i < itemSOs.Length; i++)
         {
             if (itemSOs[i].itemName == itemName)
             {
-                bool usable = itemSOs[i].UseItem();
-                return usable;
+                if (itemSOs[i].itemType == ItemType.Gift && giftingEnabled)
+                {
+                    bool usable = itemSOs[i].UseItem(companionFriendship);
+                    return usable;
+                }
+                else if ((itemSOs[i].itemType == ItemType.Gift && !giftingEnabled) || (itemSOs[i].itemType != ItemType.Gift && giftingEnabled))
+                {
+                    return false;
+                }
+                else
+                {
+                    bool usable = itemSOs[i].UseItem();
+                    return usable;
+                }
             }
         }
-       
-        return false; 
 
+        return false;
+        
     }
 
     public bool RemoveItem(string itemID, int quantity)

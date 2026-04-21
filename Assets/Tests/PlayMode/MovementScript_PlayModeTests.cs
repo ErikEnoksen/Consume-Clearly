@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Reflection;
 using NUnit.Framework;
 using Player;
 using UnityEngine;
@@ -40,15 +41,15 @@ namespace Tests.PlayMode
             // Create player with all required components first
             player = new GameObject("Player");
             rb = player.AddComponent<Rigidbody2D>();
-            var spriteRenderer = player.AddComponent<SpriteRenderer>();
+            player.AddComponent<SpriteRenderer>();
             var animator = player.AddComponent<Animator>();
-            var animController = player.AddComponent<AnimationController>();
+            player.AddComponent<AnimationController>();
 
             // Place player so groundCheck clearly overlaps the ground collider on CI
             player.transform.position = new Vector2(0, 0.6f);
             rb.gravityScale = 2f;
 
-            // disable Animator to avoid repeated "Animator is not playing an AnimatorController" logs on CI
+            // Disable Animator to avoid repeated "Animator is not playing an AnimatorController" logs on CI
             animator.enabled = false;
 
             // Create ground check before adding MovementScript
@@ -65,9 +66,26 @@ namespace Tests.PlayMode
             movementScript.SetupGroundCheck(groundCheck);
 
             movementScript.GetType()
-                .GetField("groundLayer", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                .GetField("groundLayer", BindingFlags.NonPublic | BindingFlags.Instance)
                 .SetValue(movementScript, (LayerMask)LayerMask.GetMask("Ground"));
         }
+
+        [TearDown]
+        public void TearDown()
+        {
+            Object.DestroyImmediate(player);
+            Object.DestroyImmediate(ground);
+            Object.DestroyImmediate(audioManagerObj);
+            Object.DestroyImmediate(keybindManagerObj);
+
+            // Reset singleton references to prevent test pollution between runs
+            KeybindManager.Instance = null;
+            typeof(AudioManager)
+                .GetProperty("Instance", BindingFlags.Public | BindingFlags.Static)
+                .SetValue(null, null);
+        }
+
+        // --- Movement ---
 
         [UnityTest]
         public IEnumerator PlayerMovesRightWhenInputIsPositive()
@@ -83,6 +101,8 @@ namespace Tests.PlayMode
             Assert.Greater(rb.linearVelocity.x, 0.05f, "Player should move right when horizontal input is positive.");
         }
 
+        // --- Jump ---
+
         [UnityTest]
         public IEnumerator PlayerJumpsWhenGroundedAndJumpExecuted()
         {
@@ -90,8 +110,7 @@ namespace Tests.PlayMode
             yield return new WaitForFixedUpdate();
 
             float expectedJumpPower = (float)movementScript.GetType()
-                .GetField("jumpingPower",
-                    System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance)
+                .GetField("jumpingPower", BindingFlags.NonPublic | BindingFlags.Instance)
                 .GetValue(movementScript);
 
             movementScript.Test_Jump_ForceCoyote();
@@ -113,16 +132,54 @@ namespace Tests.PlayMode
                 "Player should not jump when not grounded and coyote time expired.");
         }
 
-        [TearDown]
-        public void TearDown()
-        {
-            Object.Destroy(player);
-            Object.Destroy(ground);
-            Object.Destroy(audioManagerObj);
-            Object.Destroy(keybindManagerObj);
+        // --- Climb ---
 
-            // Reset singleton references to prevent test pollution between runs
-            KeybindManager.Instance = null;
+        [UnityTest]
+        public IEnumerator EnterClimb_SetsIsClimbingTrue()
+        {
+            var climbObj = new GameObject("Climb");
+            climbObj.transform.position = player.transform.position;
+
+            movementScript.EnterClimb(climbObj.transform, isLadder: true);
+            yield return null;
+
+            Assert.IsTrue(movementScript.IsClimbing, "IsClimbing should be true after EnterClimb.");
+
+            Object.DestroyImmediate(climbObj);
+        }
+
+        [UnityTest]
+        public IEnumerator ExitClimb_AfterEnterClimb_SetsIsClimbingFalse()
+        {
+            var climbObj = new GameObject("Climb");
+            climbObj.transform.position = player.transform.position;
+
+            movementScript.EnterClimb(climbObj.transform, isLadder: true);
+            yield return null;
+
+            movementScript.ExitClimb(Vector2.zero);
+            yield return null;
+
+            Assert.IsFalse(movementScript.IsClimbing, "IsClimbing should be false after ExitClimb.");
+
+            Object.DestroyImmediate(climbObj);
+        }
+
+        [UnityTest]
+        public IEnumerator SetClimbVertical_WhileClimbing_AppliesVerticalVelocityInFixedUpdate()
+        {
+            var climbObj = new GameObject("Climb");
+            climbObj.transform.position = player.transform.position;
+
+            movementScript.EnterClimb(climbObj.transform, isLadder: true);
+            movementScript.SetClimbVertical(3f);
+
+            yield return new WaitForFixedUpdate();
+
+            Assert.That(rb.linearVelocity.y, Is.EqualTo(3f).Within(0.1f),
+                "Vertical velocity should match the value set by SetClimbVertical while climbing.");
+
+            Object.DestroyImmediate(climbObj);
         }
     }
 }

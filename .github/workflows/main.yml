@@ -23,6 +23,7 @@ jobs:
           - .
         testMode:
           - editmode
+          - playmode
         unityVersion:
           - 6000.2.6f2
     steps:
@@ -49,15 +50,15 @@ jobs:
             Library-${{ matrix.projectPath }}-
             Library-
 
-      - name: Run EditMode Tests
+      - name: Run Tests
         shell: powershell
         env:
           UNITY_PATH: ${{ secrets.UNITY_PATH }}
         run: |
-          $resultsPath = ".\editmode-artifacts\results.xml"
-          New-Item -ItemType Directory -Force -Path ".\editmode-artifacts"
+          $resultsPath = ".\${{ matrix.testMode }}-artifacts\results.xml"
+          New-Item -ItemType Directory -Force -Path ".\${{ matrix.testMode }}-artifacts"
           Start-Process -FilePath "$env:UNITY_PATH" -ArgumentList "-runTests", "-testPlatform", "${{ matrix.testMode }}", "-projectPath", ".", "-testResults", $resultsPath, "-batchmode", "-nographics" -Wait -NoNewWindow
-          Write-Host "Test results path: $(Resolve-Path .\editmode-artifacts -ErrorAction SilentlyContinue)"
+          Write-Host "Test results path: $(Resolve-Path .\${{ matrix.testMode }}-artifacts -ErrorAction SilentlyContinue)"
           exit $LASTEXITCODE
 
       - uses: actions/upload-artifact@v6
