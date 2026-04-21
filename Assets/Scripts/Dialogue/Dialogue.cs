@@ -246,13 +246,9 @@ public class Dialogue : MonoBehaviour
 
                 if (chosenChoice.nextDialogue != null)
                 {
-                    string itemName = chosenChoice.choiceText;
+                    inventoryManager.GiftingMenu(currentCompanion);
 
-                    int giftValue = inventoryManager.LookForGift(itemName, 50);
-                    Debug.Log(giftValue);
-                    currentCompanion.IncreaseFriendship(giftValue);
-
-                    DisplayDialogue(chosenChoice.nextDialogue, currentCompanion);
+                    DisplayDialogue(chosenChoice.nextDialogue);
                 }
                 else
                 {

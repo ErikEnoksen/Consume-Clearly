@@ -208,7 +208,9 @@ namespace Player
                     rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
                     targetSpeed = horizontal * speed;
-                    float newX = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, landAcceleration * Time.fixedDeltaTime);
+                    bool isChangingDirection = (horizontal > 0f && rb.linearVelocity.x < -0.01f) || (horizontal < 0f && rb.linearVelocity.x > 0.01f);
+                    accelRate = isChangingDirection ? landDeceleration : landAcceleration;
+                    float newX = Mathf.MoveTowards(rb.linearVelocity.x, targetSpeed, accelRate * Time.fixedDeltaTime);
                     rb.linearVelocity = new Vector2(newX, rb.linearVelocity.y);
                 }
                 else
@@ -273,6 +275,11 @@ namespace Player
         }
 
         // Climb control API ------------------
+        public void GrantJumpCoyote()
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+
         public void EnterClimb(Transform climbTransform, bool isLadder, bool snapToX = true)
         {
             IsClimbing = true;
@@ -291,6 +298,9 @@ namespace Player
             rb.linearVelocity = new Vector2(0f, 0f);
 
             // Notify animator via AnimationController
+            animationController.SetWalking(false);
+            animationController.SetIdle(false);
+            animationController.CancelJump();
             animationController.SetClimbActive(true);
             animationController.SetClimbLadder(isLadder);
             animationController.SetClimbRope(!isLadder);

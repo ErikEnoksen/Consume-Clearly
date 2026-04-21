@@ -30,7 +30,7 @@ public class CompanionGiveItem : MonoBehaviour
             Debug.LogWarning("No InventoryManager found in scene.");
         }
 
-        friendship = FindObjectOfType<CompanionFriendship>();
+        friendship = GetComponent<CompanionFriendship>();
 
         if (friendship != null)
         {

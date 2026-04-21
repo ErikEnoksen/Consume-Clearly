@@ -34,14 +34,14 @@ namespace Player
 
         private bool ValidateComponents()
         {
-            if (animator == null)
+            if (!animator)
             {
                 Debug.LogError("Animator component missing from player!");
                 enabled = false;
                 return true;
             }
 
-            if (spriteRenderer == null)
+            if (!spriteRenderer)
             {
                 Debug.LogError("SpriteRenderer component missing from player!");
                 enabled = false;
@@ -65,10 +65,17 @@ namespace Player
             animator.SetTrigger(TRIGGER_JUMP);
             SetIdle(false);
         }
+
+        public void CancelJump()
+        {
+            animator.ResetTrigger(TRIGGER_JUMP);
+            if (IsInJumpState())
+                animator.CrossFade(CLIMB_ROPE, 0.1f);
+        }
         
         public void SetClimbRope(bool isClimbing)
         {
-            if (animator == null) return;
+            if (!animator) return;
             animator.SetBool(CLIMB_ROPE, isClimbing);
             if (isClimbing) SetIdle(false);
         }
@@ -82,14 +89,14 @@ namespace Player
         
         public bool IsInJumpState()
         {
-            if (animator == null) return false;
+            if (!animator) return false;
             var state = animator.GetCurrentAnimatorStateInfo(0);
             return state.IsName(JUMP_STATE_NAME);
         }
         
         public float GetCurrentStateNormalizedTime()
         {
-            if (animator == null) return 0f;
+            if (!animator) return 0f;
             return animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
         }
 
@@ -109,14 +116,14 @@ namespace Player
         // Added: expose CLIMB_ACTIVE animator parameter so other systems can toggle climb states.
         public void SetClimbActive(bool isActive)
         {
-            if (animator == null) return;
+            if (!animator) return;
             animator.SetBool(CLIMB_ACTIVE, isActive);
             if (isActive) SetIdle(false);
         }
 
         public void SetTurnBack(bool turnBack)
         {
-            if (animator == null) return;
+            if (!animator) return;
             animator.SetBool(TURN_BACK, turnBack);
             if (turnBack)
             {
