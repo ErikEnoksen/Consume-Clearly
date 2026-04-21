@@ -1,4 +1,5 @@
-﻿using TMPro;
+using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,6 +14,14 @@ public class KeybindRebinder : MonoBehaviour
 
     private bool isListeningForInput = false;
     private string originalDisplayText;
+    private string defaultFeedbackText = "";
+    private Coroutine resetDisplayRoutine;
+
+    private void Awake()
+    {
+        if (feedbackText != null)
+            defaultFeedbackText = feedbackText.text;
+    }
 
     private void Start()
     {
@@ -21,19 +30,28 @@ public class KeybindRebinder : MonoBehaviour
 
         rebindButton?.onClick.AddListener(StartRebind);
         UpdateDisplay();
+
+        // Subscribe to keybind changes from reset or other sources
+        KeybindManager.OnKeybindChanged += OnKeybindChanged;
     }
 
     private void OnEnable()
     {
         // Update display when menu is opened
         ResetDisplay();
-        UpdateDisplay();
+    }
+
+    private void OnDisable()
+    {
+        CancelPendingReset();
     }
 
     private void OnDestroy()
     {
         if (rebindButton != null)
             rebindButton.onClick.RemoveListener(StartRebind);
+
+        KeybindManager.OnKeybindChanged -= OnKeybindChanged;
     }
 
     private void Update()
@@ -62,6 +80,7 @@ public class KeybindRebinder : MonoBehaviour
 
     private void StartRebind()
     {
+        CancelPendingReset();
         isListeningForInput = true;
         originalDisplayText = bindingDisplay.text;
         bindingDisplay.text = "Waiting for input...";
@@ -89,25 +108,28 @@ public class KeybindRebinder : MonoBehaviour
 
     private void CancelRebind()
     {
+        CancelPendingReset();
         isListeningForInput = false;
         bindingDisplay.text = originalDisplayText;
         bindingDisplay.color = defaultColor;
-        if (feedbackText) feedbackText.text = "";
+        if (feedbackText) feedbackText.text = defaultFeedbackText;
     }
 
     private void ShowError(string message)
     {
+        Debug.Log($"error message: {message} {feedbackText?.text}");
         bindingDisplay.text = originalDisplayText;
         bindingDisplay.color = Color.red;
         if (feedbackText) feedbackText.text = message;
-        Invoke(nameof(ResetDisplay), 2f);
+        ScheduleReset(2f);
     }
 
     private void ShowSuccess(string message)
     {
+        Debug.Log($"success message: {message} {feedbackText?.text}");
         bindingDisplay.color = Color.green;
         if (feedbackText) feedbackText.text = message;
-        Invoke(nameof(ResetDisplay), 1f);
+        ScheduleReset(1f);
     }
 
     private void UpdateDisplay()
@@ -122,6 +144,38 @@ public class KeybindRebinder : MonoBehaviour
     private void ResetDisplay()
     {
         bindingDisplay.color = defaultColor;
+        if (feedbackText) feedbackText.text = defaultFeedbackText;
         UpdateDisplay();
+    }
+
+    private void ScheduleReset(float delay)
+    {
+        CancelPendingReset();
+        resetDisplayRoutine = StartCoroutine(ResetDisplayAfterDelay(delay));
+    }
+
+    private void CancelPendingReset()
+    {
+        if (resetDisplayRoutine == null)
+            return;
+
+        StopCoroutine(resetDisplayRoutine);
+        resetDisplayRoutine = null;
+    }
+
+    private IEnumerator ResetDisplayAfterDelay(float delay)
+    {
+        yield return new WaitForSecondsRealtime(delay);
+        resetDisplayRoutine = null;
+        ResetDisplay();
+    }
+
+    private void OnKeybindChanged(string changedAction, KeyCode newKey)
+    {
+        // Update display if this keybind was changed
+        if (changedAction == actionName)
+        {
+            UpdateDisplay();
+        }
     }
 }
