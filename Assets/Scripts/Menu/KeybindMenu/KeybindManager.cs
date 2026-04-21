@@ -85,6 +85,7 @@ public class KeybindManager : MonoBehaviour
 
     public string GetKeyAsString(string action)
     {
+        Debug.Log(GetKey(action).ToString());
         return GetKey(action).ToString();
     }
 
@@ -97,5 +98,10 @@ public class KeybindManager : MonoBehaviour
     {
         keybindsMenu.SetActive(false);
         settingsMenu.SetActive(true);
+    }
+
+    public void Reset()
+    {
+        LoadDefaults();
     }
 }

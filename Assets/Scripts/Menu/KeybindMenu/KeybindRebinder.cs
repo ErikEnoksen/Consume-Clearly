@@ -5,38 +5,29 @@ using UnityEngine.UI;
 public class KeybindRebinder : MonoBehaviour
 {
     [SerializeField] private string actionName;
-    [SerializeField] private Button rebindButton;
+    [SerializeField] private TMP_Text bindingDisplay;
     [SerializeField] private TMP_Text feedbackText;
-    [SerializeField] private Color waitingColor = Color.yellow;
-    [SerializeField] private Color defaultColor = Color.white;
+    [SerializeField] private Button rebindButton;
+    [SerializeField] private Color waitingColor = Color.red;
+    [SerializeField] private Color defaultColor = Color.black;
 
-    private TMP_Text displayText;
     private bool isListeningForInput = false;
     private string originalDisplayText;
 
     private void Start()
     {
-        displayText = GetComponent<TMP_Text>();
-
         if (rebindButton == null)
-            rebindButton = GetComponentInParent<Button>();
+            rebindButton = GetComponent<Button>();
 
-        if (rebindButton == null)
-        {
-            Debug.LogError("KeybindRebinder requires a Button component", gameObject);
-            return;
-        }
-
-        rebindButton.onClick.AddListener(StartRebind);
+        rebindButton?.onClick.AddListener(StartRebind);
+        UpdateDisplay();
     }
 
     private void OnEnable()
     {
-        // Reinitialize display when menu opens
-        if (displayText != null && KeybindManager.Instance != null)
-        {
-            ResetDisplay();
-        }
+        // Update display when menu is opened
+        ResetDisplay();
+        UpdateDisplay();
     }
 
     private void OnDestroy()
@@ -50,12 +41,10 @@ public class KeybindRebinder : MonoBehaviour
         if (!isListeningForInput)
             return;
 
-        // Listen for any key press
         foreach (KeyCode keyCode in System.Enum.GetValues(typeof(KeyCode)))
         {
             if (Input.GetKeyDown(keyCode))
             {
-                // Ignore UI navigation keys
                 if (keyCode == KeyCode.Escape)
                 {
                     CancelRebind();
@@ -73,26 +62,17 @@ public class KeybindRebinder : MonoBehaviour
 
     private void StartRebind()
     {
-        if (KeybindManager.Instance == null)
-        {
-            Debug.LogError("KeybindManager instance not found!");
-            return;
-        }
-
         isListeningForInput = true;
-        originalDisplayText = displayText.text;
-        displayText.text = "Waiting for input...";
-        displayText.color = waitingColor;
-
-        if (feedbackText != null)
-            feedbackText.text = "Press any key to rebind (ESC to cancel)";
+        originalDisplayText = bindingDisplay.text;
+        bindingDisplay.text = "Waiting for input...";
+        bindingDisplay.color = waitingColor;
+        if (feedbackText) feedbackText.text = "Press any key (ESC to cancel)";
     }
 
     private void RebindKey(KeyCode newKey)
     {
         isListeningForInput = false;
 
-        // Check if key is already in use
         var allKeybinds = KeybindManager.Instance.GetAllKeybinds();
         foreach (var pair in allKeybinds)
         {
@@ -104,50 +84,44 @@ public class KeybindRebinder : MonoBehaviour
         }
 
         KeybindManager.Instance.SetKey(actionName, newKey);
-        ShowSuccess($"Rebound to {newKey}");
+        ShowSuccess("Rebound successfully!");
     }
 
     private void CancelRebind()
     {
         isListeningForInput = false;
-        displayText.text = originalDisplayText;
-        displayText.color = defaultColor;
-
-        if (feedbackText != null)
-            feedbackText.text = "";
+        bindingDisplay.text = originalDisplayText;
+        bindingDisplay.color = defaultColor;
+        if (feedbackText) feedbackText.text = "";
     }
 
     private void ShowError(string message)
     {
-        displayText.text = originalDisplayText;
-        displayText.color = Color.red;
-
-        if (feedbackText != null)
-            feedbackText.text = message;
-
+        bindingDisplay.text = originalDisplayText;
+        bindingDisplay.color = Color.red;
+        if (feedbackText) feedbackText.text = message;
         Invoke(nameof(ResetDisplay), 2f);
     }
 
     private void ShowSuccess(string message)
     {
-        displayText.color = Color.green;
-
-        if (feedbackText != null)
-            feedbackText.text = message;
-
+        bindingDisplay.color = Color.green;
+        if (feedbackText) feedbackText.text = message;
         Invoke(nameof(ResetDisplay), 1f);
+    }
+
+    private void UpdateDisplay()
+    {
+        if (KeybindManager.Instance == null)
+            return;
+
+        string keyAsString = KeybindManager.Instance.GetKeyAsString(actionName);
+        bindingDisplay.text = keyAsString;
     }
 
     private void ResetDisplay()
     {
-        if (displayText == null || KeybindManager.Instance == null)
-            return;
-
-        string keyAsString = KeybindManager.Instance.GetKeyAsString(actionName);
-        displayText.text = $"{actionName}: {keyAsString}";
-        displayText.color = defaultColor;
-
-        if (feedbackText != null)
-            feedbackText.text = "";
+        bindingDisplay.color = defaultColor;
+        UpdateDisplay();
     }
 }

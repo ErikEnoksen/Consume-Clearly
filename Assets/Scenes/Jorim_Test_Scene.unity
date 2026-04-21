@@ -8351,7 +8351,6 @@ GameObject:
   - component: {fileID: 2129752186}
   - component: {fileID: 2129752188}
   - component: {fileID: 2129752187}
-  - component: {fileID: 2129752189}
   - component: {fileID: 2129752190}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -8478,20 +8477,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2129752185}
   m_CullTransparentMesh: 1
---- !u!114 &2129752189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2129752185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dd5a31fd2a4bf84f993d844c2b2e39f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Main::KeybindDisplay
-  actionName: MoveRight
-  showLabel: 0
 --- !u!114 &2129752190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8505,10 +8490,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Main::KeybindRebinder
   actionName: MoveRight
-  rebindButton: {fileID: 1547167859}
+  bindingDisplay: {fileID: 2129752187}
   feedbackText: {fileID: 2129752187}
-  waitingColor: {r: 0, g: 0, b: 0, a: 1}
-  defaultColor: {r: 1, g: 1, b: 1, a: 1}
+  rebindButton: {fileID: 1547167859}
+  waitingColor: {r: 1, g: 0, b: 0, a: 1}
+  defaultColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &2133120664
 GameObject:
   m_ObjectHideFlags: 0
