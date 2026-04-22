@@ -36,7 +36,7 @@ MonoBehaviour:
     dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
     speakerPortrait: {fileID: 930703914476913107, guid: aa3c29b2e7f71d14199c57505fab8e4e, type: 3}
     choices: []
-  - text: 'If you end up add the top why don''t you try fixing the bell up there.
+  - text: 'If you end up at the top why don''t you try fixing the bell up there.
       It would mean a lot to the community. '
     speakerName: Mentor
     dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 0}
