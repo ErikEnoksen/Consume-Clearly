@@ -100,7 +100,9 @@ namespace Player
         // All input is read in Update so GetKeyDown/GetKeyUp are never missed between FixedUpdate frames
         private void Update()
         {
-            horizontal = Input.GetAxisRaw("Horizontal");
+            float moveLeft = Input.GetKey(KeybindManager.Instance.GetKey("MoveLeft")) ? -1f : 0f;
+            float moveRight = Input.GetKey(KeybindManager.Instance.GetKey("MoveRight")) ? 1f : 0f;
+            horizontal = moveLeft + moveRight;
 
             // Buffer jump input regardless of ground state so pressing jump slightly before landing still works
             if (Input.GetKeyDown(KeybindManager.Instance.GetKey("Jump")))
@@ -119,6 +121,9 @@ namespace Player
         {
             Move();
 
+            float moveLeft = Input.GetKey(KeybindManager.Instance.GetKey("MoveLeft")) ? -1f : 0f;
+            float moveRight = Input.GetKey(KeybindManager.Instance.GetKey("MoveRight")) ? 1f : 0f;
+            horizontal = moveLeft + moveRight;
             bool isGrounded = IsGrounded();
 
             // Handle walking and idle animations

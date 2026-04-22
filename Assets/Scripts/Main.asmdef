@@ -3,7 +3,8 @@
     "rootNamespace": "",
     "references": [
         "Unity.TextMeshPro",
-        "NavMeshPlus"
+        "NavMeshPlus",
+        "Unity.Cinemachine"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

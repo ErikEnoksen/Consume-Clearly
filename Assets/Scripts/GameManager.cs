@@ -87,7 +87,7 @@
         
                     if (cameraController != null)
                     {
-                        cameraController.SetBackgroundSprite(backgroundSprite);
+                        //cameraController.SetBackgroundSprite(backgroundSprite);
                         Debug.Log($"Background sprite assigned to camera in scene {CurrentScene}");
                     }
                     else
@@ -134,11 +134,6 @@
             private void Update()
             {
                 GameTime += Time.deltaTime;
-        
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    GoToMainMenu();
-                }
         
                 // Quick save/load shortcuts (optional - remove if not needed)
                 if (Input.GetKeyDown(KeyCode.F5))

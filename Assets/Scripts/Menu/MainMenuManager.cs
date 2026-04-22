@@ -10,6 +10,8 @@ namespace MainMenu
     {
         private const string CREDITS_SCENE_NAME = "Credits";
         private const string GAME_SCENE_NAME = "IntroVid";
+        public GameObject SettingsContainer;
+        public GameObject MainMenuButtons;
 
         private void Start()
         {
@@ -69,7 +71,8 @@ namespace MainMenu
     
         public void OpenSettings()
         {
-            Debug.Log("Settings menu opened! Implementation pending.");
+            MainMenuButtons.SetActive(false);
+            SettingsContainer.SetActive(true);
         }
 
         public void LoadCredits()
