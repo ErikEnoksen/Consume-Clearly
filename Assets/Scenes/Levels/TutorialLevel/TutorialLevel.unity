@@ -3606,7 +3606,6 @@ Transform:
   - {fileID: 18994125}
   - {fileID: 1886958257}
   - {fileID: 1154705830}
-  - {fileID: 799955503}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &453745026
@@ -4637,10 +4636,10 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -0.05095029, y: 16.23518}
-      - {x: -27.904953, y: 16.253803}
+      - {x: -27.857347, y: 16.262306}
       - {x: -27.84174, y: -16.235268}
-      - {x: 27.865053, y: -16.301687}
-      - {x: 27.882263, y: 16.23086}
+      - {x: 27.851175, y: -16.249647}
+      - {x: 27.865768, y: 16.267973}
   m_UseDelaunayMesh: 0
 --- !u!4 &799955503
 Transform:
@@ -4650,12 +4649,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799955501}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.9099998, y: -0.13000011, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 453745025}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &824329524
 GameObject:
@@ -14819,11 +14818,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.7844296
+      value: 1.3510437
       objectReference: {fileID: 0}
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.0704107
+      value: -3.06417
       objectReference: {fileID: 0}
     - target: {fileID: 2347502356443665200, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_Name
@@ -14868,6 +14867,10 @@ PrefabInstance:
     - target: {fileID: 8337742669447143545, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524604632216867012, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8524604632216867012, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: BoundingShape2D
@@ -14969,6 +14972,7 @@ SceneRoots:
   - {fileID: 1088954573}
   - {fileID: 1862305010}
   - {fileID: 1281383039954056953}
+  - {fileID: 799955503}
   - {fileID: 1940241789}
   - {fileID: 453745025}
   - {fileID: 1538389848}

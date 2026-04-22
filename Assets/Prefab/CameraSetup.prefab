@@ -107,7 +107,7 @@ MonoBehaviour:
   Lookahead:
     Enabled: 1
     Time: 0.4
-    Smoothing: 5
+    Smoothing: 20
     IgnoreY: 0
 --- !u!114 &8524604632216867012
 MonoBehaviour:
@@ -203,7 +203,7 @@ Transform:
   m_GameObject: {fileID: 6417796653903986188}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.3093052, y: -3.0700903, z: -20}
+  m_LocalPosition: {x: 0, y: 0, z: -20}
   m_LocalScale: {x: 1.0716506, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
