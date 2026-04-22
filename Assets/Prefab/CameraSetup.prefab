@@ -106,7 +106,7 @@ MonoBehaviour:
   Damping: {x: 1, y: 1, z: 1}
   Lookahead:
     Enabled: 1
-    Time: 0.4
+    Time: 0.108
     Smoothing: 20
     IgnoreY: 0
 --- !u!114 &8524604632216867012
