@@ -1799,15 +1799,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.70127106
       objectReference: {fileID: 0}
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.00002002716
       objectReference: {fileID: 0}
     - target: {fileID: 2079872130295291023, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: Lookahead.Time
-      value: 0
+      value: 0.108
       objectReference: {fileID: 0}
     - target: {fileID: 2347502356443665200, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_Name
@@ -1856,7 +1856,7 @@ PrefabInstance:
     - target: {fileID: 8524604632216867012, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: BoundingShape2D
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1472362661}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
