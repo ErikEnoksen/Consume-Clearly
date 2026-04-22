@@ -31,7 +31,8 @@ public class DialogueLine
     public Color dialogueBoxColor = Color.white;
     public Color textColor = Color.black;
     public Sprite dialogueBoxSprite;
-    
+    public Sprite speakerPortrait;
+
     [Header("Player Choices:")]
     public DialogueChoice[] choices; // If empty, auto-continues. If filled, shows choice buttons.
 }

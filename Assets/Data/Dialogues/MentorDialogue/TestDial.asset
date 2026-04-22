@@ -15,36 +15,41 @@ MonoBehaviour:
   dialogueLines:
   - text: 'Hello, there young one. Welcomes to the mines! '
     speakerName: Mentor
-    dialogueBoxColor: {r: 0.9607844, g: 0.8705883, b: 0.7019608, a: 1}
+    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
-    dialogueBoxSprite: {fileID: -7506325772429207559, guid: 2f483ba8dfe496d459b7d79443b00343, type: 3}
+    dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
+    speakerPortrait: {fileID: 1176994132114263677, guid: d50d30e09e4869441813ee3cd42fa90d, type: 3}
     choices: []
   - text: 'You must have fallen really far to end up here, and already breaking elevators
       I see. '
     speakerName: Mentor
-    dialogueBoxColor: {r: 0.9607844, g: 0.8705883, b: 0.7019608, a: 1}
+    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
-    dialogueBoxSprite: {fileID: -7506325772429207559, guid: 2f483ba8dfe496d459b7d79443b00343, type: 3}
+    dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
+    speakerPortrait: {fileID: 0}
     choices: []
   - text: " Hmmm, I know the miner has something in the storage area to fix it but
       I haven\u2019t seen him for days."
     speakerName: Mentor
-    dialogueBoxColor: {r: 0.9607844, g: 0.8705883, b: 0.7019608, a: 1}
+    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
     dialogueBoxSprite: {fileID: 0}
+    speakerPortrait: {fileID: 0}
     choices: []
   - text: "He should be somewhere in the mines. Why don\u2019t you go look for him
       then you can fix the elevator and get out of here."
     speakerName: Mentor
-    dialogueBoxColor: {r: 0.9607844, g: 0.8705883, b: 0.7019608, a: 1}
+    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
-    dialogueBoxSprite: {fileID: -7506325772429207559, guid: 2f483ba8dfe496d459b7d79443b00343, type: 3}
+    dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
+    speakerPortrait: {fileID: 0}
     choices: []
   - text: "You dont want to get stuck here\u2026. believe me. "
     speakerName: Mentor
-    dialogueBoxColor: {r: 0.9607844, g: 0.8705883, b: 0.7019608, a: 1}
+    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
-    dialogueBoxSprite: {fileID: -7506325772429207559, guid: 2f483ba8dfe496d459b7d79443b00343, type: 3}
+    dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
+    speakerPortrait: {fileID: 0}
     choices:
     - choiceText: Talk
       choiceType: 0
@@ -56,9 +61,10 @@ MonoBehaviour:
       nextDialogue: {fileID: 0}
   - text: "Go on, I don\u2019t have all day."
     speakerName: Mentor
-    dialogueBoxColor: {r: 0.9607844, g: 0.8705883, b: 0.7019608, a: 1}
+    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
-    dialogueBoxSprite: {fileID: -7506325772429207559, guid: 2f483ba8dfe496d459b7d79443b00343, type: 3}
+    dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
+    speakerPortrait: {fileID: 0}
     choices:
     - choiceText: good
       choiceType: 0
@@ -74,9 +80,10 @@ MonoBehaviour:
       nextDialogue: {fileID: 0}
   - text: "Go on, I don\u2019t have all day."
     speakerName: Mentor
-    dialogueBoxColor: {r: 0.9607844, g: 0.8705883, b: 0.7019608, a: 1}
+    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
-    dialogueBoxSprite: {fileID: -7506325772429207559, guid: 2f483ba8dfe496d459b7d79443b00343, type: 3}
+    dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
+    speakerPortrait: {fileID: 0}
     choices:
     - choiceText: good
       choiceType: 0

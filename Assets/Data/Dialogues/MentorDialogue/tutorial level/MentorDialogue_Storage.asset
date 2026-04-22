@@ -10,13 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c234f20efd360eb45b89a7d3a2835e3e, type: 3}
-  m_Name: MentorDialogue_Bridge
+  m_Name: MentorDialogue_Storage
   m_EditorClassIdentifier: Main::DialogueObject
   dialogueLines:
-  - text: Looks like the bridge to the storage area is broken. Hmmm how curious,
-      we should be able to fix it with wood and screws though.
+  - text: 'AHA, this is it! You can use this to fix the elevator and get to the slums. '
     speakerName: Mentor
-    dialogueBoxColor: {r: 0.9607844, g: 0.8705883, b: 0.7019608, a: 1}
+    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
-    dialogueBoxSprite: {fileID: 0}
+    dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
+    speakerPortrait: {fileID: 930703914476913107, guid: aa3c29b2e7f71d14199c57505fab8e4e, type: 3}
     choices: []
+  quest: {fileID: 0}
+  questInProgressIndex: 0
+  questCompletedIndex: 0
+  initialDialogueEndIndex: 0
