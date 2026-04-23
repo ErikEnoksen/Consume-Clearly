@@ -20,6 +20,7 @@ public class SettingsManager : MonoBehaviour
         }
 
         Instance = this;
+        transform.SetParent(null);
         DontDestroyOnLoad(gameObject);
 
         resolutions = Screen.resolutions;

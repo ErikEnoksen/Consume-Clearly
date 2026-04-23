@@ -10,8 +10,8 @@ public class KeybindManager : MonoBehaviour
     public GameObject settingsMenu;
     public GameObject keybindsMenu;
 
-    public GameObject? keybindsButton;
-    public GameObject? backButton;
+    public GameObject keybindsButton;
+    public GameObject backButton;
 
     // Event triggered when a keybind is changed
     public static event Action<string, KeyCode> OnKeybindChanged;
@@ -27,6 +27,7 @@ public class KeybindManager : MonoBehaviour
         }
 
         Instance = this;
+        transform.SetParent(null);
         DontDestroyOnLoad(gameObject);
 
         LoadDefaults();

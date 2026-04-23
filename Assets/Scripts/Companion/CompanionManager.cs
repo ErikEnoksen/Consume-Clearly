@@ -68,7 +68,7 @@ namespace Companion
         private void RegisterSceneOverrides()
         {
             scenePrefabOverrides.Clear();
-            var spawnPoints = FindObjectsOfType<CompanionSpawnPoint>();
+            var spawnPoints = FindObjectsByType<CompanionSpawnPoint>(FindObjectsSortMode.None);
 
             foreach (var sp in spawnPoints)
             {
@@ -121,7 +121,7 @@ namespace Companion
                     // Same prefab: teleport to spawn point if possible
                     if (teleportExistingOnSceneLoad)
                     {
-                        var sp = FindObjectsOfType<CompanionSpawnPoint>().FirstOrDefault(x => x.SpawnID == spawnID);
+                        var sp = FindObjectsByType<CompanionSpawnPoint>(FindObjectsSortMode.None).FirstOrDefault(x => x.SpawnID == spawnID);
                         if (sp != null)
                         {
                             existingInstance.transform.position = sp.transform.position;
@@ -133,7 +133,7 @@ namespace Companion
 
         private void SpawnMissingFromScene()
         {
-            var spawnPoints = FindObjectsOfType<CompanionSpawnPoint>();
+            var spawnPoints = FindObjectsByType<CompanionSpawnPoint>(FindObjectsSortMode.None);
             foreach (var sp in spawnPoints)
             {
                 if (string.IsNullOrEmpty(sp.SpawnID)) continue;
@@ -162,7 +162,7 @@ namespace Companion
 
         public void SpawnAll()
         {
-            var spawnPoints = FindObjectsOfType<CompanionSpawnPoint>();
+            var spawnPoints = FindObjectsByType<CompanionSpawnPoint>(FindObjectsSortMode.None);
             foreach (var sp in spawnPoints)
             {
                 if (!spawnedCompanions.ContainsKey(sp.SpawnID))
@@ -172,7 +172,7 @@ namespace Companion
 
         public GameObject SpawnByID(string spawnID)
         {
-            var sp = FindObjectsOfType<CompanionSpawnPoint>().FirstOrDefault(x => x.SpawnID == spawnID);
+            var sp = FindObjectsByType<CompanionSpawnPoint>(FindObjectsSortMode.None).FirstOrDefault(x => x.SpawnID == spawnID);
             if (sp == null)
             {
                 Debug.LogWarning($"No CompanionSpawnPoint found with SpawnID '{spawnID}' in the current scene.");
@@ -393,7 +393,7 @@ namespace Companion
         private static void EnsureInstanceExists()
         {
             if (Instance != null) return;
-            var existing = FindObjectOfType<CompanionManager>();
+            var existing = FindAnyObjectByType<CompanionManager>();
             if (existing != null) return;
             var go = new GameObject("CompanionManager");
             go.AddComponent<CompanionManager>();

@@ -1416,6 +1416,64 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &2184178369815095421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2546745197565302130}
+  - component: {fileID: 8283640780047941893}
+  m_Layer: 0
+  m_Name: PauseSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2546745197565302130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2184178369815095421}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 709.29987, y: 250.27356, z: 0}
+  m_LocalScale: {x: 2.278481, y: 2.278481, z: 2.278481}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8914616892585617923}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8283640780047941893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2184178369815095421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfe8f679e1cb974d9566782dd2354c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::PauseSettings
+  resolutionDropdown: {fileID: 8483153889598476133}
+  musicButtonImage: {fileID: 930682543319660243}
+  musicOnSprite: {fileID: 6117241187461018602, guid: 20ca8846de7c36044acb3980b93fc050, type: 3}
+  musicOffSprite: {fileID: -5524587542107658741, guid: 97aa7a2eb2a7be741850cb7c69f551db, type: 3}
+  fullscreenButtonImage: {fileID: 5744384538556877638}
+  fullscreenOnSprite: {fileID: 6117241187461018602, guid: 20ca8846de7c36044acb3980b93fc050, type: 3}
+  fullscreenOffSprite: {fileID: -5524587542107658741, guid: 97aa7a2eb2a7be741850cb7c69f551db, type: 3}
+  keybindsMenu: {fileID: 9042730511920474820}
+  settingsContainer: {fileID: 4464298387579123501}
+  settingsContent: {fileID: 4464298387579123501}
+  backButton: {fileID: 0}
+  keybindsButton: {fileID: 9042730511920474820}
+  pauseContainer: {fileID: 4724255705375312882}
+  mainMenuButtons: {fileID: 0}
 --- !u!1 &2216957457041177909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2495,6 +2553,7 @@ RectTransform:
   - {fileID: 1926783471162284170}
   - {fileID: 3847801227625283601}
   - {fileID: 3255530323206488614}
+  - {fileID: 2546745197565302130}
   - {fileID: 1341584906183548707}
   - {fileID: 7279174210060856649}
   - {fileID: 1627380403047519707}
@@ -8713,6 +8772,17 @@ PrefabInstance:
       addedObject: {fileID: 980832526137417564}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d6047d7a366f2343a1a7986136590c5, type: 3}
+--- !u!114 &930682543319660243 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3186470169957686049, guid: 2d6047d7a366f2343a1a7986136590c5, type: 3}
+  m_PrefabInstance: {fileID: 2365215998212926962}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!224 &1341584906183548707 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3624460048670257873, guid: 2d6047d7a366f2343a1a7986136590c5, type: 3}
@@ -8723,6 +8793,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2100560684513090271, guid: 2d6047d7a366f2343a1a7986136590c5, type: 3}
   m_PrefabInstance: {fileID: 2365215998212926962}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5744384538556877638 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8028449354486425268, guid: 2d6047d7a366f2343a1a7986136590c5, type: 3}
+  m_PrefabInstance: {fileID: 2365215998212926962}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!224 &8547241753922799961 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6219198940055200939, guid: 2d6047d7a366f2343a1a7986136590c5, type: 3}
@@ -9147,6 +9228,10 @@ PrefabInstance:
       propertyPath: m_Size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4290199710104559289, guid: 34ec202c170d4b74ca786d9e3b9e85ff, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4833763773993299101, guid: 34ec202c170d4b74ca786d9e3b9e85ff, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -9229,11 +9314,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5010569737634220350, guid: 34ec202c170d4b74ca786d9e3b9e85ff, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.00012207031
+      value: 650.48206
       objectReference: {fileID: 0}
     - target: {fileID: 5010569737634220350, guid: 34ec202c170d4b74ca786d9e3b9e85ff, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000091552734
+      value: 1083.0392
       objectReference: {fileID: 0}
     - target: {fileID: 5393146084703852629, guid: 34ec202c170d4b74ca786d9e3b9e85ff, type: 3}
       propertyPath: m_Name

@@ -41,7 +41,7 @@ public class CommunityMeter : MonoBehaviour
         countedFriends.Clear();
         FriendCount = 0;
 
-        CompanionFriendship[] companions = FindObjectsOfType<CompanionFriendship>();
+        CompanionFriendship[] companions = FindObjectsByType<CompanionFriendship>(FindObjectsSortMode.None);
         foreach (var companion in companions)
         {
             RegisterCompanion(companion);

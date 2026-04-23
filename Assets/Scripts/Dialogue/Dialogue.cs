@@ -52,7 +52,7 @@ public class Dialogue : MonoBehaviour
 
         if (choiceHandler == null)
         {
-            choiceHandler = FindObjectOfType<DialogueChoiceHandler>();
+            choiceHandler = GetComponent<DialogueChoiceHandler>();
         }
         inventoryManager = FindFirstObjectByType<InventoryManager>();
     }

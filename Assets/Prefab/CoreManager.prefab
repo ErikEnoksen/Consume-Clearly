@@ -143,6 +143,7 @@ MonoBehaviour:
   dialogueText: {fileID: 0}
   nameText: {fileID: 0}
   dialogueBoxImage: {fileID: 0}
+  characterBoxImage: {fileID: 0}
   choicesPanel: {fileID: 0}
   choiceButtons:
   - {fileID: 0}
@@ -316,7 +317,6 @@ Transform:
   - {fileID: 9208705200716995254}
   - {fileID: 1713729909103325682}
   - {fileID: 4446511085249046737}
-  - {fileID: 7324162631760851929}
   - {fileID: 8190658140350026020}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -365,64 +365,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Main::Player.PlayerManager
   playerPrefab: {fileID: 823572384380113146, guid: f68b7f545b139a44b9e954055174f11d, type: 3}
---- !u!1 &3999684548201987523
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7324162631760851929}
-  - component: {fileID: 9020558684708868247}
-  m_Layer: 0
-  m_Name: PauseSettings
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7324162631760851929
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3999684548201987523}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5399780352015518838}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9020558684708868247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3999684548201987523}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bfe8f679e1cb974d9566782dd2354c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Main::PauseSettings
-  resolutionDropdown: {fileID: 0}
-  musicButtonImage: {fileID: 0}
-  musicOnSprite: {fileID: 0}
-  musicOffSprite: {fileID: 0}
-  fullscreenButtonImage: {fileID: 0}
-  fullscreenOnSprite: {fileID: 0}
-  fullscreenOffSprite: {fileID: 0}
-  keybindsMenu: {fileID: 0}
-  settingsContainer: {fileID: 0}
-  settingsContent: {fileID: 0}
-  backButton: {fileID: 0}
-  keybindsButton: {fileID: 0}
-  pauseContainer: {fileID: 0}
-  mainMenuButtons: {fileID: 0}
 --- !u!1 &4043832715904211679
 GameObject:
   m_ObjectHideFlags: 0
