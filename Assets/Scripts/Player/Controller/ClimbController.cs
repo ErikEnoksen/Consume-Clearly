@@ -17,7 +17,6 @@ namespace Player
 
         [SerializeField] private float pushOffHorizontal = 6f;
         [SerializeField] private float pushOffVertical = 3f;
-        [SerializeField] private float jumpOffVertical = 8f;
 
         private MovementScript movement;
         private AnimationController animationController;

@@ -19,6 +19,7 @@ public class DayCycleManager : MonoBehaviour
             return;
         }
         Instance = this;
+        transform.SetParent(null);
         DontDestroyOnLoad(gameObject);
     }
 

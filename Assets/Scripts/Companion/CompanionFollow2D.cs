@@ -20,7 +20,6 @@ namespace Companion
         [SerializeField] private float jumpForce = 12f;
         [SerializeField] private bool canJump = true;
         [SerializeField] private float followDistance = 2f;
-        [SerializeField] private float lookAheadDistance = 2f;
         [SerializeField] private float teleportDistance = 15f;
 
         [Header("Ground Settings")]

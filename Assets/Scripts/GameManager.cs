@@ -22,6 +22,7 @@
                 if (Instance == null)
                 {
                     Instance = this;
+                    transform.SetParent(null);
                     DontDestroyOnLoad(gameObject);
                     Initialize();
                 }
@@ -34,6 +35,7 @@
                     {
                         Destroy(Instance.gameObject);
                         Instance = this;
+                        transform.SetParent(null);
                         DontDestroyOnLoad(gameObject);
                         Initialize();
                     }
@@ -83,7 +85,7 @@
                 if (backgroundSprite != null)
                 {
                     // Find the camera controller
-                    CameraController cameraController = FindObjectOfType<CameraController>();
+                    CameraController cameraController = FindAnyObjectByType<CameraController>();
         
                     if (cameraController != null)
                     {
@@ -118,7 +120,7 @@
                 }
         
                 // As a fallback, find any sprite renderer that looks like a background
-                SpriteRenderer[] allSprites = FindObjectsOfType<SpriteRenderer>();
+                SpriteRenderer[] allSprites = FindObjectsByType<SpriteRenderer>(FindObjectsSortMode.None);
                 foreach (var sprite in allSprites)
                 {
                     if (sprite.gameObject.name.ToLower().Contains("background") ||

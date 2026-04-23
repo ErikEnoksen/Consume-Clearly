@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f0bb381c8330ca84eb8d5e23c327701c
+guid: 2dec06e1fcbdfc34f9f21e1cdffbadc7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6055714738697967858
-    second: Key_Control_Tab_0
+      213: -2288706179376220777
+    second: Key_Control_E 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Key_Control_Tab_0
+      name: Key_Control_E 1_0
       rect:
         serializedVersion: 2
-        x: 58
-        y: 468
-        width: 2044
-        height: 651
+        x: 331
+        y: 58
+        width: 1512
+        height: 1501
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2f8903568783a0450800000000000000
-      internalID: 6055714738697967858
+      spriteID: 795f90f1bd1ec30e0800000000000000
+      internalID: -2288706179376220777
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Key_Control_Tab_0: 6055714738697967858
+      Key_Control_E 1_0: -2288706179376220777
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

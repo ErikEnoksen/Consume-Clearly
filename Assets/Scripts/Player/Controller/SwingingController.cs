@@ -7,7 +7,6 @@ public class SwingingController : MonoBehaviour
 
     [Header("Swing Settings")]
     [SerializeField] private float swingForce = 0.2f;
-    [SerializeField] private float maxSpeed = 10f;
     [SerializeField] private float jumpReleaseForce  = 8f;
     
     private bool isSwinging = false;

@@ -24,7 +24,7 @@ namespace Assets.Scripts.Quests
 
             Instance = this;
 
-            questUI = FindObjectOfType<QuestUI>();
+            questUI = FindAnyObjectByType<QuestUI>();
         }
 
         public void AcceptQuest(Quest quest)
@@ -139,7 +139,7 @@ namespace Assets.Scripts.Quests
             if (quest == null)
                 return false;
 
-            InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
+            InventoryManager inventoryManager = FindAnyObjectByType<InventoryManager>();
             return TurnInQuest(quest.questID, inventoryManager);
         }
 
@@ -158,7 +158,7 @@ namespace Assets.Scripts.Quests
             if (amount == 0)
                 return;
 
-            MoneyManager moneyManager = FindObjectOfType<MoneyManager>();
+            MoneyManager moneyManager = FindAnyObjectByType<MoneyManager>();
             if (moneyManager != null)
             {
                 moneyManager.ChangeMoneyAmount(amount);
@@ -173,7 +173,7 @@ namespace Assets.Scripts.Quests
             if (Mathf.Approximately(amount, 0f))
                 return;
 
-            CircularSatisfactionMeter satisfactionMeter = FindObjectOfType<CircularSatisfactionMeter>();
+            CircularSatisfactionMeter satisfactionMeter = FindAnyObjectByType<CircularSatisfactionMeter>();
             if (satisfactionMeter != null)
             {
                 satisfactionMeter.ChangeSatisfactionValue(amount);
@@ -188,7 +188,7 @@ namespace Assets.Scripts.Quests
             if (rewardItems == null || rewardItems.Count == 0)
                 return;
 
-            InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
+            InventoryManager inventoryManager = FindAnyObjectByType<InventoryManager>();
             if (inventoryManager == null)
             {
                 Debug.LogWarning("QuestController: Could not grant item rewards. No InventoryManager found.");

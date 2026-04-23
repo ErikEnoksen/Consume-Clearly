@@ -18,6 +18,7 @@ namespace Player
             if (Instance == null)
             {
                 Instance = this;
+                transform.SetParent(null);
                 DontDestroyOnLoad(gameObject);
 
                 // Subscribe to the SceneManager.sceneLoaded event
@@ -108,7 +109,7 @@ namespace Player
         private Vector3 GetSpawnPosition()
         {
             // Look for spawn points in the scene
-            PlayerSpawnPoint[] spawnPoints = FindObjectsOfType<PlayerSpawnPoint>();
+            PlayerSpawnPoint[] spawnPoints = FindObjectsByType<PlayerSpawnPoint>(FindObjectsSortMode.None);
                 
             if (spawnPoints.Length > 0)
             {
@@ -217,7 +218,7 @@ namespace Player
             }
 
             // Fallback: assign directly to any CompanionFollow2D in the scene
-            foreach (var companion in FindObjectsOfType<CompanionFollow2D>())
+            foreach (var companion in FindObjectsByType<CompanionFollow2D>(FindObjectsSortMode.None))
             {
                 companion.SetTarget(targetPoint);
                 Debug.Log($"Assigned TargetPoint to {companion.name}");

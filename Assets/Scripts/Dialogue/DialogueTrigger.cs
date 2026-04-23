@@ -34,11 +34,11 @@ public class DialogueTrigger : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        dialogueManager = FindObjectOfType<Dialogue>();
-        friendshipBar = FindObjectOfType<FriendshipBar>();
+        dialogueManager = FindAnyObjectByType<Dialogue>();
+        friendshipBar = FindAnyObjectByType<FriendshipBar>();
         friendship = GetComponent<CompanionFriendship>();
-        inventory = FindObjectOfType<InventoryManager>();
-        communityMeter = FindObjectOfType<CommunityMeter>();
+        inventory = FindAnyObjectByType<InventoryManager>();
+        communityMeter = FindAnyObjectByType<CommunityMeter>();
 
         if(friendship != null)
         {
