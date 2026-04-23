@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3571fd1a45813ab40bc442c48898a0f9
+guid: 1cb99b6a9930a6c43a963d38ba24f516
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6825214014992360825
-    second: Casino.Dys_0
+      213: 4649083744141849951
+    second: dirty windesheim campus_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Casino.Dys_0
+      name: dirty windesheim campus_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1887
-        height: 1002
+        width: 2360
+        height: 1120
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 78adc50d308f741a0800000000000000
-      internalID: -6825214014992360825
+      spriteID: f553e9c880dd48040800000000000000
+      internalID: 4649083744141849951
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Casino.Dys_0: -6825214014992360825
+      dirty windesheim campus_0: 4649083744141849951
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

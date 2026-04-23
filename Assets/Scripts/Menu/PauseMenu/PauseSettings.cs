@@ -17,8 +17,8 @@ public class PauseSettings : MonoBehaviour
     public GameObject keybindsMenu;
     public GameObject settingsContainer;
     public GameObject settingsContent;
-    public GameObject? backButton;
-    public GameObject? keybindsButton;
+    public GameObject backButton;
+    public GameObject keybindsButton;
     public GameObject pauseContainer;
     public GameObject mainMenuButtons;
 
