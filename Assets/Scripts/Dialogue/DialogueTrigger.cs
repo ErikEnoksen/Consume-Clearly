@@ -35,10 +35,10 @@ public class DialogueTrigger : MonoBehaviour
     void Start()
     {
         dialogueManager = FindAnyObjectByType<Dialogue>();
-        friendshipBar = GetComponent<FriendshipBar>();
+        friendshipBar = FindAnyObjectByType<FriendshipBar>();
         friendship = GetComponent<CompanionFriendship>();
-        inventory = GetComponent<InventoryManager>();
-        communityMeter = GetComponent<CommunityMeter>();
+        inventory = FindAnyObjectByType<InventoryManager>();
+        communityMeter = FindAnyObjectByType<CommunityMeter>();
 
         if(friendship != null)
         {
