@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 2517171090978325440}
   - component: {fileID: 2071692431525032535}
   m_Layer: 7
-  m_Name: Mentor
+  m_Name: Gardener
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -276,7 +276,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 930703914476913107, guid: aa3c29b2e7f71d14199c57505fab8e4e, type: 3}
+  m_Sprite: {fileID: -7074704958051015804, guid: 7650f8a378fc9c64cbd52c53d417156f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -297,7 +297,7 @@ Animator:
   m_GameObject: {fileID: 7779005545577980058}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: fb26f0cdba43fe84196a9b1905a48485, type: 2}
+  m_Controller: {fileID: 9100000, guid: fe64ec92047948d41af77484c4e7beb2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
