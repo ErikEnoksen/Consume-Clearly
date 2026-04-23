@@ -15,7 +15,7 @@ MonoBehaviour:
   dialogueLines:
   - text: 'Well hello again. Welcome to the Peperbus! '
     speakerName: Mentor
-    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 0}
+    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 1}
     textColor: {r: 0, g: 0, b: 0, a: 1}
     dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
     speakerPortrait: {fileID: 930703914476913107, guid: aa3c29b2e7f71d14199c57505fab8e4e, type: 3}
@@ -23,7 +23,7 @@ MonoBehaviour:
   - text: 'As you can see it is kept in good condition but reaching the top is quite
       difficult. '
     speakerName: Mentor
-    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 0}
+    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 1}
     textColor: {r: 0, g: 0, b: 0, a: 1}
     dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
     speakerPortrait: {fileID: 930703914476913107, guid: aa3c29b2e7f71d14199c57505fab8e4e, type: 3}
@@ -31,7 +31,7 @@ MonoBehaviour:
   - text: 'Making it difficult to maintain the clocktower. So for a while now it
       has been broken. '
     speakerName: Mentor
-    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 0}
+    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 1}
     textColor: {r: 0, g: 0, b: 0, a: 1}
     dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
     speakerPortrait: {fileID: 930703914476913107, guid: aa3c29b2e7f71d14199c57505fab8e4e, type: 3}
@@ -39,7 +39,7 @@ MonoBehaviour:
   - text: 'If you end up at the top why don''t you try fixing the bell up there.
       It would mean a lot to the community. '
     speakerName: Mentor
-    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 0}
+    dialogueBoxColor: {r: 0.85098046, g: 0.85098046, b: 0.85098046, a: 1}
     textColor: {r: 0, g: 0, b: 0, a: 1}
     dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
     speakerPortrait: {fileID: 930703914476913107, guid: aa3c29b2e7f71d14199c57505fab8e4e, type: 3}
@@ -47,12 +47,12 @@ MonoBehaviour:
     - choiceText: Okay
       choiceType: 1
       choiceQuality: 0
-      nextDialogue: {fileID: 0}
+      nextDialogue: {fileID: 11400000, guid: 6608bbe8323cfc04298cad31f16859b7, type: 2}
     - choiceText: Not right now
       choiceType: 3
       choiceQuality: 0
       nextDialogue: {fileID: 0}
-  quest: {fileID: 11400000, guid: bd925ad4f1955e64db6b2f7cc15326a2, type: 2}
+  quest: {fileID: 11400000, guid: 829c52fa25b61da44b10a034a0811855, type: 2}
   questInProgressIndex: 0
   questCompletedIndex: 0
   initialDialogueEndIndex: 0
