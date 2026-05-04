@@ -41,6 +41,8 @@ namespace Player
 
         private AnimationController animationController;
 
+        private bool canMove = true;
+
         // Climb related
         public bool IsClimbing { get; private set; } = false;
         private float climbVerticalVelocity = 0f; // set by ClimbController each FixedUpdate
@@ -50,6 +52,37 @@ namespace Player
         private void Awake()
         {
             ValidateComponents();
+        }
+
+        private void OnEnable()
+        {
+            Dialogue.OnDialogueStarted += OnDialogueStarted;
+            Dialogue.OnDialogueEnded += OnDialogueEnded;
+        }
+
+        private void OnDisable()
+        {
+            Dialogue.OnDialogueStarted -= OnDialogueStarted;
+            Dialogue.OnDialogueEnded -= OnDialogueEnded;
+        }
+
+        private void OnDialogueStarted(CompanionFriendship _) => FreezeMovement(true);
+        private void OnDialogueEnded(DialogueObject _) => FreezeMovement(false);
+
+        public void FreezeMovement(bool freeze)
+        {
+            canMove = !freeze;
+            if (!canMove)
+            {
+                horizontal = 0f;
+                jumpBufferTimeCounter = 0f;
+                rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+            }
+            else
+            {
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
         }
 
         private void ValidateComponents()
@@ -100,6 +133,8 @@ namespace Player
         // All input is read in Update so GetKeyDown/GetKeyUp are never missed between FixedUpdate frames
         private void Update()
         {
+            if (!canMove) return;
+
             float moveLeft = Input.GetKey(KeybindManager.Instance.GetKey("MoveLeft")) ? -1f : 0f;
             float moveRight = Input.GetKey(KeybindManager.Instance.GetKey("MoveRight")) ? 1f : 0f;
             horizontal = moveLeft + moveRight;
@@ -119,6 +154,8 @@ namespace Player
 
         private void FixedUpdate()
         {
+            if (!canMove) return;
+
             Move();
 
             float moveLeft = Input.GetKey(KeybindManager.Instance.GetKey("MoveLeft")) ? -1f : 0f;
