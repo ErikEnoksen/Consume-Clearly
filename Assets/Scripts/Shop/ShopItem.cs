@@ -31,7 +31,7 @@ public class ShopItem : MonoBehaviour
     {
         if (moneyManager.ChangeMoneyAmount(-price))
         {
-            inventoryManager.AddItem(item.ItemName, item.ItemName, 1, item.Sprite, item.ItemDescription, item.MaxStack, item.gameObject.tag);
+            inventoryManager.AddItem(item);
         }
         else
         {

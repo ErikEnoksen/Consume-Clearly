@@ -17,6 +17,7 @@ namespace LevelObjects.Interactable
         [SerializeField] private string itemDescription = "Some trash";
         [SerializeField] private int maxStack = 10;
         [SerializeField] private string itemTag = "Trash";
+        [SerializeField] private Item item;
 
 
         private InventoryManager _inventory;
@@ -65,15 +66,7 @@ namespace LevelObjects.Interactable
                 if (_inventory == null) return;
             }
 
-            int excessItems = _inventory.AddItem(
-                itemId,
-                itemName,
-                amount,
-                itemSprite,
-                itemDescription,
-                maxStack,
-                itemTag
-            );
+            int excessItems = _inventory.AddItem(item);
 
             if (excessItems > 0)
             {

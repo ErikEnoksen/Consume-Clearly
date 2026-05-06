@@ -57,11 +57,7 @@ public class WorkshopStation : Interactable
         foreach (var output in recipe.outputPrefabs)
         {
             Item item = output.itemPrefab.GetComponent<Item>();
-            inventoryManager.AddItem(
-                item.Id, item.ItemName, output.amount,
-                item.Sprite, item.ItemDescription, item.MaxStack,
-                output.itemPrefab.tag
-            );
+            inventoryManager.AddItem(item);
         }
         Debug.Log($"Processed at {stationType}!");
         return true;
