@@ -12430,7 +12430,9 @@ MonoBehaviour:
   - {fileID: 1002466699}
   - {fileID: 915898103}
   - {fileID: 693386535}
+  selectedItemName: 
   itemSOs: []
+  giftButton: {fileID: 0}
 --- !u!1 &1835870382
 GameObject:
   m_ObjectHideFlags: 0
@@ -14464,6 +14466,14 @@ PrefabInstance:
     - target: {fileID: 2123844960704532605, guid: 4332ef01586141746a2e9fca2ad4cf5e, type: 3}
       propertyPath: uniqueId
       value: b6adb6f8-93a4-444e-883e-03d00e5403bc
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123844960704532605, guid: 4332ef01586141746a2e9fca2ad4cf5e, type: 3}
+      propertyPath: startPosition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123844960704532605, guid: 4332ef01586141746a2e9fca2ad4cf5e, type: 3}
+      propertyPath: startMovingOnLevelStart
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2661910896105574002, guid: 4332ef01586141746a2e9fca2ad4cf5e, type: 3}
       propertyPath: m_LocalPosition.x

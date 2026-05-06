@@ -4,6 +4,12 @@ using Save;
 
 namespace LevelObjects.Interactable
 {
+    public enum LiftStartPosition
+    {
+        Top,
+        Bottom
+    }
+
     public class LiftPlatform : Interactable
     {
         [Header("Lift Movement")] public Transform topPoint;
@@ -11,6 +17,7 @@ namespace LevelObjects.Interactable
         public float moveSpeed = 2f;
         public GameObject liftGround;
         public bool startMovingOnLevelStart = true;
+        public LiftStartPosition startPosition = LiftStartPosition.Bottom;
 
         [Header("Player Settings")] public float playerYOffset = 0.5f; // Height above lift ground where player stands
         
@@ -49,12 +56,11 @@ namespace LevelObjects.Interactable
                 return;
             }
 
-            // Calculate distances to top and bottom
-            float distanceToTop = Vector3.Distance(transform.position, topPoint.position);
-            float distanceToBottom = Vector3.Distance(transform.position, bottomPoint.position);
+            // Set lift to start position based on the startPosition setting
+            isAtTop = startPosition == LiftStartPosition.Top;
 
-            // If closer to top, set isAtTop to true
-            isAtTop = distanceToTop < distanceToBottom;
+            // Move lift to the correct starting position
+            transform.position = isAtTop ? topPoint.position : bottomPoint.position;
 
             Debug.Log($"Lift starting position: {(isAtTop ? "TOP" : "BOTTOM")}");
         }
