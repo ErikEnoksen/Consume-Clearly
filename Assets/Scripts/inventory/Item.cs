@@ -68,7 +68,7 @@ public class Item : MonoBehaviour
 
             if (Input.GetKey(KeybindManager.Instance.GetKey("Interact")))
             {
-                int exceccItems = inventory.AddItem(itemID, itemName, quantity, sprite, itemDescription, maxStack, gameObject.tag);
+                int exceccItems = inventory.AddItem(this);
                 if (exceccItems <= 0)
                 {
                     Destroy(gameObject);

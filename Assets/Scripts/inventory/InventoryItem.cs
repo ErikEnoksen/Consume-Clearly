@@ -12,7 +12,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     public bool isFull;
     [TextArea]
     public string itemDescription;
-    private int maxStack;
+    public int maxStack;
 
     [SerializeField]
     private TMP_Text quantityText;
@@ -26,7 +26,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     public TMP_Text itemDescriptionTitle;
     public TMP_Text itemDescriptionText;
 
-    
+    private ItemSO[] itemSOs;
     private InventoryManager inventoryManager;
 
     private void Start()
@@ -36,36 +36,36 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
 
 
     //method for adding items to the inventory
-    public int AddItem(string itemID, string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string tag)
+    public int AddItem(Item item)
     {
         if (isFull)
         {
             return quantity;
         }
-        this.itemID = itemID;
+        this.itemID = item.Id;
 
         //updates the slot in the inventory to make the data visible in the inventory
-        this.itemName = itemName;
-        this.sprite = sprite;
-        this.itemDescription = itemDescription;
-        this.maxStack = maxStack;
-        this.tag = tag;
+        this.itemName = item.ItemName;
+        this.sprite = item.Sprite;
+        this.itemDescription = item.ItemDescription;
+        this.maxStack = item.MaxStack;
+        this.tag = item.tag;
         
         //SetActive makes the item and item count visible in the inventory
-        itemImage.sprite = sprite;
+        itemImage.sprite = item.Sprite;
         itemImage.enabled = true;
         
         //checks if the amount of items in the slot and sees if there is space for the rest
-        this.quantity += quantity;
-        if(this.quantity >= maxStack)
+        this.quantity += item.Quantity;
+        if(this.quantity >= item.MaxStack)
         {
-            quantityText.text = maxStack.ToString();
+            quantityText.text = item.MaxStack.ToString();
             quantityText.enabled = true;
             isFull = true;
             
             //return excess items
-            int excessItems = this.quantity - maxStack;
-            this.quantity = maxStack;
+            int excessItems = this.quantity - item.MaxStack;
+            this.quantity = item.MaxStack;
             return excessItems;
         }
 
@@ -117,7 +117,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     {
         if (thisItemSelected)
         {
-            bool usable = inventoryManager.UseItem(itemName);
+            bool usable = inventoryManager.UseItem(itemName, false);
 
             if (usable)
             {
@@ -138,6 +138,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
             thisItemSelected = true;
         
             itemDescriptionTitle.text = itemName;
+            inventoryManager.selectedItemName = itemName;
             itemDescriptionText.text = itemDescription;
             infoImage.sprite = itemImage.sprite;
         
@@ -188,6 +189,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     {
         quantityText.enabled = false;
         quantityText.text = string.Empty;
+        inventoryManager.selectedItemName = string.Empty;
         
         itemImage.enabled = false;
         itemImage.sprite = null;
