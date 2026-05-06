@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1231912672462232147}
         m_TargetAssemblyTypeName: PauseSettings, Main
         m_MethodName: Keybinds
         m_Mode: 1
@@ -1133,7 +1133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4114289427245378671
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8936,6 +8936,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4724255705375312882}
     - target: {fileID: 3587765159187494817, guid: 2d6047d7a366f2343a1a7986136590c5, type: 3}
+      propertyPath: settingsContent
+      value: 
+      objectReference: {fileID: 4464298387579123501}
+    - target: {fileID: 3587765159187494817, guid: 2d6047d7a366f2343a1a7986136590c5, type: 3}
       propertyPath: resolutionDropdown
       value: 
       objectReference: {fileID: 8483153889598476133}
@@ -9052,6 +9056,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &1231912672462232147 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3587765159187494817, guid: 2d6047d7a366f2343a1a7986136590c5, type: 3}
+  m_PrefabInstance: {fileID: 2365215998212926962}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfe8f679e1cb974d9566782dd2354c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::PauseSettings
 --- !u!224 &1341584906183548707 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3624460048670257873, guid: 2d6047d7a366f2343a1a7986136590c5, type: 3}
@@ -9583,11 +9598,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5010569737634220350, guid: 34ec202c170d4b74ca786d9e3b9e85ff, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000011444092
+      value: -0.00006043911
       objectReference: {fileID: 0}
     - target: {fileID: 5010569737634220350, guid: 34ec202c170d4b74ca786d9e3b9e85ff, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000017881393
+      value: -0.000039100647
       objectReference: {fileID: 0}
     - target: {fileID: 5393146084703852629, guid: 34ec202c170d4b74ca786d9e3b9e85ff, type: 3}
       propertyPath: m_Name
@@ -9628,6 +9643,18 @@ PrefabInstance:
     - target: {fileID: 7094495232948892326, guid: 34ec202c170d4b74ca786d9e3b9e85ff, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510030434126012222, guid: 34ec202c170d4b74ca786d9e3b9e85ff, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510030434126012222, guid: 34ec202c170d4b74ca786d9e3b9e85ff, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5081539284254993571, guid: bf0a2b959a928974abb38094699e2b82, type: 3}
+    - target: {fileID: 8510030434126012222, guid: 34ec202c170d4b74ca786d9e3b9e85ff, type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
