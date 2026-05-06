@@ -39,6 +39,8 @@ public class InventoryManager : MonoBehaviour
             inventoryActive = false;
             giftingEnabled = false;
             giftButton.gameObject.SetActive(false);
+            selectedItemName = string.Empty;
+            DeselectAllSlots();
         }
     }
 
