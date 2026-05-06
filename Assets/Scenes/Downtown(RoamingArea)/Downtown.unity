@@ -3928,7 +3928,9 @@ GameObject:
   m_Component:
   - component: {fileID: 649822791}
   - component: {fileID: 649822790}
-  m_Layer: 0
+  - component: {fileID: 649822792}
+  - component: {fileID: 649822793}
+  m_Layer: 8
   m_Name: Casino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4010,6 +4012,68 @@ Transform:
   - {fileID: 911885352}
   m_Father: {fileID: 1817043529}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &649822792
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649822789}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -6.811424, y: -3.5264816}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 18.87, y: 10.02}
+    newSize: {x: 18.87, y: 10.02}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2.5419111, y: 2.9670372}
+  m_EdgeRadius: 0
+--- !u!114 &649822793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649822789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2b54d2f30c97f4da8aa196891e04ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::LevelObjects.Interactable.InteractableScene
+  requiresLever: 0
+  interactionRange: 0.6
+  uniqueId: 4ff2018e-b8c5-46dd-a0ed-c80d969590bc
+  sceneToLoad: InsideCasino
 --- !u!1 &668386585
 GameObject:
   m_ObjectHideFlags: 0
@@ -4992,7 +5056,7 @@ GameObject:
   m_Component:
   - component: {fileID: 911885352}
   - component: {fileID: 911885353}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 4 jacks casino logo (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5380,7 +5444,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 292086327196780870, guid: a1e9a2e176ddd91499005d20dadd929e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5598,7 +5662,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1128410090}
   - component: {fileID: 1128410089}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: 4 jacks casino logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6120,7 +6184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1912413340195313949, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2125203103209555260, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_Size
@@ -8757,11 +8821,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -749.0667
+      value: -749.07837
       objectReference: {fileID: 0}
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -375.27466
+      value: -375.2747
       objectReference: {fileID: 0}
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.z
