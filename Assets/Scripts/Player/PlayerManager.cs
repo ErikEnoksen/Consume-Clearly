@@ -1,5 +1,6 @@
-using System.Collections;
 using Companion;
+using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +11,8 @@ namespace Player
         public static PlayerManager Instance { get; private set; }
 
         [SerializeField] private GameObject playerPrefab; // Reference to the player prefab
+        [SerializeField] private bool delaySpawnUntilSignal;
+
 
         private GameObject player;
 
@@ -47,7 +50,7 @@ namespace Player
             }
 
             // Spawn player only if it's not found in the scene and the scene isn't the MainMenu
-            if (scene.name != "MainMenu" && player == null)
+            if (scene.name != "MainMenu" && player == null && !delaySpawnUntilSignal)
             {
                 Debug.Log($"Spawning player in scene {scene.name}.");
                 Vector3 spawnPosition = GetSpawnPosition();
@@ -223,6 +226,25 @@ namespace Player
                 companion.SetTarget(targetPoint);
                 Debug.Log($"Assigned TargetPoint to {companion.name}");
             }
+        }
+
+        public void SpawnPlayerFromTimeline()
+        {
+            if (player != null)
+                return;
+
+            Vector3 spawnPosition = GetSpawnPosition();
+            SpawnPlayer(spawnPosition);
+
+            CinemachineCamera vcam = FindAnyObjectByType<CinemachineCamera>();
+
+            if (vcam != null)
+            {
+                vcam.Follow = player.transform;
+                vcam.LookAt = player.transform;
+            }
+
+            Debug.Log("Player spawned from Timeline signal.");
         }
 
     }
