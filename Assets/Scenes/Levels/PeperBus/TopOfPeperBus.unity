@@ -1421,7 +1421,7 @@ Transform:
   m_GameObject: {fileID: 642638936}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 44.72, y: 25.01, z: 0}
+  m_LocalPosition: {x: 44.31, y: 25.01, z: 0}
   m_LocalScale: {x: 0.46822348, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3442,7 +3442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1389165928741631467, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 17.87
+      value: -11.95
       objectReference: {fileID: 0}
     - target: {fileID: 2627292289714170424, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: moneyCount
@@ -3484,6 +3484,34 @@ PrefabInstance:
       propertyPath: 'choiceButtons.Array.data[2]'
       value: 
       objectReference: {fileID: 1710191526}
+    - target: {fileID: 4812957458100203205, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: sounds.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812957458100203205, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: sounds.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 932599cb73bcd6f428ff55acb61d0a6f, type: 3}
+    - target: {fileID: 4812957458100203205, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: sounds.Array.data[3].name
+      value: BackgroundMusic
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812957458100203205, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812957458100203205, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812957458100203205, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: sounds.Array.data[2].volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812957458100203205, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: sounds.Array.data[3].volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5399780352015518838, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.09619
@@ -3525,6 +3553,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6448913083980880762, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: questListContent
+      value: 
+      objectReference: {fileID: 1710191525}
+    - target: {fileID: 8792951542347649090, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: questListContent
       value: 
       objectReference: {fileID: 1710191525}
