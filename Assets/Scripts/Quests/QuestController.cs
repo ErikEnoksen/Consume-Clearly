@@ -10,7 +10,8 @@ namespace Assets.Scripts.Quests
         public List<QuestProgress> ActiveQuests = new();
         private readonly HashSet<string> completedQuestIDs = new();
         private QuestUI questUI;
-        
+        private Item item;
+
         public bool IsQuestActive(string questID) => ActiveQuests.Exists(q => q.questID == questID);
         public bool HasQuestBeenCompleted(string questID) => completedQuestIDs.Contains(questID);
 
@@ -204,15 +205,17 @@ namespace Assets.Scripts.Quests
                     ? rewardItem.itemPrefab.tag
                     : rewardItem.inventoryTag;
 
-                int leftover = inventoryManager.AddItem(
-                    rewardItem.itemPrefab.Id,
-                    rewardItem.itemPrefab.ItemName,
-                    rewardItem.quantity,
+                item.Initialize(rewardItem.itemPrefab.ItemName, 
+                    rewardItem.itemPrefab.Quantity,
                     rewardItem.itemPrefab.Sprite,
                     rewardItem.itemPrefab.ItemDescription,
                     rewardItem.itemPrefab.MaxStack,
-                    string.IsNullOrEmpty(itemTag) ? "Untagged" : itemTag
+                    itemTag
                 );
+
+                int leftover = inventoryManager.AddItem(item
+                );
+
 
                 if (leftover > 0)
                 {

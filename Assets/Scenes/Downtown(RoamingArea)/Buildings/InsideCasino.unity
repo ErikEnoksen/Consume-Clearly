@@ -394,7 +394,8 @@ GameObject:
   - component: {fileID: 801890749}
   - component: {fileID: 801890748}
   - component: {fileID: 801890750}
-  m_Layer: 0
+  - component: {fileID: 801890751}
+  m_Layer: 8
   m_Name: Casino Inside Vision_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -474,8 +475,8 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!68 &801890750
-EdgeCollider2D:
+--- !u!61 &801890750
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -504,21 +505,38 @@ EdgeCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 6.688247, y: -3.821761}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 18.46, y: 9.91}
+    newSize: {x: 18.46, y: 9.91}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2.5828772, y: 2.266478}
   m_EdgeRadius: 0
-  m_Points:
-  - {x: -9.201086, y: -7.1140885}
-  - {x: -9.226087, y: 4.9547653}
-  - {x: 9.223922, y: 4.9571667}
-  - {x: 9.227372, y: -7.143823}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
+--- !u!114 &801890751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801890747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c2b54d2f30c97f4da8aa196891e04ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::LevelObjects.Interactable.InteractableScene
+  requiresLever: 0
+  interactionRange: 0.6
+  uniqueId: 731fe997-1ca4-4b47-8a1a-5b0321c19ca9
+  sceneToLoad: Downtown
 --- !u!1 &918362328
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,6 +698,10 @@ PrefabInstance:
     - target: {fileID: 1647007370556768940, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912413340195313949, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2496500800661736481, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_SizeDelta.y
@@ -1285,7 +1307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1389165928741631467, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -11.79
+      value: -13.25
       objectReference: {fileID: 0}
     - target: {fileID: 2627292289714170424, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: moneyCount
@@ -1520,8 +1542,10 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -9.23, y: 0}
-  - {x: 9.23, y: 0}
+  - {x: -9.228601, y: 10.99463}
+  - {x: -9.229665, y: 0.34735727}
+  - {x: 9.230022, y: 0.34737158}
+  - {x: 9.21672, y: 10.988384}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0

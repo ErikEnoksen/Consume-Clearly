@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Player;
 
 public class WorkshopUI : MonoBehaviour
 {
@@ -28,6 +29,15 @@ public class WorkshopUI : MonoBehaviour
     {
         if (station != null)
             PopulateRecipeList();
+
+        var player = PlayerManager.Instance?.GetPlayer();
+        player?.GetComponent<MovementScript>()?.FreezeMovement(true);
+    }
+
+    void OnDisable()
+    {
+        var player = PlayerManager.Instance?.GetPlayer();
+        player?.GetComponent<MovementScript>()?.FreezeMovement(false);
     }
 
     void PopulateRecipeList()

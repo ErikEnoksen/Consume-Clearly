@@ -1,6 +1,7 @@
 using Assets.Scripts.Quests;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -8,9 +9,12 @@ public class InventoryManager : MonoBehaviour
     private bool inventoryActive;
     public bool giftingEnabled = false;
     public InventoryItem[] inventoryItems;
+    public string selectedItemName;
 
     private CompanionFriendship companionFriendship;
     public ItemSO[] itemSOs;
+
+    public Button giftButton;
 
     // Update is called once per frame
     void Update()
@@ -34,6 +38,9 @@ public class InventoryManager : MonoBehaviour
             inventoryMenu.SetActive(false);
             inventoryActive = false;
             giftingEnabled = false;
+            giftButton.gameObject.SetActive(false);
+            selectedItemName = string.Empty;
+            DeselectAllSlots();
         }
     }
 
@@ -43,16 +50,17 @@ public class InventoryManager : MonoBehaviour
         inventoryActive = true;
         giftingEnabled = true;
         companionFriendship = companion;
+        giftButton.gameObject.SetActive(true);
     }
 
-    public int AddItem(string itemID,string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string tag)
+    public int AddItem(Item item)
     {
         //checks the slots of the inventory and selects the first empty one it finds to store the item
         for (int i = 0; i < inventoryItems.Length; i++)
         {
             for (int j = 0; j < itemSOs.Length; j++)
             {
-                if (itemSOs[j].itemName == itemName && itemSOs[j].itemType == ItemType.Money)
+                if (itemSOs[j].itemName == item.ItemName && itemSOs[j].itemType == ItemType.Money)
                 {
                     itemSOs[j].UseItem();
                     return 0;
@@ -60,38 +68,38 @@ public class InventoryManager : MonoBehaviour
                 
             }
              if (!inventoryItems[i].isFull &&
-            (inventoryItems[i].itemName == itemName || inventoryItems[i].quantity == 0)) 
+            (inventoryItems[i].itemName == item.ItemName || inventoryItems[i].quantity == 0)) 
             {
-                int exceccItems = inventoryItems[i].AddItem(itemID, itemName, quantity, sprite, itemDescription, maxStack, tag);
+                int exceccItems = inventoryItems[i].AddItem(item);
                 if (QuestController.Instance != null)
                 {
-                    int pickedUp = quantity - exceccItems;
-                    QuestController.Instance.UpdateObjectiveProgress(itemID, pickedUp);
+                    int pickedUp = item.Quantity - exceccItems;
+                    QuestController.Instance.UpdateObjectiveProgress(item.Id, pickedUp);
                 }
                 if (exceccItems > 0)
                 {
-                    exceccItems = AddItem(itemID, itemName, exceccItems, sprite, itemDescription, maxStack, tag);
+                    exceccItems = AddItem(item);
                 }
                 return exceccItems;
             }
         }
 
-        return quantity;
+        return item.Quantity;
     }
 
-    public bool UseItem(string itemName)
+    public bool UseItem(string itemName, bool button)
     {
         
         for (int i = 0; i < itemSOs.Length; i++)
         {
             if (itemSOs[i].itemName == itemName)
             {
-                if (itemSOs[i].itemType == ItemType.Gift && giftingEnabled)
+                if ((itemSOs[i].itemType == ItemType.Gift && giftingEnabled) && button)
                 {
                     bool usable = itemSOs[i].UseItem(companionFriendship);
                     return usable;
                 }
-                else if ((itemSOs[i].itemType == ItemType.Gift && !giftingEnabled) || (itemSOs[i].itemType != ItemType.Gift && giftingEnabled))
+                if ((itemSOs[i].itemType == ItemType.Gift && !giftingEnabled) || (itemSOs[i].itemType != ItemType.Gift && giftingEnabled))
                 {
                     return false;
                 }
@@ -144,6 +152,16 @@ public class InventoryManager : MonoBehaviour
         }
         Debug.Log("looked for gift");
         return 0;
+    }
+        
+    public void GiftItem()
+    { 
+        bool usable = UseItem(selectedItemName, true);
+        if (usable)
+        {
+            RemoveItem(selectedItemName, 1);
+            ToggleInventory();
+        }
     }
 
     //undoes the borders on the selected itemslot

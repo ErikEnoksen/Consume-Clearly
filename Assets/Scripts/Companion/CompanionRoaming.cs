@@ -36,6 +36,7 @@ public class CompanionRoaming : MonoBehaviour
 
     private void Start()
     {
+        rb.sleepMode = RigidbodySleepMode2D.NeverSleep;
         randomTime = Random.Range(minWalkTime, maxWalkTime);
         animator.SetBool("isWalking", isWalking ? true : false);
     }
@@ -52,8 +53,7 @@ public class CompanionRoaming : MonoBehaviour
         
         if (!isFlipping && (transform.position.x > rightPatrolX || transform.position.x < leftPatrolX))
             StartCoroutine(Flip());
-        if (isWalking)
-        rb.linearVelocity = Vector2.right * facingDirection * speed;
+        rb.linearVelocity = isWalking ? Vector2.right * facingDirection * speed : Vector2.zero;
     }
     
     private void HandleDialogueStarted(CompanionFriendship companion)
