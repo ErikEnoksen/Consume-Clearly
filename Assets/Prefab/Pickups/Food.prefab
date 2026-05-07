@@ -13,6 +13,10 @@ PrefabInstance:
       value: Food
       objectReference: {fileID: 0}
     - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 8715401230924701078, guid: 59d145434629c874b988971c8cba2bef, type: 3}
+    - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: itemName
       value: Food
       objectReference: {fileID: 0}
