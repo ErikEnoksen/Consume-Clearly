@@ -1,42 +1,46 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class ShopItem : MonoBehaviour
+public class ShopItem : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
     private Item item;
     [SerializeField]
     private int price;
 
-    private InventoryManager inventoryManager;
-    private MoneyManager moneyManager;
+    public int Price { get { return price; } }
+    public Item Item { get { return item; } }
 
-    private void Start()
-    {
-        inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
-        moneyManager = GameObject.Find("MoneyManager").GetComponent <MoneyManager>();
-    }
+    [SerializeField]
+    private TMP_Text itemNameTxt;
+    [SerializeField] 
+    private TMP_Text itemPrice;
+    public Image image;
 
-    private void OnTriggerStay2D(Collider2D collision)
+    [SerializeField]
+    private ShopMenu shopMenu;
+
+
+    public void OnPointerClick(PointerEventData eventData)
     {
-        if(collision.tag == "Player")
+        if(eventData.button == PointerEventData.InputButton.Left)
         {
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                BuyItem(item);
-            }
+            OnLeftClick();
         }
     }
 
-    public void BuyItem(Item item)
+    private void OnLeftClick()
     {
-        if (moneyManager.ChangeMoneyAmount(-price))
-        {
-            inventoryManager.AddItem(item);
-        }
-        else
-        {
-            Debug.Log("Not enough money");
-        }
+        itemNameTxt.text = item.ItemName;
+        itemPrice.text = price.ToString();
+        image.sprite = item.Sprite;
+        image.enabled = true;
+
+        shopMenu.Item = item;
+        shopMenu.Price = price;
     }
 
 }
