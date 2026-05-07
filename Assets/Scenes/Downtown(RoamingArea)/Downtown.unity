@@ -942,6 +942,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Walking_Mentor
       objectReference: {fileID: 0}
+    - target: {fileID: 3981728621584824961, guid: ff25073527382764b9a5067a1c182537, type: 3}
+      propertyPath: dialogueStages.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3981728621584824961, guid: ff25073527382764b9a5067a1c182537, type: 3}
+      propertyPath: dialogueStages.Array.data[0].dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: d410a0a7101591e4fadc9de0cdf1b06c, type: 2}
+    - target: {fileID: 3981728621584824961, guid: ff25073527382764b9a5067a1c182537, type: 3}
+      propertyPath: dialogueStages.Array.data[1].dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 2251b63e1378ad941b9fe2ba23a7a65c, type: 2}
+    - target: {fileID: 3981728621584824961, guid: ff25073527382764b9a5067a1c182537, type: 3}
+      propertyPath: dialogueStages.Array.data[0].conversationsToAdvance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3981728621584824961, guid: ff25073527382764b9a5067a1c182537, type: 3}
+      propertyPath: dialogueStages.Array.data[1].conversationsToAdvance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8925257140003798780, guid: ff25073527382764b9a5067a1c182537, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 0
@@ -997,13 +1017,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1591557285702606311, guid: ff25073527382764b9a5067a1c182537, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 255673063}
   m_SourcePrefab: {fileID: 100100000, guid: ff25073527382764b9a5067a1c182537, type: 3}
 --- !u!4 &255673061 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9102407026585316216, guid: ff25073527382764b9a5067a1c182537, type: 3}
   m_PrefabInstance: {fileID: 255673060}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &255673062 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1591557285702606311, guid: ff25073527382764b9a5067a1c182537, type: 3}
+  m_PrefabInstance: {fileID: 255673060}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &255673063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255673062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f1655bea5c4a36951c3cbe7754dd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::Save.InstanceIdentifier
+  id: 4b052600-5784-40fc-91c9-f312ce16d82e
 --- !u!1 &261048582
 GameObject:
   m_ObjectHideFlags: 0
@@ -8935,11 +8976,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -749.07837
+      value: -749.0631
       objectReference: {fileID: 0}
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -375.2747
+      value: -375.27466
       objectReference: {fileID: 0}
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.z

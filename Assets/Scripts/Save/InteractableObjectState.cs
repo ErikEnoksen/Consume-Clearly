@@ -12,5 +12,8 @@ namespace Save
         public Quaternion rotation;
         // Optional: name of the rope variant (ItemObject.name) attached to a Hook so it can be restored on load
         public string ropeVariantName;
+        // Dialogue stage tracking
+        public int dialogueStageIndex;
+        public int conversationsOnStage;
     }
 }

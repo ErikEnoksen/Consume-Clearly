@@ -1,5 +1,6 @@
 using UnityEngine;
 using Assets.Scripts.Quests;
+using Save;
 
 public enum StageAdvanceCondition
 {
@@ -21,7 +22,7 @@ public class DialogueStage
     public int conversationsToAdvance = 1;
 }
 
-public class DialogueTrigger : MonoBehaviour
+public class DialogueTrigger : MonoBehaviour, ISaveable
 {
     public enum TriggerType { KeyPress, AutoTrigger }
 
@@ -37,6 +38,7 @@ public class DialogueTrigger : MonoBehaviour
     private Dialogue dialogueManager;
     private CompanionFriendship friendship;
     private CommunityMeter communityMeter;
+    private InstanceIdentifier instanceIdentifier;
 
     private bool isPlayerInRange = false;
     private bool hasAutoTriggered = false;
@@ -49,6 +51,7 @@ public class DialogueTrigger : MonoBehaviour
         dialogueManager = FindAnyObjectByType<Dialogue>();
         friendship = GetComponent<CompanionFriendship>();
         communityMeter = FindAnyObjectByType<CommunityMeter>();
+        instanceIdentifier = GetComponent<InstanceIdentifier>();
 
         Dialogue.OnDialogueEndedCompanion += OnConversationEnded;
 
@@ -150,6 +153,28 @@ public class DialogueTrigger : MonoBehaviour
         dialogueManager.DisplayDialogue(dialogueToPlay, friendship);
 
         if (pressF != null) pressF.SetActive(false);
+    }
+
+    public string GetUniqueId()
+    {
+        return instanceIdentifier != null ? instanceIdentifier.Id : null;
+    }
+
+    public InteractableObjectState SaveState()
+    {
+        if (instanceIdentifier == null) return null;
+        return new InteractableObjectState
+        {
+            uniqueId = instanceIdentifier.Id,
+            dialogueStageIndex = currentStageIndex,
+            conversationsOnStage = conversationsOnCurrentStage
+        };
+    }
+
+    public void LoadState(InteractableObjectState state)
+    {
+        currentStageIndex = state.dialogueStageIndex;
+        conversationsOnCurrentStage = state.conversationsOnStage;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

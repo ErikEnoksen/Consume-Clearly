@@ -12,7 +12,9 @@
             public static GameManager Instance { get; private set; }
         
             SaveData data = new SaveData();
-        
+            private List<InventorySlotData> _cachedInventory = new List<InventorySlotData>();
+            private int _cachedMoney = 0;
+
             public float GameTime { get; private set; }
             public string CurrentScene { get; private set; }
         
@@ -176,6 +178,20 @@
                     }
                 }
         
+                InventoryManager inventoryManager = FindAnyObjectByType<InventoryManager>();
+                if (inventoryManager != null)
+                {
+                    _cachedInventory = inventoryManager.SaveInventory();
+                    saveData.InventorySlots = _cachedInventory;
+                }
+
+                MoneyManager moneyManager = FindAnyObjectByType<MoneyManager>();
+                if (moneyManager != null)
+                {
+                    _cachedMoney = moneyManager.GetMoney();
+                    saveData.Money = _cachedMoney;
+                }
+
                 SaveSystem.Save(saveData,customFileName);
                 Debug.Log($"Game saved! {saveData.InteractableStates.Count} interactable objects saved.");
             }
@@ -190,7 +206,9 @@
                         $"Save data loaded - Time: {data.GameTime}, Scene: {data.CurrentScene}, Position: {data.PlayerPosition}");
                     GameTime = data.GameTime;
                     CurrentScene = data.CurrentScene;
-        
+                    _cachedInventory = data.InventorySlots ?? new List<InventorySlotData>();
+                    _cachedMoney = data.Money;
+
                     StartCoroutine(LoadSceneWithPlayerAndObjects(data.CurrentScene, data.PlayerPosition,
                         data.InteractableStates));
                 }
@@ -235,6 +253,20 @@
         
                 // Load interactable object states
                 LoadInteractableStates(interactableStates);
+
+                InventoryManager inventoryManager = FindAnyObjectByType<InventoryManager>();
+                if (inventoryManager != null)
+                {
+                    List<InventorySlotData> toRestore = _cachedInventory?.Count > 0
+                        ? _cachedInventory
+                        : data.InventorySlots;
+                    if (toRestore != null)
+                        inventoryManager.LoadInventory(toRestore);
+                }
+
+                MoneyManager moneyManager = FindAnyObjectByType<MoneyManager>();
+                if (moneyManager != null)
+                    moneyManager.SetMoney(_cachedMoney);
             }
         
             private void LoadInteractableStates(List<InteractableObjectState> states)
@@ -313,6 +345,43 @@
             public void LoadScene(string sceneName)
             {
                 SceneManager.LoadScene(sceneName);
+            }
+
+            public void TransitionToScene(string sceneName)
+            {
+                StartCoroutine(TransitionCoroutine(sceneName));
+            }
+
+            private IEnumerator TransitionCoroutine(string sceneName)
+            {
+                SceneManager.LoadScene(sceneName);
+
+                while (!SceneManager.GetSceneByName(sceneName).isLoaded)
+                    yield return null;
+
+                float timeout = 5f, elapsed = 0f;
+                while (PlayerManager.Instance == null || PlayerManager.Instance.GetPlayer() == null)
+                {
+                    yield return null;
+                    elapsed += Time.deltaTime;
+                    if (elapsed >= timeout) yield break;
+                }
+
+                yield return null;
+
+                // Restore scene-specific interactable states from this scene's save file if one exists
+                SaveData sceneData = SaveSystem.Load(sceneName);
+                if (sceneData != null)
+                    LoadInteractableStates(sceneData.InteractableStates);
+
+                // Always restore inventory and money from cache so they follow the player
+                InventoryManager inventoryManager = FindAnyObjectByType<InventoryManager>();
+                if (inventoryManager != null && _cachedInventory != null && _cachedInventory.Count > 0)
+                    inventoryManager.LoadInventory(_cachedInventory);
+
+                MoneyManager moneyManager = FindAnyObjectByType<MoneyManager>();
+                if (moneyManager != null)
+                    moneyManager.SetMoney(_cachedMoney);
             }
         
             public void LoadMainMenu()

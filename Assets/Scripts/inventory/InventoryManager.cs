@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Assets.Scripts.Quests;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -15,6 +16,9 @@ public class InventoryManager : MonoBehaviour
     public ItemSO[] itemSOs;
 
     public Button giftButton;
+
+    [Tooltip("All possible item sprites — used to restore inventory visuals on load")]
+    [SerializeField] private Sprite[] itemSpriteLookup;
 
     // Update is called once per frame
     void Update()
@@ -161,6 +165,56 @@ public class InventoryManager : MonoBehaviour
         {
             RemoveItem(selectedItemName, 1);
             ToggleInventory();
+        }
+    }
+
+    public List<Save.InventorySlotData> SaveInventory()
+    {
+        var slots = new List<Save.InventorySlotData>();
+        foreach (var slot in inventoryItems)
+        {
+            if (slot.quantity > 0)
+            {
+                slots.Add(new Save.InventorySlotData
+                {
+                    itemName = slot.itemName,
+                    itemID = slot.itemID,
+                    quantity = slot.quantity,
+                    itemDescription = slot.itemDescription,
+                    maxStack = slot.maxStack,
+                    itemTag = slot.tag,
+                    spriteName = slot.sprite != null ? slot.sprite.name : string.Empty
+                });
+            }
+        }
+        return slots;
+    }
+
+    public void LoadInventory(List<Save.InventorySlotData> slots)
+    {
+        foreach (var slot in inventoryItems)
+            slot.EmptySlot();
+
+        int slotIndex = 0;
+        foreach (var data in slots)
+        {
+            if (slotIndex >= inventoryItems.Length) break;
+
+            Sprite sprite = null;
+            if (!string.IsNullOrEmpty(data.spriteName) && itemSpriteLookup != null)
+            {
+                foreach (var s in itemSpriteLookup)
+                {
+                    if (s != null && s.name == data.spriteName)
+                    {
+                        sprite = s;
+                        break;
+                    }
+                }
+            }
+
+            inventoryItems[slotIndex].RestoreSlot(data, sprite);
+            slotIndex++;
         }
     }
 

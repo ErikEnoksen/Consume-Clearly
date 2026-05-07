@@ -36,9 +36,7 @@ namespace LevelObjects.Interactable
         private IEnumerator WaitAnimFinish(float waitTime)
         {
             yield return new WaitForSeconds(waitTime);
-            gameManager.LoadScene(sceneToLoad);
-            gameManager.LoadProgress(sceneToLoad);
-
+            gameManager.TransitionToScene(sceneToLoad);
         }
 
         public override InteractableObjectState SaveState()

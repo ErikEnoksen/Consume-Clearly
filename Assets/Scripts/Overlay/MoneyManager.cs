@@ -16,6 +16,15 @@ public class MoneyManager : MonoBehaviour
             moneyDisplay.text = $"${moneyCount}";
     }
 
+    public int GetMoney() => moneyCount;
+
+    public void SetMoney(int amount)
+    {
+        moneyCount = amount;
+        if (moneyDisplay != null)
+            moneyDisplay.text = $"${moneyCount}";
+    }
+
     public bool ChangeMoneyAmount(int amount)
     {
         if (amount > 0)

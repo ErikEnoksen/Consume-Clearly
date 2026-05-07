@@ -184,23 +184,38 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    //method that can be used when the count of an item reaches 0
-    private void EmptySlot()
+    public void RestoreSlot(Save.InventorySlotData data, Sprite sprite)
     {
-        quantityText.enabled = false;
-        quantityText.text = string.Empty;
-        inventoryManager.selectedItemName = string.Empty;
-        
-        itemImage.enabled = false;
-        itemImage.sprite = null;
+        itemID = data.itemID;
+        itemName = data.itemName;
+        quantity = data.quantity;
+        itemDescription = data.itemDescription;
+        maxStack = data.maxStack;
+        tag = data.itemTag;
+        this.sprite = sprite;
+        isFull = quantity >= maxStack;
+
+        itemImage.sprite = sprite;
+        itemImage.enabled = sprite != null;
+        quantityText.text = quantity.ToString();
+        quantityText.enabled = true;
+    }
+
+    //method that can be used when the count of an item reaches 0
+    public void EmptySlot()
+    {
+        if (quantityText != null) { quantityText.enabled = false; quantityText.text = string.Empty; }
+        if (inventoryManager != null) inventoryManager.selectedItemName = string.Empty;
+        if (itemImage != null) { itemImage.enabled = false; itemImage.sprite = null; }
+        if (itemDescriptionText != null) itemDescriptionText.text = null;
+        if (itemDescriptionTitle != null) itemDescriptionTitle.text = null;
+        if (infoImage != null) infoImage.sprite = null;
+
         itemName = null;
+        itemID = null;
         itemDescription = null;
+        sprite = null;
         tag = "Untagged";
-
         isFull = false;
-
-        itemDescriptionText.text = null;
-        itemDescriptionTitle.text = null;
-        infoImage.sprite = null;
     }
 }
