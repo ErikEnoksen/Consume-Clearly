@@ -16,7 +16,6 @@ public class PauseSettings : MonoBehaviour
 
     public GameObject keybindsMenu;
     public GameObject settingsContainer;
-    public GameObject settingsContent;
     public GameObject backButton;
     public GameObject keybindsButton;
     public GameObject pauseContainer;
@@ -76,7 +75,7 @@ public class PauseSettings : MonoBehaviour
     public void Keybinds()
     {
         keybindsMenu.SetActive(true);
-        settingsContent.SetActive(false);
+        settingsContainer.SetActive(false);
         backButton.SetActive(false);
         keybindsButton.SetActive(false);
     }
