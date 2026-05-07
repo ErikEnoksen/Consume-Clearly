@@ -1,46 +1,58 @@
-using System;
 using UnityEngine;
+using Assets.Scripts.Quests;
+
+public enum StageAdvanceCondition
+{
+    AfterConversations,   // advance after Number conversations on this stage
+    OnQuestComplete,      // advance when the stage's quest is no longer active
+    Manual                // advance only when something else calls AdvanceStage()
+}
+
+[System.Serializable]
+public class DialogueStage
+{
+    [Tooltip("The dialogue to play at this stage")]
+    public DialogueObject dialogue;
+
+    [Tooltip("How does the player progress past this stage?")]
+    public StageAdvanceCondition advanceCondition = StageAdvanceCondition.AfterConversations;
+
+    [Tooltip("How many times this dialogue must be played before advancing (only used with AfterConversations)")]
+    public int conversationsToAdvance = 1;
+}
 
 public class DialogueTrigger : MonoBehaviour
 {
-    //swith between f and autotrigger dialogue
-    public enum TriggerType
-    {
-        KeyPress,
-        AutoTrigger
-    }
+    public enum TriggerType { KeyPress, AutoTrigger }
 
     [Header("Dialogue Settings:")]
-    [Tooltip("The Dialogue that will play when interacting with npc")]
-    [SerializeField] private DialogueObject dialogueToPlay;
-    
+    [SerializeField] private DialogueStage[] dialogueStages;
+
     [Header("Interaction Setting")]
-    [Tooltip("Key Press to interact with npc")]
     [SerializeField] private TriggerType triggerType = TriggerType.KeyPress;
     [SerializeField] private KeyCode interactKey = KeyCode.F;
 
     public GameObject pressF;
 
     private Dialogue dialogueManager;
-    private FriendshipBar friendshipBar;
     private CompanionFriendship friendship;
-    private InventoryManager inventory; 
     private CommunityMeter communityMeter;
 
     private bool isPlayerInRange = false;
     private bool hasAutoTriggered = false;
 
+    private int currentStageIndex = 0;
+    private int conversationsOnCurrentStage = 0;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         dialogueManager = FindAnyObjectByType<Dialogue>();
-        friendshipBar = FindAnyObjectByType<FriendshipBar>();
         friendship = GetComponent<CompanionFriendship>();
-        inventory = FindAnyObjectByType<InventoryManager>();
         communityMeter = FindAnyObjectByType<CommunityMeter>();
 
-        if(friendship != null)
+        Dialogue.OnDialogueEndedCompanion += OnConversationEnded;
+
+        if (friendship != null)
         {
             Debug.Log($"DialogueTrigger on {gameObject.name} found companion: {friendship.gameObject.name}");
         }
@@ -49,23 +61,20 @@ public class DialogueTrigger : MonoBehaviour
             Debug.LogError($"DialogueTrigger on {gameObject.name} has no CompanionFriendship component!");
         }
 
-        if (pressF != null)
-        {
-            pressF.SetActive(false);
-        }
+        if (pressF != null) pressF.SetActive(false);
     }
-    
-    // Update is called once per frame
+
+    void OnDestroy()
+    {
+        Dialogue.OnDialogueEndedCompanion -= OnConversationEnded;
+    }
+
     void Update()
     {
-        if (dialogueManager == null)
-        {
-            return;
-        }
+        if (dialogueManager == null) return;
 
         if (triggerType == TriggerType.KeyPress && isPlayerInRange && Input.GetKeyDown(interactKey))
         {
-            Debug.Log("F pressed, dialogue active: " + dialogueManager.IsDialogueActive());
             if (!dialogueManager.IsDialogueActive())
             {
                 AudioManager.Instance.Play("Speaking");
@@ -74,55 +83,97 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 
+    private void OnConversationEnded(CompanionFriendship companion)
+    {
+        if (companion != friendship) return;
+
+        conversationsOnCurrentStage++;
+        TryAdvanceStage();
+    }
+
+    private void TryAdvanceStage()
+    {
+        if (currentStageIndex >= dialogueStages.Length) return;
+
+        DialogueStage stage = dialogueStages[currentStageIndex];
+        bool canAdvance = false;
+
+        switch (stage.advanceCondition)
+        {
+            case StageAdvanceCondition.AfterConversations:
+                canAdvance = conversationsOnCurrentStage >= stage.conversationsToAdvance;
+                break;
+
+            case StageAdvanceCondition.OnQuestComplete:
+                canAdvance = stage.dialogue != null
+                          && stage.dialogue.quest != null
+                          && QuestController.Instance != null
+                          && !QuestController.Instance.IsQuestActive(stage.dialogue.quest.questID);
+                break;
+
+            case StageAdvanceCondition.Manual:
+                canAdvance = false;
+                break;
+        }
+
+        if (canAdvance && currentStageIndex < dialogueStages.Length - 1)
+        {
+            currentStageIndex++;
+            conversationsOnCurrentStage = 0;
+        }
+    }
+
+    public void AdvanceStage()
+    {
+        if (currentStageIndex < dialogueStages.Length - 1)
+        {
+            currentStageIndex++;
+            conversationsOnCurrentStage = 0;
+        }
+    }
+
+    private DialogueObject GetCurrentDialogue()
+    {
+        if (dialogueStages == null || dialogueStages.Length == 0) return null;
+        int index = Mathf.Clamp(currentStageIndex, 0, dialogueStages.Length - 1);
+        return dialogueStages[index]?.dialogue;
+    }
+
     private void StartConversation()
     {
+        DialogueObject dialogueToPlay = GetCurrentDialogue();
         if (dialogueManager == null || dialogueToPlay == null) return;
 
         if (communityMeter != null)
-        {
-            communityMeter.IncreaseCommunityLevel(100); // Example: Increase community level by 10 points
-        }
+            communityMeter.IncreaseCommunityLevel(100);
 
         dialogueManager.DisplayDialogue(dialogueToPlay, friendship);
-        if (friendship != null)
-            Debug.Log("Started conversation with: " + friendship.CurrentState);
 
-        if (pressF != null)
-        {
-            pressF.SetActive(false);
-        }
+        if (pressF != null) pressF.SetActive(false);
     }
-
-    
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            isPlayerInRange = true;
-                if (pressF != null)
-                {
-                    pressF.SetActive(true);
-            }
+        if (!other.CompareTag("Player")) return;
 
-            if (dialogueManager != null && triggerType == TriggerType.AutoTrigger && !dialogueManager.IsDialogueActive() && !hasAutoTriggered)
-            {
-                StartConversation();
-                hasAutoTriggered = true;
-            }
+        isPlayerInRange = true;
+        if (pressF != null) pressF.SetActive(true);
+
+        if (dialogueManager != null
+            && triggerType == TriggerType.AutoTrigger
+            && !dialogueManager.IsDialogueActive()
+            && !hasAutoTriggered)
+        {
+            StartConversation();
+            hasAutoTriggered = true;
         }
     }
-    
+
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            isPlayerInRange = false;
+        if (!other.CompareTag("Player")) return;
 
-            if (pressF != null)
-            {
-                pressF.SetActive(false);
-            }
-        }
+        isPlayerInRange = false;
+        if (pressF != null) pressF.SetActive(false);
     }
 }
