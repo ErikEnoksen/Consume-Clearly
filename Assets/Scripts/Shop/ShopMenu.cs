@@ -1,4 +1,5 @@
 using LevelObjects.Interactable;
+using Player;
 using Save;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,16 +30,20 @@ public class ShopMenu : Interactable
 
     public override void Interact()
     {
+        var player = PlayerManager.Instance?.GetPlayer();
+        var movement = player?.GetComponent<MovementScript>();
+
         if (!shopOpen)
         {
             shopUI.SetActive(true);
             shopOpen = true;
+            movement?.FreezeMovement(true);
         }
         else if (shopOpen)
         {
             shopUI.SetActive(false);
             shopOpen = false;
-
+            movement?.FreezeMovement(false);
         }
     }
 

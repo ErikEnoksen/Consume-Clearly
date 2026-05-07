@@ -17,9 +17,6 @@ public class InventoryManager : MonoBehaviour
 
     public Button giftButton;
 
-    [Tooltip("All possible item sprites — used to restore inventory visuals on load")]
-    [SerializeField] private Sprite[] itemSpriteLookup;
-
     // Update is called once per frame
     void Update()
     {
@@ -183,7 +180,8 @@ public class InventoryManager : MonoBehaviour
                     itemDescription = slot.itemDescription,
                     maxStack = slot.maxStack,
                     itemTag = slot.tag,
-                    spriteName = slot.sprite != null ? slot.sprite.name : string.Empty
+                    spriteName = slot.sprite != null ? slot.sprite.name : string.Empty,
+                    cachedSprite = slot.sprite
                 });
             }
         }
@@ -195,17 +193,21 @@ public class InventoryManager : MonoBehaviour
         foreach (var slot in inventoryItems)
             slot.EmptySlot();
 
+        Sprite[] sceneSprites = null;
+
         int slotIndex = 0;
         foreach (var data in slots)
         {
             if (slotIndex >= inventoryItems.Length) break;
 
-            Sprite sprite = null;
-            if (!string.IsNullOrEmpty(data.spriteName) && itemSpriteLookup != null)
+            Sprite sprite = data.cachedSprite;
+
+            if (sprite == null && !string.IsNullOrEmpty(data.spriteName))
             {
-                foreach (var s in itemSpriteLookup)
+                sceneSprites ??= Resources.FindObjectsOfTypeAll<Sprite>();
+                foreach (var s in sceneSprites)
                 {
-                    if (s != null && s.name == data.spriteName)
+                    if (s.name == data.spriteName)
                     {
                         sprite = s;
                         break;

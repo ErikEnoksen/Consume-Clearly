@@ -15,6 +15,7 @@ namespace Save
         public int maxStack;
         public string itemTag;
         public string spriteName;
+        [NonSerialized] public UnityEngine.Sprite cachedSprite;
     }
 
     [Serializable]
