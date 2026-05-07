@@ -74,7 +74,7 @@ public class InventoryManager : MonoBehaviour
                 if (QuestController.Instance != null)
                 {
                     int pickedUp = item.Quantity - exceccItems;
-                    QuestController.Instance.UpdateObjectiveProgress(item.Id, pickedUp);
+                    QuestController.Instance.UpdateObjectiveProgress(item.Id, objectiveType.CollectItem ,pickedUp);
                 }
                 if (exceccItems > 0)
                 {

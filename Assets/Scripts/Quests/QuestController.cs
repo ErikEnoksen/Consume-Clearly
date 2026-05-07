@@ -37,36 +37,49 @@ namespace Assets.Scripts.Quests
 			questUI?.UpdateQuestUI();
 		}
 
-		public void UpdateObjectiveProgress(string objectiveID, int amount)
-		{
-			foreach (var quest in ActiveQuests)
+        public void UpdateObjectiveProgress(
+			string objectiveID,
+			objectiveType type,
+			int amount)
 			{
-				foreach (var objective in quest.objectives)
+				foreach (var quest in ActiveQuests)
 				{
-					if (objective.objectiveID == objectiveID && !objective.IsCompleted)
+					foreach (var objective in quest.objectives)
 					{
-						objective.currentAmount += amount;
-
-						if (objective.currentAmount > objective.requiredAmount)
+						if (
+							objective.objectiveID == objectiveID &&
+							objective.type == type &&
+							!objective.IsCompleted
+						)
 						{
-							int excessAmount = objective.currentAmount - objective.requiredAmount;
+							objective.currentAmount += amount;
 
-							objective.currentAmount = objective.requiredAmount;
+							objective.currentAmount = Mathf.Min(
+								objective.currentAmount,
+								objective.requiredAmount
+							);
+
+							Debug.Log(
+								$"Quest progress updated: {objective.description}"
+							);
 
 							questUI?.UpdateQuestUI();
 
-							UpdateObjectiveProgress(objectiveID, excessAmount);
+							if (
+								quest.IsCompleted &&
+								quest.quest.completionType == QuestCompletionType.AutoComplete
+							)
+							{
+								CompleteQuest(quest);
+							}
+
+							return;
 						}
-						Debug.Log($"Quest progress updated: {objective.description} ({objective.currentAmount}/{objective.requiredAmount})");
-						
-						questUI?.UpdateQuestUI();
-						return;  // ADD THIS - Only update the first incomplete objective, then stop
 					}
 				}
-			}
-		}
+        }
 
-		public bool IsQuestCompleted(string questID)
+        public bool IsQuestCompleted(string questID)
 		{
 			if (HasQuestBeenCompleted(questID))
 				return true;
@@ -85,7 +98,23 @@ namespace Assets.Scripts.Quests
 			return true;
 		}
 
-		public bool TurnInQuest(string questID, InventoryManager inventory)
+        private void CompleteQuest(QuestProgress quest)
+        {
+            if (quest == null)
+                return;
+
+            ActiveQuests.Remove(quest);
+
+            completedQuestIDs.Add(quest.questID);
+
+            GrantRewards(quest.quest);
+
+            Debug.Log($"Quest completed: {quest.questID}");
+
+            questUI?.UpdateQuestUI();
+        }
+
+        public bool TurnInQuest(string questID, InventoryManager inventory)
 		{
 			var quest = ActiveQuests.Find(q => q.questID == questID);
 
@@ -112,10 +141,6 @@ namespace Assets.Scripts.Quests
 						}
 						break;
 
-					case objectiveType.ReachLocation:
-						//implement
-						break;
-					
 					case objectiveType.TalkToNPC:
 						//implement 
 						break;
@@ -125,20 +150,6 @@ namespace Assets.Scripts.Quests
 						break;
 				}
 				Debug.Log($"Objective: {objective.description}, ID: {objective.objectiveID}, Required: {objective.requiredAmount}");
-
-				//if (objective.type != objectiveType.CollectItem)
-				//{
-				//	continue;
-				//}
-				
-				//if (itemsToRemove.ContainsKey(objective.objectiveID))
-				//{
-				//	itemsToRemove[objective.objectiveID] += objective.requiredAmount;
-				//}
-				//else
-				//{
-				//	itemsToRemove[objective.objectiveID] = objective.requiredAmount;
-				//}
 			}
 
 			// Remove each item type only once
@@ -148,17 +159,12 @@ namespace Assets.Scripts.Quests
 				inventory?.RemoveItem(item.Key, item.Value);
 			}
 
-			ActiveQuests.Remove(quest);
-			completedQuestIDs.Add(questID);
+            CompleteQuest(quest);
 
-			Debug.Log("Quest turned in: " + questID);
+            Debug.Log("Quest turned in: " + questID);
 
-			questUI?.UpdateQuestUI();
-
-			GrantRewards(quest.quest);
-
-			return true;
-		}
+            return true;
+        }
 
 		public bool TurnInQuest(Quest quest)
 		{
@@ -226,11 +232,14 @@ namespace Assets.Scripts.Quests
 				if (rewardItem == null || rewardItem.itemPrefab == null || rewardItem.quantity <= 0)
 					continue;
 
+				// Instantiate the Item prefab instead of using new
+				Item newItem = Instantiate(rewardItem.itemPrefab);
+				
 				string itemTag = string.IsNullOrEmpty(rewardItem.inventoryTag) || rewardItem.inventoryTag == "Untagged"
 					? rewardItem.itemPrefab.tag
 					: rewardItem.inventoryTag;
 
-				item.Initialize(rewardItem.itemPrefab.ItemName, 
+				newItem.Initialize(rewardItem.itemPrefab.ItemName, 
 					rewardItem.itemPrefab.Quantity,
 					rewardItem.itemPrefab.Sprite,
 					rewardItem.itemPrefab.ItemDescription,
@@ -238,9 +247,7 @@ namespace Assets.Scripts.Quests
 					itemTag
 				);
 
-				int leftover = inventoryManager.AddItem(item
-				);
-
+				int leftover = inventoryManager.AddItem(newItem);
 
 				if (leftover > 0)
 				{
