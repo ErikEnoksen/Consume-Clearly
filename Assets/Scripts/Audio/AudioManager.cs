@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
 
        Instance = this;
 
+       if (sounds == null) return;
        foreach (Sound s in sounds)
        {
            s.source = gameObject.AddComponent<AudioSource>();
@@ -53,7 +54,8 @@ public class AudioManager : MonoBehaviour
     {
         AudioListener.volume = PlayerPrefs.GetFloat("MasterVolume", 1f);
         _soundMap = new Dictionary<string, Sound>();
-        
+
+        if (sounds == null) return;
         foreach (Sound s in sounds)
         {
             _soundMap.Add(s.name, s);
