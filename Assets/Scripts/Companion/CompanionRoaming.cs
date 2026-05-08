@@ -21,6 +21,7 @@ public class CompanionRoaming : MonoBehaviour
     private float randomTime, timer;
     private bool isWalking = true;
     private bool inDialogue = false;
+    private bool hasWalkingParam;
     
     private void OnEnable()
     {
@@ -38,7 +39,9 @@ public class CompanionRoaming : MonoBehaviour
     {
         rb.sleepMode = RigidbodySleepMode2D.NeverSleep;
         randomTime = Random.Range(minWalkTime, maxWalkTime);
-        animator.SetBool("isWalking", isWalking ? true : false);
+        foreach (var p in animator.parameters)
+            if (p.name == "isWalking") { hasWalkingParam = true; break; }
+        if (hasWalkingParam) animator.SetBool("isWalking", isWalking);
     }
 
     // Update is called once per frame
@@ -63,7 +66,7 @@ public class CompanionRoaming : MonoBehaviour
         {
             inDialogue = true;
             isWalking = false;
-            animator.SetBool("isWalking", false);
+            if (hasWalkingParam) animator.SetBool("isWalking", false);
             rb.linearVelocity = Vector2.zero;
         }
     }
@@ -75,7 +78,7 @@ public class CompanionRoaming : MonoBehaviour
         {
             inDialogue = false;
             isWalking = true;
-            animator.SetBool("isWalking", true);
+            if (hasWalkingParam) animator.SetBool("isWalking", true);
             timer = 0f;
             randomTime = Random.Range(minWalkTime, maxWalkTime);
         }
@@ -92,7 +95,7 @@ public class CompanionRoaming : MonoBehaviour
     void StateChange()
     {
         isWalking = !isWalking;
-        animator.SetBool("isWalking", isWalking ? true : false);
+        if (hasWalkingParam) animator.SetBool("isWalking", isWalking);
         randomTime = isWalking ? Random.Range(minWalkTime, maxWalkTime) : Random.Range(minPauseTime, maxPauseTime);
         timer = 0f;
     }

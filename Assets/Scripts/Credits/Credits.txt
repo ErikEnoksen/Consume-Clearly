@@ -9,16 +9,30 @@ At the request of:
 - Peter Giel
 
 Special thanks to our development team:
+- Erik Enoksen
+- Jorim Mulder
+- Kevin Bunk
+- Julia van Boven
 - Charles Felix Lars Henry Palm
 - Ian Kowalski
 - Robin van Maanen
 
 Art and design by:
+- Anna Kirkeng
+- Mirthe Spruijt
+- Mila le Blanc
+- Sheun Ehigie
+- Mitchel Rowel
 - Emma Hoogland
 - Sidney Vogel
 - Kentin Poos
 
+Sounds and Music by:
+- Mylene Bakker
+
 Research by:
+- Seohyeon Woo
+- Irene Villanueva Garcia
 - Mislina Akbulut
 - Isabelle Brown
 

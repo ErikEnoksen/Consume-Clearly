@@ -14,6 +14,7 @@
             SaveData data = new SaveData();
             private List<InventorySlotData> _cachedInventory = new List<InventorySlotData>();
             private int _cachedMoney = 0;
+            private readonly Dictionary<string, Vector3> _sessionPositions = new Dictionary<string, Vector3>();
 
             public float GameTime { get; private set; }
             public string CurrentScene { get; private set; }
@@ -63,76 +64,6 @@
             private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
             {
                 CurrentScene = scene.name;
-        
-                // Setup camera background if it's a valid gameplay scene
-                if (IsSceneValidForCamera())
-                {
-                    StartCoroutine(SetupCameraBackground());
-                }
-            }
-        
-            private bool IsSceneValidForCamera()
-            {
-                return !string.IsNullOrEmpty(CurrentScene) && CurrentScene != "MainMenu";
-            }
-        
-            private IEnumerator SetupCameraBackground()
-            {
-                // Wait for player to be spawned
-                yield return new WaitForSeconds(0.1f);
-        
-                // Find the background sprite in the scene
-                SpriteRenderer backgroundSprite = FindSceneBackground();
-        
-                if (backgroundSprite != null)
-                {
-                    // Find the camera controller
-                    CameraController cameraController = FindAnyObjectByType<CameraController>();
-        
-                    if (cameraController != null)
-                    {
-                        //cameraController.SetBackgroundSprite(backgroundSprite);
-                        Debug.Log($"Background sprite assigned to camera in scene {CurrentScene}");
-                    }
-                    else
-                    {
-                        Debug.LogWarning("CameraController not found in scene");
-                    }
-                }
-                else
-                {
-                    Debug.LogWarning($"No background sprite found in scene {CurrentScene}");
-                }
-            }
-        
-            private SpriteRenderer FindSceneBackground()
-            {
-                // Try to find by tag first
-                GameObject backgroundObject = GameObject.FindGameObjectWithTag("Background");
-                if (backgroundObject != null)
-                {
-                    return backgroundObject.GetComponent<SpriteRenderer>();
-                }
-        
-                // Try to find by name
-                backgroundObject = GameObject.Find("Background");
-                if (backgroundObject != null)
-                {
-                    return backgroundObject.GetComponent<SpriteRenderer>();
-                }
-        
-                // As a fallback, find any sprite renderer that looks like a background
-                SpriteRenderer[] allSprites = FindObjectsByType<SpriteRenderer>(FindObjectsSortMode.None);
-                foreach (var sprite in allSprites)
-                {
-                    if (sprite.gameObject.name.ToLower().Contains("background") ||
-                        sprite.gameObject.layer == LayerMask.NameToLayer("Background"))
-                    {
-                        return sprite;
-                    }
-                }
-        
-                return null;
             }
         
             private void Update()
@@ -354,6 +285,12 @@
 
             private IEnumerator TransitionCoroutine(string sceneName)
             {
+                // Remember where the player was in the current scene before leaving
+                string leavingScene = SceneManager.GetActiveScene().name;
+                GameObject leavingPlayer = PlayerManager.Instance?.GetPlayer();
+                if (leavingPlayer != null)
+                    _sessionPositions[leavingScene] = leavingPlayer.transform.position;
+
                 SceneManager.LoadScene(sceneName);
 
                 while (!SceneManager.GetSceneByName(sceneName).isLoaded)
@@ -368,6 +305,10 @@
                 }
 
                 yield return null;
+
+                // Restore position if we've visited this scene already this session
+                if (_sessionPositions.TryGetValue(sceneName, out Vector3 returnPos))
+                    PlayerManager.Instance.SetPlayerPosition(returnPos);
 
                 // Restore scene-specific interactable states from this scene's save file if one exists
                 SaveData sceneData = SaveSystem.Load(sceneName);
