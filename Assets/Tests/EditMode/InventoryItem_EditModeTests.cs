@@ -21,6 +21,7 @@ namespace Tests.EditMode
         private TextMeshProUGUI descriptionBodyText;
         private Image infoImage;
         private GameObject selectedShaders;
+        private GameObject itemGO;
 
         [SetUp]
         public void SetUp()
@@ -46,6 +47,10 @@ namespace Tests.EditMode
 
             selectedShaders = new GameObject("SelectedShaders");
 
+            // Create Item component used by all tests
+            itemGO = new GameObject("TestItem");
+            item = itemGO.AddComponent<Item>();
+
             // Wire private serialized fields via reflection
             var t = typeof(InventoryItem);
             t.GetField("quantityText", BindingFlags.NonPublic | BindingFlags.Instance)
@@ -64,6 +69,7 @@ namespace Tests.EditMode
         public void TearDown()
         {
             Object.DestroyImmediate(slotGO);
+            Object.DestroyImmediate(itemGO);
             Object.DestroyImmediate(quantityText.gameObject);
             Object.DestroyImmediate(itemImage.gameObject);
             Object.DestroyImmediate(descriptionTitleText.gameObject);
