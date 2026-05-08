@@ -41,16 +41,16 @@ public class MoneyManager : MonoBehaviour
     private void AddMoney(int amount)
     {
         moneyCount += amount;
-        moneyDisplay.text = $"${moneyCount}";
+        if (moneyDisplay != null) moneyDisplay.text = $"${moneyCount}";
         moneyChanged = true;
     }
 
     private void RemoveMoney(int amount)
     {
-        if(amount <= moneyCount)
+        if (amount <= moneyCount)
         {
             moneyCount -= amount;
-            moneyDisplay.text = $"${moneyCount}";
+            if (moneyDisplay != null) moneyDisplay.text = $"${moneyCount}";
             moneyChanged = true;
         }
         else

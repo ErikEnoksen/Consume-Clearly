@@ -96,6 +96,7 @@ public class DialogueTrigger : MonoBehaviour, ISaveable
 
     private void TryAdvanceStage()
     {
+        if (dialogueStages == null || dialogueStages.Length == 0) return;
         if (currentStageIndex >= dialogueStages.Length) return;
 
         DialogueStage stage = dialogueStages[currentStageIndex];
@@ -128,6 +129,7 @@ public class DialogueTrigger : MonoBehaviour, ISaveable
 
     public void AdvanceStage()
     {
+        if (dialogueStages == null || dialogueStages.Length == 0) return;
         if (currentStageIndex < dialogueStages.Length - 1)
         {
             currentStageIndex++;
@@ -173,7 +175,8 @@ public class DialogueTrigger : MonoBehaviour, ISaveable
 
     public void LoadState(InteractableObjectState state)
     {
-        currentStageIndex = state.dialogueStageIndex;
+        int maxIndex = (dialogueStages != null && dialogueStages.Length > 0) ? dialogueStages.Length - 1 : 0;
+        currentStageIndex = Mathf.Clamp(state.dialogueStageIndex, 0, maxIndex);
         conversationsOnCurrentStage = state.conversationsOnStage;
     }
 

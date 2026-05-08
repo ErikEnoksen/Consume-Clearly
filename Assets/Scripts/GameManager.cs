@@ -285,18 +285,38 @@
 
             private IEnumerator TransitionCoroutine(string sceneName)
             {
+                if (string.IsNullOrEmpty(sceneName) || !Application.CanStreamedLevelBeLoaded(sceneName))
+                {
+                    Debug.LogError($"Cannot transition to scene '{sceneName}': not found in build settings.");
+                    yield break;
+                }
+
                 // Remember where the player was in the current scene before leaving
                 string leavingScene = SceneManager.GetActiveScene().name;
                 GameObject leavingPlayer = PlayerManager.Instance?.GetPlayer();
                 if (leavingPlayer != null)
                     _sessionPositions[leavingScene] = leavingPlayer.transform.position;
 
-                SceneManager.LoadScene(sceneName);
-
-                while (!SceneManager.GetSceneByName(sceneName).isLoaded)
-                    yield return null;
+                AsyncOperation load = SceneManager.LoadSceneAsync(sceneName);
+                if (load == null)
+                {
+                    Debug.LogError($"LoadSceneAsync returned null for scene '{sceneName}'.");
+                    yield break;
+                }
 
                 float timeout = 5f, elapsed = 0f;
+                while (!load.isDone)
+                {
+                    yield return null;
+                    elapsed += Time.deltaTime;
+                    if (elapsed >= timeout)
+                    {
+                        Debug.LogError($"Timed out loading scene '{sceneName}'.");
+                        yield break;
+                    }
+                }
+
+                elapsed = 0f;
                 while (PlayerManager.Instance == null || PlayerManager.Instance.GetPlayer() == null)
                 {
                     yield return null;

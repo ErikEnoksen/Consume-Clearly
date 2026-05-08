@@ -14,6 +14,7 @@ public class InventoryManager : MonoBehaviour
 
     private CompanionFriendship companionFriendship;
     public ItemSO[] itemSOs;
+    private Dictionary<string, Sprite> _spriteCache;
 
     public Button giftButton;
 
@@ -193,8 +194,6 @@ public class InventoryManager : MonoBehaviour
         foreach (var slot in inventoryItems)
             slot.EmptySlot();
 
-        Sprite[] sceneSprites = null;
-
         int slotIndex = 0;
         foreach (var data in slots)
         {
@@ -204,15 +203,13 @@ public class InventoryManager : MonoBehaviour
 
             if (sprite == null && !string.IsNullOrEmpty(data.spriteName))
             {
-                sceneSprites ??= Resources.FindObjectsOfTypeAll<Sprite>();
-                foreach (var s in sceneSprites)
+                if (_spriteCache == null)
                 {
-                    if (s.name == data.spriteName)
-                    {
-                        sprite = s;
-                        break;
-                    }
+                    _spriteCache = new Dictionary<string, Sprite>();
+                    foreach (var s in Resources.FindObjectsOfTypeAll<Sprite>())
+                        _spriteCache.TryAdd(s.name, s);
                 }
+                _spriteCache.TryGetValue(data.spriteName, out sprite);
             }
 
             inventoryItems[slotIndex].RestoreSlot(data, sprite);

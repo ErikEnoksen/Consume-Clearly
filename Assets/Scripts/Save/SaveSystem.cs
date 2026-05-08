@@ -74,10 +74,6 @@ namespace Save
                     Debug.LogError($"Failed to load game: {ex.Message}");
                 }
             }
-            else
-            {
-                Debug.LogWarning("Save file not found.");
-            }
 
             return null;
         }
