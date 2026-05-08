@@ -12,7 +12,10 @@
             public static GameManager Instance { get; private set; }
         
             SaveData data = new SaveData();
-        
+            private List<InventorySlotData> _cachedInventory = new List<InventorySlotData>();
+            private int _cachedMoney = 0;
+            private readonly Dictionary<string, Vector3> _sessionPositions = new Dictionary<string, Vector3>();
+
             public float GameTime { get; private set; }
             public string CurrentScene { get; private set; }
         
@@ -61,76 +64,6 @@
             private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
             {
                 CurrentScene = scene.name;
-        
-                // Setup camera background if it's a valid gameplay scene
-                if (IsSceneValidForCamera())
-                {
-                    StartCoroutine(SetupCameraBackground());
-                }
-            }
-        
-            private bool IsSceneValidForCamera()
-            {
-                return !string.IsNullOrEmpty(CurrentScene) && CurrentScene != "MainMenu";
-            }
-        
-            private IEnumerator SetupCameraBackground()
-            {
-                // Wait for player to be spawned
-                yield return new WaitForSeconds(0.1f);
-        
-                // Find the background sprite in the scene
-                SpriteRenderer backgroundSprite = FindSceneBackground();
-        
-                if (backgroundSprite != null)
-                {
-                    // Find the camera controller
-                    CameraController cameraController = FindAnyObjectByType<CameraController>();
-        
-                    if (cameraController != null)
-                    {
-                        //cameraController.SetBackgroundSprite(backgroundSprite);
-                        Debug.Log($"Background sprite assigned to camera in scene {CurrentScene}");
-                    }
-                    else
-                    {
-                        Debug.LogWarning("CameraController not found in scene");
-                    }
-                }
-                else
-                {
-                    Debug.LogWarning($"No background sprite found in scene {CurrentScene}");
-                }
-            }
-        
-            private SpriteRenderer FindSceneBackground()
-            {
-                // Try to find by tag first
-                GameObject backgroundObject = GameObject.FindGameObjectWithTag("Background");
-                if (backgroundObject != null)
-                {
-                    return backgroundObject.GetComponent<SpriteRenderer>();
-                }
-        
-                // Try to find by name
-                backgroundObject = GameObject.Find("Background");
-                if (backgroundObject != null)
-                {
-                    return backgroundObject.GetComponent<SpriteRenderer>();
-                }
-        
-                // As a fallback, find any sprite renderer that looks like a background
-                SpriteRenderer[] allSprites = FindObjectsByType<SpriteRenderer>(FindObjectsSortMode.None);
-                foreach (var sprite in allSprites)
-                {
-                    if (sprite.gameObject.name.ToLower().Contains("background") ||
-                        sprite.gameObject.layer == LayerMask.NameToLayer("Background"))
-                    {
-                        return sprite;
-                    }
-                }
-        
-                return null;
             }
         
             private void Update()
@@ -176,6 +109,20 @@
                     }
                 }
         
+                InventoryManager inventoryManager = FindAnyObjectByType<InventoryManager>();
+                if (inventoryManager != null)
+                {
+                    _cachedInventory = inventoryManager.SaveInventory();
+                    saveData.InventorySlots = _cachedInventory;
+                }
+
+                MoneyManager moneyManager = FindAnyObjectByType<MoneyManager>();
+                if (moneyManager != null)
+                {
+                    _cachedMoney = moneyManager.GetMoney();
+                    saveData.Money = _cachedMoney;
+                }
+
                 SaveSystem.Save(saveData,customFileName);
                 Debug.Log($"Game saved! {saveData.InteractableStates.Count} interactable objects saved.");
             }
@@ -190,7 +137,9 @@
                         $"Save data loaded - Time: {data.GameTime}, Scene: {data.CurrentScene}, Position: {data.PlayerPosition}");
                     GameTime = data.GameTime;
                     CurrentScene = data.CurrentScene;
-        
+                    _cachedInventory = data.InventorySlots ?? new List<InventorySlotData>();
+                    _cachedMoney = data.Money;
+
                     StartCoroutine(LoadSceneWithPlayerAndObjects(data.CurrentScene, data.PlayerPosition,
                         data.InteractableStates));
                 }
@@ -235,6 +184,20 @@
         
                 // Load interactable object states
                 LoadInteractableStates(interactableStates);
+
+                InventoryManager inventoryManager = FindAnyObjectByType<InventoryManager>();
+                if (inventoryManager != null)
+                {
+                    List<InventorySlotData> toRestore = _cachedInventory?.Count > 0
+                        ? _cachedInventory
+                        : data.InventorySlots;
+                    if (toRestore != null)
+                        inventoryManager.LoadInventory(toRestore);
+                }
+
+                MoneyManager moneyManager = FindAnyObjectByType<MoneyManager>();
+                if (moneyManager != null)
+                    moneyManager.SetMoney(_cachedMoney);
             }
         
             private void LoadInteractableStates(List<InteractableObjectState> states)
@@ -313,6 +276,73 @@
             public void LoadScene(string sceneName)
             {
                 SceneManager.LoadScene(sceneName);
+            }
+
+            public void TransitionToScene(string sceneName)
+            {
+                StartCoroutine(TransitionCoroutine(sceneName));
+            }
+
+            private IEnumerator TransitionCoroutine(string sceneName)
+            {
+                if (string.IsNullOrEmpty(sceneName) || !Application.CanStreamedLevelBeLoaded(sceneName))
+                {
+                    Debug.LogError($"Cannot transition to scene '{sceneName}': not found in build settings.");
+                    yield break;
+                }
+
+                // Remember where the player was in the current scene before leaving
+                string leavingScene = SceneManager.GetActiveScene().name;
+                GameObject leavingPlayer = PlayerManager.Instance?.GetPlayer();
+                if (leavingPlayer != null)
+                    _sessionPositions[leavingScene] = leavingPlayer.transform.position;
+
+                AsyncOperation load = SceneManager.LoadSceneAsync(sceneName);
+                if (load == null)
+                {
+                    Debug.LogError($"LoadSceneAsync returned null for scene '{sceneName}'.");
+                    yield break;
+                }
+
+                float timeout = 5f, elapsed = 0f;
+                while (!load.isDone)
+                {
+                    yield return null;
+                    elapsed += Time.deltaTime;
+                    if (elapsed >= timeout)
+                    {
+                        Debug.LogError($"Timed out loading scene '{sceneName}'.");
+                        yield break;
+                    }
+                }
+
+                elapsed = 0f;
+                while (PlayerManager.Instance == null || PlayerManager.Instance.GetPlayer() == null)
+                {
+                    yield return null;
+                    elapsed += Time.deltaTime;
+                    if (elapsed >= timeout) yield break;
+                }
+
+                yield return null;
+
+                // Restore position if we've visited this scene already this session
+                if (_sessionPositions.TryGetValue(sceneName, out Vector3 returnPos))
+                    PlayerManager.Instance.SetPlayerPosition(returnPos);
+
+                // Restore scene-specific interactable states from this scene's save file if one exists
+                SaveData sceneData = SaveSystem.Load(sceneName);
+                if (sceneData != null)
+                    LoadInteractableStates(sceneData.InteractableStates);
+
+                // Always restore inventory and money from cache so they follow the player
+                InventoryManager inventoryManager = FindAnyObjectByType<InventoryManager>();
+                if (inventoryManager != null && _cachedInventory != null && _cachedInventory.Count > 0)
+                    inventoryManager.LoadInventory(_cachedInventory);
+
+                MoneyManager moneyManager = FindAnyObjectByType<MoneyManager>();
+                if (moneyManager != null)
+                    moneyManager.SetMoney(_cachedMoney);
             }
         
             public void LoadMainMenu()

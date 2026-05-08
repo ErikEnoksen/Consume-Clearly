@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Assets.Scripts.Quests;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,6 +14,7 @@ public class InventoryManager : MonoBehaviour
 
     private CompanionFriendship companionFriendship;
     public ItemSO[] itemSOs;
+    private Dictionary<string, Sprite> _spriteCache;
 
     public Button giftButton;
 
@@ -161,6 +163,57 @@ public class InventoryManager : MonoBehaviour
         {
             RemoveItem(selectedItemName, 1);
             ToggleInventory();
+        }
+    }
+
+    public List<Save.InventorySlotData> SaveInventory()
+    {
+        var slots = new List<Save.InventorySlotData>();
+        foreach (var slot in inventoryItems)
+        {
+            if (slot.quantity > 0)
+            {
+                slots.Add(new Save.InventorySlotData
+                {
+                    itemName = slot.itemName,
+                    itemID = slot.itemID,
+                    quantity = slot.quantity,
+                    itemDescription = slot.itemDescription,
+                    maxStack = slot.maxStack,
+                    itemTag = slot.tag,
+                    spriteName = slot.sprite != null ? slot.sprite.name : string.Empty,
+                    cachedSprite = slot.sprite
+                });
+            }
+        }
+        return slots;
+    }
+
+    public void LoadInventory(List<Save.InventorySlotData> slots)
+    {
+        foreach (var slot in inventoryItems)
+            slot.EmptySlot();
+
+        int slotIndex = 0;
+        foreach (var data in slots)
+        {
+            if (slotIndex >= inventoryItems.Length) break;
+
+            Sprite sprite = data.cachedSprite;
+
+            if (sprite == null && !string.IsNullOrEmpty(data.spriteName))
+            {
+                if (_spriteCache == null)
+                {
+                    _spriteCache = new Dictionary<string, Sprite>();
+                    foreach (var s in Resources.FindObjectsOfTypeAll<Sprite>())
+                        _spriteCache.TryAdd(s.name, s);
+                }
+                _spriteCache.TryGetValue(data.spriteName, out sprite);
+            }
+
+            inventoryItems[slotIndex].RestoreSlot(data, sprite);
+            slotIndex++;
         }
     }
 
