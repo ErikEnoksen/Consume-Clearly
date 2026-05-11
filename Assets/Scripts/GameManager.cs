@@ -14,6 +14,9 @@
             SaveData data = new SaveData();
             private List<InventorySlotData> _cachedInventory = new List<InventorySlotData>();
             private int _cachedMoney = 0;
+            private int _cachedCommunityLevel = 0;
+            private int _cachedCommunityOverflow = 0;
+            private float _cachedHungerValue = 100f;
             private readonly Dictionary<string, Vector3> _sessionPositions = new Dictionary<string, Vector3>();
 
             public float GameTime { get; private set; }
@@ -123,6 +126,26 @@
                     saveData.Money = _cachedMoney;
                 }
 
+                if (DayCycleManager.Instance != null)
+                {
+                    saveData.CurrentDay = DayCycleManager.Instance.CurrentDay;
+                    saveData.DayTimer = DayCycleManager.Instance.DayTimer;
+                }
+
+                CommunityMeter communityMeter = FindAnyObjectByType<CommunityMeter>();
+                if (communityMeter != null)
+                {
+                    _cachedCommunityLevel = communityMeter.CommunityLevel;
+                    _cachedCommunityOverflow = communityMeter.OverflowPoints;
+                }
+                saveData.CommunityLevel = _cachedCommunityLevel;
+                saveData.CommunityOverflowPoints = _cachedCommunityOverflow;
+
+                PlayerHunger playerHunger = FindAnyObjectByType<PlayerHunger>();
+                if (playerHunger != null)
+                    _cachedHungerValue = playerHunger.GetHungerValue();
+                saveData.HungerValue = _cachedHungerValue;
+
                 SaveSystem.Save(saveData,customFileName);
                 Debug.Log($"Game saved! {saveData.InteractableStates.Count} interactable objects saved.");
             }
@@ -139,6 +162,12 @@
                     CurrentScene = data.CurrentScene;
                     _cachedInventory = data.InventorySlots ?? new List<InventorySlotData>();
                     _cachedMoney = data.Money;
+                    _cachedCommunityLevel = data.CommunityLevel;
+                    _cachedCommunityOverflow = data.CommunityOverflowPoints;
+                    _cachedHungerValue = data.HungerValue > 0 ? data.HungerValue : 100f;
+
+                    if (DayCycleManager.Instance != null)
+                        DayCycleManager.Instance.LoadState(data.CurrentDay > 0 ? data.CurrentDay : 1, data.DayTimer);
 
                     StartCoroutine(LoadSceneWithPlayerAndObjects(data.CurrentScene, data.PlayerPosition,
                         data.InteractableStates));
@@ -198,8 +227,16 @@
                 MoneyManager moneyManager = FindAnyObjectByType<MoneyManager>();
                 if (moneyManager != null)
                     moneyManager.SetMoney(_cachedMoney);
+
+                CommunityMeter communityMeter = FindAnyObjectByType<CommunityMeter>();
+                if (communityMeter != null)
+                    communityMeter.LoadCommunityState(_cachedCommunityLevel, _cachedCommunityOverflow);
+
+                PlayerHunger playerHunger = FindAnyObjectByType<PlayerHunger>();
+                if (playerHunger != null)
+                    playerHunger.SetHungerValue(_cachedHungerValue);
             }
-        
+
             private void LoadInteractableStates(List<InteractableObjectState> states)
             {
                 if (states == null || states.Count == 0)
@@ -297,6 +334,17 @@
                 if (leavingPlayer != null)
                     _sessionPositions[leavingScene] = leavingPlayer.transform.position;
 
+                CommunityMeter leavingCommunityMeter = FindAnyObjectByType<CommunityMeter>();
+                if (leavingCommunityMeter != null)
+                {
+                    _cachedCommunityLevel = leavingCommunityMeter.CommunityLevel;
+                    _cachedCommunityOverflow = leavingCommunityMeter.OverflowPoints;
+                }
+
+                PlayerHunger leavingHunger = FindAnyObjectByType<PlayerHunger>();
+                if (leavingHunger != null)
+                    _cachedHungerValue = leavingHunger.GetHungerValue();
+
                 AsyncOperation load = SceneManager.LoadSceneAsync(sceneName);
                 if (load == null)
                 {
@@ -343,8 +391,16 @@
                 MoneyManager moneyManager = FindAnyObjectByType<MoneyManager>();
                 if (moneyManager != null)
                     moneyManager.SetMoney(_cachedMoney);
+
+                CommunityMeter communityMeter = FindAnyObjectByType<CommunityMeter>();
+                if (communityMeter != null)
+                    communityMeter.LoadCommunityState(_cachedCommunityLevel, _cachedCommunityOverflow);
+
+                PlayerHunger playerHunger = FindAnyObjectByType<PlayerHunger>();
+                if (playerHunger != null)
+                    playerHunger.SetHungerValue(_cachedHungerValue);
             }
-        
+
             public void LoadMainMenu()
             {
                 SceneManager.LoadScene("MainMenu");

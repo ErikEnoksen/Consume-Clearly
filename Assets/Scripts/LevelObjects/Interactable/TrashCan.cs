@@ -41,6 +41,12 @@ namespace LevelObjects.Interactable
                 DayCycleManager.Instance.OnNewDay += ResetDaily;
         }
 
+        private void OnDestroy()
+        {
+            if (DayCycleManager.Instance != null)
+                DayCycleManager.Instance.OnNewDay -= ResetDaily;
+        }
+
         public override void Interact()
         {
             if (isEmpty) return;

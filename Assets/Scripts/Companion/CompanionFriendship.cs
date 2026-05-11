@@ -12,7 +12,7 @@ public class CompanionFriendship : MonoBehaviour
     public int DailyConversationReward = 25;
     public int MissedConversationSubstraction = 10;
 
-    private bool DailyConversationGiven = false;
+    public bool DailyConversationGiven { get; private set; } = false;
     public enum CompanionMood { Happy, Neutral, Angry }
     public event Action<CompanionMood> OnMoodChanged;
     private CompanionMood _currentMood;
@@ -115,6 +115,12 @@ public class CompanionFriendship : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        if (DayCycleManager.Instance != null)
+            DayCycleManager.Instance.OnNewDay -= ResetDaily;
+    }
+
     private void ResetDaily(int day)
     {
         if (!DailyConversationGiven)
@@ -124,6 +130,16 @@ public class CompanionFriendship : MonoBehaviour
         }
         DailyConversationGiven = false;
         MoodSwitching(CompanionMood.Neutral);
+    }
+
+    public void LoadFriendshipState(int level, int mood, bool dailyGiven)
+    {
+        CurrentFriendshipLevel = level;
+        _currentMood = (CompanionMood)mood;
+        DailyConversationGiven = dailyGiven;
+        previousState = CurrentState;
+        OnFriendshipLevelChanged?.Invoke(CurrentFriendshipLevel);
+        OnMoodChanged?.Invoke(_currentMood);
     }
 
     public Color GetFriendshipColor()

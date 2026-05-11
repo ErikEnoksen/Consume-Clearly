@@ -15,6 +15,10 @@ public class PlayerHunger : MonoBehaviour
         hungerBar.value -= hungerSpeed * Time.deltaTime;
     }
 
+    public float GetHungerValue() => hungerBar.value;
+
+    public void SetHungerValue(float value) => hungerBar.value = value;
+
     public bool ChangeHungerValue(float value)
     {
         if (value > 0)

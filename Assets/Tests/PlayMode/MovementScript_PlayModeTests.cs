@@ -90,14 +90,13 @@ namespace Tests.PlayMode
         [UnityTest]
         public IEnumerator PlayerMovesRightWhenInputIsPositive()
         {
+            // Wait one FixedUpdate so physics initialises before we call Move()
+            yield return new WaitForFixedUpdate();
+
             movementScript.Test_ApplyHorizontalForFixedUpdates(1f, 3);
 
-            for (int i = 0; i < 2; i++)
-            {
-                yield return new WaitForFixedUpdate();
-                Debug.Log("Fixed Update " + (i + 1) + ": Player Velocity = " + rb.linearVelocity);
-            }
-
+            // Assert before the next FixedUpdate runs — real FixedUpdate reads Input.GetKey()
+            // which returns 0 in tests and would immediately decelerate X back to zero.
             Assert.Greater(rb.linearVelocity.x, 0.05f, "Player should move right when horizontal input is positive.");
         }
 

@@ -142,6 +142,12 @@ public class AudioManager : MonoBehaviour
             return true;
         }
         
+        if (sounds == null)
+        {
+            s = null;
+            return false;
+        }
+
         foreach (Sound sound in sounds)
         {
             if (sound.name == soundName)

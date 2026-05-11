@@ -336,8 +336,9 @@ namespace Player
                 transform.position = pos;
             }
 
-            // Ensure velocity reset on enter
+            // Ensure velocity reset on enter and disable gravity while climbing
             rb.linearVelocity = new Vector2(0f, 0f);
+            rb.gravityScale = 0f;
 
             // Notify animator via AnimationController
             animationController.SetWalking(false);
@@ -354,7 +355,8 @@ namespace Player
             currentClimbTransform = null;
             currentClimbIsLadder = false;
 
-            // Apply exit velocity
+            // Restore gravity and apply exit velocity
+            rb.gravityScale = baseGravity;
             rb.linearVelocity = exitVelocity;
 
             // Reset climb vertical control

@@ -25,8 +25,13 @@ namespace Save
         public string CurrentScene;
         public Vector3 PlayerPosition;
         public int Money;
+        public int CurrentDay;
+        public float DayTimer;
         public List<InteractableObjectState> InteractableStates = new List<InteractableObjectState>();
         public List<InventorySlotData> InventorySlots = new List<InventorySlotData>();
+        public int CommunityLevel;
+        public int CommunityOverflowPoints;
+        public float HungerValue;
 
         private static readonly HashSet<string> InvalidScenes = new() { "Credits", "MainMenu" };
 

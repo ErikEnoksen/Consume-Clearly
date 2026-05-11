@@ -303,6 +303,14 @@ public class CommunityMeter : MonoBehaviour
         }
     }
 
+    public void LoadCommunityState(int level, int overflowPoints)
+    {
+        CommunityLevel = level;
+        OverflowPoints = overflowPoints;
+        EvaluateCommunityState();
+        UpdateCommunityMeter();
+    }
+
     private void OnDestroy()
     {
         // Clean up subscriptions

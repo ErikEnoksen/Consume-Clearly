@@ -17,12 +17,22 @@ public class SkyCycle : MonoBehaviour
     private static readonly int Rotation = Shader.PropertyToID("_Rotation");
     private static readonly int Exposure = Shader.PropertyToID("_Exposure");
 
+    private void Start()
+    {
+        if (DayCycleManager.Instance != null)
+        {
+            float totalElapsed = (DayCycleManager.Instance.CurrentDay - 1) * DayCycleManager.Instance.dayLength
+                                 + DayCycleManager.Instance.DayTimer;
+            elapsedTime = totalElapsed;
+            slowedTime = Mathf.Repeat(totalElapsed / slowScale, Mathf.PI);
+        }
+    }
+
     public void SetMorning()
     {
         slowedTime = 0;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         elapsedTime += Time.deltaTime;

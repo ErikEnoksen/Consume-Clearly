@@ -15,5 +15,9 @@ namespace Save
         // Dialogue stage tracking
         public int dialogueStageIndex;
         public int conversationsOnStage;
+        // Friendship / NPC state
+        public int friendshipLevel;
+        public int friendshipMood;
+        public bool dailyConversationGiven;
     }
 }

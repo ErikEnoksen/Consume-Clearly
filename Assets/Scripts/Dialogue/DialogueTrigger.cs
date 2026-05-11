@@ -165,12 +165,19 @@ public class DialogueTrigger : MonoBehaviour, ISaveable
     public InteractableObjectState SaveState()
     {
         if (instanceIdentifier == null) return null;
-        return new InteractableObjectState
+        var state = new InteractableObjectState
         {
             uniqueId = instanceIdentifier.Id,
             dialogueStageIndex = currentStageIndex,
             conversationsOnStage = conversationsOnCurrentStage
         };
+        if (friendship != null)
+        {
+            state.friendshipLevel = friendship.CurrentFriendshipLevel;
+            state.friendshipMood = (int)friendship.CurrentMood;
+            state.dailyConversationGiven = friendship.DailyConversationGiven;
+        }
+        return state;
     }
 
     public void LoadState(InteractableObjectState state)
@@ -178,6 +185,8 @@ public class DialogueTrigger : MonoBehaviour, ISaveable
         int maxIndex = (dialogueStages != null && dialogueStages.Length > 0) ? dialogueStages.Length - 1 : 0;
         currentStageIndex = Mathf.Clamp(state.dialogueStageIndex, 0, maxIndex);
         conversationsOnCurrentStage = state.conversationsOnStage;
+        if (friendship != null)
+            friendship.LoadFriendshipState(state.friendshipLevel, state.friendshipMood, state.dailyConversationGiven);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

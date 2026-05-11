@@ -41,7 +41,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     {
         if (isFull)
         {
-            return quantity;
+            return item.Quantity;
         }
         this.itemID = item.Id;
 
