@@ -25,13 +25,14 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     public Image infoImage;
     public TMP_Text itemDescriptionTitle;
     public TMP_Text itemDescriptionText;
+    public GameObject foodButton;
 
-    private ItemSO[] itemSOs;
     private InventoryManager inventoryManager;
 
     private void Start()
     {
         inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
+        foodButton.SetActive(false);
     }
 
 
@@ -115,36 +116,31 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     //highlights the selected itembox and deselects the previous selected spots
     public void OnLeftClick()
     {
-        if (thisItemSelected)
-        {
-            bool usable = inventoryManager.UseItem(itemName, false);
-
-            if (usable)
-            {
-                quantity -= 1;
-                quantityText.text = quantity.ToString();
+        inventoryManager.DeselectAllSlots();
+        selectedShaders.SetActive(true);
+        infoImage.gameObject.SetActive(true);
+        thisItemSelected = true;
+        
+        itemDescriptionTitle.text = itemName;
+        inventoryManager.selectedItemName = itemName;
+        itemDescriptionText.text = itemDescription;
+        infoImage.sprite = itemImage.sprite;
+        
+        if (infoImage.sprite != null) infoImage.enabled = true;
+        else infoImage.enabled = false; 
             
-                if(quantity == 0)
+        foreach(ItemSO itemSO in inventoryManager.itemSOs)
+        {
+            if(itemSO.itemName == itemName)
+            {
+                if(itemSO.itemType == ItemType.Food)
                 {
-                    EmptySlot();
+                    foodButton.SetActive(true);
                 }
             }
+
         }
-        else
-        {
-            inventoryManager.DeselectAllSlots();
-            selectedShaders.SetActive(true);
-            infoImage.gameObject.SetActive(true);
-            thisItemSelected = true;
         
-            itemDescriptionTitle.text = itemName;
-            inventoryManager.selectedItemName = itemName;
-            itemDescriptionText.text = itemDescription;
-            infoImage.sprite = itemImage.sprite;
-        
-            if (infoImage.sprite != null) infoImage.enabled = true;
-            else infoImage.enabled = false; 
-        }
     }
 
     public void OnRightClick()

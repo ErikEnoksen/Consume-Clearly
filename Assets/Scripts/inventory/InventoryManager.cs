@@ -166,6 +166,15 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public void EatFood()
+    {
+        bool usable = UseItem(selectedItemName, false);
+        if (usable)
+        {
+            RemoveItem(selectedItemName, 1);
+        }
+    }
+
     public List<Save.InventorySlotData> SaveInventory()
     {
         var slots = new List<Save.InventorySlotData>();
@@ -224,6 +233,7 @@ public class InventoryManager : MonoBehaviour
         {
             inventoryItems[i].selectedShaders.SetActive(false);
             inventoryItems[i].thisItemSelected = false;
+            inventoryItems[i].foodButton.SetActive(false);
         }
     }
 }
