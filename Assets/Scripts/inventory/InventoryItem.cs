@@ -53,17 +53,15 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         this.tag = item.tag;
         
         //SetActive makes the item and item count visible in the inventory
-        itemImage.sprite = item.Sprite;
-        itemImage.enabled = true;
-        
+        if (itemImage != null) { itemImage.sprite = item.Sprite; itemImage.enabled = true; }
+
         //checks if the amount of items in the slot and sees if there is space for the rest
         this.quantity += item.Quantity;
         if(this.quantity >= item.MaxStack)
         {
-            quantityText.text = item.MaxStack.ToString();
-            quantityText.enabled = true;
+            if (quantityText != null) { quantityText.text = item.MaxStack.ToString(); quantityText.enabled = true; }
             isFull = true;
-            
+
             //return excess items
             int excessItems = this.quantity - item.MaxStack;
             this.quantity = item.MaxStack;
@@ -71,8 +69,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         }
 
         //updates the view to the itemslot if the spot is not full yet
-        quantityText.text = this.quantity.ToString();
-        quantityText.enabled = true;
+        if (quantityText != null) { quantityText.text = this.quantity.ToString(); quantityText.enabled = true; }
         return 0;
         
     }
@@ -82,7 +79,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         if (quantity < this.quantity)
         {
             this.quantity -= quantity;
-            quantityText.text = this.quantity.ToString();
+            if (quantityText != null) quantityText.text = this.quantity.ToString();
             return 0;
         }
         else if (quantity == this.quantity)
