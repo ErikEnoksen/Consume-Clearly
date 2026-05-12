@@ -64,7 +64,7 @@ public enum QuestCompletionType
 
 public enum objectiveType
 {
-	CollectItem, ReachLocation, TalkToNPC, Custom //can be expanded with more types
+	CollectItem, ReachLocation, RepairObject
 }
 
 [Serializable]
