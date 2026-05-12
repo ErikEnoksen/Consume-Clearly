@@ -865,7 +865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f1655bea5c4a36951c3cbe7754dd30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::Save.InstanceIdentifier
-  id: CasinoNPC
+  id: Cherry
 --- !u!114 &775980303
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1192,6 +1192,7 @@ MonoBehaviour:
   interactionRange: 0.6
   uniqueId: 731fe997-1ca4-4b47-8a1a-5b0321c19ca9
   sceneToLoad: Downtown
+  transitionDelay: 1
 --- !u!1 &876238356
 GameObject:
   m_ObjectHideFlags: 0
@@ -2972,7 +2973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8f1655bea5c4a36951c3cbe7754dd30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::Save.InstanceIdentifier
-  id: CasinoNPC
+  id: Eddie
 --- !u!114 &1929138715
 MonoBehaviour:
   m_ObjectHideFlags: 0

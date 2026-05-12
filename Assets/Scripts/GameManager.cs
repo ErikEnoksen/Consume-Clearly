@@ -383,11 +383,11 @@
                     if (elapsed >= timeout) yield break;
                 }
 
-                yield return null;
-
-                // Restore position if we've visited this scene already this session
+                // Restore position before rendering the next frame to avoid spawn point pop
                 if (_sessionPositions.TryGetValue(sceneName, out Vector3 returnPos))
                     PlayerManager.Instance.SetPlayerPosition(returnPos);
+
+                yield return null;
 
                 // Restore scene-specific interactable states from this scene's save file if one exists
                 SaveData sceneData = SaveSystem.Load(sceneName);
