@@ -649,6 +649,34 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 6309750097970291182, guid: a06f29a7e17bb81409da8851fc8096c2, type: 3}
+    - target: {fileID: 242305984028266056, guid: 2320ca8f8b038914288c1ec2910a5302, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 242305984028266056, guid: 2320ca8f8b038914288c1ec2910a5302, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 242305984028266056, guid: 2320ca8f8b038914288c1ec2910a5302, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.88905716
+      objectReference: {fileID: 0}
+    - target: {fileID: 242305984028266056, guid: 2320ca8f8b038914288c1ec2910a5302, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 242305984028266056, guid: 2320ca8f8b038914288c1ec2910a5302, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 242305984028266056, guid: 2320ca8f8b038914288c1ec2910a5302, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.4577963
+      objectReference: {fileID: 0}
+    - target: {fileID: 242305984028266056, guid: 2320ca8f8b038914288c1ec2910a5302, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 54.49
+      objectReference: {fileID: 0}
     - target: {fileID: 1403626101363094199, guid: 2320ca8f8b038914288c1ec2910a5302, type: 3}
       propertyPath: sprite
       value: 
@@ -6681,7 +6709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8551f3ab8e73148ae97c061e0b735e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::DialogueTrigger
-  dialogueToPlay: {fileID: 11400000, guid: 2251b63e1378ad941b9fe2ba23a7a65c, type: 2}
+  dialogueStages: []
   triggerType: 1
   interactKey: 102
   pressF: {fileID: 0}
@@ -9723,7 +9751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8551f3ab8e73148ae97c061e0b735e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::DialogueTrigger
-  dialogueToPlay: {fileID: 11400000, guid: b1603a29b098c79499406080ded5b591, type: 2}
+  dialogueStages: []
   triggerType: 1
   interactKey: 102
   pressF: {fileID: 0}
@@ -9909,7 +9937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8551f3ab8e73148ae97c061e0b735e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::DialogueTrigger
-  dialogueToPlay: {fileID: 11400000, guid: d410a0a7101591e4fadc9de0cdf1b06c, type: 2}
+  dialogueStages: []
   triggerType: 1
   interactKey: 102
   pressF: {fileID: 0}
@@ -10742,7 +10770,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8551f3ab8e73148ae97c061e0b735e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::DialogueTrigger
-  dialogueToPlay: {fileID: 11400000, guid: ec6f30fee00ea694ea2b613e5f08bde1, type: 2}
+  dialogueStages: []
   triggerType: 1
   interactKey: 102
   pressF: {fileID: 0}
@@ -11134,6 +11162,7 @@ MonoBehaviour:
   requiresLever: 0
   interactionRange: 0.6
   uniqueId: 936d4995-34b2-4b17-84de-9285a6df53fb
+  repairObjectiveID: 
   brokenStrucutre: {fileID: 0}
   fixedStructure: {fileID: 0}
   requiredItems:
@@ -14820,11 +14849,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.8851471
+      value: 0.03309822
       objectReference: {fileID: 0}
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.0646906
+      value: -3.0628805
       objectReference: {fileID: 0}
     - target: {fileID: 2347502356443665200, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_Name

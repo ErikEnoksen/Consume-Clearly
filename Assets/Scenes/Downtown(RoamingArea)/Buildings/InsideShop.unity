@@ -345,6 +345,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 496789438}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &203736919 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8625373935782954992, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+  m_PrefabInstance: {fileID: 1019210815}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!114 &203736920 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6630867937101462415, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+  m_PrefabInstance: {fileID: 1019210815}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!1 &280397415 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8975579472456742052, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+  m_PrefabInstance: {fileID: 1019210815}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &341598593
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +462,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 496789438}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &359444776 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9042730511920474820, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+  m_PrefabInstance: {fileID: 1019210815}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &384873469 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5626603625983965918, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
@@ -548,6 +580,7 @@ GameObject:
   - component: {fileID: 485611093}
   - component: {fileID: 485611096}
   - component: {fileID: 485611095}
+  - component: {fileID: 485611097}
   m_Layer: 8
   m_Name: chris_shopw_worker_2_0
   m_TagString: Untagged
@@ -684,6 +717,22 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 11.192704
+--- !u!114 &485611097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485611092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e0e483042e26f43b515e2caf1ef6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::CompanionFriendship
+  MaxFriendshipLevel: 1000
+  CurrentFriendshipLevel: 0
+  DailyConversationReward: 25
+  MissedConversationSubstraction: 10
 --- !u!1 &496789436
 GameObject:
   m_ObjectHideFlags: 0
@@ -2843,6 +2892,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 69120089100753704, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: keybindsMenu
+      value: 
+      objectReference: {fileID: 359444776}
+    - target: {fileID: 69120089100753704, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: settingsMenu
+      value: 
+      objectReference: {fileID: 280397415}
     - target: {fileID: 1389165928741631467, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.18
@@ -2859,6 +2916,10 @@ PrefabInstance:
       propertyPath: moneyDisplay
       value: 
       objectReference: {fileID: 1019210816}
+    - target: {fileID: 3202279558529167677, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: communityMeter
+      value: 
+      objectReference: {fileID: 203736919}
     - target: {fileID: 3440377708790085468, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: m_Name
       value: Manager
@@ -2983,6 +3044,10 @@ PrefabInstance:
       propertyPath: questListContent
       value: 
       objectReference: {fileID: 1019210817}
+    - target: {fileID: 9138043666064581424, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: friendshipBar
+      value: 
+      objectReference: {fileID: 203736920}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
