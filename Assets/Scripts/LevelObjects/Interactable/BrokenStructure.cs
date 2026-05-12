@@ -1,11 +1,15 @@
 using UnityEngine;
 using Save;
 using System.Collections.Generic;
+using Assets.Scripts.Quests;
 
 namespace LevelObjects.Interactable
 { 
     public class Bridge : Interactable
-{
+    {
+    [Header("Quest related ID")]
+    [SerializeField] private string repairObjectiveID;
+
     [Header("Strucure Objects")]
     [SerializeField] private GameObject brokenStrucutre;
     [SerializeField] private GameObject fixedStructure;
@@ -70,12 +74,21 @@ namespace LevelObjects.Interactable
         }
         return null;
     }
-    
+
     private void Repair()
     {
         isRepaired = true;
         UpdateVisuals();
         Debug.Log("Bridge repaired!");
+
+        if (repairObjectiveID != null)
+        {
+            QuestController.Instance?.UpdateObjectiveProgress(
+                repairObjectiveID,
+                objectiveType.RepairObject,
+                1
+                );
+        }
     }
     
     private void UpdateVisuals()
