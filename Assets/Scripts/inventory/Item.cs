@@ -1,6 +1,7 @@
 using Items;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Item : MonoBehaviour
 {
@@ -32,6 +33,9 @@ public class Item : MonoBehaviour
     [TextArea]
     [SerializeField]
     private string itemDescription;
+
+    [SerializeField]
+    private GameObject eKeySprite;
 
     public string ItemDescription { get { return itemDescription; } set { itemDescription = value; } }
 
@@ -65,7 +69,7 @@ public class Item : MonoBehaviour
 
         if (other.gameObject.tag == "Player")
         {
-
+            eKeySprite.SetActive(true);
             if (Input.GetKey(KeybindManager.Instance.GetKey("Interact")))
             {
                 int exceccItems = inventory.AddItem(this);
@@ -79,6 +83,11 @@ public class Item : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        eKeySprite.SetActive(false);
     }
 
     private void GenerateId()
