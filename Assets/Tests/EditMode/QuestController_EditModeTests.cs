@@ -88,7 +88,7 @@ namespace Tests.EditMode
         public void AcceptQuest_IgnoresAlreadyCompletedQuest()
         {
             controller.AcceptQuest(quest);
-            controller.UpdateObjectiveProgress("collect_wood", 3);
+            controller.UpdateObjectiveProgress("collect_wood", objectiveType.CollectItem, 3);
             controller.TurnInQuest(quest.questID, null);
 
             controller.AcceptQuest(quest);
@@ -101,7 +101,7 @@ namespace Tests.EditMode
         public void UpdateObjectiveProgress_IncrementsObjective()
         {
             controller.AcceptQuest(quest);
-            controller.UpdateObjectiveProgress("collect_wood", 2);
+            controller.UpdateObjectiveProgress("collect_wood", objectiveType.CollectItem, 2);
 
             var progress = controller.ActiveQuests.Find(q => q.questID == quest.questID);
             Assert.AreEqual(2, progress.objectives[0].currentAmount);
@@ -111,7 +111,7 @@ namespace Tests.EditMode
         public void UpdateObjectiveProgress_ClampsAtRequired()
         {
             controller.AcceptQuest(quest);
-            controller.UpdateObjectiveProgress("collect_wood", 10);
+            controller.UpdateObjectiveProgress("collect_wood", objectiveType.CollectItem, 10);
 
             var progress = controller.ActiveQuests.Find(q => q.questID == quest.questID);
             Assert.AreEqual(3, progress.objectives[0].currentAmount);
@@ -121,7 +121,7 @@ namespace Tests.EditMode
         public void UpdateObjectiveProgress_DoesNothingForUnknownObjective()
         {
             controller.AcceptQuest(quest);
-            controller.UpdateObjectiveProgress("nonexistent_objective", 5);
+            controller.UpdateObjectiveProgress("nonexistent_objective", objectiveType.CollectItem, 5);
 
             var progress = controller.ActiveQuests.Find(q => q.questID == quest.questID);
             Assert.AreEqual(0, progress.objectives[0].currentAmount);
@@ -133,7 +133,7 @@ namespace Tests.EditMode
         public void IsQuestCompleted_ReturnsTrueWhenAllObjectivesMet()
         {
             controller.AcceptQuest(quest);
-            controller.UpdateObjectiveProgress("collect_wood", 3);
+            controller.UpdateObjectiveProgress("collect_wood", objectiveType.CollectItem, 3);
             Assert.IsTrue(controller.IsQuestCompleted(quest.questID));
         }
 
@@ -141,7 +141,7 @@ namespace Tests.EditMode
         public void IsQuestCompleted_ReturnsFalseWhenNotEnoughProgress()
         {
             controller.AcceptQuest(quest);
-            controller.UpdateObjectiveProgress("collect_wood", 1);
+            controller.UpdateObjectiveProgress("collect_wood", objectiveType.CollectItem, 1);
             Assert.IsFalse(controller.IsQuestCompleted(quest.questID));
         }
 
@@ -155,7 +155,7 @@ namespace Tests.EditMode
         public void IsQuestCompleted_ReturnsTrueForAlreadyCompletedQuest()
         {
             controller.AcceptQuest(quest);
-            controller.UpdateObjectiveProgress("collect_wood", 3);
+            controller.UpdateObjectiveProgress("collect_wood", objectiveType.CollectItem, 3);
             controller.TurnInQuest(quest.questID, null);
 
             Assert.IsTrue(controller.IsQuestCompleted(quest.questID));
@@ -167,7 +167,7 @@ namespace Tests.EditMode
         public void TurnInQuest_RemovesFromActiveAndMarksCompleted()
         {
             controller.AcceptQuest(quest);
-            controller.UpdateObjectiveProgress("collect_wood", 3);
+            controller.UpdateObjectiveProgress("collect_wood", objectiveType.CollectItem, 3);
 
             bool result = controller.TurnInQuest(quest.questID, null);
 
@@ -204,7 +204,7 @@ namespace Tests.EditMode
         public void HasQuestBeenCompleted_TrueAfterTurnIn()
         {
             controller.AcceptQuest(quest);
-            controller.UpdateObjectiveProgress("collect_wood", 3);
+            controller.UpdateObjectiveProgress("collect_wood", objectiveType.CollectItem, 3);
             controller.TurnInQuest(quest.questID, null);
 
             Assert.IsTrue(controller.HasQuestBeenCompleted(quest.questID));

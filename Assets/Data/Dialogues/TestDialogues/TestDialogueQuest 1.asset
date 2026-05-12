@@ -18,12 +18,14 @@ MonoBehaviour:
     dialogueBoxColor: {r: 0.7012578, g: 0.99138695, b: 1, a: 1}
     textColor: {r: 0, g: 0, b: 0, a: 1}
     dialogueBoxSprite: {fileID: 0}
+    speakerPortrait: {fileID: 0}
     choices: []
   - text: General Kenobi!
     speakerName: Grevious
     dialogueBoxColor: {r: 0.8050314, g: 0.79955167, b: 0.6354178, a: 1}
     textColor: {r: 0, g: 0, b: 0, a: 1}
     dialogueBoxSprite: {fileID: 0}
+    speakerPortrait: {fileID: 0}
     choices:
     - choiceText: ball
       choiceType: 0
@@ -42,20 +44,23 @@ MonoBehaviour:
     dialogueBoxColor: {r: 0.7019608, g: 0.99215686, b: 1, a: 1}
     textColor: {r: 0, g: 0, b: 0, a: 1}
     dialogueBoxSprite: {fileID: 0}
+    speakerPortrait: {fileID: 0}
     choices: []
   - text: gay
     speakerName: Obi Wan Kenobi
     dialogueBoxColor: {r: 0.7019608, g: 0.99215686, b: 1, a: 1}
     textColor: {r: 0, g: 0, b: 0, a: 1}
     dialogueBoxSprite: {fileID: 0}
+    speakerPortrait: {fileID: 0}
     choices: []
   - text: no longer gay
     speakerName: Obi Wan Kenobi
     dialogueBoxColor: {r: 0.7019608, g: 0.99215686, b: 1, a: 1}
     textColor: {r: 0, g: 0, b: 0, a: 1}
     dialogueBoxSprite: {fileID: 0}
+    speakerPortrait: {fileID: 0}
     choices: []
-  quest: {fileID: 11400000, guid: 5403809f2cabc8547bbdb36eb5936a53, type: 2}
+  quest: {fileID: 11400000, guid: 6324da88fda523a46bb3cfab7258a900, type: 2}
   questInProgressIndex: 3
   questCompletedIndex: 4
   initialDialogueEndIndex: 2
