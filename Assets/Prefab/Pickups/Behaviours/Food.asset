@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe4afc3150c1c594d92090f344d3b13c, type: 3}
   m_Name: Food
   m_EditorClassIdentifier: Main::ItemSO
-  itemName: Food
+  itemName: Bread
   itemType: 1
   amountToChangeStat: 20
