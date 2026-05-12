@@ -60,7 +60,7 @@ MonoBehaviour:
     dialogueBoxSprite: {fileID: 0}
     speakerPortrait: {fileID: 0}
     choices: []
-  quest: {fileID: 11400000, guid: 6324da88fda523a46bb3cfab7258a900, type: 2}
+  quest: {fileID: 11400000, guid: 76b638266e89c2440afa6c5d7275edc8, type: 2}
   questInProgressIndex: 3
   questCompletedIndex: 4
   initialDialogueEndIndex: 2

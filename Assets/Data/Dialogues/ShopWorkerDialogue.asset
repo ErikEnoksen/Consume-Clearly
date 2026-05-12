@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c234f20efd360eb45b89a7d3a2835e3e, type: 3}
+  m_Name: ShopWorkerDialogue
+  m_EditorClassIdentifier: Main::DialogueObject
+  dialogueLines:
+  - text: Hello and welcome to OAK where we pride ourselves in our diverse selection
+      of products. For used products go to the left, for our premium products to
+      the right.
+    speakerName: 
+    dialogueBoxColor: {r: 1, g: 0.8705883, b: 0.6784314, a: 1}
+    textColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
+    speakerPortrait: {fileID: 1938812221434891446, guid: 69b23245ab457484ea02bc6806cbe721, type: 3}
+    choices: []
+  quest: {fileID: 0}
+  questInProgressIndex: 0
+  questCompletedIndex: 0
+  initialDialogueEndIndex: 0

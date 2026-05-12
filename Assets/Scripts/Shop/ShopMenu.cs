@@ -6,9 +6,11 @@ using UnityEngine.UI;
 
 public class ShopMenu : Interactable
 {
-    [SerializeField] private GameObject shopUI;
-    [SerializeField] Button button;
-    [SerializeField] private Item item;
+    [SerializeField] 
+    private GameObject shopUI;
+    [SerializeField] 
+    Button button;
+    private Item item;
 
     private int price;
     private bool shopOpen = false;
