@@ -19,6 +19,20 @@ namespace Save
     }
 
     [Serializable]
+    public class QuestObjectiveSaveState
+    {
+        public string objectiveID;
+        public int currentAmount;
+    }
+
+    [Serializable]
+    public class QuestSaveState
+    {
+        public string questID;
+        public List<QuestObjectiveSaveState> objectives = new List<QuestObjectiveSaveState>();
+    }
+
+    [Serializable]
     public class SaveData
     {
         public float GameTime;
@@ -32,6 +46,8 @@ namespace Save
         public int CommunityLevel;
         public int CommunityOverflowPoints;
         public float HungerValue;
+        public List<QuestSaveState> ActiveQuestStates = new List<QuestSaveState>();
+        public List<string> CompletedQuestIDs = new List<string>();
 
         private static readonly HashSet<string> InvalidScenes = new() { "Credits", "MainMenu" };
 

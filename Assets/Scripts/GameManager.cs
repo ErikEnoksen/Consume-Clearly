@@ -146,6 +146,12 @@
                     _cachedHungerValue = playerHunger.GetHungerValue();
                 saveData.HungerValue = _cachedHungerValue;
 
+                if (Assets.Scripts.Quests.QuestController.Instance != null)
+                {
+                    saveData.ActiveQuestStates = Assets.Scripts.Quests.QuestController.Instance.GetSaveData();
+                    saveData.CompletedQuestIDs = Assets.Scripts.Quests.QuestController.Instance.GetCompletedQuestIDs();
+                }
+
                 SaveSystem.Save(saveData,customFileName);
                 Debug.Log($"Game saved! {saveData.InteractableStates.Count} interactable objects saved.");
             }
@@ -170,7 +176,7 @@
                         DayCycleManager.Instance.LoadState(data.CurrentDay > 0 ? data.CurrentDay : 1, data.DayTimer);
 
                     StartCoroutine(LoadSceneWithPlayerAndObjects(data.CurrentScene, data.PlayerPosition,
-                        data.InteractableStates));
+                        data.InteractableStates, data.ActiveQuestStates, data.CompletedQuestIDs));
                 }
                 else
                 {
@@ -179,7 +185,9 @@
             }
         
             private IEnumerator LoadSceneWithPlayerAndObjects(string sceneName, Vector3 playerPosition,
-                List<InteractableObjectState> interactableStates)
+                List<InteractableObjectState> interactableStates,
+                List<Save.QuestSaveState> activeQuestStates = null,
+                List<string> completedQuestIDs = null)
             {
                 SceneManager.LoadScene(sceneName);
         
@@ -213,6 +221,9 @@
         
                 // Load interactable object states
                 LoadInteractableStates(interactableStates);
+
+                if (activeQuestStates != null && Assets.Scripts.Quests.QuestController.Instance != null)
+                    Assets.Scripts.Quests.QuestController.Instance.LoadSaveData(activeQuestStates, completedQuestIDs);
 
                 InventoryManager inventoryManager = FindAnyObjectByType<InventoryManager>();
                 if (inventoryManager != null)

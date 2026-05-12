@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Save;
 
 namespace Assets.Scripts.Quests
 {
@@ -24,8 +26,21 @@ namespace Assets.Scripts.Quests
 			}
 
 			Instance = this;
-
+			transform.SetParent(null);
+			DontDestroyOnLoad(gameObject);
+			SceneManager.sceneLoaded += OnSceneLoaded;
 			questUI = FindAnyObjectByType<QuestUI>();
+		}
+
+		private void OnDestroy()
+		{
+			SceneManager.sceneLoaded -= OnSceneLoaded;
+		}
+
+		private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+		{
+			questUI = FindAnyObjectByType<QuestUI>();
+			questUI?.UpdateQuestUI();
 		}
 
 		public void AcceptQuest(Quest quest)
@@ -209,6 +224,54 @@ namespace Assets.Scripts.Quests
 			}
 
 			Debug.LogWarning($"QuestController: Could not grant community spirit reward of {amount}. No CircularSatisfactionMeter found.");
+		}
+
+		public List<QuestSaveState> GetSaveData()
+		{
+			var result = new List<QuestSaveState>();
+			foreach (var qp in ActiveQuests)
+			{
+				var state = new QuestSaveState { questID = qp.questID };
+				foreach (var obj in qp.objectives)
+					state.objectives.Add(new QuestObjectiveSaveState { objectiveID = obj.objectiveID, currentAmount = obj.currentAmount });
+				result.Add(state);
+			}
+			return result;
+		}
+
+		public List<string> GetCompletedQuestIDs() => new List<string>(completedQuestIDs);
+
+		public void LoadSaveData(List<QuestSaveState> activeData, List<string> completedIDs)
+		{
+			ActiveQuests.Clear();
+			completedQuestIDs.Clear();
+
+			if (completedIDs != null)
+				foreach (var id in completedIDs)
+					completedQuestIDs.Add(id);
+
+			if (activeData == null) return;
+
+			Quest[] allQuests = Resources.FindObjectsOfTypeAll<Quest>();
+			foreach (var qd in activeData)
+			{
+				Quest quest = System.Array.Find(allQuests, q => q.questID == qd.questID);
+				if (quest == null)
+				{
+					Debug.LogWarning($"QuestController: Could not find Quest asset with ID '{qd.questID}' during load.");
+					continue;
+				}
+
+				var progress = new QuestProgress(quest);
+				foreach (var objData in qd.objectives)
+				{
+					var obj = progress.objectives.Find(o => o.objectiveID == objData.objectiveID);
+					if (obj != null) obj.currentAmount = objData.currentAmount;
+				}
+				ActiveQuests.Add(progress);
+			}
+
+			questUI?.UpdateQuestUI();
 		}
 
 		private void GrantItemRewards(List<QuestRewardItem> rewardItems)
