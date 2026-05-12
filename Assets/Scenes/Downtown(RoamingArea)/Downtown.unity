@@ -2617,6 +2617,7 @@ MonoBehaviour:
   interactionRange: 0.6
   uniqueId: 742cc3b5-1384-4006-9a93-0bb3fed85c1e
   sceneToLoad: InsideShop
+  transitionDelay: 1
 --- !u!61 &628243195
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3478,6 +3479,7 @@ MonoBehaviour:
   interactionRange: 0.6
   uniqueId: 4ff2018e-b8c5-46dd-a0ed-c80d969590bc
   sceneToLoad: InsideCasino
+  transitionDelay: 1
 --- !u!1 &668386585
 GameObject:
   m_ObjectHideFlags: 0
@@ -8154,6 +8156,7 @@ MonoBehaviour:
   interactionRange: 0.6
   uniqueId: a89af03a-72d2-471b-a0da-241c2e21cc7e
   sceneToLoad: InsidePeperBus
+  transitionDelay: 1
 --- !u!61 &1628629777
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9152,6 +9155,10 @@ PrefabInstance:
     - target: {fileID: 6243834197810659815, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6789496639073388078, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
+      propertyPath: id
+      value: Dude
       objectReference: {fileID: 0}
     - target: {fileID: 8679500355718804320, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: m_Name

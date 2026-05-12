@@ -37,22 +37,13 @@ namespace MainMenu
         }
         public void ContinueGame()
         {
-            SaveData saveData = SaveSystem.Load();
-            if (saveData != null)
+            if (GameManager.Instance != null)
             {
-                if (GameManager.Instance != null)
-                {
-                    GameManager.Instance.LoadProgress();
-                }
-                else
-                {
-                    Debug.LogWarning("GameManager instance not found! Falling back to scene load.");
-                }
-                SceneManager.LoadScene(saveData.CurrentScene);
+                GameManager.Instance.LoadProgress();
             }
             else
             {
-                Debug.LogError("No save data found! Unable to continue.");
+                Debug.LogError("GameManager instance not found! Cannot continue game.");
             }
         }
 
