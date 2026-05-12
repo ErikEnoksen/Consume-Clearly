@@ -128,7 +128,7 @@ namespace Assets.Scripts.Quests
 			var itemsToRemove = new Dictionary<string, int>();
 			foreach (var objective in quest.objectives)
 			{
-				switch (objective.type)
+				switch (objective.type) //more quest types that dont require/use separate script interaction logic can be added here
 				{
 					case objectiveType.CollectItem:
 						if (itemsToRemove.ContainsKey(objective.objectiveID))
@@ -139,10 +139,6 @@ namespace Assets.Scripts.Quests
 						{
 							itemsToRemove[objective.objectiveID] = objective.requiredAmount;
 						}
-						break;
-
-					case objectiveType.TalkToNPC:
-						//implement 
 						break;
 
 					default:
