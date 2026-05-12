@@ -21,7 +21,7 @@ public class CommunityMeter : MonoBehaviour
     private List<CompanionFriendship> allCompanions = new List<CompanionFriendship>();
     private Dictionary<CompanionFriendship, CompanionFriendship.FriendshipState> companionStates = new Dictionary<CompanionFriendship, CompanionFriendship.FriendshipState>();
     private HashSet<CompanionFriendship> countedFriends = new HashSet<CompanionFriendship>();
-    private void Awake()
+    private void Start()
     {
         // Find all companions in the scene
         FindAndRegisterAllCompanions();
