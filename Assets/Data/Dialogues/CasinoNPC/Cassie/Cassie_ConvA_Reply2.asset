@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c234f20efd360eb45b89a7d3a2835e3e, type: 3}
-  m_Name: Gary_ConvA_Reply2
+  m_Name: Cassie_ConvA_Reply2
   m_EditorClassIdentifier: Main::DialogueObject
   dialogueLines:
-  - text: My rent money. She loved it. Asked for more.
-    speakerName: 'Gary '
+  - text: Sure, until one of them tries to pay rent in poker chips. Again.
+    speakerName: Cassie
     dialogueBoxColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
     dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
-    speakerPortrait: {fileID: -4088442099895833191, guid: f20bb20e6371833408781f2c9f43cbdb, type: 3}
+    speakerPortrait: {fileID: 1552466600515510448, guid: 41a249f0520e8fa42a7c48cfd2763c8d, type: 3}
     choices: []
   quest: {fileID: 0}
   questInProgressIndex: 0

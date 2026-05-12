@@ -63,7 +63,7 @@ namespace MainMenu
     
         public void NewGame()
         {
-            SaveSystem.ClearSaveData(); // New method to delete any existing save.
+            SaveSystem.ClearAllData();
             StartGame();
         }
     
