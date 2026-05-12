@@ -216,7 +216,6 @@ MonoBehaviour:
   jumpForce: 12
   canJump: 1
   followDistance: 2
-  lookAheadDistance: 2
   teleportDistance: 5
   groundCheckRadius: 0.1
   groundCheck: {fileID: 8132787090314073876}
@@ -321,8 +320,8 @@ Transform:
   m_GameObject: {fileID: 3271865402770979268}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 8.69, z: -4.666666}
-  m_LocalScale: {x: 0.2, y: 0.18763249, z: 0.3533569}
+  m_LocalPosition: {x: 3.167, y: 7.153, z: -4.666666}
+  m_LocalScale: {x: 0.7285206, y: 0.9821596, z: 0.3533569}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4036169441490382326}
@@ -374,12 +373,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1648790168363200983, guid: 0834e9b7da76d5e4b85578ff479dd6cc, type: 3}
+  m_Sprite: {fileID: -6966588595320501180, guid: 107fc8648bb60db4f920d21d45376e0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.61, y: 3.62}
+  m_Size: {x: 2.59, y: 1.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
