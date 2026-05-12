@@ -178,8 +178,9 @@ namespace Assets.Scripts.Quests
 
 			GrantMoneyReward(quest.rewards.money);
 			GrantCircularSatisfactionReward(quest.rewards.circularSatisfaction);
-			GrantItemRewards(quest.rewards.items);
-		}
+            GrantCommunityPointsReward(quest.rewards.communityPoints);
+            GrantItemRewards(quest.rewards.items);
+        }
 
 		private void GrantMoneyReward(int amount)
 		{
@@ -251,5 +252,18 @@ namespace Assets.Scripts.Quests
 				}
 			}
 		}
-	}
+
+		private void GrantCommunityPointsReward(int amount)
+		{
+			if (amount <= 0)
+				return;
+			CommunityMeter communityMeter = FindAnyObjectByType<CommunityMeter>();
+			if (communityMeter != null)
+			{
+				communityMeter.IncreaseCommunityLevel(amount);
+                return;
+			}
+			Debug.LogWarning($"QuestController: Could not grant community points reward of {amount}. No CommunityMeter found.");
+        }
+    }
 }

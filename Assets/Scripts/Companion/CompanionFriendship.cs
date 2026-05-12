@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CompanionFriendship : MonoBehaviour
 {
+    private CommunityMeter communityMeter;
     public event Action<int> OnFriendshipLevelChanged;
     public event Action<FriendshipState> OnStateChanged;
 
@@ -15,7 +16,7 @@ public class CompanionFriendship : MonoBehaviour
     public bool DailyConversationGiven { get; private set; } = false;
     public enum CompanionMood { Happy, Neutral, Angry }
     public event Action<CompanionMood> OnMoodChanged;
-    private CompanionMood _currentMood;
+    private CompanionMood _currentMood = CompanionMood.Neutral;
     public CompanionMood CurrentMood
     {
         get => _currentMood;
@@ -111,6 +112,11 @@ public class CompanionFriendship : MonoBehaviour
         {
             IncreaseFriendship(DailyConversationReward);
             DailyConversationGiven = true;
+            // Gives a daily talk bonus to the community meter if the companion is at least a friend
+            if (CurrentState == FriendshipState.Friend || CurrentState == FriendshipState.BestFriend)
+            {
+                communityMeter?.IncreaseCommunityLevel(DailyConversationReward);
+            }
             Debug.Log("Daily conversation bonus given.");
         }
     }

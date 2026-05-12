@@ -149,9 +149,6 @@ public class DialogueTrigger : MonoBehaviour, ISaveable
         DialogueObject dialogueToPlay = GetCurrentDialogue();
         if (dialogueManager == null || dialogueToPlay == null) return;
 
-        if (communityMeter != null)
-            communityMeter.IncreaseCommunityLevel(100);
-
         dialogueManager.DisplayDialogue(dialogueToPlay, friendship);
 
         if (pressF != null) pressF.SetActive(false);

@@ -31,7 +31,8 @@ public class QuestReward
 {
 	public int money;
 	public float circularSatisfaction;
-	public List<QuestRewardItem> items;
+    public int communityPoints;
+    public List<QuestRewardItem> items;
 }
 
 [Serializable]
