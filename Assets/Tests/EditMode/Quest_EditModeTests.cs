@@ -45,7 +45,7 @@ namespace Tests.EditMode
             q.questID = id;
             q.questName = "Test Quest";
             q.objectives = new List<QuestObjective>(objectives);
-            q.rewards = new QuestReward { money = 0, circularSatisfaction = 0f, items = new List<QuestRewardItem>() };
+            q.rewards = new QuestReward { money = 0, circularSatisfaction = 0, items = new List<QuestRewardItem>() };
             return q;
         }
 

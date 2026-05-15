@@ -14,11 +14,14 @@ public class WorkshopStation : Interactable
     [SerializeField] private GameObject workshopUI;
     
     private InventoryManager inventoryManager;
-    
-   
+    private CircularSatisfactionMeter satisfactionMeter;
+
+    private int CSIncreaseAmount = 10;
+
     void Start()
     {
         inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
+        satisfactionMeter = GameObject.Find("CircularSatisfactionMeter").GetComponent<CircularSatisfactionMeter>();
     }
     public override void Interact()
     {
@@ -59,6 +62,13 @@ public class WorkshopStation : Interactable
             Item item = output.itemPrefab.GetComponent<Item>();
             inventoryManager.AddItem(item);
         }
+
+        // Increase Circular Satisfaction Meter
+        if (satisfactionMeter != null)
+        {
+            satisfactionMeter.IncreaseSatisfactionValue(CSIncreaseAmount);
+        }
+
         Debug.Log($"Processed at {stationType}!");
         return true;
     }

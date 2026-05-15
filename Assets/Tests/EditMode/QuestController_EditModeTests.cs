@@ -47,7 +47,7 @@ namespace Tests.EditMode
             quest.rewards = new QuestReward
             {
                 money = 0,
-                circularSatisfaction = 0f,
+                circularSatisfaction = 0,
                 items = new List<QuestRewardItem>()
             };
         }

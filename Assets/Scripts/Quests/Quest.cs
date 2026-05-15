@@ -30,7 +30,7 @@ public class Quest : ScriptableObject
 public class QuestReward
 {
 	public int money;
-	public float circularSatisfaction;
+	public int circularSatisfaction;
     public int communityPoints;
     public List<QuestRewardItem> items;
 }

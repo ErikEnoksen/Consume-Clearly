@@ -12,13 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e4a66a7e2b0554db1c603c2375e30b, type: 3}
   m_Name: RewardTestQuest
   m_EditorClassIdentifier: Main::Quest
-  questID: 
-  questName: 
-  description: 
-  objectives: []
+  questID: Reward
+  questName: Reward
+  description: get community points
+  objectives:
+  - objectiveID: Reward
+    description: com points
+    type: 1
+    requiredAmount: 0
+    currentAmount: 0
   rewards:
-    money: 0
-    circularSatisfaction: 0
+    money: 10
+    circularSatisfaction: 50
+    communityPoints: 100
     items: []
-    communityPoints: 0
   completionType: 0

@@ -16,6 +16,7 @@ public class CommunityMeter : MonoBehaviour
     public int FriendCount = 0;
 
     private readonly int[] thresholds = { 0, 25, 50, 75, 100 }; // Example thresholds for each state
+    private CircularSatisfactionMeter satisfactionMeter;
 
     // Store all companions and track their states
     private List<CompanionFriendship> allCompanions = new List<CompanionFriendship>();
@@ -26,6 +27,7 @@ public class CommunityMeter : MonoBehaviour
         // Find all companions in the scene
         FindAndRegisterAllCompanions();
 
+        satisfactionMeter = GetComponent<CircularSatisfactionMeter>();
         CurrentState = GetCommunityState();
         UpdateCommunityMeter();
 
@@ -224,6 +226,8 @@ public class CommunityMeter : MonoBehaviour
                         break;
                     case CommunityState.Thriving:
                         fillImage.color = Color.purple;
+                        // Activates passive points of circular satisfaction meter for reaching the thriving state
+                        satisfactionMeter.ActivatePassivePoint();
                         break;
                 }
             }

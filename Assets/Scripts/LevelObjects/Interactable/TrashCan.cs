@@ -10,24 +10,20 @@ namespace LevelObjects.Interactable
         [SerializeField] private GameObject emptyTrashcan;
 
         [Header("Loot")]
-        [SerializeField] private string itemId = "Trash";
-        [SerializeField] private string itemName = "Trash";
-        [SerializeField] private int amount = 1;
-        [SerializeField] private Sprite itemSprite;
-        [SerializeField] private string itemDescription = "Some trash";
-        [SerializeField] private int maxStack = 10;
-        [SerializeField] private string itemTag = "Trash";
         [SerializeField] private Item item;
 
 
         private InventoryManager _inventory;
         private bool isEmpty = false;
 
+        private CircularSatisfactionMeter satisfactionMeter;
+
         protected override void Awake()
         {
             base.Awake();
 
             _inventory = FindFirstObjectByType<InventoryManager>();
+            satisfactionMeter = GetComponent<CircularSatisfactionMeter>();
 
             if (_inventory == null)
 
@@ -60,6 +56,7 @@ namespace LevelObjects.Interactable
             UpdateVisuals();
 
             GiveItem();
+            satisfactionMeter.IncreaseSatisfactionValue(2);
 
             Debug.Log("Trash can emptied!");
         }
