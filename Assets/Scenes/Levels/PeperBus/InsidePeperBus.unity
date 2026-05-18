@@ -291,6 +291,7 @@ MonoBehaviour:
   interactionRange: 0.6
   uniqueId: 825632f6-2afc-4760-9ed8-d1d646a55266
   sceneToLoad: Downtown
+  transitionDelay: 1
 --- !u!61 &13720322
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1906,7 +1907,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4812957458100203205, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: sounds.Array.data[4].volume
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5399780352015518838, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4812,7 +4813,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.641075
+      value: 5.637335
       objectReference: {fileID: 0}
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10190,6 +10191,7 @@ MonoBehaviour:
   interactionRange: 0.6
   uniqueId: 825632f6-2afc-4760-9ed8-d1d646a55266
   sceneToLoad: TopOfPeperBus
+  transitionDelay: 1
 --- !u!61 &1939266378
 BoxCollider2D:
   m_ObjectHideFlags: 0
