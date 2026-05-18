@@ -10,16 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c234f20efd360eb45b89a7d3a2835e3e, type: 3}
-  m_Name: Mavis_ConvA_Reply2
+  m_Name: Gardener_ConvA
   m_EditorClassIdentifier: Main::DialogueObject
   dialogueLines:
-  - text: Yes, but yesterday's lemon was clearly a prologue lemon.
-    speakerName: Mavis
+  - text: You look like someone who's been spending too much money. I can tell. You've
+      got that 'why is everything so expensive' face.
+    speakerName: Alex
     dialogueBoxColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
     dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
-    speakerPortrait: {fileID: -4088442099895833191, guid: f20bb20e6371833408781f2c9f43cbdb, type: 3}
-    choices: []
+    speakerPortrait: {fileID: -7074704958051015804, guid: 7650f8a378fc9c64cbd52c53d417156f, type: 3}
+    choices:
+    - choiceText: It really is expensive.
+      choiceType: 0
+      choiceQuality: 0
+      nextDialogue: {fileID: 11400000, guid: df566e0f1e441b74aa603a6ad4275107, type: 2}
+    - choiceText: Where do you grow stuff?
+      choiceType: 0
+      choiceQuality: 0
+      nextDialogue: {fileID: 11400000, guid: 0017b23e6905b3e409f748fe4b7cb6dc, type: 2}
   quest: {fileID: 0}
   questInProgressIndex: 0
   questCompletedIndex: 0
