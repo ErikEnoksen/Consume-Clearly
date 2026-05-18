@@ -17,14 +17,16 @@ public class ShopMenu : Interactable
 
     public int Price { set { price = value; } }
     public Item Item {  set  { item = value; } }
+    public int CSsubstractAmount = 10;
 
     private InventoryManager inventoryManager;
     private MoneyManager moneyManager;
+    private CircularSatisfactionMeter satisfactionMeter;
 
     protected override void Awake()
     {
         base.Awake();
-
+        satisfactionMeter = GameObject.Find("CircularSatisfactionMeter").GetComponent<CircularSatisfactionMeter>();
         shopUI.SetActive(shopOpen);
         inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
         moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
@@ -78,6 +80,8 @@ public class ShopMenu : Interactable
         if (moneyManager.ChangeMoneyAmount(-price))
         {
             inventoryManager.AddItem(item);
+            // Decreases circular satisfaction when buying 
+            satisfactionMeter.DecreaseSatisfactionValue(CSsubstractAmount);
         }
         else
         {

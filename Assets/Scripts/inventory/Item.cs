@@ -45,6 +45,7 @@ public class Item : MonoBehaviour
     void Start()
     {
         inventory = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
+        eKeySprite.SetActive(false);
     }
 
     private void OnValidate()

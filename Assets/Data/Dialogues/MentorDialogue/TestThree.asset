@@ -24,6 +24,10 @@ MonoBehaviour:
       choiceType: 0
       choiceQuality: 0
       nextDialogue: {fileID: 0}
+    - choiceText: quest
+      choiceType: 1
+      choiceQuality: 0
+      nextDialogue: {fileID: 0}
     - choiceText: Exit
       choiceType: 3
       choiceQuality: 0
@@ -35,7 +39,7 @@ MonoBehaviour:
     dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
     speakerPortrait: {fileID: 930703914476913107, guid: aa3c29b2e7f71d14199c57505fab8e4e, type: 3}
     choices: []
-  quest: {fileID: 0}
+  quest: {fileID: 11400000, guid: 18b1ae0c27ab2ba4a97e2e5d6a01ae76, type: 2}
   questInProgressIndex: 0
   questCompletedIndex: 0
-  initialDialogueEndIndex: 0
+  initialDialogueEndIndex: 3

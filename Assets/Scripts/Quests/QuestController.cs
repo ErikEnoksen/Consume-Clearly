@@ -212,7 +212,7 @@ namespace Assets.Scripts.Quests
 			Debug.LogWarning($"QuestController: Could not grant money reward of {amount}. No money manager found.");
 		}
 
-		private void GrantCircularSatisfactionReward(float amount)
+		private void GrantCircularSatisfactionReward(int amount)
 		{
 			if (Mathf.Approximately(amount, 0f))
 				return;
@@ -220,7 +220,7 @@ namespace Assets.Scripts.Quests
 			CircularSatisfactionMeter satisfactionMeter = FindAnyObjectByType<CircularSatisfactionMeter>();
 			if (satisfactionMeter != null)
 			{
-				satisfactionMeter.ChangeSatisfactionValue(amount);
+				satisfactionMeter.IncreaseSatisfactionValue(amount);
 				return;
 			}
 
