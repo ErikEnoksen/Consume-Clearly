@@ -1442,7 +1442,7 @@ MonoBehaviour:
   price: 20
   itemNameTxt: {fileID: 2938317258659011461}
   itemPrice: {fileID: 4816488776716424545}
-  image: {fileID: 3863155042798433876}
+  selectedImage: {fileID: 0}
   shopMenu: {fileID: 0}
 --- !u!222 &7254586803008786116
 CanvasRenderer:
@@ -1835,7 +1835,6 @@ MonoBehaviour:
   fullscreenOffSprite: {fileID: -5524587542107658741, guid: 97aa7a2eb2a7be741850cb7c69f551db, type: 3}
   keybindsMenu: {fileID: 9042730511920474820}
   settingsContainer: {fileID: 4464298387579123501}
-  settingsContent: {fileID: 4464298387579123501}
   backButton: {fileID: 0}
   keybindsButton: {fileID: 9042730511920474820}
   pauseContainer: {fileID: 4724255705375312882}
@@ -1969,7 +1968,7 @@ MonoBehaviour:
   price: 20
   itemNameTxt: {fileID: 2938317258659011461}
   itemPrice: {fileID: 4816488776716424545}
-  image: {fileID: 3863155042798433876}
+  selectedImage: {fileID: 0}
   shopMenu: {fileID: 0}
 --- !u!222 &1916163362213412500
 CanvasRenderer:
@@ -4577,7 +4576,7 @@ MonoBehaviour:
   price: 20
   itemNameTxt: {fileID: 2938317258659011461}
   itemPrice: {fileID: 4816488776716424545}
-  image: {fileID: 3863155042798433876}
+  selectedImage: {fileID: 0}
   shopMenu: {fileID: 0}
 --- !u!222 &6070582984354862439
 CanvasRenderer:
@@ -7433,7 +7432,7 @@ MonoBehaviour:
   price: 20
   itemNameTxt: {fileID: 2938317258659011461}
   itemPrice: {fileID: 4816488776716424545}
-  image: {fileID: 3863155042798433876}
+  selectedImage: {fileID: 0}
   shopMenu: {fileID: 0}
 --- !u!222 &768801085750069007
 CanvasRenderer:
@@ -15051,6 +15050,14 @@ PrefabInstance:
     - target: {fileID: 7241557660869382626, guid: d04970f683333b64a808e77cedc5239a, type: 3}
       propertyPath: m_text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241557660869382626, guid: d04970f683333b64a808e77cedc5239a, type: 3}
+      propertyPath: m_fontSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7241557660869382626, guid: d04970f683333b64a808e77cedc5239a, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7631820640043841420, guid: d04970f683333b64a808e77cedc5239a, type: 3}
       propertyPath: m_Enabled

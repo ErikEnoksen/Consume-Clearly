@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 1215836632701776160}
   - component: {fileID: 3981728621584824961}
   - component: {fileID: 4432971425243214631}
+  - component: {fileID: 986214049168627279}
   m_Layer: 0
   m_Name: DialogueTriggerBox
   m_TagString: Untagged
@@ -172,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8551f3ab8e73148ae97c061e0b735e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::DialogueTrigger
-  dialogueToPlay: {fileID: 11400000, guid: 0faa50e35862873488b4739e3488186c, type: 2}
+  dialogueStages: []
   triggerType: 0
   interactKey: 102
   pressF: {fileID: 388898129681597270}
@@ -192,6 +193,19 @@ MonoBehaviour:
   CurrentFriendshipLevel: 0
   DailyConversationReward: 25
   MissedConversationSubstraction: 10
+--- !u!114 &986214049168627279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591557285702606311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f1655bea5c4a36951c3cbe7754dd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::Save.InstanceIdentifier
+  id: Mentor
 --- !u!1 &3974580950127251234
 GameObject:
   m_ObjectHideFlags: 0

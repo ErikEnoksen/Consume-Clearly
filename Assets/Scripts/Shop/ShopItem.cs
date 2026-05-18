@@ -18,11 +18,16 @@ public class ShopItem : MonoBehaviour, IPointerClickHandler
     private TMP_Text itemNameTxt;
     [SerializeField] 
     private TMP_Text itemPrice;
-    public Image image;
+    [SerializeField]
+    private Image selectedImage;
 
     [SerializeField]
     private ShopMenu shopMenu;
 
+    private void Start()
+    {
+        gameObject.GetComponent<Image>().sprite = item.Sprite;
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -36,8 +41,8 @@ public class ShopItem : MonoBehaviour, IPointerClickHandler
     {
         itemNameTxt.text = item.ItemName;
         itemPrice.text = price.ToString();
-        image.sprite = item.Sprite;
-        image.enabled = true;
+        selectedImage.sprite = item.Sprite;
+        selectedImage.enabled = true;
 
         shopMenu.Item = item;
         shopMenu.Price = price;

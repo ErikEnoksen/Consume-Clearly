@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 6434063246502773741}
   - component: {fileID: 7995607063562561978}
   - component: {fileID: 653974872397833930}
+  - component: {fileID: 2122872288195290749}
   m_Layer: 8
   m_Name: DialogueTriggerBox
   m_TagString: Untagged
@@ -118,7 +119,7 @@ Transform:
   m_GameObject: {fileID: 5240610835422418652}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -146.59999, y: 51.799995, z: 0}
+  m_LocalPosition: {x: -0.5, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -172,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8551f3ab8e73148ae97c061e0b735e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::DialogueTrigger
-  dialogueToPlay: {fileID: 11400000, guid: 0faa50e35862873488b4739e3488186c, type: 2}
+  dialogueStages: []
   triggerType: 0
   interactKey: 102
   pressF: {fileID: 1587061571468539837}
@@ -192,6 +193,19 @@ MonoBehaviour:
   CurrentFriendshipLevel: 0
   DailyConversationReward: 25
   MissedConversationSubstraction: 10
+--- !u!114 &2122872288195290749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5240610835422418652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f1655bea5c4a36951c3cbe7754dd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::Save.InstanceIdentifier
+  id: Mentor
 --- !u!1 &7779005545577980058
 GameObject:
   m_ObjectHideFlags: 0

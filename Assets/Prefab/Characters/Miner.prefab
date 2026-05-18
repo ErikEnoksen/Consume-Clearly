@@ -397,6 +397,7 @@ GameObject:
   - component: {fileID: 6559476994735948643}
   - component: {fileID: 8985960376940174906}
   - component: {fileID: 5437844398025346150}
+  - component: {fileID: 6122864247972947061}
   m_Layer: 8
   m_Name: DialogueTriggerBox
   m_TagString: Untagged
@@ -467,7 +468,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8551f3ab8e73148ae97c061e0b735e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::DialogueTrigger
-  dialogueToPlay: {fileID: 11400000, guid: 7986fb9a283fe844dbd5794b543e6a75, type: 2}
+  dialogueStages:
+  - dialogue: {fileID: 11400000, guid: 7986fb9a283fe844dbd5794b543e6a75, type: 2}
+    advanceCondition: 0
+    conversationsToAdvance: 0
   triggerType: 0
   interactKey: 102
   pressF: {fileID: 3271865402770979268}
@@ -507,6 +511,19 @@ MonoBehaviour:
     giveOnce: 1
     hasBeenGiven: 0
   interactKey: 116
+--- !u!114 &6122864247972947061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3786246799249716820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f1655bea5c4a36951c3cbe7754dd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::Save.InstanceIdentifier
+  id: Miner
 --- !u!1 &7993382541483594524
 GameObject:
   m_ObjectHideFlags: 0
