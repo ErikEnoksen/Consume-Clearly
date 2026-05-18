@@ -10,16 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c234f20efd360eb45b89a7d3a2835e3e, type: 3}
-  m_Name: Mavis_ConvA_Reply2
+  m_Name: Dude_ConvA
   m_EditorClassIdentifier: Main::DialogueObject
   dialogueLines:
-  - text: Yes, but yesterday's lemon was clearly a prologue lemon.
-    speakerName: Mavis
+  - text: Brother. Hey. Listen. I had a revelation. I'm gonna grow food. Not just
+      for me. For everyone. For the people.
+    speakerName: Dude
     dialogueBoxColor: {r: 0.8, g: 0.8, b: 0.8, a: 1}
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
     dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
     speakerPortrait: {fileID: -4088442099895833191, guid: f20bb20e6371833408781f2c9f43cbdb, type: 3}
-    choices: []
+    choices:
+    - choiceText: That's actually nice of you.
+      choiceType: 0
+      choiceQuality: 0
+      nextDialogue: {fileID: 11400000, guid: 26635cd881c404e419294096b4d72447, type: 2}
+    - choiceText: Why for everyone?
+      choiceType: 0
+      choiceQuality: 0
+      nextDialogue: {fileID: 11400000, guid: e44e4e5ab05be0b478564d168e00dd21, type: 2}
   quest: {fileID: 0}
   questInProgressIndex: 0
   questCompletedIndex: 0
