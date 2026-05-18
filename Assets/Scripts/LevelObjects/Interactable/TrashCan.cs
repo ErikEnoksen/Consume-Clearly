@@ -22,8 +22,8 @@ namespace LevelObjects.Interactable
         {
             base.Awake();
 
-            _inventory = FindFirstObjectByType<InventoryManager>();
-            satisfactionMeter = GetComponent<CircularSatisfactionMeter>();
+            _inventory = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
+            satisfactionMeter = GameObject.Find("CircularSatisfactionMeter").GetComponent<CircularSatisfactionMeter>();
 
             if (_inventory == null)
 

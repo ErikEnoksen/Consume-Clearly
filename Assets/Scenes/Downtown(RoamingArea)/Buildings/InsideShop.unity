@@ -846,6 +846,7 @@ MonoBehaviour:
   interactionRange: 0.6
   uniqueId: 3bbf80cb-cd1f-49f7-8043-0d61447cb61b
   sceneToLoad: Downtown
+  transitionDelay: 1
 --- !u!61 &496789440
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1450,6 +1451,7 @@ MonoBehaviour:
   uniqueId: fe00d4f8-f434-45ff-935e-5d1b8060329a
   shopUI: {fileID: 638598902}
   button: {fileID: 638598897}
+  CSsubstractAmount: 10
 --- !u!61 &706060542
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1627,6 +1629,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!114 &1005244838 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5161880703407613307, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+  m_PrefabInstance: {fileID: 1019210815}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1 &1013442711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2209,6 +2222,10 @@ PrefabInstance:
       propertyPath: selectedImage
       value: 
       objectReference: {fileID: 745228454}
+    - target: {fileID: 8663361654113511723, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: circularSatisfactionSlider
+      value: 
+      objectReference: {fileID: 1005244838}
     - target: {fileID: 8914616892585617923, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2879,6 +2896,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 485611094}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1739385372 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4440278129458265167, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+  m_PrefabInstance: {fileID: 1019210815}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &1779477566 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4105843433062428038, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
@@ -3044,6 +3072,10 @@ PrefabInstance:
       propertyPath: questListContent
       value: 
       objectReference: {fileID: 1019210817}
+    - target: {fileID: 9138043666064581424, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: feedback
+      value: 
+      objectReference: {fileID: 1739385372}
     - target: {fileID: 9138043666064581424, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: friendshipBar
       value: 
@@ -3303,6 +3335,7 @@ MonoBehaviour:
   uniqueId: fe00d4f8-f434-45ff-935e-5d1b8060329a
   shopUI: {fileID: 1779477566}
   button: {fileID: 384873469}
+  CSsubstractAmount: 10
 --- !u!4 &1955629219
 Transform:
   m_ObjectHideFlags: 0

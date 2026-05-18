@@ -639,11 +639,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &256201244 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4440278129458265167, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+  m_PrefabInstance: {fileID: 1710191524}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &274933006 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9042730511920474820, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
   m_PrefabInstance: {fileID: 1710191524}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &288112072 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6630867937101462415, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+  m_PrefabInstance: {fileID: 1710191524}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1 &307294507
 GameObject:
   m_ObjectHideFlags: 0
@@ -3165,6 +3187,7 @@ MonoBehaviour:
   interactionRange: 0.6
   uniqueId: 825632f6-2afc-4760-9ed8-d1d646a55266
   sceneToLoad: InsidePeperBus
+  transitionDelay: 1
 --- !u!1 &1031681132
 GameObject:
   m_ObjectHideFlags: 0
@@ -3302,6 +3325,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 477244014}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1076024606 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5161880703407613307, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+  m_PrefabInstance: {fileID: 1710191524}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1 &1111945267
 GameObject:
   m_ObjectHideFlags: 0
@@ -3669,6 +3703,14 @@ PrefabInstance:
       propertyPath: questListContent
       value: 
       objectReference: {fileID: 1710191525}
+    - target: {fileID: 9138043666064581424, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: feedback
+      value: 
+      objectReference: {fileID: 256201244}
+    - target: {fileID: 9138043666064581424, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: friendshipBar
+      value: 
+      objectReference: {fileID: 288112072}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5526,6 +5568,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -308.3333
       objectReference: {fileID: 0}
+    - target: {fileID: 8663361654113511723, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: circularSatisfactionSlider
+      value: 
+      objectReference: {fileID: 1076024606}
     - target: {fileID: 8914616892585617923, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_Pivot.x
       value: 0

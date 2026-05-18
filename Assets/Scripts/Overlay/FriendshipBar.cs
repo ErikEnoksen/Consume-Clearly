@@ -27,6 +27,11 @@ public class FriendshipBar : MonoBehaviour
         {
             friendshipBar.gameObject.SetActive(false);
         }
+        if (feedback == null)
+        {
+            Debug.LogError("FriendshipBar: Feedback Image reference is missing!");
+            return;
+        }
 
         // Subscribe to dialogue events (these now pass CompanionFriendship)
         Dialogue.OnDialogueEndedCompanion += OnDialogueEnded;

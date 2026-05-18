@@ -28,6 +28,10 @@ MonoBehaviour:
       choiceType: 1
       choiceQuality: 0
       nextDialogue: {fileID: 0}
+    - choiceText: Gift
+      choiceType: 2
+      choiceQuality: 0
+      nextDialogue: {fileID: 0}
     - choiceText: Exit
       choiceType: 3
       choiceQuality: 0
