@@ -20,7 +20,11 @@ MonoBehaviour:
     textColor: {r: 0.1, g: 0.1, b: 0.1, a: 1}
     dialogueBoxSprite: {fileID: 372315781598215182, guid: 60cb56875e5540144a2573ed6d4bd34d, type: 3}
     speakerPortrait: {fileID: -4088442099895833191, guid: f20bb20e6371833408781f2c9f43cbdb, type: 3}
-    choices: []
+    choices:
+    - choiceText: No Worries
+      choiceType: 1
+      choiceQuality: 0
+      nextDialogue: {fileID: 0}
   quest: {fileID: 11400000, guid: 57d1d335eb13f76439d1d610ab6045aa, type: 2}
   questInProgressIndex: 0
   questCompletedIndex: 0
