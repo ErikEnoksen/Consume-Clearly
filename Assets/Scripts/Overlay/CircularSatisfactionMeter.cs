@@ -19,7 +19,7 @@ public class CircularSatisfactionMeter : MonoBehaviour
 
         if (circularSatisfactionSlider == null)
         {
-            Debug.LogError("Missing UI references!", this);
+            Debug.LogError("Missing CircularSatisfactionMeter UI references!");
             enabled = false;
         }
     }

@@ -720,6 +720,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gardener
       objectReference: {fileID: 0}
+    - target: {fileID: 7995607063562561978, guid: 53b55058a851a8349978315b80c4f388, type: 3}
+      propertyPath: dialogueStages.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7995607063562561978, guid: 53b55058a851a8349978315b80c4f388, type: 3}
+      propertyPath: dialogueStages.Array.data[0].dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 3c179b94e4ad54e47922a7db585fa097, type: 2}
+    - target: {fileID: 7995607063562561978, guid: 53b55058a851a8349978315b80c4f388, type: 3}
+      propertyPath: dialogueStages.Array.data[0].advanceCondition
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -995,6 +1007,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &569404063 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5161880703407613307, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+  m_PrefabInstance: {fileID: 746635214}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1 &622711625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1822,6 +1845,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -308.3333
       objectReference: {fileID: 0}
+    - target: {fileID: 8663361654113511723, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: circularSatisfactionSlider
+      value: 
+      objectReference: {fileID: 569404063}
     - target: {fileID: 8914616892585617923, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3999,6 +4026,7 @@ MonoBehaviour:
   interactionRange: 0.6
   uniqueId: a35cb431-e7b4-4033-b1eb-a772493d933f
   sceneToLoad: InsideGreenHouse
+  transitionDelay: 1
 --- !u!1 &1676039241
 GameObject:
   m_ObjectHideFlags: 0

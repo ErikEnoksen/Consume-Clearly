@@ -264,7 +264,6 @@ MonoBehaviour:
   debugEnterKey: 107
   pushOffHorizontal: 6
   pushOffVertical: 3
-  jumpOffVertical: 8
 --- !u!114 &9030670482226901276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,7 +277,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Main::SwingingController
   swingForce: 0.2
-  maxSpeed: 10
   jumpReleaseForce: 8
 --- !u!232 &4104854468654939902
 DistanceJoint2D:
@@ -388,8 +386,8 @@ Transform:
   m_GameObject: {fileID: 8784308139853095190}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.13, y: 8.79, z: -5}
-  m_LocalScale: {x: 0.849, y: 0.7965, z: 1.5}
+  m_LocalPosition: {x: -0.16, y: 9.51, z: -5}
+  m_LocalScale: {x: 0.1870425, y: 0.18166983, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4036169441490382326}
@@ -440,8 +438,8 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 6011414590209704564, guid: 3eb40c43ef02ea9409cce4c3469ad262, type: 3}
+  m_SortingOrder: 100
+  m_Sprite: {fileID: -2288706179376220777, guid: 2dec06e1fcbdfc34f9f21e1cdffbadc7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
