@@ -6645,6 +6645,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 832774469634508320, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_Spacing
+      value: -35
+      objectReference: {fileID: 0}
     - target: {fileID: 1647007370556768940, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -9292,11 +9296,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -749.0679
+      value: -753.9848
       objectReference: {fileID: 0}
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -375.27463
+      value: -375.2942
       objectReference: {fileID: 0}
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9534,7 +9538,7 @@ SpriteRenderer:
   m_Size: {x: 5.450714, y: 3.3799999}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1769336801
