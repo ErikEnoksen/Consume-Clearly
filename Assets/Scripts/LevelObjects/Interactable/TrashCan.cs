@@ -69,7 +69,7 @@ namespace LevelObjects.Interactable
                 if (_inventory == null) return;
             }
 
-            int excessItems = _inventory.AddItem(item);
+            int excessItems = _inventory.AddItem(item, 1);
 
             if (excessItems > 0)
             {

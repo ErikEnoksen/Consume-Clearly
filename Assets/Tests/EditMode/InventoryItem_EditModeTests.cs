@@ -84,7 +84,7 @@ namespace Tests.EditMode
         public void AddItem_ReturnsZeroWhenSpaceAvailable()
         {
             item.Initialize("Wood", 3, null, "A plank", 10, "Untagged");
-            int excess = slot.AddItem(item);
+            int excess = slot.AddItem(item, 3);
             Assert.AreEqual(0, excess);
         }
 
@@ -92,7 +92,7 @@ namespace Tests.EditMode
         public void AddItem_SetsQuantityCorrectly()
         {
             item.Initialize("Wood", 5, null, "A plank", 10, "Untagged");
-            slot.AddItem(item);
+            slot.AddItem(item, 5);
             Assert.AreEqual(5, slot.quantity);
         }
 
@@ -100,7 +100,7 @@ namespace Tests.EditMode
         public void AddItem_SetsItemName()
         {
             item.Initialize("Wood", 1, null, "A plank", 10, "Untagged");
-            slot.AddItem(item);
+            slot.AddItem(item, 1);
             Assert.AreEqual("Wood", slot.itemName);
         }
 
@@ -108,7 +108,7 @@ namespace Tests.EditMode
         public void AddItem_SetsItemId()
         {
             item.Initialize("Wood", 1, null, "A plank", 10, "Untagged");
-            slot.AddItem(item);
+            slot.AddItem(item, 1);
             Assert.AreEqual("Wood", slot.itemID);
         }
 
@@ -116,7 +116,7 @@ namespace Tests.EditMode
         public void AddItem_ReturnsExcessWhenOverMaxStack()
         {
             item.Initialize("Stone", 15, null, "A plank", 10, "Untagged");
-            int excess = slot.AddItem(item);
+            int excess = slot.AddItem(item, 15);
             Assert.AreEqual(5, excess);
         }
 
@@ -124,7 +124,7 @@ namespace Tests.EditMode
         public void AddItem_SetsIsFullWhenAtMaxStack()
         {
             item.Initialize("Stone", 10, null, "A plank", 10, "Untagged");
-            slot.AddItem(item);
+            slot.AddItem(item, 10);
             Assert.IsTrue(slot.isFull);
         }
 
@@ -132,7 +132,7 @@ namespace Tests.EditMode
         public void AddItem_ClampsQuantityToMaxStack()
         {
             item.Initialize("Stone", 15, null, "", 10, "Untagged");
-            slot.AddItem(item);
+            slot.AddItem(item, 15);
             Assert.AreEqual(10, slot.quantity);
         }
 
@@ -141,7 +141,7 @@ namespace Tests.EditMode
         {
             slot.isFull = true;
             item.Initialize("Stone", 7, null, "", 10, "Untagged");
-            int excess = slot.AddItem(item);
+            int excess = slot.AddItem(item, 7);
             Assert.AreEqual(7, excess);
         }
 
@@ -151,7 +151,7 @@ namespace Tests.EditMode
         public void RemoveItem_ReducesQuantity()
         {
             item.Initialize("Herb", 5, null, "", 10, "Untagged");
-            slot.AddItem(item);
+            slot.AddItem(item, 5);
             slot.RemoveItem(2);
             Assert.AreEqual(3, slot.quantity);
         }
@@ -160,7 +160,7 @@ namespace Tests.EditMode
         public void RemoveItem_ReturnsZeroOnPartialRemove()
         {
             item.Initialize("Herb", 5, null, "", 10, "Untagged");
-            slot.AddItem(item);
+            slot.AddItem(item, 5);
             int result = slot.RemoveItem(2);
             Assert.AreEqual(0, result);
         }
@@ -169,7 +169,7 @@ namespace Tests.EditMode
         public void RemoveItem_EmptiesSlotWhenExactAmount()
         {
             item.Initialize("Herb", 5, null, "", 10, "Untagged");
-            slot.AddItem(item);
+            slot.AddItem(item, 5);
             slot.RemoveItem(5);
             Assert.AreEqual(0, slot.quantity);
             Assert.IsFalse(slot.isFull);
@@ -179,7 +179,7 @@ namespace Tests.EditMode
         public void RemoveItem_ReturnsZeroOnExactRemove()
         {
             item.Initialize("Herb", 5, null, "", 10, "Untagged");
-            slot.AddItem(item);
+            slot.AddItem(item, 5);
             int result = slot.RemoveItem(5);
             Assert.AreEqual(0, result);
         }

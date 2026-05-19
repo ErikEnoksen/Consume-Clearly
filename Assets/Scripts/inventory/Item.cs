@@ -73,7 +73,7 @@ public class Item : MonoBehaviour
             eKeySprite.SetActive(true);
             if (Input.GetKey(KeybindManager.Instance.GetKey("Interact")))
             {
-                int exceccItems = inventory.AddItem(this);
+                int exceccItems = inventory.AddItem(this, Quantity);
                 if (exceccItems <= 0)
                 {
                     Destroy(gameObject);
