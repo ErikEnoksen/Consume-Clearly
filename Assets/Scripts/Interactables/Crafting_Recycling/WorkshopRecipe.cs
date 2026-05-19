@@ -16,9 +16,8 @@ public class WorkshopRecipe : ScriptableObject
     [System.Serializable]
     public class ItemStack
     {
-        public string itemName;
+        public GameObject itemPrefab;
         public int amount;
-        public Sprite icon;
     }
 
     public StationType stationType;

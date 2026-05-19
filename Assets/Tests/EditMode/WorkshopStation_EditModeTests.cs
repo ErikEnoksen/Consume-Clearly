@@ -115,11 +115,14 @@ namespace Tests.EditMode
         [Test]
         public void CanProcess_ReturnsFalse_WhenRequiredItemsNotInInventory()
         {
+            var woodPrefab = new GameObject("Wood");
+            woodPrefab.AddComponent<Item>().ItemName = "Wood";
+
             var recipe = ScriptableObject.CreateInstance<WorkshopRecipe>();
             recipe.stationType = StationType.CraftingBench;
             recipe.inputs = new List<WorkshopRecipe.ItemStack>
             {
-                new WorkshopRecipe.ItemStack { itemName = "Wood", amount = 3 }
+                new WorkshopRecipe.ItemStack { itemPrefab = woodPrefab, amount = 3 }
             };
 
             // Inventory slot is empty — CanProcess should return false
@@ -127,6 +130,7 @@ namespace Tests.EditMode
             Assert.IsFalse(result);
 
             Object.DestroyImmediate(recipe);
+            Object.DestroyImmediate(woodPrefab);
         }
 
         [Test]
@@ -136,17 +140,21 @@ namespace Tests.EditMode
             slot.itemName = "Wood";
             slot.quantity = 5;
 
+            var woodPrefab = new GameObject("Wood");
+            woodPrefab.AddComponent<Item>().ItemName = "Wood";
+
             var recipe = ScriptableObject.CreateInstance<WorkshopRecipe>();
             recipe.stationType = StationType.CraftingBench;
             recipe.inputs = new List<WorkshopRecipe.ItemStack>
             {
-                new WorkshopRecipe.ItemStack { itemName = "Wood", amount = 3 }
+                new WorkshopRecipe.ItemStack { itemPrefab = woodPrefab, amount = 3 }
             };
 
             bool result = station.CanProcess(recipe);
             Assert.IsTrue(result);
 
             Object.DestroyImmediate(recipe);
+            Object.DestroyImmediate(woodPrefab);
         }
 
         // ── TryProcess ────────────────────────────────────────────────────────────
@@ -168,11 +176,14 @@ namespace Tests.EditMode
         [Test]
         public void TryProcess_ReturnsFalse_WhenItemsMissing()
         {
+            var woodPrefab = new GameObject("Wood");
+            woodPrefab.AddComponent<Item>().ItemName = "Wood";
+
             var recipe = ScriptableObject.CreateInstance<WorkshopRecipe>();
             recipe.stationType = StationType.CraftingBench;
             recipe.inputs      = new List<WorkshopRecipe.ItemStack>
             {
-                new WorkshopRecipe.ItemStack { itemName = "Wood", amount = 5 }
+                new WorkshopRecipe.ItemStack { itemPrefab = woodPrefab, amount = 5 }
             };
             recipe.outputPrefabs = new List<WorkshopRecipe.ItemOutput>();
 
@@ -180,6 +191,7 @@ namespace Tests.EditMode
             Assert.IsFalse(result);
 
             Object.DestroyImmediate(recipe);
+            Object.DestroyImmediate(woodPrefab);
         }
 
         // ── Interactable base ─────────────────────────────────────────────────────

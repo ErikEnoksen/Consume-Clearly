@@ -47,15 +47,16 @@ public class WorkshopStation : Interactable
 
         foreach (var input in recipe.inputs)
         {
-            if (!HasItem(input.itemName, input.amount))
+            Item item = input.itemPrefab.GetComponent<Item>();
+            if (!HasItem(item.ItemName, input.amount))
             {
-                Debug.Log($"Missing: {input.itemName} x{input.amount}");
+                Debug.Log($"Missing: {item.ItemName} x{input.amount}");
                 return false;
             }
         }
 
         foreach (var input in recipe.inputs)
-            inventoryManager.RemoveItem(input.itemName, input.amount);
+            inventoryManager.RemoveItem(input.itemPrefab.GetComponent<Item>().ItemName, input.amount);
 
         foreach (var output in recipe.outputPrefabs)
         {
@@ -76,7 +77,7 @@ public class WorkshopStation : Interactable
     public bool CanProcess(WorkshopRecipe recipe)
     {
         foreach (var input in recipe.inputs)
-            if (!HasItem(input.itemName, input.amount))
+            if (!HasItem(input.itemPrefab.GetComponent<Item>().ItemName, input.amount))
                 return false;
         return true;
     }
