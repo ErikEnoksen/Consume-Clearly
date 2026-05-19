@@ -78,6 +78,8 @@ namespace Player
                 jumpBufferTimeCounter = 0f;
                 rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
                 rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+                animationController.SetWalking(false);
+                animationController.SetIdle(true);
             }
             else
             {

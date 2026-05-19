@@ -21,8 +21,7 @@
 
             public float GameTime { get; private set; }
             public string CurrentScene { get; private set; }
-        
-// csharp
+            
             private void Awake()
             {
                 if (Instance == null)
@@ -158,6 +157,8 @@
         
             public void LoadProgress(string customFileName = null)
             {
+                Time.timeScale = 1f;
+                PauseMenu.isPaused = false;
                 Debug.Log("Loading game progress...");
                 data = SaveSystem.Load(customFileName);
                 if (data != null)

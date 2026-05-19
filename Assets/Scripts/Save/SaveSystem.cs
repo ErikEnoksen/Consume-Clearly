@@ -96,17 +96,14 @@ namespace Save
         }
         public static void ClearAllData()
         {
-            string path=Application.persistentDataPath;
+            string path = Application.persistentDataPath;
             if (!Directory.Exists(path))
-            {
-                Debug.Log("No such file in path");
                 return;
-            }
-            string [] files=Directory.GetFiles(path);
 
-            foreach (var file in files)
+            foreach (var file in Directory.GetFiles(path, "*.json"))
             {
-                ClearSaveData(file);
+                try { File.Delete(file); }
+                catch (System.Exception ex) { Debug.LogWarning($"Could not delete {file}: {ex.Message}"); }
             }
         }
     }

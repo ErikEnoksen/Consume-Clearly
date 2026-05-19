@@ -20,13 +20,15 @@ namespace MainMenu
     
         private void SetupAllMenuButtons()
         {
-            var buttons = GetComponentsInChildren<Button>(true);
-        
+            if (MainMenuButtons == null) return;
+            var buttons = MainMenuButtons.GetComponentsInChildren<Button>(true);
+
             foreach (var button in buttons)
             {
                 var text = button.GetComponentInChildren<TMP_Text>(true);
+                if (text == null) continue;
                 var effect = text.gameObject.AddComponent<MenuButtonEffect>();
-            
+
                 var buttonNameLower = button.name.ToLower();
                 if (buttonNameLower.Contains("continue"))
                 {
@@ -54,7 +56,9 @@ namespace MainMenu
     
         public void NewGame()
         {
+            Debug.Log("NewGame: clearing save data");
             SaveSystem.ClearAllData();
+            Debug.Log($"NewGame: loading scene '{GAME_SCENE_NAME}'");
             StartGame();
         }
     

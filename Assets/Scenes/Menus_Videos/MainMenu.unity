@@ -4485,7 +4485,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1227164423}
-  - component: {fileID: 1227164424}
   m_Layer: 0
   m_Name: Menu Buttons
   m_TagString: Untagged
@@ -4513,20 +4512,6 @@ Transform:
   - {fileID: 1609789213}
   m_Father: {fileID: 1992433749}
   m_LocalEulerAnglesHint: {x: 14.211, y: -19.545, z: 8.763}
---- !u!114 &1227164424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227164422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43433f6e6da88204d98afacc980d4415, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MainMenuManager
-  SettingsContainer: {fileID: 0}
-  MainMenuButtons: {fileID: 0}
 --- !u!1 &1233290783
 GameObject:
   m_ObjectHideFlags: 0
@@ -6332,7 +6317,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1869030279}
   - component: {fileID: 1869030278}
-  - component: {fileID: 1869030280}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6367,20 +6351,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1869030280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1869030277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43433f6e6da88204d98afacc980d4415, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Main::MainMenuManager
-  SettingsContainer: {fileID: 0}
-  MainMenuButtons: {fileID: 0}
 --- !u!1 &1921594152
 GameObject:
   m_ObjectHideFlags: 0

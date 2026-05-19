@@ -31,10 +31,26 @@ public class SettingsManager : MonoBehaviour
 
     void LoadSettings()
     {
-        resolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", 0);
+        resolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", GetDefaultResolutionIndex());
         fullscreen = PlayerPrefs.GetInt("Fullscreen", 1) == 1;
         musicOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
         masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
+    }
+
+    private int GetDefaultResolutionIndex()
+    {
+        Resolution current = Screen.currentResolution;
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            if (resolutions[i].width == current.width && resolutions[i].height == current.height)
+                return i;
+        }
+        for (int i = 0; i < resolutions.Length; i++)
+        {
+            if (resolutions[i].width == 1920 && resolutions[i].height == 1080)
+                return i;
+        }
+        return resolutions.Length - 1;
     }
 
     public void SaveSettings()
