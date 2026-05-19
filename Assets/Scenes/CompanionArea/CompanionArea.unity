@@ -547,7 +547,14 @@ MonoBehaviour:
   uniqueId: 450aac8e-fc0a-4542-8786-80ac4d55346d
   fullTrashcan: {fileID: 514702184}
   emptyTrashcan: {fileID: 1755341428}
-  item: {fileID: 0}
+  items:
+  - {fileID: 2956595785149456607, guid: de8ffa18da723cb428c64155c230e894, type: 3}
+  - {fileID: 1403626101363094199, guid: 2320ca8f8b038914288c1ec2910a5302, type: 3}
+  - {fileID: 1798963747143233540, guid: 3d9c330ca2a68294588a3d3bf10adf72, type: 3}
+  - {fileID: 3517516942527367767, guid: d4df1a12ed579d243a6906b7ed3c8e43, type: 3}
+  satisfactionReward: 2
+  inventoryManager: {fileID: 0}
+  satisfactionMeter: {fileID: 0}
 --- !u!61 &304220923
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -763,7 +770,7 @@ Transform:
   m_GameObject: {fileID: 463745974}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.13, z: 0}
+  m_LocalPosition: {x: 0, y: -0.038, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -853,7 +860,7 @@ Transform:
   m_GameObject: {fileID: 514702184}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.09, y: -0.13, z: 0}
+  m_LocalPosition: {x: -0.014, y: -0.042, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1386,7 +1393,14 @@ MonoBehaviour:
   uniqueId: 450aac8e-fc0a-4542-8786-80ac4d55346d
   fullTrashcan: {fileID: 1433822738}
   emptyTrashcan: {fileID: 1051590769}
-  item: {fileID: 0}
+  items:
+  - {fileID: 2956595785149456607, guid: de8ffa18da723cb428c64155c230e894, type: 3}
+  - {fileID: 1403626101363094199, guid: 2320ca8f8b038914288c1ec2910a5302, type: 3}
+  - {fileID: 1798963747143233540, guid: 3d9c330ca2a68294588a3d3bf10adf72, type: 3}
+  - {fileID: 3517516942527367767, guid: d4df1a12ed579d243a6906b7ed3c8e43, type: 3}
+  satisfactionReward: 2
+  inventoryManager: {fileID: 0}
+  satisfactionMeter: {fileID: 0}
 --- !u!61 &653521202
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1732,6 +1746,10 @@ PrefabInstance:
     - target: {fileID: 5082923678303490229, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchorMin.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5161880703407613307, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6027838880414071226, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3316,7 +3334,7 @@ Transform:
   m_GameObject: {fileID: 1433822738}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.13, z: 0}
+  m_LocalPosition: {x: 0, y: -0.032, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3522,7 +3540,14 @@ MonoBehaviour:
   uniqueId: 450aac8e-fc0a-4542-8786-80ac4d55346d
   fullTrashcan: {fileID: 463745974}
   emptyTrashcan: {fileID: 1853879235}
-  item: {fileID: 2956595785149456607, guid: de8ffa18da723cb428c64155c230e894, type: 3}
+  items:
+  - {fileID: 2956595785149456607, guid: de8ffa18da723cb428c64155c230e894, type: 3}
+  - {fileID: 1403626101363094199, guid: 2320ca8f8b038914288c1ec2910a5302, type: 3}
+  - {fileID: 1798963747143233540, guid: 3d9c330ca2a68294588a3d3bf10adf72, type: 3}
+  - {fileID: 3517516942527367767, guid: d4df1a12ed579d243a6906b7ed3c8e43, type: 3}
+  satisfactionReward: 2
+  inventoryManager: {fileID: 0}
+  satisfactionMeter: {fileID: 0}
 --- !u!61 &1446417512
 BoxCollider2D:
   m_ObjectHideFlags: 0
