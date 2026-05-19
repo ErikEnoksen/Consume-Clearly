@@ -44,32 +44,36 @@ public class PauseSettings : MonoBehaviour
             resolutionDropdown.options.Add(option);
         }
 
-        resolutionDropdown.value = SettingsManager.Instance.resolutionIndex;
+        resolutionDropdown.onValueChanged.RemoveAllListeners();
+        resolutionDropdown.SetValueWithoutNotify(SettingsManager.Instance.resolutionIndex);
         resolutionDropdown.RefreshShownValue();
         resolutionDropdown.onValueChanged.AddListener(SettingsManager.Instance.SetResolution);
     }
 
     public void ToggleFullscreen()
     {
+        if (SettingsManager.Instance == null) return;
         SettingsManager.Instance.ToggleFullscreen();
         UpdateVisuals();
     }
 
     public void ToggleMusic()
     {
+        if (SettingsManager.Instance == null) return;
         SettingsManager.Instance.ToggleMusic();
         UpdateVisuals();
     }
 
     void UpdateVisuals()
     {
+        if (SettingsManager.Instance == null) return;
         var settings = SettingsManager.Instance;
 
-        if (musicButtonImage.sprite != null)
-        musicButtonImage.sprite = settings.musicOn ? musicOnSprite : musicOffSprite;
+        if (musicButtonImage != null)
+            musicButtonImage.sprite = settings.musicOn ? musicOnSprite : musicOffSprite;
 
-        if (fullscreenButtonImage.sprite != null)
-        fullscreenButtonImage.sprite = settings.fullscreen ? fullscreenOnSprite : fullscreenOffSprite;
+        if (fullscreenButtonImage != null)
+            fullscreenButtonImage.sprite = settings.fullscreen ? fullscreenOnSprite : fullscreenOffSprite;
     }
 
     public void Keybinds()

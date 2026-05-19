@@ -45,8 +45,15 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.SetFloat("MasterVolume", masterVolume);
     }
 
+    private void EnsureResolutions()
+    {
+        if (resolutions == null || resolutions.Length == 0)
+            resolutions = Screen.resolutions;
+    }
+
     public void ApplySettings()
     {
+        EnsureResolutions();
         // Resolution
         if (resolutionIndex < resolutions.Length)
         {
@@ -65,11 +72,13 @@ public class SettingsManager : MonoBehaviour
 
     public Resolution[] GetAvailableResolutions()
     {
+        EnsureResolutions();
         return resolutions;
     }
 
     public void SetResolution(int index)
     {
+        EnsureResolutions();
         if (index >= 0 && index < resolutions.Length)
         {
             resolutionIndex = index;
