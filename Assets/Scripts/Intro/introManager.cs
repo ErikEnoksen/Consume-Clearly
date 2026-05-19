@@ -17,7 +17,7 @@ public class introManager : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("intro skipped");
             videoPlayer.frame=1032;

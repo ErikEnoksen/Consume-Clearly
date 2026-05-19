@@ -22,7 +22,8 @@ MonoBehaviour:
     requiredAmount: 1
     currentAmount: 0
   rewards:
-    money: 0
+    money: 100
     circularSatisfaction: 0
+    communityPoints: 0
     items: []
   completionType: 1

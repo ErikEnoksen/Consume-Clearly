@@ -21,6 +21,7 @@ namespace Credits
 
             if (creditsTextAnimation != null && creditsTextAnimation.clip != null)
             {
+                creditsTextAnimation[creditsTextAnimation.clip.name].speed = 0.3f;
                 creditsTextAnimation.Play();
             }
         }

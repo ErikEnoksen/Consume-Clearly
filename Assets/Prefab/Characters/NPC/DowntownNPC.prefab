@@ -78,7 +78,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 99
   m_Sprite: {fileID: -6966588595320501180, guid: 107fc8648bb60db4f920d21d45376e0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -390,6 +390,7 @@ MonoBehaviour:
   triggerType: 0
   interactKey: 102
   pressF: {fileID: 4816355512580776809}
+  uniqueId: 0af2093d-a6de-4cff-b971-207dc0ff6063
 --- !u!114 &686713618345479697
 MonoBehaviour:
   m_ObjectHideFlags: 0
