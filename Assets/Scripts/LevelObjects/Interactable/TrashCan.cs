@@ -11,7 +11,7 @@ namespace LevelObjects.Interactable
         [SerializeField] private GameObject emptyTrashcan;
 
         [Header("Loot Settings")]
-        [SerializeField] private Item item;
+        [SerializeField] private Item[] items;
         [SerializeField] private int satisfactionReward = 2;
 
         [Header("References")]
@@ -41,7 +41,7 @@ namespace LevelObjects.Interactable
             // Try to find inventory if not assigned
             if (inventoryManager == null)
             {
-                inventoryManager = FindFirstObjectByType<InventoryManager>();
+                inventoryManager = FindAnyObjectByType<InventoryManager>();
                 if (inventoryManager == null)
                     Debug.LogError($"[TrashCan] No InventoryManager found in scene!");
             }
@@ -49,7 +49,7 @@ namespace LevelObjects.Interactable
             // Try to find satisfaction meter if not assigned
             if (satisfactionMeter == null)
             {
-                satisfactionMeter = FindFirstObjectByType<CircularSatisfactionMeter>();
+                satisfactionMeter = FindAnyObjectByType<CircularSatisfactionMeter>();
                 if (satisfactionMeter == null)
                     Debug.LogError($"[TrashCan] No CircularSatisfactionMeter found in scene!");
             }
@@ -124,7 +124,7 @@ namespace LevelObjects.Interactable
 
         private bool GiveItemToPlayer()
         {
-            if (item == null)
+            if (items == null || items.Length == 0)
             {
                 Debug.LogWarning($"[TrashCan] No item assigned to give");
                 return false;
@@ -136,15 +136,18 @@ namespace LevelObjects.Interactable
                 return false;
             }
 
+            int randomIndex = UnityEngine.Random.Range(0, items.Length);
+            Item item = items[randomIndex];
+
             int excessItems = inventoryManager.AddItem(item);
 
             if (excessItems > 0)
             {
-                Debug.Log($"[TrashCan] Inventory full! {excessItems} {item}(s) couldn't be added.");
+                Debug.Log($"[TrashCan] Inventory full! {excessItems} {items}(s) couldn't be added.");
                 return false;
             }
 
-            Debug.Log($"[TrashCan] Gave item: {item}");
+            Debug.Log($"[TrashCan] Gave item: {items}");
             return true;
         }
 
