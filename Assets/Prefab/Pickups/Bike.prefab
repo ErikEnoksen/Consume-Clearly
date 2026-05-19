@@ -49,6 +49,18 @@ PrefabInstance:
       value: Bike
       objectReference: {fileID: 0}
     - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -88,6 +100,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_Size.x
+      value: 5.4594283
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_Size.y
+      value: 3.479504
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_Offset.x
+      value: -1.1655152
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.48253822
+      objectReference: {fileID: 0}
     - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 2.9503865
@@ -98,11 +130,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 11.801546
+      value: 23.603092
       objectReference: {fileID: 0}
     - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 8.2
+      value: 16.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

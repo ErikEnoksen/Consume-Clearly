@@ -9296,11 +9296,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -749.05994
+      value: -749.07355
       objectReference: {fileID: 0}
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -375.27463
+      value: -375.27466
       objectReference: {fileID: 0}
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9591,7 +9591,11 @@ MonoBehaviour:
   interactionRange: 0.6
   uniqueId: 5cac4a29-77d8-4e2e-ba25-b97a57000847
   stationType: 0
-  recipes: []
+  recipes:
+  - {fileID: 11400000, guid: 1d55bf95112b7174ba8cd99cf7ed0fe7, type: 2}
+  - {fileID: 11400000, guid: 162c7323962e8f344a849cc99918fc49, type: 2}
+  - {fileID: 11400000, guid: 4c04951c1e3178d4789f1e49e50c73a1, type: 2}
+  - {fileID: 11400000, guid: 0cd9bd08f02b43b499b3acbd9cf99206, type: 2}
   workshopUI: {fileID: 2022043658}
 --- !u!212 &1771850295
 SpriteRenderer:
