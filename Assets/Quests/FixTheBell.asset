@@ -17,12 +17,12 @@ MonoBehaviour:
   description: Collect resources and reach the top of the clocktower to fix the bell
   objectives:
   - objectiveID: Rope
-    description: Collect the rescources
+    description: Collect rope
     type: 0
     requiredAmount: 3
     currentAmount: 0
   - objectiveID: Rope
-    description: Collect the rescources
+    description: Collect rope
     type: 0
     requiredAmount: 6
     currentAmount: 0
@@ -34,5 +34,6 @@ MonoBehaviour:
   rewards:
     money: 0
     circularSatisfaction: 0
+    communityPoints: 0
     items: []
   completionType: 1

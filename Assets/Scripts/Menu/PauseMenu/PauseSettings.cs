@@ -31,21 +31,31 @@ public class PauseSettings : MonoBehaviour
     {
         resolutionDropdown.options.Clear();
 
-        Resolution[] resolutions = SettingsManager.Instance.GetAvailableResolutions();
-
-        foreach (UnityEngine.Resolution res in resolutions)
+        Resolution[] standardResolutions = new[]
         {
-            Debug.Log(res.ToString());
-        }
+            new Resolution { width = 1280, height = 720 },
+            new Resolution { width = 1366, height = 768 },
+            new Resolution { width = 1600, height = 900 },
+            new Resolution { width = 1920, height = 1080 },
+            new Resolution { width = 2560, height = 1440 },
+            new Resolution { width = 3840, height = 2160 }
+        };
 
-        foreach (Resolution resolution in resolutions)
+        int selectedIndex = 0;
+        int currentResolutionIndex = SettingsManager.Instance.resolutionIndex;
+
+        foreach (Resolution resolution in standardResolutions)
         {
             var option = new TMP_Dropdown.OptionData($"{resolution.width}x{resolution.height}");
             resolutionDropdown.options.Add(option);
+            
+            // Track the index matching the current resolution
+            if (currentResolutionIndex == resolutionDropdown.options.Count - 1)
+                selectedIndex = resolutionDropdown.options.Count - 1;
         }
 
         resolutionDropdown.onValueChanged.RemoveAllListeners();
-        resolutionDropdown.SetValueWithoutNotify(SettingsManager.Instance.resolutionIndex);
+        resolutionDropdown.SetValueWithoutNotify(selectedIndex);
         resolutionDropdown.RefreshShownValue();
         resolutionDropdown.onValueChanged.AddListener(SettingsManager.Instance.SetResolution);
     }
