@@ -12,9 +12,11 @@ namespace Player
 
         [SerializeField] private GameObject playerPrefab; // Reference to the player prefab
         [SerializeField] private bool delaySpawnUntilSignal;
-
+        [SerializeField] private float fallThreshold = -20f;
 
         private GameObject player;
+        private Vector3 lastRespawnPosition;
+        private bool isRespawning;
 
         private void Awake()
         {
@@ -37,6 +39,25 @@ namespace Player
         {
             // Unsubscribe from the SceneManager.sceneLoaded event to prevent duplicate calls
             SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        private void Update()
+        {
+            if (player == null || isRespawning) return;
+            if (player.transform.position.y < fallThreshold)
+                StartCoroutine(Respawn());
+        }
+
+        private IEnumerator Respawn()
+        {
+            isRespawning = true;
+            yield return StartCoroutine(WaitAndSetPosition(lastRespawnPosition));
+            isRespawning = false;
+        }
+
+        public void SetRespawnPoint(Vector3 position)
+        {
+            lastRespawnPosition = position;
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -151,6 +172,7 @@ namespace Player
             if (player == null)
             {
                 player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+                lastRespawnPosition = spawnPosition;
                 Debug.Log("Player successfully spawned.");
 
                 // Validate spawn correctness

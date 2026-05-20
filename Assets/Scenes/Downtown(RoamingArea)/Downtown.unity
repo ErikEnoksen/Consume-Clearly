@@ -4783,11 +4783,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 378519775}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &757814834 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9042730511920474820, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
-  m_PrefabInstance: {fileID: 1286173356}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &901354583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9143,11 +9138,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -749.08026
+      value: -745.95917
       objectReference: {fileID: 0}
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -375.2747
+      value: -375.4725
       objectReference: {fileID: 0}
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9312,6 +9307,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 6243834197810659815, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
   m_PrefabInstance: {fileID: 3549316597853063501}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1764513673 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 136795397309460182, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+  m_PrefabInstance: {fileID: 1286173356}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1769336799
 GameObject:
@@ -10080,10 +10080,10 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 77.47938, y: 33.390423}
-      - {x: -10.362433, y: 31.945467}
-      - {x: -10.380212, y: -8.057311}
-      - {x: 177.6276, y: -8.017792}
-      - {x: 177.60114, y: 33.784576}
+      - {x: -12.168593, y: 32.230648}
+      - {x: -11.665673, y: -8.057311}
+      - {x: 179.2414, y: -8.017792}
+      - {x: 178.7308, y: 33.703884}
   m_UseDelaunayMesh: 0
 --- !u!4 &2056446111
 Transform:
@@ -10441,13 +10441,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 69120089100753704, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: backButton
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 69120089100753704, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: keybindsMenu
       value: 
-      objectReference: {fileID: 757814834}
+      objectReference: {fileID: 1764513673}
     - target: {fileID: 69120089100753704, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: settingsMenu
       value: 
       objectReference: {fileID: 2069037661}
+    - target: {fileID: 69120089100753704, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: keybindsButton
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2627292289714170424, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: moneyDisplay
       value: 

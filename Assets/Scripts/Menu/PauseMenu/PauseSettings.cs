@@ -78,10 +78,11 @@ public class PauseSettings : MonoBehaviour
 
     public void Keybinds()
     {
+        KeybindManager.Instance.SetBackContext(keybindsMenu, settingsContainer);
         keybindsMenu.SetActive(true);
         settingsContainer.SetActive(false);
-        backButton.SetActive(false);
-        keybindsButton.SetActive(false);
+        if (backButton != null) backButton.SetActive(false);
+        if (keybindsButton != null) keybindsButton.SetActive(false);
     }
 
     public void Back()
