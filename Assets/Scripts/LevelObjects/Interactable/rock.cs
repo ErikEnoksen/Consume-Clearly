@@ -18,6 +18,7 @@ namespace LevelObjects.Interactable
         
         [Header("Required Items")]
         [SerializeField] private string tntItemId = "TNT";
+        [SerializeField] private SpriteRenderer tnt;
 
         private bool _used;
         private bool _poofPlayed;
@@ -32,6 +33,7 @@ namespace LevelObjects.Interactable
         {
             _inventory = FindFirstObjectByType<InventoryManager>();
             EnsureInitialized();
+            tnt.enabled = false;
         }
 
         private void EnsureInitialized()
@@ -115,6 +117,7 @@ namespace LevelObjects.Interactable
             if (tnt.quantity > 0) tnt.RemoveItem(1);
             
             _used = true;
+            this.tnt.enabled = true;
             
             StartCoroutine(DelayedPoof(2.0f));
             AudioManager.Instance.Play("Rock");
@@ -142,6 +145,7 @@ namespace LevelObjects.Interactable
                 yield break;
             }
             if (_sprite != null) _sprite.enabled = false;
+            tnt.enabled = false;
         }
 
         private IEnumerator DisableAfterPoofFromAnimator()
