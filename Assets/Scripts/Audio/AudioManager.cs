@@ -49,6 +49,7 @@ public class AudioManager : MonoBehaviour
     
     //Quick check so Play() dosent go through the whole array every call
     private Dictionary<string, Sound> _soundMap;
+    private float _sfxVolume = 1f;
 
     private void Start()
     {
@@ -77,16 +78,35 @@ public class AudioManager : MonoBehaviour
         AudioListener.volume = value;
     }
 
+    public void SetMusicVolume(float value)
+    {
+        if (sounds == null) return;
+        foreach (var s in sounds)
+        {
+            if (s.loop && s.source != null)
+                s.source.volume = s.volume * value;
+        }
+    }
+
+    public void SetSfxVolume(float value)
+    {
+        _sfxVolume = value;
+        if (sounds == null) return;
+        foreach (var s in sounds)
+        {
+            if (!s.loop && s.source != null)
+                s.source.volume = s.volume * value;
+        }
+    }
+
     /*
      * Public API
      */
 
     public void Play(string soundName)
     {
-        if (!TryGet(soundName, out Sound s))
-        {
-            return;
-        }
+        if (!TryGet(soundName, out Sound s)) return;
+        s.source.volume = s.volume * _sfxVolume;
         s.source.Play();
     }
     

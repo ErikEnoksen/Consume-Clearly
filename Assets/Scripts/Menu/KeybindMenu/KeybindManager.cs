@@ -93,7 +93,6 @@ public class KeybindManager : MonoBehaviour
 
     public string GetKeyAsString(string action)
     {
-        Debug.Log(GetKey(action).ToString());
         return GetKey(action).ToString();
     }
 

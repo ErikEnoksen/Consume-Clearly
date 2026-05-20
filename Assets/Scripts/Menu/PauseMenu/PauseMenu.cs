@@ -5,13 +5,11 @@ public class PauseMenu : MonoBehaviour
     public static bool isPaused = false;
     
     public GameObject Container;
-    public GameObject keybindMenu;
-    
     public GameObject SettingsContainer;
-    // Update is called once per frame
+
     void Update()
     {
-        if (Input.GetKeyDown(KeybindManager.Instance.GetKey("Pause")) && keybindMenu.activeSelf == false)
+        if (Input.GetKeyDown(KeybindManager.Instance.GetKey("Pause")))
         {
             if (SettingsContainer.activeSelf) return;
 

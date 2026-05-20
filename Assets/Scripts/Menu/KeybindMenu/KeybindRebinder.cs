@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 public class KeybindRebinder : MonoBehaviour
 {
     [SerializeField] private string actionName;
+    [SerializeField] private TMP_Text actionLabel;
     [SerializeField] private TMP_Text bindingDisplay;
     [SerializeField] private TMP_Text feedbackText;
     [SerializeField] private Button rebindButton;
@@ -29,6 +31,10 @@ public class KeybindRebinder : MonoBehaviour
             rebindButton = GetComponent<Button>();
 
         rebindButton?.onClick.AddListener(StartRebind);
+
+        if (actionLabel != null)
+            actionLabel.text = Regex.Replace(actionName, "([a-z])([A-Z])", "$1 $2");
+
         UpdateDisplay();
 
         // Subscribe to keybind changes from reset or other sources
@@ -117,7 +123,6 @@ public class KeybindRebinder : MonoBehaviour
 
     private void ShowError(string message)
     {
-        Debug.Log($"error message: {message} {feedbackText?.text}");
         bindingDisplay.text = originalDisplayText;
         bindingDisplay.color = Color.red;
         if (feedbackText) feedbackText.text = message;
@@ -126,7 +131,6 @@ public class KeybindRebinder : MonoBehaviour
 
     private void ShowSuccess(string message)
     {
-        Debug.Log($"success message: {message} {feedbackText?.text}");
         bindingDisplay.color = Color.green;
         if (feedbackText) feedbackText.text = message;
         ScheduleReset(1f);

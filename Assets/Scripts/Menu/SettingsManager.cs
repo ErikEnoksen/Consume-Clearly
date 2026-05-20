@@ -8,6 +8,8 @@ public class SettingsManager : MonoBehaviour
     public bool fullscreen;
     public bool musicOn;
     public float masterVolume;
+    public float musicVolume;
+    public float sfxVolume;
 
     private Resolution[] resolutions;
 
@@ -35,6 +37,8 @@ public class SettingsManager : MonoBehaviour
         fullscreen = PlayerPrefs.GetInt("Fullscreen", 1) == 1;
         musicOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
         masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
+        musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
+        sfxVolume = PlayerPrefs.GetFloat("SfxVolume", 1f);
     }
 
     private int GetDefaultResolutionIndex()
@@ -59,6 +63,8 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.SetInt("Fullscreen", fullscreen ? 1 : 0);
         PlayerPrefs.SetInt("MusicOn", musicOn ? 1 : 0);
         PlayerPrefs.SetFloat("MasterVolume", masterVolume);
+        PlayerPrefs.SetFloat("MusicVolume", musicVolume);
+        PlayerPrefs.SetFloat("SfxVolume", sfxVolume);
     }
 
     private void EnsureResolutions()
@@ -79,9 +85,14 @@ public class SettingsManager : MonoBehaviour
 
         // Audio
         AudioListener.volume = masterVolume;
+        AudioManager.Instance?.SetMusicVolume(musicOn ? musicVolume : 0f);
+        AudioManager.Instance?.SetSfxVolume(sfxVolume);
 
         if (musicOn)
-            AudioManager.Instance?.Play("BackgroundMusic");
+        {
+            if (AudioManager.Instance != null && !AudioManager.Instance.IsPlaying("BackgroundMusic"))
+                AudioManager.Instance.Play("BackgroundMusic");
+        }
         else
             AudioManager.Instance?.Stop("BackgroundMusic");
     }
@@ -103,6 +114,13 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
+    public void SetFullscreen(bool value)
+    {
+        fullscreen = value;
+        ApplySettings();
+        SaveSettings();
+    }
+
     public void ToggleFullscreen()
     {
         fullscreen = !fullscreen;
@@ -120,7 +138,21 @@ public class SettingsManager : MonoBehaviour
     public void SetVolume(float value)
     {
         masterVolume = value;
-        ApplySettings();
+        AudioListener.volume = value;
         SaveSettings();
+    }
+
+    public void SetMusicVolume(float value)
+    {
+        musicVolume = value;
+        AudioManager.Instance?.SetMusicVolume(musicOn ? musicVolume : 0f);
+        PlayerPrefs.SetFloat("MusicVolume", musicVolume);
+    }
+
+    public void SetSfxVolume(float value)
+    {
+        sfxVolume = value;
+        AudioManager.Instance?.SetSfxVolume(sfxVolume);
+        PlayerPrefs.SetFloat("SfxVolume", sfxVolume);
     }
 }

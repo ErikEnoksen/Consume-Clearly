@@ -1827,12 +1827,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Main::PauseSettings
   resolutionDropdown: {fileID: 8483153889598476133}
-  musicButtonImage: {fileID: 930682543319660243}
-  musicOnSprite: {fileID: 6117241187461018602, guid: 20ca8846de7c36044acb3980b93fc050, type: 3}
-  musicOffSprite: {fileID: -5524587542107658741, guid: 97aa7a2eb2a7be741850cb7c69f551db, type: 3}
   fullscreenButtonImage: {fileID: 5744384538556877638}
   fullscreenOnSprite: {fileID: 6117241187461018602, guid: 20ca8846de7c36044acb3980b93fc050, type: 3}
   fullscreenOffSprite: {fileID: -5524587542107658741, guid: 97aa7a2eb2a7be741850cb7c69f551db, type: 3}
+  masterVolumeSlider: {fileID: 0}
+  musicVolumeSlider: {fileID: 0}
+  musicButtonImage: {fileID: 930682543319660243}
+  musicOnSprite: {fileID: 6117241187461018602, guid: 20ca8846de7c36044acb3980b93fc050, type: 3}
+  musicOffSprite: {fileID: -5524587542107658741, guid: 97aa7a2eb2a7be741850cb7c69f551db, type: 3}
   keybindsMenu: {fileID: 9042730511920474820}
   settingsContainer: {fileID: 4464298387579123501}
   backButton: {fileID: 0}
@@ -3066,7 +3068,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 1
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -10886,7 +10888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2875948126321696571, guid: 34ec202c170d4b74ca786d9e3b9e85ff, type: 3}
       propertyPath: m_Value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3471357683047962921, guid: 34ec202c170d4b74ca786d9e3b9e85ff, type: 3}
       propertyPath: m_AnchorMax.x
