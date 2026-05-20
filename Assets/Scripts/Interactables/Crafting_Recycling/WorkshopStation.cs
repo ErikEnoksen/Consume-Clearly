@@ -61,7 +61,7 @@ public class WorkshopStation : Interactable
         foreach (var output in recipe.outputPrefabs)
         {
             Item item = output.itemPrefab.GetComponent<Item>();
-            inventoryManager.AddItem(item);
+            inventoryManager.AddItem(item, 1);
         }
 
         // Increase Circular Satisfaction Meter

@@ -139,7 +139,7 @@ namespace LevelObjects.Interactable
             int randomIndex = UnityEngine.Random.Range(0, items.Length);
             Item item = items[randomIndex];
 
-            int excessItems = inventoryManager.AddItem(item);
+            int excessItems = inventoryManager.AddItem(item, 1);
 
             if (excessItems > 0)
             {

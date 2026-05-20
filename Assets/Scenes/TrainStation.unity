@@ -600,11 +600,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7169444392638059195, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.00003385544
+      value: 0.00010108948
       objectReference: {fileID: 0}
     - target: {fileID: 7169444392638059195, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000072956085
+      value: 0.00002002716
       objectReference: {fileID: 0}
     - target: {fileID: 7231137429175794959, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2950,11 +2950,11 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 14.353386, y: 10.150657}
-      - {x: -7.19236, y: 10.297934}
-      - {x: -7.2201595, y: 5.7264977}
-      - {x: -7.376428, y: 2.212164}
-      - {x: 35.71204, y: 2.3415103}
-      - {x: 35.76301, y: 9.98951}
+      - {x: -12.475613, y: 10.385987}
+      - {x: -12.63549, y: 6.2988496}
+      - {x: -12.747734, y: 1.9480017}
+      - {x: 40.555023, y: 1.769158}
+      - {x: 40.2978, y: 9.681321}
   m_UseDelaunayMesh: 0
 --- !u!4 &1788148041
 Transform:

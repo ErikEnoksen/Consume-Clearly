@@ -37,7 +37,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
 
 
     //method for adding items to the inventory
-    public int AddItem(Item item)
+    public int AddItem(Item item, int quantity)
     {
         if (isFull)
         {
@@ -56,7 +56,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         if (itemImage != null) { itemImage.sprite = item.Sprite; itemImage.enabled = true; }
 
         //checks if the amount of items in the slot and sees if there is space for the rest
-        this.quantity += item.Quantity;
+        this.quantity += quantity;
         if(this.quantity >= item.MaxStack)
         {
             if (quantityText != null) { quantityText.text = item.MaxStack.ToString(); quantityText.enabled = true; }

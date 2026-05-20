@@ -51,35 +51,11 @@ public class ShopMenu : Interactable
         }
     }
 
-
-
-    //private void OnTriggerStay2D(Collider2D collision)
-    //{
-    //    if(collision.gameObject.tag == "Player")
-    //    {
-    //        if (Input.GetKeyDown(KeybindManager.Instance.GetKey("Interact")))
-    //        {
-
-    //            if (!isActive)
-    //            { 
-    //                shopUI.SetActive(true);
-    //                isActive = true;
-    //            }
-    //            else if (isActive)
-    //            {
-    //                shopUI.SetActive(false);
-    //                isActive = false;
-
-    //            }
-    //        }
-    //    }
-    //}
-
     public void BuyItem(Item item, int price)
     {
         if (moneyManager.ChangeMoneyAmount(-price))
         {
-            inventoryManager.AddItem(item);
+            inventoryManager.AddItem(item, 1);
             // Decreases circular satisfaction when buying 
             satisfactionMeter.DecreaseSatisfactionValue(CSsubstractAmount);
         }
