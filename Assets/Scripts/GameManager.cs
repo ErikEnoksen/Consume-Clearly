@@ -327,8 +327,12 @@
                 SceneManager.LoadScene(sceneName);
             }
 
+            public bool IsTransitioning { get; private set; }
+
             public void TransitionToScene(string sceneName)
             {
+                if (IsTransitioning) return;
+                IsTransitioning = true;
                 StartCoroutine(TransitionCoroutine(sceneName));
             }
 
@@ -337,6 +341,7 @@
                 if (string.IsNullOrEmpty(sceneName) || !Application.CanStreamedLevelBeLoaded(sceneName))
                 {
                     Debug.LogError($"Cannot transition to scene '{sceneName}': not found in build settings.");
+                    IsTransitioning = false;
                     yield break;
                 }
 
@@ -411,6 +416,8 @@
                 PlayerHunger playerHunger = FindAnyObjectByType<PlayerHunger>();
                 if (playerHunger != null)
                     playerHunger.SetHungerValue(_cachedHungerValue);
+
+                IsTransitioning = false;
             }
 
             public void LoadMainMenu()

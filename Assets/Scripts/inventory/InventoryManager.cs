@@ -55,8 +55,9 @@ public class InventoryManager : MonoBehaviour
         giftButton.gameObject.SetActive(true);
     }
 
-    public int AddItem(Item item)
+    public int AddItem(Item item, int quantity)
     {
+        Debug.Log(item.Quantity);
         //checks the slots of the inventory and selects the first empty one it finds to store the item
         for (int i = 0; i < inventoryItems.Length; i++)
         {
@@ -72,7 +73,7 @@ public class InventoryManager : MonoBehaviour
              if (!inventoryItems[i].isFull &&
             (inventoryItems[i].itemName == item.ItemName || inventoryItems[i].quantity == 0)) 
             {
-                int exceccItems = inventoryItems[i].AddItem(item);
+                int exceccItems = inventoryItems[i].AddItem(item, quantity);
                 if (QuestController.Instance != null)
                 {
                     int pickedUp = item.Quantity - exceccItems;
@@ -80,7 +81,7 @@ public class InventoryManager : MonoBehaviour
                 }
                 if (exceccItems > 0)
                 {
-                    exceccItems = AddItem(item);
+                    exceccItems = AddItem(item, quantity);
                 }
                 return exceccItems;
             }

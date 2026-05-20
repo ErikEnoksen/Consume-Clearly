@@ -307,7 +307,7 @@ namespace Assets.Scripts.Quests
 					itemTag
 				);
 
-				int leftover = inventoryManager.AddItem(newItem);
+				int leftover = inventoryManager.AddItem(newItem, newItem.Quantity);
 
 				if (leftover > 0)
 				{

@@ -35,6 +35,9 @@ public class DialogueTrigger : MonoBehaviour, ISaveable
 
     public GameObject pressF;
 
+    [Header("Save System")]
+    [SerializeField] private string uniqueId;
+
     private Dialogue dialogueManager;
     private CompanionFriendship friendship;
     private CommunityMeter communityMeter;
@@ -45,6 +48,18 @@ public class DialogueTrigger : MonoBehaviour, ISaveable
 
     private int currentStageIndex = 0;
     private int conversationsOnCurrentStage = 0;
+
+    private void OnValidate()
+    {
+        if (string.IsNullOrEmpty(uniqueId))
+            uniqueId = System.Guid.NewGuid().ToString();
+    }
+
+    private void Awake()
+    {
+        if (string.IsNullOrEmpty(uniqueId))
+            uniqueId = System.Guid.NewGuid().ToString();
+    }
 
     void Start()
     {
@@ -154,17 +169,14 @@ public class DialogueTrigger : MonoBehaviour, ISaveable
         if (pressF != null) pressF.SetActive(false);
     }
 
-    public string GetUniqueId()
-    {
-        return instanceIdentifier != null ? instanceIdentifier.Id : null;
-    }
+    public string GetUniqueId() => uniqueId;
 
     public InteractableObjectState SaveState()
     {
-        if (instanceIdentifier == null) return null;
         var state = new InteractableObjectState
         {
-            uniqueId = instanceIdentifier.Id,
+            uniqueId = uniqueId,
+            isActive = hasAutoTriggered,
             dialogueStageIndex = currentStageIndex,
             conversationsOnStage = conversationsOnCurrentStage
         };
@@ -182,6 +194,7 @@ public class DialogueTrigger : MonoBehaviour, ISaveable
         int maxIndex = (dialogueStages != null && dialogueStages.Length > 0) ? dialogueStages.Length - 1 : 0;
         currentStageIndex = Mathf.Clamp(state.dialogueStageIndex, 0, maxIndex);
         conversationsOnCurrentStage = state.conversationsOnStage;
+        hasAutoTriggered = state.isActive;
         if (friendship != null)
             friendship.LoadFriendshipState(state.friendshipLevel, state.friendshipMood, state.dailyConversationGiven);
     }

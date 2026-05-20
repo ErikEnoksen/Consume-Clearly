@@ -177,6 +177,7 @@ MonoBehaviour:
   triggerType: 0
   interactKey: 102
   pressF: {fileID: 1587061571468539837}
+  uniqueId: 2bb3f5cf-e713-4392-b5a5-5d32062a90b9
 --- !u!114 &653974872397833930
 MonoBehaviour:
   m_ObjectHideFlags: 0

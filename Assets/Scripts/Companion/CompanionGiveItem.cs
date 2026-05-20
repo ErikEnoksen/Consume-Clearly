@@ -108,7 +108,7 @@ public class CompanionGiveItem : MonoBehaviour
     {
         if (gift.item == null) return;
 
-        int leftover = inventoryManager.AddItem(gift.item);
+        int leftover = inventoryManager.AddItem(gift.item, gift.quantity);
 
         if (leftover == 0)
         {

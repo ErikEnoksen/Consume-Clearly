@@ -290,7 +290,7 @@ MonoBehaviour:
   - triggerType: 0
     requiredState: 0
     item: {fileID: 5268927219989098962, guid: 1da58d9b3b87dc1449f311a297e2cb95, type: 3}
-    quantity: 10
+    quantity: 2
     giveOnce: 1
     hasBeenGiven: 0
   interactKey: 116
@@ -372,7 +372,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 99
   m_Sprite: {fileID: -6966588595320501180, guid: 107fc8648bb60db4f920d21d45376e0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -475,6 +475,7 @@ MonoBehaviour:
   triggerType: 0
   interactKey: 102
   pressF: {fileID: 3271865402770979268}
+  uniqueId: ab76ed89-94e5-4149-a577-34705da76fe4
 --- !u!114 &8985960376940174906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,7 +508,7 @@ MonoBehaviour:
   - triggerType: 0
     requiredState: 0
     item: {fileID: 5268927219989098962, guid: 1da58d9b3b87dc1449f311a297e2cb95, type: 3}
-    quantity: 10
+    quantity: 2
     giveOnce: 1
     hasBeenGiven: 0
   interactKey: 116

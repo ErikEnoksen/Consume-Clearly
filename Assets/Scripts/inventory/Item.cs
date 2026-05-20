@@ -1,12 +1,12 @@
 using Items;
+using Save;
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Item : MonoBehaviour
+public class Item : MonoBehaviour, ISaveable
 {
     [SerializeField]
-    private string itemID; 
+    private string itemID;
     [SerializeField]
     private string itemName;
     [SerializeField]
@@ -15,6 +15,9 @@ public class Item : MonoBehaviour
     private int maxStack = 10;
     [SerializeField]
     private Sprite sprite;
+
+    [Header("Save System")]
+    [SerializeField] private string uniqueSceneId;
 
     public string Id
     {
@@ -40,8 +43,18 @@ public class Item : MonoBehaviour
     public string ItemDescription { get { return itemDescription; } set { itemDescription = value; } }
 
     private InventoryManager inventory;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private SpriteRenderer _spriteRenderer;
+    private Collider2D _collider;
+    private bool _collected;
+
+    private void Awake()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _collider = GetComponent<Collider2D>();
+        if (string.IsNullOrEmpty(uniqueSceneId))
+            uniqueSceneId = Guid.NewGuid().ToString();
+    }
+
     void Start()
     {
         inventory = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
@@ -52,12 +65,14 @@ public class Item : MonoBehaviour
     {
         if (string.IsNullOrEmpty(itemID) || itemID == "1")
             GenerateId();
+        if (string.IsNullOrEmpty(uniqueSceneId))
+            uniqueSceneId = Guid.NewGuid().ToString();
     }
 
     public void Initialize(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string itemTag)
     {
         ItemName = itemName;
-        itemID = null; // force GenerateId() to regenerate from the new name on next access
+        itemID = null;
         Quantity = quantity;
         Sprite = sprite;
         ItemDescription = itemDescription;
@@ -67,20 +82,21 @@ public class Item : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        if (_collected) return;
 
         if (other.gameObject.tag == "Player")
         {
             eKeySprite.SetActive(true);
             if (Input.GetKey(KeybindManager.Instance.GetKey("Interact")))
             {
-                int exceccItems = inventory.AddItem(this);
-                if (exceccItems <= 0)
+                int excessItems = inventory.AddItem(this, Quantity);
+                if (excessItems <= 0)
                 {
-                    Destroy(gameObject);
+                    CollectItem();
                 }
                 else
                 {
-                    quantity = exceccItems;
+                    quantity = excessItems;
                 }
             }
         }
@@ -91,9 +107,37 @@ public class Item : MonoBehaviour
         eKeySprite.SetActive(false);
     }
 
+    private void CollectItem()
+    {
+        _collected = true;
+        if (_spriteRenderer != null) _spriteRenderer.enabled = false;
+        if (_collider != null) _collider.enabled = false;
+        if (eKeySprite != null) eKeySprite.SetActive(false);
+    }
+
     private void GenerateId()
     {
-        //Just name
         itemID = $"{(string.IsNullOrEmpty(ItemName) ? "item" : ItemName)}";
+    }
+
+    public string GetUniqueId() => uniqueSceneId;
+
+    public InteractableObjectState SaveState()
+    {
+        return new InteractableObjectState
+        {
+            uniqueId = uniqueSceneId,
+            isActive = !_collected,
+            position = transform.position,
+            rotation = transform.rotation
+        };
+    }
+
+    public void LoadState(InteractableObjectState state)
+    {
+        if (state == null || state.uniqueId != uniqueSceneId) return;
+
+        if (!state.isActive)
+            CollectItem();
     }
 }

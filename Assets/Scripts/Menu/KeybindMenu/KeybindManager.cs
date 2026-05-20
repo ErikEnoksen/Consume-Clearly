@@ -13,6 +13,9 @@ public class KeybindManager : MonoBehaviour
     public GameObject keybindsButton;
     public GameObject backButton;
 
+    private GameObject _contextKeybindsMenu;
+    private GameObject _contextSettingsMenu;
+
     // Event triggered when a keybind is changed
     public static event Action<string, KeyCode> OnKeybindChanged;
 
@@ -99,22 +102,25 @@ public class KeybindManager : MonoBehaviour
         return new Dictionary<string, KeyCode>(keybinds);
     }
 
+    public void SetBackContext(GameObject contextKeybindsMenu, GameObject contextSettingsMenu)
+    {
+        _contextKeybindsMenu = contextKeybindsMenu;
+        _contextSettingsMenu = contextSettingsMenu;
+    }
+
     public void Back()
     {
-        Scene currentScene = SceneManager.GetActiveScene();
-
-        string sceneName = currentScene.name;
-
-        if (sceneName == "MainMenu")
+        if (SceneManager.GetActiveScene().name == "MainMenu")
         {
             keybindsMenu.SetActive(false);
             backButton.SetActive(true);
             keybindsButton.SetActive(true);
             settingsMenu.SetActive(true);
+            return;
         }
 
-        keybindsMenu.SetActive(false);
-        settingsMenu.SetActive(true);
+        if (_contextKeybindsMenu != null) _contextKeybindsMenu.SetActive(false);
+        if (_contextSettingsMenu != null) _contextSettingsMenu.SetActive(true);
     }
 
     public void Reset()

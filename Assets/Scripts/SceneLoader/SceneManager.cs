@@ -30,6 +30,7 @@ namespace LevelObjects.Interactable
         public override void Interact()
         {
             if (_isTransitioning) return;
+            if (gameManager != null && gameManager.IsTransitioning) return;
             _isTransitioning = true;
             animationController.SetTurnBack(true);
             StartCoroutine(WaitAnimFinish());
