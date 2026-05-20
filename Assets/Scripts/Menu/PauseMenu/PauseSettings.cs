@@ -49,7 +49,7 @@ public class PauseSettings : MonoBehaviour
             resolutionDropdown.options.Add(new TMP_Dropdown.OptionData($"{res.width}x{res.height}"));
 
         resolutionDropdown.onValueChanged.RemoveAllListeners();
-        resolutionDropdown.SetValueWithoutNotify(FindDedupedIndex(SettingsManager.Instance.resolutionIndex));
+        resolutionDropdown.SetValueWithoutNotify(FindCurrentDedupedIndex());
         resolutionDropdown.RefreshShownValue();
         resolutionDropdown.onValueChanged.AddListener(OnResolutionChanged);
     }
@@ -80,17 +80,30 @@ public class PauseSettings : MonoBehaviour
         return result.ToArray();
     }
 
-    private int FindDedupedIndex(int savedScreenIndex)
+    private int FindCurrentDedupedIndex()
     {
+        // Try saved resolution first
         var all = Screen.resolutions;
-        if (savedScreenIndex < 0 || savedScreenIndex >= all.Length) return 0;
-        var saved = all[savedScreenIndex];
+        int savedIdx = SettingsManager.Instance.resolutionIndex;
+        if (savedIdx >= 0 && savedIdx < all.Length)
+        {
+            var saved = all[savedIdx];
+            for (int i = 0; i < _dedupedResolutions.Length; i++)
+            {
+                if (_dedupedResolutions[i].width == saved.width && _dedupedResolutions[i].height == saved.height)
+                    return i;
+            }
+        }
+
+        // Fall back to actual current screen resolution
+        var current = Screen.currentResolution;
         for (int i = 0; i < _dedupedResolutions.Length; i++)
         {
-            if (_dedupedResolutions[i].width == saved.width && _dedupedResolutions[i].height == saved.height)
+            if (_dedupedResolutions[i].width == current.width && _dedupedResolutions[i].height == current.height)
                 return i;
         }
-        return 0;
+
+        return _dedupedResolutions.Length - 1;
     }
 
     private void OnResolutionChanged(int dedupedIndex)
