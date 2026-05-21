@@ -60,6 +60,7 @@ public class WorkshopStation : Interactable, IUILockable
     public void CloseWorkshop()
     {
         workshopUI.SetActive(false);
+        UIManager.Instance?.RemoveLock(UIManager.UILockType.Workshop);
     }
     public override InteractableObjectState SaveState()
     {
