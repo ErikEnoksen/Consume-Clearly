@@ -53,24 +53,37 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        AudioListener.volume = PlayerPrefs.GetFloat("MasterVolume", 1f);
         _soundMap = new Dictionary<string, Sound>();
 
-        if (sounds == null) return;
-        foreach (Sound s in sounds)
+        if (sounds != null)
         {
-            _soundMap.Add(s.name, s);
+            foreach (Sound s in sounds)
+                _soundMap.Add(s.name, s);
         }
-        
+
+        // Apply saved volume settings — prefer SettingsManager so values stay in sync
+        if (SettingsManager.Instance != null)
+        {
+            AudioListener.volume = SettingsManager.Instance.masterVolume;
+            SetMusicVolume(SettingsManager.Instance.musicOn ? SettingsManager.Instance.musicVolume : 0f);
+            SetSfxVolume(SettingsManager.Instance.sfxVolume);
+        }
+        else
+        {
+            AudioListener.volume = PlayerPrefs.GetFloat("MasterVolume", 1f);
+            bool musicOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
+            SetMusicVolume(musicOn ? PlayerPrefs.GetFloat("MusicVolume", 1f) : 0f);
+            SetSfxVolume(PlayerPrefs.GetFloat("SfxVolume", 1f));
+        }
+
+        if (sounds == null) return;
+
         //Auto-play anything that has been marked with Loop on start
         foreach (Sound s in sounds)
         {
             if (s.loop && s.source != null)
-            {
                 s.source.Play();
-            }
         }
-        
     }
 
     public void SetMasterVolume(float value)
