@@ -13,6 +13,7 @@ public class CircularSatisfactionMeter : MonoBehaviour
     public float passivePointInterval = 1f;
 
     private bool isPassivePointActive;
+    public bool IsPassivePointActive => isPassivePointActive;
 
     private void Awake()
     {
@@ -73,6 +74,16 @@ public class CircularSatisfactionMeter : MonoBehaviour
     {
         isPassivePointActive = true;
         passivePointTimer = passivePointInterval;
+    }
+
+    public void LoadSatisfactionState(int value, bool passiveActive)
+    {
+        currentSatisfactionValue = Mathf.Clamp(value, minSatisfactionValue, maxSatisfactionValue);
+        circularSatisfactionSlider.value = currentSatisfactionValue;
+        isPassivePointActive = passiveActive;
+        if (passiveActive)
+            passivePointTimer = passivePointInterval;
+        SatisfactionColor();
     }
 
     private void SatisfactionColor()
