@@ -27,7 +27,7 @@ public class ShopMenu : Interactable, IUILockable
     protected override void Awake()
     {
         base.Awake();
-        satisfactionMeter = GameObject.Find("CircularSatisfactionMeter").GetComponent<CircularSatisfactionMeter>();
+        satisfactionMeter = GameObject.Find("Sliders").GetComponent<CircularSatisfactionMeter>();
         shopUI.SetActive(shopOpen);
         inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
         moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
