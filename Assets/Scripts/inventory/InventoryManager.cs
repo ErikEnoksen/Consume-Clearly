@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : MonoBehaviour, IUILockable
 {
     public GameObject inventoryMenu;
     private bool inventoryActive;
+    private bool _isLocked;
     public bool giftingEnabled = false;
     public InventoryItem[] inventoryItems;
     public string selectedItemName;
@@ -18,41 +19,67 @@ public class InventoryManager : MonoBehaviour
 
     public Button giftButton;
 
+    void Start()
+    {
+        UIManager.Instance?.RegisterUI(this);
+    }
+
+    private void OnDestroy()
+    {
+        UIManager.Instance?.UnregisterUI(this);
+    }
+
+    public void SetLocked(bool locked)
+    {
+        _isLocked = locked;
+        if (locked && inventoryActive)
+            CloseInventory();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        //Listens for when q is pressed and opens or closes the inventory
-        if (Input.GetKeyDown(KeybindManager.Instance.GetKey("Inventory")))
-        {
+        if (!_isLocked && Input.GetKeyDown(KeybindManager.Instance.GetKey("Inventory")))
             ToggleInventory();
-        }
     }
 
     public void ToggleInventory()
     {
+        if (_isLocked) return;
+
         if (!inventoryActive)
         {
             inventoryMenu.SetActive(true);
             inventoryActive = true;
+            UIManager.Instance?.AddLock(UIManager.UILockType.Inventory);
         }
-        else if (inventoryActive)
+        else
         {
-            inventoryMenu.SetActive(false);
-            inventoryActive = false;
-            giftingEnabled = false;
-            giftButton.gameObject.SetActive(false);
-            selectedItemName = string.Empty;
-            DeselectAllSlots();
+            CloseInventory();
         }
+    }
+
+    private void CloseInventory()
+    {
+        inventoryMenu.SetActive(false);
+        inventoryActive = false;
+        giftingEnabled = false;
+        giftButton.gameObject.SetActive(false);
+        selectedItemName = string.Empty;
+        DeselectAllSlots();
+        UIManager.Instance?.RemoveLock(UIManager.UILockType.Inventory);
     }
 
     public void GiftingMenu(CompanionFriendship companion)
     {
+        if (_isLocked) return;
+
         inventoryMenu.SetActive(true);
         inventoryActive = true;
         giftingEnabled = true;
         companionFriendship = companion;
         giftButton.gameObject.SetActive(true);
+        UIManager.Instance?.AddLock(UIManager.UILockType.Inventory);
     }
 
     public int AddItem(Item item, int quantity)
