@@ -3,16 +3,29 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class QuestUI : MonoBehaviour
+public class QuestUI : MonoBehaviour, IUILockable
 {
     public Transform questListContent;
     public GameObject questEntryPrefab;
     public GameObject objectiveTextPrefab;
+    public GameObject questPanel;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        UIManager.Instance?.RegisterUI(this);
         UpdateQuestUI();
+    }
+
+    private void OnDestroy()
+    {
+        UIManager.Instance?.UnregisterUI(this);
+    }
+
+    public void SetLocked(bool locked)
+    {
+        var target = questPanel != null ? questPanel : gameObject;
+        target.SetActive(!locked);
     }
 
     public void UpdateQuestUI()

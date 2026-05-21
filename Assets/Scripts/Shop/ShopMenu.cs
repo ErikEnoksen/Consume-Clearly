@@ -4,7 +4,7 @@ using Save;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopMenu : Interactable
+public class ShopMenu : Interactable, IUILockable
 {
     [SerializeField] 
     private GameObject shopUI;
@@ -14,6 +14,7 @@ public class ShopMenu : Interactable
 
     private int price;
     private bool shopOpen = false;
+    private bool _isLocked = false;
 
     public int Price { set { price = value; } }
     public Item Item {  set  { item = value; } }
@@ -32,8 +33,33 @@ public class ShopMenu : Interactable
         moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
     }
 
+    private void Start()
+    {
+        UIManager.Instance?.RegisterUI(this);
+    }
+
+    private void OnDestroy()
+    {
+        UIManager.Instance?.UnregisterUI(this);
+    }
+
+    public void SetLocked(bool locked)
+    {
+        _isLocked = locked;
+        if (locked && shopOpen)
+        {
+            shopUI.SetActive(false);
+            shopOpen = false;
+            var player = PlayerManager.Instance?.GetPlayer();
+            player?.GetComponent<MovementScript>()?.FreezeMovement(false);
+            UIManager.Instance?.RemoveLock(UIManager.UILockType.Shopmenu);
+        }
+    }
+
     public override void Interact()
     {
+        if (_isLocked) return;
+
         var player = PlayerManager.Instance?.GetPlayer();
         var movement = player?.GetComponent<MovementScript>();
 
@@ -42,12 +68,14 @@ public class ShopMenu : Interactable
             shopUI.SetActive(true);
             shopOpen = true;
             movement?.FreezeMovement(true);
+            UIManager.Instance?.AddLock(UIManager.UILockType.Shopmenu);
         }
-        else if (shopOpen)
+        else
         {
             shopUI.SetActive(false);
             shopOpen = false;
             movement?.FreezeMovement(false);
+            UIManager.Instance?.RemoveLock(UIManager.UILockType.Shopmenu);
         }
     }
 

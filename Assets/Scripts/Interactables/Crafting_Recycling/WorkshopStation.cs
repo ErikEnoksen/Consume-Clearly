@@ -4,7 +4,7 @@ using LevelObjects.Interactable;
 using UnityEngine;
 using Save;
 
-public class WorkshopStation : Interactable
+public class WorkshopStation : Interactable, IUILockable
 {
     
     //StationType can expand into like BicycleRepair, Clothing Repair or multiple different instances.
@@ -17,21 +17,43 @@ public class WorkshopStation : Interactable
     private CircularSatisfactionMeter satisfactionMeter;
 
     private int CSIncreaseAmount = 10;
+    private bool _isLocked = false;
 
     void Start()
     {
         inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
         satisfactionMeter = GameObject.Find("CircularSatisfactionMeter").GetComponent<CircularSatisfactionMeter>();
+        UIManager.Instance?.RegisterUI(this);
     }
+
+    private void OnDestroy()
+    {
+        UIManager.Instance?.UnregisterUI(this);
+    }
+
+    public void SetLocked(bool locked)
+    {
+        _isLocked = locked;
+        if (locked && workshopUI.activeSelf)
+        {
+            workshopUI.SetActive(false);
+            UIManager.Instance?.RemoveLock(UIManager.UILockType.Workshop);
+        }
+    }
+
     public override void Interact()
     {
+        if (_isLocked) return;
+
         if (workshopUI.activeSelf)
         {
             workshopUI.SetActive(false);
+            UIManager.Instance?.RemoveLock(UIManager.UILockType.Workshop);
         }
         else
         {
             workshopUI.GetComponent<WorkshopUI>().Open(this);
+            UIManager.Instance?.AddLock(UIManager.UILockType.Workshop);
         }
     }
     public override InteractableObjectState SaveState()
