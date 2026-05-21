@@ -27,12 +27,17 @@ public class WorkshopStation : Interactable
     {
         if (workshopUI.activeSelf)
         {
-            workshopUI.SetActive(false);
+            CloseWorkshop();
         }
         else
         {
             workshopUI.GetComponent<WorkshopUI>().Open(this);
         }
+    }
+
+    public void CloseWorkshop()
+    {
+        workshopUI.SetActive(false);
     }
     public override InteractableObjectState SaveState()
     {

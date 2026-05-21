@@ -45,12 +45,17 @@ public class ShopMenu : Interactable
         }
         else if (shopOpen)
         {
-            shopUI.SetActive(false);
-            shopOpen = false;
-            movement?.FreezeMovement(false);
+            CloseShop();
         }
     }
 
+    public void CloseShop()
+    {
+        shopUI.SetActive(false);
+        shopOpen = false;
+        var player = PlayerManager.Instance?.GetPlayer();
+        player?.GetComponent<MovementScript>()?.FreezeMovement(false);
+    }
     public void BuyItem(Item item, int price)
     {
         if (moneyManager.ChangeMoneyAmount(-price))
