@@ -22,7 +22,7 @@ public class WorkshopStation : Interactable, IUILockable
     void Start()
     {
         inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
-        satisfactionMeter = GameObject.Find("CircularSatisfactionMeter").GetComponent<CircularSatisfactionMeter>();
+        satisfactionMeter = GameObject.Find("Sliders").GetComponent<CircularSatisfactionMeter>();
         UIManager.Instance?.RegisterUI(this);
     }
 

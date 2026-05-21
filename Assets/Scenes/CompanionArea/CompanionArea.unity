@@ -1958,6 +1958,10 @@ PrefabInstance:
       value: -308.3333
       objectReference: {fileID: 0}
     - target: {fileID: 8663361654113511723, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: currentSatisfactionValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663361654113511723, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: circularSatisfactionSlider
       value: 
       objectReference: {fileID: 569404063}

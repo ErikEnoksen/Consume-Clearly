@@ -6340,7 +6340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4290199710104559289, guid: 34ec202c170d4b74ca786d9e3b9e85ff, type: 3}
       propertyPath: m_Size
-      value: 1
+      value: 0.9999999
       objectReference: {fileID: 0}
     - target: {fileID: 4290199710104559289, guid: 34ec202c170d4b74ca786d9e3b9e85ff, type: 3}
       propertyPath: m_Value
@@ -9188,7 +9188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::CircularSatisfactionMeter
   circularSatisfactionSlider: {fileID: 5161880703407613307}
   maxSatisfactionValue: 100
-  currentSatisfactionValue: 50
+  currentSatisfactionValue: 0
   minSatisfactionValue: 0
   passivePointInterval: 1
 --- !u!114 &8972829211416096334
