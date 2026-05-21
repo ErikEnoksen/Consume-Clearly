@@ -650,11 +650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
---- !u!1 &274933006 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9042730511920474820, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
-  m_PrefabInstance: {fileID: 1710191524}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &288112072 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6630867937101462415, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
@@ -1377,17 +1372,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &499568881 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1231912672462232147, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
-  m_PrefabInstance: {fileID: 1710191524}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bfe8f679e1cb974d9566782dd2354c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Main::PauseSettings
 --- !u!1 &595393331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,11 +1930,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.2353573
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.000029563904
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2079872130295291023, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: Lookahead.Time
@@ -3325,6 +3309,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 477244014}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1059143825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7795635141683364816, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+  m_PrefabInstance: {fileID: 1710191524}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1076024606 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5161880703407613307, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
@@ -3574,11 +3563,11 @@ PrefabInstance:
     - target: {fileID: 69120089100753704, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: keybindsMenu
       value: 
-      objectReference: {fileID: 274933006}
+      objectReference: {fileID: 0}
     - target: {fileID: 69120089100753704, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: settingsMenu
       value: 
-      objectReference: {fileID: 1417120713}
+      objectReference: {fileID: 0}
     - target: {fileID: 1389165928741631467, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: m_LocalPosition.x
       value: -42.95
@@ -3699,6 +3688,10 @@ PrefabInstance:
       propertyPath: questListContent
       value: 
       objectReference: {fileID: 1710191525}
+    - target: {fileID: 8792951542347649090, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: questPanel
+      value: 
+      objectReference: {fileID: 1059143825}
     - target: {fileID: 8792951542347649090, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: questListContent
       value: 
@@ -3943,11 +3936,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1417120713 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4464298387579123501, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
-  m_PrefabInstance: {fileID: 1710191524}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1449359495
 GameObject:
   m_ObjectHideFlags: 0
@@ -5211,7 +5199,7 @@ PrefabInstance:
     - target: {fileID: 1231912672462232147, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: settingsContent
       value: 
-      objectReference: {fileID: 1417120713}
+      objectReference: {fileID: 0}
     - target: {fileID: 1647007370556768940, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5447,7 +5435,7 @@ PrefabInstance:
     - target: {fileID: 5915372686089355647, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 499568881}
+      objectReference: {fileID: 0}
     - target: {fileID: 5915372686089355647, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Keybinds

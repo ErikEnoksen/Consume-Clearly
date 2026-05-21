@@ -3256,11 +3256,6 @@ Transform:
   - {fileID: 1498938195}
   m_Father: {fileID: 453745025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &978961157 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4464298387579123501, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
-  m_PrefabInstance: {fileID: 1940241789}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &993805100
 GameObject:
   m_ObjectHideFlags: 0
@@ -3294,11 +3289,6 @@ Transform:
   - {fileID: 1364847370}
   m_Father: {fileID: 2138992517}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1001056289 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9042730511920474820, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
-  m_PrefabInstance: {fileID: 1940241789}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1016508337 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1897526826281012919, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
@@ -8641,6 +8631,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+--- !u!1 &1940241791 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7795635141683364816, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+  m_PrefabInstance: {fileID: 1940241789}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1978039649
 GameObject:
   m_ObjectHideFlags: 0
@@ -8742,11 +8737,11 @@ PrefabInstance:
     - target: {fileID: 69120089100753704, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: keybindsMenu
       value: 
-      objectReference: {fileID: 1001056289}
+      objectReference: {fileID: 0}
     - target: {fileID: 69120089100753704, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: settingsMenu
       value: 
-      objectReference: {fileID: 978961157}
+      objectReference: {fileID: 0}
     - target: {fileID: 1389165928741631467, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.99
@@ -8915,6 +8910,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8792951542347649090, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: questPanel
+      value: 
+      objectReference: {fileID: 1940241791}
     - target: {fileID: 8792951542347649090, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: questListContent
       value: 
