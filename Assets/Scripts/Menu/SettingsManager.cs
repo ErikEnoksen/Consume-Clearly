@@ -5,7 +5,7 @@ public class SettingsManager : MonoBehaviour
     public static SettingsManager Instance;
 
     public int resolutionIndex;
-    public bool fullscreen;
+    public int displayMode; // 0=Windowed, 1=Borderless, 2=Fullscreen
     public bool musicOn;
     public float masterVolume;
     public float musicVolume;
@@ -34,7 +34,7 @@ public class SettingsManager : MonoBehaviour
     void LoadSettings()
     {
         resolutionIndex = PlayerPrefs.GetInt("ResolutionIndex", GetDefaultResolutionIndex());
-        fullscreen = PlayerPrefs.GetInt("Fullscreen", 1) == 1;
+        displayMode = PlayerPrefs.GetInt("DisplayMode", 2);
         musicOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
         masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
         musicVolume = PlayerPrefs.GetFloat("MusicVolume", 1f);
@@ -60,7 +60,7 @@ public class SettingsManager : MonoBehaviour
     public void SaveSettings()
     {
         PlayerPrefs.SetInt("ResolutionIndex", resolutionIndex);
-        PlayerPrefs.SetInt("Fullscreen", fullscreen ? 1 : 0);
+        PlayerPrefs.SetInt("DisplayMode", displayMode);
         PlayerPrefs.SetInt("MusicOn", musicOn ? 1 : 0);
         PlayerPrefs.SetFloat("MasterVolume", masterVolume);
         PlayerPrefs.SetFloat("MusicVolume", musicVolume);
@@ -80,7 +80,7 @@ public class SettingsManager : MonoBehaviour
         if (resolutionIndex < resolutions.Length)
         {
             var r = resolutions[resolutionIndex];
-            Screen.SetResolution(r.width, r.height, fullscreen);
+            Screen.SetResolution(r.width, r.height, GetFullScreenMode());
         }
 
         // Audio
@@ -114,16 +114,19 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    public void SetFullscreen(bool value)
+    private FullScreenMode GetFullScreenMode()
     {
-        fullscreen = value;
-        ApplySettings();
-        SaveSettings();
+        return displayMode switch
+        {
+            1 => FullScreenMode.FullScreenWindow,
+            2 => FullScreenMode.ExclusiveFullScreen,
+            _ => FullScreenMode.Windowed,
+        };
     }
 
-    public void ToggleFullscreen()
+    public void SetDisplayMode(int mode)
     {
-        fullscreen = !fullscreen;
+        displayMode = Mathf.Clamp(mode, 0, 2);
         ApplySettings();
         SaveSettings();
     }

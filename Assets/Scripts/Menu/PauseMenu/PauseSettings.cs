@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -60,23 +62,51 @@ public class PauseSettings : MonoBehaviour
 
         displayModeDropdown.options.Clear();
         displayModeDropdown.options.Add(new TMP_Dropdown.OptionData("Windowed"));
+        displayModeDropdown.options.Add(new TMP_Dropdown.OptionData("Borderless"));
         displayModeDropdown.options.Add(new TMP_Dropdown.OptionData("Fullscreen"));
 
         displayModeDropdown.onValueChanged.RemoveAllListeners();
-        displayModeDropdown.SetValueWithoutNotify(SettingsManager.Instance.fullscreen ? 1 : 0);
+        displayModeDropdown.SetValueWithoutNotify(SettingsManager.Instance.displayMode);
         displayModeDropdown.RefreshShownValue();
         displayModeDropdown.onValueChanged.AddListener(OnDisplayModeChanged);
     }
 
+    private static readonly (int width, int height)[] StandardResolutions =
+    {
+        (800,  600),
+        (1280, 720),
+        (1366, 768),
+        (1600, 900),
+        (1920, 1080),
+        (2560, 1440),
+        (3840, 2160),
+    };
+
     private Resolution[] GetUniqueResolutions()
     {
-        var seen = new HashSet<string>();
-        var result = new List<Resolution>();
+        var supported = new Dictionary<(int, int), Resolution>();
         foreach (var res in Screen.resolutions)
         {
-            if (seen.Add($"{res.width}x{res.height}"))
+            var key = (res.width, res.height);
+            if (!supported.ContainsKey(key))
+                supported[key] = res;
+        }
+
+        var result = new List<Resolution>();
+        foreach (var (w, h) in StandardResolutions)
+        {
+            if (supported.TryGetValue((w, h), out var res))
                 result.Add(res);
         }
+
+        // Fallback: always include current resolution if nothing matched
+        if (result.Count == 0)
+        {
+            var cur = Screen.currentResolution;
+            if (supported.TryGetValue((cur.width, cur.height), out var curRes))
+                result.Add(curRes);
+        }
+
         return result.ToArray();
     }
 
@@ -123,7 +153,7 @@ public class PauseSettings : MonoBehaviour
 
     private void OnDisplayModeChanged(int index)
     {
-        SettingsManager.Instance.SetFullscreen(index == 1);
+        SettingsManager.Instance.SetDisplayMode(index);
     }
 
     private void SyncUI()
@@ -156,7 +186,7 @@ public class PauseSettings : MonoBehaviour
         }
 
         if (displayModeDropdown != null)
-            displayModeDropdown.SetValueWithoutNotify(s.fullscreen ? 1 : 0);
+            displayModeDropdown.SetValueWithoutNotify(s.displayMode);
     }
 
     private void SetVolumeLabel(TMP_Text label, float value)

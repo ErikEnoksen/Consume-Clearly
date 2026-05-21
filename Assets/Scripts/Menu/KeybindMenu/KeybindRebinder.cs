@@ -21,6 +21,13 @@ public class KeybindRebinder : MonoBehaviour
 
     private void Awake()
     {
+        if (feedbackText == null)
+        {
+            var found = GameObject.Find("FeedbackText");
+            if (found != null)
+                feedbackText = found.GetComponent<TMP_Text>();
+        }
+
         if (feedbackText != null)
             defaultFeedbackText = feedbackText.text;
     }
