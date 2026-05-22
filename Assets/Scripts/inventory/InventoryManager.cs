@@ -59,7 +59,7 @@ public class InventoryManager : MonoBehaviour, IUILockable
         }
     }
 
-    private void CloseInventory()
+    public void CloseInventory()
     {
         inventoryMenu.SetActive(false);
         inventoryActive = false;
