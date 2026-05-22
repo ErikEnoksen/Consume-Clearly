@@ -46,6 +46,8 @@ namespace Save
         public int CommunityLevel;
         public int CommunityOverflowPoints;
         public float HungerValue;
+        public int SatisfactionValue;
+        public bool IsPassivePointActive;
         public List<QuestSaveState> ActiveQuestStates = new List<QuestSaveState>();
         public List<string> CompletedQuestIDs = new List<string>();
 

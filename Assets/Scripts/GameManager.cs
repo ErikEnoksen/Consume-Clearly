@@ -17,6 +17,8 @@
             private int _cachedCommunityLevel = 0;
             private int _cachedCommunityOverflow = 0;
             private float _cachedHungerValue = 100f;
+            private int _cachedSatisfactionValue = 50;
+            private bool _cachedSatisfactionPassive = false;
             private readonly Dictionary<string, Vector3> _sessionPositions = new Dictionary<string, Vector3>();
 
             public float GameTime { get; private set; }
@@ -145,6 +147,15 @@
                     _cachedHungerValue = playerHunger.GetHungerValue();
                 saveData.HungerValue = _cachedHungerValue;
 
+                CircularSatisfactionMeter satisfactionMeter = FindAnyObjectByType<CircularSatisfactionMeter>();
+                if (satisfactionMeter != null)
+                {
+                    _cachedSatisfactionValue = satisfactionMeter.currentSatisfactionValue;
+                    _cachedSatisfactionPassive = satisfactionMeter.IsPassivePointActive;
+                }
+                saveData.SatisfactionValue = _cachedSatisfactionValue;
+                saveData.IsPassivePointActive = _cachedSatisfactionPassive;
+
                 if (Assets.Scripts.Quests.QuestController.Instance != null)
                 {
                     saveData.ActiveQuestStates = Assets.Scripts.Quests.QuestController.Instance.GetSaveData();
@@ -172,6 +183,8 @@
                     _cachedCommunityLevel = data.CommunityLevel;
                     _cachedCommunityOverflow = data.CommunityOverflowPoints;
                     _cachedHungerValue = data.HungerValue > 0 ? data.HungerValue : 100f;
+                    _cachedSatisfactionValue = data.SatisfactionValue > 0 ? data.SatisfactionValue : 50;
+                    _cachedSatisfactionPassive = data.IsPassivePointActive;
 
                     if (DayCycleManager.Instance != null)
                         DayCycleManager.Instance.LoadState(data.CurrentDay > 0 ? data.CurrentDay : 1, data.DayTimer);
@@ -247,6 +260,10 @@
                 PlayerHunger playerHunger = FindAnyObjectByType<PlayerHunger>();
                 if (playerHunger != null)
                     playerHunger.SetHungerValue(_cachedHungerValue);
+
+                CircularSatisfactionMeter satisfactionMeter = FindAnyObjectByType<CircularSatisfactionMeter>();
+                if (satisfactionMeter != null)
+                    satisfactionMeter.LoadSatisfactionState(_cachedSatisfactionValue, _cachedSatisfactionPassive);
             }
 
             private void LoadInteractableStates(List<InteractableObjectState> states)
@@ -362,6 +379,22 @@
                 if (leavingHunger != null)
                     _cachedHungerValue = leavingHunger.GetHungerValue();
 
+                CircularSatisfactionMeter leavingSatisfaction = FindAnyObjectByType<CircularSatisfactionMeter>();
+                if (leavingSatisfaction != null)
+                {
+                    _cachedSatisfactionValue = leavingSatisfaction.currentSatisfactionValue;
+                    _cachedSatisfactionPassive = leavingSatisfaction.IsPassivePointActive;
+                }
+
+                // Cache inventory and money so items picked up since the last save survive the scene swap
+                InventoryManager leavingInventory = FindAnyObjectByType<InventoryManager>();
+                if (leavingInventory != null)
+                    _cachedInventory = leavingInventory.SaveInventory();
+
+                MoneyManager leavingMoney = FindAnyObjectByType<MoneyManager>();
+                if (leavingMoney != null)
+                    _cachedMoney = leavingMoney.GetMoney();
+
                 AsyncOperation load = SceneManager.LoadSceneAsync(sceneName);
                 if (load == null)
                 {
@@ -416,6 +449,10 @@
                 PlayerHunger playerHunger = FindAnyObjectByType<PlayerHunger>();
                 if (playerHunger != null)
                     playerHunger.SetHungerValue(_cachedHungerValue);
+
+                CircularSatisfactionMeter satisfactionMeter = FindAnyObjectByType<CircularSatisfactionMeter>();
+                if (satisfactionMeter != null)
+                    satisfactionMeter.LoadSatisfactionState(_cachedSatisfactionValue, _cachedSatisfactionPassive);
 
                 IsTransitioning = false;
             }

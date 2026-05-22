@@ -49,6 +49,22 @@ namespace Assets.Scripts.Quests
 
 			ActiveQuests.Add(new QuestProgress(quest));
 
+			// Count items already in inventory so progress isn't reset to zero on accept
+			InventoryManager inventory = FindAnyObjectByType<InventoryManager>();
+			if (inventory != null)
+			{
+				var checkedIDs = new HashSet<string>();
+				foreach (var obj in quest.objectives)
+				{
+					if (obj.type == objectiveType.CollectItem && checkedIDs.Add(obj.objectiveID))
+					{
+						int existing = inventory.GetItemCount(obj.objectiveID);
+						if (existing > 0)
+							UpdateObjectiveProgress(obj.objectiveID, objectiveType.CollectItem, existing);
+					}
+				}
+			}
+
 			questUI?.UpdateQuestUI();
 		}
 
@@ -57,41 +73,28 @@ namespace Assets.Scripts.Quests
 			objectiveType type,
 			int amount)
 			{
+				var toComplete = new List<QuestProgress>();
+
 				foreach (var quest in ActiveQuests)
 				{
 					foreach (var objective in quest.objectives)
 					{
-						if (
-							objective.objectiveID == objectiveID &&
-							objective.type == type &&
-							!objective.IsCompleted
-						)
+						if (objective.objectiveID == objectiveID && objective.type == type)
 						{
 							objective.currentAmount += amount;
 
-							objective.currentAmount = Mathf.Min(
-								objective.currentAmount,
-								objective.requiredAmount
-							);
-
-							Debug.Log(
-								$"Quest progress updated: {objective.description}"
-							);
-
-							questUI?.UpdateQuestUI();
-
-							if (
-								quest.IsCompleted &&
-								quest.quest.completionType == QuestCompletionType.AutoComplete
-							)
-							{
-								CompleteQuest(quest);
-							}
-
-							return;
+							Debug.Log($"Quest progress updated: {objective.description} ({objective.currentAmount}/{objective.requiredAmount})");
 						}
 					}
+
+					if (quest.IsCompleted && quest.quest.completionType == QuestCompletionType.AutoComplete)
+						toComplete.Add(quest);
 				}
+
+				foreach (var quest in toComplete)
+					CompleteQuest(quest);
+
+				questUI?.UpdateQuestUI();
         }
 
         public bool IsQuestCompleted(string questID)
@@ -304,8 +307,9 @@ namespace Assets.Scripts.Quests
 					rewardItem.itemPrefab.Sprite,
 					rewardItem.itemPrefab.ItemDescription,
 					rewardItem.itemPrefab.MaxStack,
-					itemTag
-				);
+                    itemTag,
+                    rewardItem.itemPrefab.EKeySprite
+                );
 
 				int leftover = inventoryManager.AddItem(newItem, newItem.Quantity);
 

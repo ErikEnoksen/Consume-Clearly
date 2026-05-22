@@ -24,13 +24,15 @@ public class PauseMenu : MonoBehaviour
         Container.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
+        UIManager.Instance?.RemoveLock(UIManager.UILockType.Pausemenu);
     }
-    
+
     public void Pause()
     {
         Container.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
+        UIManager.Instance?.AddLock(UIManager.UILockType.Pausemenu);
     }
     public void Settings()
     {
@@ -41,6 +43,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         isPaused = false;
+        UIManager.Instance?.RemoveLock(UIManager.UILockType.Pausemenu);
         if (GameManager.Instance != null)
             GameManager.Instance.GoToMainMenu();
         else

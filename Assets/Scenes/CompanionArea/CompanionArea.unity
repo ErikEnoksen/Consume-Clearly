@@ -490,11 +490,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1971010997}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &286298004 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9042730511920474820, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
-  m_PrefabInstance: {fileID: 746635214}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &304220920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,6 +1114,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
+--- !u!1 &622584092 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7795635141683364816, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+  m_PrefabInstance: {fileID: 746635214}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &622711625
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,6 +1958,10 @@ PrefabInstance:
       value: -308.3333
       objectReference: {fileID: 0}
     - target: {fileID: 8663361654113511723, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: currentSatisfactionValue
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8663361654113511723, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: circularSatisfactionSlider
       value: 
       objectReference: {fileID: 569404063}
@@ -2292,11 +2296,6 @@ Transform:
   - {fileID: 329913003}
   m_Father: {fileID: 1847089149}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &844169739 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3200524294951851942, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
-  m_PrefabInstance: {fileID: 746635214}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &875041710
 GameObject:
   m_ObjectHideFlags: 0
@@ -2409,19 +2408,19 @@ PrefabInstance:
     - target: {fileID: 69120089100753704, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: backButton
       value: 
-      objectReference: {fileID: 844169739}
+      objectReference: {fileID: 0}
     - target: {fileID: 69120089100753704, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: keybindsMenu
       value: 
-      objectReference: {fileID: 286298004}
+      objectReference: {fileID: 0}
     - target: {fileID: 69120089100753704, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: settingsMenu
       value: 
-      objectReference: {fileID: 1572159333}
+      objectReference: {fileID: 0}
     - target: {fileID: 69120089100753704, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: keybindsButton
       value: 
-      objectReference: {fileID: 1168278684}
+      objectReference: {fileID: 0}
     - target: {fileID: 1389165928741631467, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.49
@@ -2554,6 +2553,10 @@ PrefabInstance:
       propertyPath: questListContent
       value: 
       objectReference: {fileID: 746635216}
+    - target: {fileID: 8792951542347649090, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
+      propertyPath: questPanel
+      value: 
+      objectReference: {fileID: 622584092}
     - target: {fileID: 8792951542347649090, guid: e6d24fd3ca47cb44b8e63464fd1f8217, type: 3}
       propertyPath: questListContent
       value: 
@@ -2942,11 +2945,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1168278684 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5556924967992534034, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
-  m_PrefabInstance: {fileID: 746635214}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1170454804
 GameObject:
   m_ObjectHideFlags: 0
@@ -3994,11 +3992,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1572159333 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8975579472456742052, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
-  m_PrefabInstance: {fileID: 746635214}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1581661517
 GameObject:
   m_ObjectHideFlags: 0
