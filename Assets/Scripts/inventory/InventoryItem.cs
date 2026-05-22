@@ -155,10 +155,15 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
             GameObject itemToDrop = new GameObject(itemName);
             Item newItem = itemToDrop.AddComponent<Item>();
 
-            eKeySprite.transform.SetParent(itemToDrop.transform);
-            eKeySprite.transform.position = new Vector3(0, 1.2f, 0);
+            GameObject eKeyInstance = null;
+            if (eKeySprite != null)
+            {
+                eKeyInstance = Instantiate(eKeySprite, itemToDrop.transform);
+                eKeyInstance.transform.localPosition = new Vector3(0, 1.2f, 0);
+                eKeyInstance.SetActive(false);
+            }
 
-            newItem.Initialize(itemName, 1, sprite, itemDescription, maxStack, tag, eKeySprite);
+            newItem.Initialize(itemName, 1, sprite, itemDescription, maxStack, tag, eKeyInstance);
 
             SpriteRenderer sr = itemToDrop.AddComponent<SpriteRenderer>();
             sr.sprite = sprite;

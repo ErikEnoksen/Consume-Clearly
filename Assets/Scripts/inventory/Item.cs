@@ -51,16 +51,16 @@ public class Item : MonoBehaviour, ISaveable
 
     private void Awake()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _collider = GetComponent<Collider2D>();
         if (string.IsNullOrEmpty(uniqueSceneId))
             uniqueSceneId = Guid.NewGuid().ToString();
     }
 
     void Start()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _collider = GetComponent<Collider2D>();
         inventory = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
-        eKeySprite.SetActive(false);
+        if (eKeySprite != null) eKeySprite.SetActive(false);
     }
 
     private void OnValidate()
@@ -89,7 +89,7 @@ public class Item : MonoBehaviour, ISaveable
 
         if (other.gameObject.tag == "Player")
         {
-            eKeySprite.SetActive(true);
+            if (eKeySprite != null) eKeySprite.SetActive(true);
             if (Input.GetKey(KeybindManager.Instance.GetKey("Interact")))
             {
                 int excessItems = inventory.AddItem(this, Quantity);
@@ -107,7 +107,7 @@ public class Item : MonoBehaviour, ISaveable
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        eKeySprite.SetActive(false);
+        if (eKeySprite != null) eKeySprite.SetActive(false);
     }
 
     private void CollectItem()
