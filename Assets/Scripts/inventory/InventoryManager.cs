@@ -145,6 +145,15 @@ public class InventoryManager : MonoBehaviour, IUILockable
         
     }
 
+    public int GetItemCount(string itemID)
+    {
+        int total = 0;
+        foreach (var slot in inventoryItems)
+            if (slot.itemID == itemID && slot.quantity > 0)
+                total += slot.quantity;
+        return total;
+    }
+
     public bool RemoveItem(string itemID, int quantity)
     {
         int remaining = quantity;

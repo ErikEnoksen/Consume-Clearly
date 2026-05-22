@@ -386,6 +386,15 @@
                     _cachedSatisfactionPassive = leavingSatisfaction.IsPassivePointActive;
                 }
 
+                // Cache inventory and money so items picked up since the last save survive the scene swap
+                InventoryManager leavingInventory = FindAnyObjectByType<InventoryManager>();
+                if (leavingInventory != null)
+                    _cachedInventory = leavingInventory.SaveInventory();
+
+                MoneyManager leavingMoney = FindAnyObjectByType<MoneyManager>();
+                if (leavingMoney != null)
+                    _cachedMoney = leavingMoney.GetMoney();
+
                 AsyncOperation load = SceneManager.LoadSceneAsync(sceneName);
                 if (load == null)
                 {
