@@ -3,6 +3,8 @@ using Assets.Scripts.Quests;
 
 public class DialogueChoiceHandler : MonoBehaviour
 {
+    private bool questWasAcceptedThisDialogue = false;
+
     public void HandleChoice(DialogueChoiceContext context)
     {
         var choice = context.Choice;
@@ -41,6 +43,7 @@ public class DialogueChoiceHandler : MonoBehaviour
                     if (QuestController.Instance != null)
                     {
                         QuestController.Instance.AcceptQuest(dialogueObject.quest);
+                        questWasAcceptedThisDialogue = true;
                         Debug.Log("Quest accepted: " + dialogueObject.quest.questName);
                     }
                     else
@@ -70,20 +73,21 @@ public class DialogueChoiceHandler : MonoBehaviour
 
     public void HandleDialogueEnded(DialogueObject dialogueObject)
     {
-        if (dialogueObject == null || dialogueObject.quest == null || QuestController.Instance == null)
+        // Skip if a quest was just accepted this conversation. DialogueTrigger handles turn-in
+        if (questWasAcceptedThisDialogue)
         {
+            questWasAcceptedThisDialogue = false;
             return;
         }
+
+        if (dialogueObject == null || dialogueObject.quest == null || QuestController.Instance == null)
+            return;
 
         if (!QuestController.Instance.IsQuestActive(dialogueObject.quest.questID))
-        {
             return;
-        }
 
         if (!QuestController.Instance.IsQuestCompleted(dialogueObject.quest.questID))
-        {
             return;
-        }
 
         bool turnedIn = QuestController.Instance.TurnInQuest(dialogueObject.quest);
         Debug.Log(turnedIn

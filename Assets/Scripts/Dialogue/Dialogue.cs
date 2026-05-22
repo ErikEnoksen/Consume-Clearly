@@ -62,7 +62,7 @@ public class Dialogue : MonoBehaviour
         if (isDialogueActive && choicesPanel != null && !choicesPanel.activeSelf && Input.GetMouseButtonDown(0))
         {
             if (currentDialogue == null || currentDialogue.dialogueLines.Length == 0)
-                return;
+                return; 
 
             if (isTyping)
             {

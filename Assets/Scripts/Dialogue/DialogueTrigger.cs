@@ -59,6 +59,7 @@ public class DialogueTrigger : MonoBehaviour, ISaveable
 
     private int currentStageIndex = 0;
     private int conversationsOnCurrentStage = 0;
+    private DialogueObject lastPlayedDialogue;
 
     private void OnValidate()
     {
@@ -117,6 +118,20 @@ public class DialogueTrigger : MonoBehaviour, ISaveable
         if (companion != friendship) return;
 
         conversationsOnCurrentStage++;
+
+        if (dialogueStages != null && currentStageIndex < dialogueStages.Length)
+        {
+            DialogueStage stage = dialogueStages[currentStageIndex];
+            if (stage.questToCheck != null
+                && stage.questCompletedDialogue != null
+                && lastPlayedDialogue == stage.questCompletedDialogue
+                && QuestController.Instance != null
+                && QuestController.Instance.IsQuestCompleted(stage.questToCheck.questID))
+            {
+                QuestController.Instance.TurnInQuest(stage.questToCheck);
+            }
+        }
+
         TryAdvanceStage();
     }
 
@@ -189,6 +204,7 @@ public class DialogueTrigger : MonoBehaviour, ISaveable
         DialogueObject dialogueToPlay = GetCurrentDialogue();
         if (dialogueManager == null || dialogueToPlay == null) return;
 
+        lastPlayedDialogue = dialogueToPlay;
         dialogueManager.DisplayDialogue(dialogueToPlay, friendship);
 
         if (pressF != null) pressF.SetActive(false);
