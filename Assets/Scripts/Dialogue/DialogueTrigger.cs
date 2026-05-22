@@ -12,9 +12,20 @@ public enum StageAdvanceCondition
 [System.Serializable]
 public class DialogueStage
 {
-    [Tooltip("The dialogue to play at this stage")]
+    [Tooltip("The dialogue to play at this stage (default / before quest is accepted)")]
     public DialogueObject dialogue;
 
+    [Header("Quest-State Dialogue (optional):")]
+    [Tooltip("Which quest to check state for. If unset, always uses the default dialogue above.")]
+    public Quest questToCheck;
+
+    [Tooltip("Shown while the quest is active but objectives are not yet complete. Falls back to default dialogue if empty.")]
+    public DialogueObject questInProgressDialogue;
+
+    [Tooltip("Shown when all quest objectives are complete (items gathered). Falls back to questInProgressDialogue, then default.")]
+    public DialogueObject questCompletedDialogue;
+
+    [Header("Stage Advancement:")]
     [Tooltip("How does the player progress past this stage?")]
     public StageAdvanceCondition advanceCondition = StageAdvanceCondition.AfterConversations;
 
@@ -124,10 +135,10 @@ public class DialogueTrigger : MonoBehaviour, ISaveable
                 break;
 
             case StageAdvanceCondition.OnQuestComplete:
-                canAdvance = stage.dialogue != null
-                          && stage.dialogue.quest != null
+                Quest questForAdvance = stage.questToCheck ?? stage.dialogue?.quest;
+                canAdvance = questForAdvance != null
                           && QuestController.Instance != null
-                          && !QuestController.Instance.IsQuestActive(stage.dialogue.quest.questID);
+                          && !QuestController.Instance.IsQuestActive(questForAdvance.questID);
                 break;
 
             case StageAdvanceCondition.Manual:
@@ -156,7 +167,21 @@ public class DialogueTrigger : MonoBehaviour, ISaveable
     {
         if (dialogueStages == null || dialogueStages.Length == 0) return null;
         int index = Mathf.Clamp(currentStageIndex, 0, dialogueStages.Length - 1);
-        return dialogueStages[index]?.dialogue;
+        DialogueStage stage = dialogueStages[index];
+        if (stage == null) return null;
+
+        if (stage.questToCheck != null && QuestController.Instance != null)
+        {
+            string questID = stage.questToCheck.questID;
+
+            if (QuestController.Instance.IsQuestCompleted(questID))
+                return stage.questCompletedDialogue ?? stage.questInProgressDialogue ?? stage.dialogue;
+
+            if (QuestController.Instance.IsQuestActive(questID))
+                return stage.questInProgressDialogue ?? stage.dialogue;
+        }
+
+        return stage.dialogue;
     }
 
     private void StartConversation()
