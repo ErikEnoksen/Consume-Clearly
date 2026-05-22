@@ -19,6 +19,9 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     [SerializeField]
     private Image itemImage;
 
+    [SerializeField]
+    private GameObject eKeySprite;
+
     public GameObject selectedShaders;
     public bool thisItemSelected;
 
@@ -43,14 +46,15 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         {
             return item.Quantity;
         }
-        this.itemID = item.Id;
+        itemID = item.Id;
 
         //updates the slot in the inventory to make the data visible in the inventory
-        this.itemName = item.ItemName;
-        this.sprite = item.Sprite;
-        this.itemDescription = item.ItemDescription;
-        this.maxStack = item.MaxStack;
-        this.tag = item.tag;
+        itemName = item.ItemName;
+        sprite = item.Sprite;
+        itemDescription = item.ItemDescription;
+        maxStack = item.MaxStack;
+        tag = item.tag;
+        eKeySprite = item.EKeySprite;
         
         //SetActive makes the item and item count visible in the inventory
         if (itemImage != null) { itemImage.sprite = item.Sprite; itemImage.enabled = true; }
@@ -135,9 +139,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
                     foodButton.SetActive(true);
                 }
             }
-
         }
-        
     }
 
     public void OnRightClick()
@@ -153,16 +155,18 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
             GameObject itemToDrop = new GameObject(itemName);
             Item newItem = itemToDrop.AddComponent<Item>();
 
-            newItem.Initialize(itemName, 1, sprite, itemDescription, maxStack, tag);
+            eKeySprite.transform.SetParent(itemToDrop.transform);
+            eKeySprite.transform.position = new Vector3(0, 1.2f, 0);
+
+            newItem.Initialize(itemName, 1, sprite, itemDescription, maxStack, tag, eKeySprite);
 
             SpriteRenderer sr = itemToDrop.AddComponent<SpriteRenderer>();
             sr.sprite = sprite;
 
+
             BoxCollider2D itemTrigger = itemToDrop.AddComponent<BoxCollider2D>();
             itemTrigger.isTrigger = true;
             itemTrigger.size = new Vector2(2f, 1f);
-
-            
 
             itemToDrop.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position - new Vector3(0f, 0.5f);
 

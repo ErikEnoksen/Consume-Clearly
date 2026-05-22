@@ -41,10 +41,12 @@ public class Item : MonoBehaviour, ISaveable
     private GameObject eKeySprite;
 
     public string ItemDescription { get { return itemDescription; } set { itemDescription = value; } }
+    public GameObject EKeySprite { get { return eKeySprite; } set { eKeySprite = value; } }
 
     private InventoryManager inventory;
     private SpriteRenderer _spriteRenderer;
     private Collider2D _collider;
+    [SerializeField]
     private bool _collected;
 
     private void Awake()
@@ -69,15 +71,16 @@ public class Item : MonoBehaviour, ISaveable
             uniqueSceneId = Guid.NewGuid().ToString();
     }
 
-    public void Initialize(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string itemTag)
+    public void Initialize(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string itemTag, GameObject eKeySprite)
     {
         ItemName = itemName;
-        itemID = null;
+        itemID = itemName;
         Quantity = quantity;
         Sprite = sprite;
         ItemDescription = itemDescription;
         MaxStack = maxStack;
         tag = itemTag;
+        EKeySprite = eKeySprite;
     }
 
     private void OnTriggerStay2D(Collider2D other)
