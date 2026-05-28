@@ -37,6 +37,7 @@ namespace Assets.Scripts.Quests
 			SceneManager.sceneLoaded -= OnSceneLoaded;
 		}
 
+		// Fill questUI with active quests
 		private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
 		{
 			questUI = FindAnyObjectByType<QuestUI>();
@@ -68,36 +69,36 @@ namespace Assets.Scripts.Quests
 			questUI?.UpdateQuestUI();
 		}
 
-        public void UpdateObjectiveProgress(
+		public void UpdateObjectiveProgress(
 			string objectiveID,
 			objectiveType type,
 			int amount)
+		{
+			var toComplete = new List<QuestProgress>();
+
+			foreach (var quest in ActiveQuests)
 			{
-				var toComplete = new List<QuestProgress>();
-
-				foreach (var quest in ActiveQuests)
+				foreach (var objective in quest.objectives)
 				{
-					foreach (var objective in quest.objectives)
+					if (objective.objectiveID == objectiveID && objective.type == type)
 					{
-						if (objective.objectiveID == objectiveID && objective.type == type)
-						{
-							objective.currentAmount += amount;
+						objective.currentAmount += amount;
 
-							Debug.Log($"Quest progress updated: {objective.description} ({objective.currentAmount}/{objective.requiredAmount})");
-						}
+						Debug.Log($"Quest progress updated: {objective.description} ({objective.currentAmount}/{objective.requiredAmount})");
 					}
-
-					if (quest.IsCompleted && quest.quest.completionType == QuestCompletionType.AutoComplete)
-						toComplete.Add(quest);
 				}
 
-				foreach (var quest in toComplete)
-					CompleteQuest(quest);
+				if (quest.IsCompleted && quest.quest.completionType == QuestCompletionType.AutoComplete)
+					toComplete.Add(quest);
+			}
 
-				questUI?.UpdateQuestUI();
-        }
+			foreach (var quest in toComplete)
+				CompleteQuest(quest);
 
-        public bool IsQuestCompleted(string questID)
+			questUI?.UpdateQuestUI();
+		}
+
+		public bool IsQuestCompleted(string questID)
 		{
 			if (HasQuestBeenCompleted(questID))
 				return true;
@@ -116,23 +117,23 @@ namespace Assets.Scripts.Quests
 			return true;
 		}
 
-        private void CompleteQuest(QuestProgress quest)
-        {
-            if (quest == null)
-                return;
+		private void CompleteQuest(QuestProgress quest)
+		{
+			if (quest == null)
+				return;
 
-            ActiveQuests.Remove(quest);
+			ActiveQuests.Remove(quest);
 
-            completedQuestIDs.Add(quest.questID);
+			completedQuestIDs.Add(quest.questID);
 
-            GrantRewards(quest.quest);
+			GrantRewards(quest.quest);
 
-            Debug.Log($"Quest completed: {quest.questID}");
+			Debug.Log($"Quest completed: {quest.questID}");
 
-            questUI?.UpdateQuestUI();
-        }
+			questUI?.UpdateQuestUI();
+		}
 
-        public bool TurnInQuest(string questID, InventoryManager inventory)
+		public bool TurnInQuest(string questID, InventoryManager inventory)
 		{
 			var quest = ActiveQuests.Find(q => q.questID == questID);
 
@@ -146,7 +147,7 @@ namespace Assets.Scripts.Quests
 			var itemsToRemove = new Dictionary<string, int>();
 			foreach (var objective in quest.objectives)
 			{
-				switch (objective.type) //more quest types that dont require/use separate script interaction logic can be added here
+				switch (objective.type) //more quest/objective types that dont require/use separate script interaction logic can be added here
 				{
 					case objectiveType.CollectItem:
 						if (itemsToRemove.ContainsKey(objective.objectiveID))
@@ -173,12 +174,12 @@ namespace Assets.Scripts.Quests
 				inventory?.RemoveItem(item.Key, item.Value);
 			}
 
-            CompleteQuest(quest);
+			CompleteQuest(quest);
 
-            Debug.Log("Quest turned in: " + questID);
+			Debug.Log("Quest turned in: " + questID);
 
-            return true;
-        }
+			return true;
+		}
 
 		public bool TurnInQuest(Quest quest)
 		{
@@ -189,6 +190,9 @@ namespace Assets.Scripts.Quests
 			return TurnInQuest(quest.questID, inventoryManager);
 		}
 
+		#region "Rewards section"
+		// Function to grant rewards by calling other resource managers,
+		// could be moved to a more central resourcemanager class in the future
 		private void GrantRewards(Quest quest)
 		{
 			if (quest == null || quest.rewards == null)
@@ -196,9 +200,9 @@ namespace Assets.Scripts.Quests
 
 			GrantMoneyReward(quest.rewards.money);
 			GrantCircularSatisfactionReward(quest.rewards.circularSatisfaction);
-            GrantCommunityPointsReward(quest.rewards.communityPoints);
-            GrantItemRewards(quest.rewards.items);
-        }
+			GrantCommunityPointsReward(quest.rewards.communityPoints);
+			GrantItemRewards(quest.rewards.items);
+		}
 
 		private void GrantMoneyReward(int amount)
 		{
@@ -230,7 +234,66 @@ namespace Assets.Scripts.Quests
 			Debug.LogWarning($"QuestController: Could not grant community spirit reward of {amount}. No CircularSatisfactionMeter found.");
 		}
 
-		public List<QuestSaveState> GetSaveData()
+		private void GrantItemRewards(List<QuestRewardItem> rewardItems)
+		{
+			if (rewardItems == null || rewardItems.Count == 0)
+				return;
+
+			InventoryManager inventoryManager = FindAnyObjectByType<InventoryManager>();
+			if (inventoryManager == null)
+			{
+				Debug.LogWarning("QuestController: Could not grant item rewards. No InventoryManager found.");
+				return;
+			}
+
+			foreach (QuestRewardItem rewardItem in rewardItems)
+			{
+				if (rewardItem == null || rewardItem.itemPrefab == null || rewardItem.quantity <= 0)
+					continue;
+
+				// Instantiate the Item prefab instead of using new
+				Item newItem = Instantiate(rewardItem.itemPrefab);
+
+				string itemTag = string.IsNullOrEmpty(rewardItem.inventoryTag) || rewardItem.inventoryTag == "Untagged"
+					? rewardItem.itemPrefab.tag
+					: rewardItem.inventoryTag;
+
+				newItem.Initialize(rewardItem.itemPrefab.ItemName,
+					rewardItem.itemPrefab.Quantity,
+					rewardItem.itemPrefab.Sprite,
+					rewardItem.itemPrefab.ItemDescription,
+					rewardItem.itemPrefab.MaxStack,
+					itemTag,
+					rewardItem.itemPrefab.EKeySprite
+				);
+
+				int leftover = inventoryManager.AddItem(newItem, newItem.Quantity);
+
+				if (leftover > 0)
+				{
+					Debug.LogWarning($"QuestController: Could not add full reward stack for {rewardItem.itemPrefab.ItemName}. Leftover: {leftover}");
+				}
+			}
+		}
+
+		private void GrantCommunityPointsReward(int amount)
+		{
+			if (amount <= 0)
+				return;
+			CommunityMeter communityMeter = FindAnyObjectByType<CommunityMeter>();
+			if (communityMeter != null)
+			{
+				communityMeter.IncreaseCommunityLevel(amount);
+				return;
+			}
+			Debug.LogWarning($"QuestController: Could not grant community points reward of {amount}. No CommunityMeter found.");
+		}
+
+
+        #endregion
+
+        #region "Save data section"
+        public List<QuestSaveState> GetSaveData()
 		{
 			var result = new List<QuestSaveState>();
 			foreach (var qp in ActiveQuests)
@@ -278,59 +341,6 @@ namespace Assets.Scripts.Quests
 			questUI?.UpdateQuestUI();
 		}
 
-		private void GrantItemRewards(List<QuestRewardItem> rewardItems)
-		{
-			if (rewardItems == null || rewardItems.Count == 0)
-				return;
-
-			InventoryManager inventoryManager = FindAnyObjectByType<InventoryManager>();
-			if (inventoryManager == null)
-			{
-				Debug.LogWarning("QuestController: Could not grant item rewards. No InventoryManager found.");
-				return;
-			}
-
-			foreach (QuestRewardItem rewardItem in rewardItems)
-			{
-				if (rewardItem == null || rewardItem.itemPrefab == null || rewardItem.quantity <= 0)
-					continue;
-
-				// Instantiate the Item prefab instead of using new
-				Item newItem = Instantiate(rewardItem.itemPrefab);
-				
-				string itemTag = string.IsNullOrEmpty(rewardItem.inventoryTag) || rewardItem.inventoryTag == "Untagged"
-					? rewardItem.itemPrefab.tag
-					: rewardItem.inventoryTag;
-
-				newItem.Initialize(rewardItem.itemPrefab.ItemName, 
-					rewardItem.itemPrefab.Quantity,
-					rewardItem.itemPrefab.Sprite,
-					rewardItem.itemPrefab.ItemDescription,
-					rewardItem.itemPrefab.MaxStack,
-                    itemTag,
-                    rewardItem.itemPrefab.EKeySprite
-                );
-
-				int leftover = inventoryManager.AddItem(newItem, newItem.Quantity);
-
-				if (leftover > 0)
-				{
-					Debug.LogWarning($"QuestController: Could not add full reward stack for {rewardItem.itemPrefab.ItemName}. Leftover: {leftover}");
-				}
-			}
-		}
-
-		private void GrantCommunityPointsReward(int amount)
-		{
-			if (amount <= 0)
-				return;
-			CommunityMeter communityMeter = FindAnyObjectByType<CommunityMeter>();
-			if (communityMeter != null)
-			{
-				communityMeter.IncreaseCommunityLevel(amount);
-                return;
-			}
-			Debug.LogWarning($"QuestController: Could not grant community points reward of {amount}. No CommunityMeter found.");
-        }
+        #endregion
     }
 }

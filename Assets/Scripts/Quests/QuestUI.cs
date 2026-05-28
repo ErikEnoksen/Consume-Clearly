@@ -10,7 +10,6 @@ public class QuestUI : MonoBehaviour, IUILockable
     public GameObject objectiveTextPrefab;
     public GameObject questPanel;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         UIManager.Instance?.RegisterUI(this);
@@ -22,6 +21,7 @@ public class QuestUI : MonoBehaviour, IUILockable
         UIManager.Instance?.UnregisterUI(this);
     }
 
+    // Function to hide the quest panel when another UI is opened
     public void SetLocked(bool locked)
     {
         var target = questPanel != null ? questPanel : gameObject;
@@ -30,13 +30,13 @@ public class QuestUI : MonoBehaviour, IUILockable
 
     public void UpdateQuestUI()
     {
-        //destroy existing quest entries
+        // Destroy existing quest entries
         foreach (Transform child in questListContent)
         {
             Destroy(child.gameObject);
         }
 
-        //build quest entries
+        // Build updated quest entries
         foreach (var quest in QuestController.Instance.ActiveQuests)
         {
             GameObject entry = Instantiate(questEntryPrefab, questListContent);
@@ -49,7 +49,7 @@ public class QuestUI : MonoBehaviour, IUILockable
             {
                 GameObject objTextGO = Instantiate(objectiveTextPrefab, objectiveList);
                 TMP_Text objText = objTextGO.GetComponent<TMP_Text>();
-                objText.text = $"{objective.description} ({objective.currentAmount}/{objective.requiredAmount})"; //Collect 5 TNT (0/5)
+                objText.text = $"{objective.description} ({objective.currentAmount}/{objective.requiredAmount})"; 
             }
         }
     }

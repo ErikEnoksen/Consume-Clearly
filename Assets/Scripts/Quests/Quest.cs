@@ -15,7 +15,7 @@ public class Quest : ScriptableObject
 	
 	public QuestCompletionType completionType;
 
-	//called when scriptable obj is edited
+	// Called when scriptable obj is edited
 	public void OnValidate()
 	{
 		if (string.IsNullOrEmpty(questID))
@@ -26,6 +26,7 @@ public class Quest : ScriptableObject
 
 }
 
+// Rewards granted upon quest completion
 [Serializable]
 public class QuestReward
 {
@@ -35,6 +36,7 @@ public class QuestReward
     public List<QuestRewardItem> items;
 }
 
+// Item used in the quest rewards (can drag in the item you want to give in the unity inspector)
 [Serializable]
 public class QuestRewardItem
 {
@@ -63,6 +65,7 @@ public enum QuestCompletionType
 	AutoComplete
 }
 
+// More objective types (also referred to as quest types in documents) can be added here
 public enum objectiveType
 {
 	CollectItem, ReachLocation, RepairObject
