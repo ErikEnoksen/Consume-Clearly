@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8781617406767483414}
   - component: {fileID: 625152158153895744}
   - component: {fileID: -8249197410289733627}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: NPC-template
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,6 +144,9 @@ MonoBehaviour:
   airDeceleration: 30
   coyoteTime: 0.2
   jumpBufferTime: 0.2
+  baseGravity: 2.5
+  fallMultiplier: 3.5
+  shortJumpMultiplier: 3
   groundCheck: {fileID: 8132787090314073876}
   groundLayer:
     serializedVersion: 2
@@ -229,7 +232,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8132787090314073876}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +266,7 @@ GameObject:
   - component: {fileID: 4432041185540907788}
   - component: {fileID: 2877808787234032120}
   - component: {fileID: 939191693086221872}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}

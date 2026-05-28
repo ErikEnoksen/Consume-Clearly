@@ -14,31 +14,34 @@ namespace LevelObjects.Interactable
         [Header("Scene to load")] [Tooltip("Choose which scene needs to be load")] [SerializeField]
         private string sceneToLoad;
         
+        [SerializeField] private float transitionDelay = 1.0f;
+
         private AnimationController animationController;
-        private IEnumerator coroutine;
         private GameManager gameManager;
+        private bool _isTransitioning;
 
         private void Start()
         {
-            gameManager=GameObject.Find("GameManager").GetComponent<GameManager>();
-            animationController=GameObject.FindGameObjectWithTag("Player").GetComponent<AnimationController>();
+            gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+            animationController = GameObject.FindGameObjectWithTag("Player").GetComponent<AnimationController>();
             animationController.SetTurnBack(false);
         }
 
         public override void Interact()
         {
+            if (_isTransitioning) return;
+            if (gameManager != null && gameManager.IsTransitioning) return;
+            _isTransitioning = true;
             animationController.SetTurnBack(true);
-            coroutine=WaitAnimFinish(1.0f);
-            gameManager.SaveProgress(SceneManager.GetActiveScene().name);
-            StartCoroutine(coroutine);
+            StartCoroutine(WaitAnimFinish());
         }
 
-        private IEnumerator WaitAnimFinish(float waitTime)
+        private IEnumerator WaitAnimFinish()
         {
-            yield return new WaitForSeconds(waitTime);
-            gameManager.LoadScene(sceneToLoad);
-            gameManager.LoadProgress(sceneToLoad);
-
+            yield return new WaitForSeconds(transitionDelay);
+            gameManager.SaveProgress(SceneManager.GetActiveScene().name);
+            yield return null;
+            gameManager.TransitionToScene(sceneToLoad);
         }
 
         public override InteractableObjectState SaveState()

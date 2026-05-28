@@ -1,42 +1,51 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class ShopItem : MonoBehaviour
+public class ShopItem : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
     private Item item;
     [SerializeField]
     private int price;
 
-    private InventoryManager inventoryManager;
-    private MoneyManager moneyManager;
+    public int Price { get { return price; } }
+    public Item Item { get { return item; } }
+
+    [SerializeField]
+    private TMP_Text itemNameTxt;
+    [SerializeField] 
+    private TMP_Text itemPrice;
+    [SerializeField]
+    private Image selectedImage;
+
+    [SerializeField]
+    private ShopMenu shopMenu;
 
     private void Start()
     {
-        inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
-        moneyManager = GameObject.Find("MoneyManager").GetComponent <MoneyManager>();
+        gameObject.GetComponent<Image>().sprite = item.Sprite;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    public void OnPointerClick(PointerEventData eventData)
     {
-        if(collision.tag == "Player")
+        if(eventData.button == PointerEventData.InputButton.Left)
         {
-            if (Input.GetKeyDown(KeyCode.G))
-            {
-                BuyItem(item);
-            }
+            OnLeftClick();
         }
     }
 
-    public void BuyItem(Item item)
+    private void OnLeftClick()
     {
-        if (moneyManager.ChangeMoneyAmount(-price))
-        {
-            inventoryManager.AddItem(item.ItemName, item.ItemName, 1, item.Sprite, item.ItemDescription, item.MaxStack, item.gameObject.tag);
-        }
-        else
-        {
-            Debug.Log("Not enough money");
-        }
+        itemNameTxt.text = item.ItemName;
+        itemPrice.text = price.ToString();
+        selectedImage.sprite = item.Sprite;
+        selectedImage.enabled = true;
+
+        shopMenu.Item = item;
+        shopMenu.Price = price;
     }
 
 }

@@ -11,6 +11,7 @@ public class Dialogue : MonoBehaviour
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private Image dialogueBoxImage;
+    [SerializeField] private Image characterBoxImage;
     
     [Header("Choice Buttons:")]
     [SerializeField] private GameObject choicesPanel;
@@ -51,7 +52,7 @@ public class Dialogue : MonoBehaviour
 
         if (choiceHandler == null)
         {
-            choiceHandler = FindObjectOfType<DialogueChoiceHandler>();
+            choiceHandler = GetComponent<DialogueChoiceHandler>();
         }
         inventoryManager = FindFirstObjectByType<InventoryManager>();
     }
@@ -61,7 +62,7 @@ public class Dialogue : MonoBehaviour
         if (isDialogueActive && choicesPanel != null && !choicesPanel.activeSelf && Input.GetMouseButtonDown(0))
         {
             if (currentDialogue == null || currentDialogue.dialogueLines.Length == 0)
-                return;
+                return; 
 
             if (isTyping)
             {
@@ -130,6 +131,19 @@ public class Dialogue : MonoBehaviour
             {
                 dialogueBoxImage.sprite = line.dialogueBoxSprite;
                 dialogueBoxImage.type = Image.Type.Sliced;
+            }
+        }
+
+        if (characterBoxImage != null)
+        {
+            if (line.speakerPortrait != null)
+            {
+                characterBoxImage.sprite = line.speakerPortrait;
+                characterBoxImage.gameObject.SetActive(true);
+            }
+            else
+            {
+                characterBoxImage.gameObject.SetActive(false);
             }
         }
 

@@ -12,16 +12,24 @@
             public static GameManager Instance { get; private set; }
         
             SaveData data = new SaveData();
-        
+            private List<InventorySlotData> _cachedInventory = new List<InventorySlotData>();
+            private int _cachedMoney = 0;
+            private int _cachedCommunityLevel = 0;
+            private int _cachedCommunityOverflow = 0;
+            private float _cachedHungerValue = 100f;
+            private int _cachedSatisfactionValue = 50;
+            private bool _cachedSatisfactionPassive = false;
+            private readonly Dictionary<string, Vector3> _sessionPositions = new Dictionary<string, Vector3>();
+
             public float GameTime { get; private set; }
             public string CurrentScene { get; private set; }
-        
-// csharp
+            
             private void Awake()
             {
                 if (Instance == null)
                 {
                     Instance = this;
+                    transform.SetParent(null);
                     DontDestroyOnLoad(gameObject);
                     Initialize();
                 }
@@ -34,6 +42,7 @@
                     {
                         Destroy(Instance.gameObject);
                         Instance = this;
+                        transform.SetParent(null);
                         DontDestroyOnLoad(gameObject);
                         Initialize();
                     }
@@ -59,86 +68,11 @@
             private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
             {
                 CurrentScene = scene.name;
-        
-                // Setup camera background if it's a valid gameplay scene
-                if (IsSceneValidForCamera())
-                {
-                    StartCoroutine(SetupCameraBackground());
-                }
-            }
-        
-            private bool IsSceneValidForCamera()
-            {
-                return !string.IsNullOrEmpty(CurrentScene) && CurrentScene != "MainMenu";
-            }
-        
-            private IEnumerator SetupCameraBackground()
-            {
-                // Wait for player to be spawned
-                yield return new WaitForSeconds(0.1f);
-        
-                // Find the background sprite in the scene
-                SpriteRenderer backgroundSprite = FindSceneBackground();
-        
-                if (backgroundSprite != null)
-                {
-                    // Find the camera controller
-                    CameraController cameraController = FindObjectOfType<CameraController>();
-        
-                    if (cameraController != null)
-                    {
-                        cameraController.SetBackgroundSprite(backgroundSprite);
-                        Debug.Log($"Background sprite assigned to camera in scene {CurrentScene}");
-                    }
-                    else
-                    {
-                        Debug.LogWarning("CameraController not found in scene");
-                    }
-                }
-                else
-                {
-                    Debug.LogWarning($"No background sprite found in scene {CurrentScene}");
-                }
-            }
-        
-            private SpriteRenderer FindSceneBackground()
-            {
-                // Try to find by tag first
-                GameObject backgroundObject = GameObject.FindGameObjectWithTag("Background");
-                if (backgroundObject != null)
-                {
-                    return backgroundObject.GetComponent<SpriteRenderer>();
-                }
-        
-                // Try to find by name
-                backgroundObject = GameObject.Find("Background");
-                if (backgroundObject != null)
-                {
-                    return backgroundObject.GetComponent<SpriteRenderer>();
-                }
-        
-                // As a fallback, find any sprite renderer that looks like a background
-                SpriteRenderer[] allSprites = FindObjectsOfType<SpriteRenderer>();
-                foreach (var sprite in allSprites)
-                {
-                    if (sprite.gameObject.name.ToLower().Contains("background") ||
-                        sprite.gameObject.layer == LayerMask.NameToLayer("Background"))
-                    {
-                        return sprite;
-                    }
-                }
-        
-                return null;
             }
         
             private void Update()
             {
                 GameTime += Time.deltaTime;
-        
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    GoToMainMenu();
-                }
         
                 // Quick save/load shortcuts (optional - remove if not needed)
                 if (Input.GetKeyDown(KeyCode.F5))
@@ -179,12 +113,63 @@
                     }
                 }
         
+                InventoryManager inventoryManager = FindAnyObjectByType<InventoryManager>();
+                if (inventoryManager != null)
+                {
+                    _cachedInventory = inventoryManager.SaveInventory();
+                    saveData.InventorySlots = _cachedInventory;
+                }
+
+                MoneyManager moneyManager = FindAnyObjectByType<MoneyManager>();
+                if (moneyManager != null)
+                {
+                    _cachedMoney = moneyManager.GetMoney();
+                    saveData.Money = _cachedMoney;
+                }
+
+                if (DayCycleManager.Instance != null)
+                {
+                    saveData.CurrentDay = DayCycleManager.Instance.CurrentDay;
+                    saveData.DayTimer = DayCycleManager.Instance.DayTimer;
+                }
+
+                CommunityMeter communityMeter = FindAnyObjectByType<CommunityMeter>();
+                if (communityMeter != null)
+                {
+                    _cachedCommunityLevel = communityMeter.CommunityLevel;
+                    _cachedCommunityOverflow = communityMeter.OverflowPoints;
+                }
+                saveData.CommunityLevel = _cachedCommunityLevel;
+                saveData.CommunityOverflowPoints = _cachedCommunityOverflow;
+
+                PlayerHunger playerHunger = FindAnyObjectByType<PlayerHunger>();
+                if (playerHunger != null)
+                    _cachedHungerValue = playerHunger.GetHungerValue();
+                saveData.HungerValue = _cachedHungerValue;
+
+                CircularSatisfactionMeter satisfactionMeter = FindAnyObjectByType<CircularSatisfactionMeter>();
+                if (satisfactionMeter != null)
+                {
+                    _cachedSatisfactionValue = satisfactionMeter.currentSatisfactionValue;
+                    _cachedSatisfactionPassive = satisfactionMeter.IsPassivePointActive;
+                }
+                saveData.SatisfactionValue = _cachedSatisfactionValue;
+                saveData.IsPassivePointActive = _cachedSatisfactionPassive;
+
+                if (Assets.Scripts.Quests.QuestController.Instance != null)
+                {
+                    saveData.ActiveQuestStates = Assets.Scripts.Quests.QuestController.Instance.GetSaveData();
+                    saveData.CompletedQuestIDs = Assets.Scripts.Quests.QuestController.Instance.GetCompletedQuestIDs();
+                }
+
                 SaveSystem.Save(saveData,customFileName);
                 Debug.Log($"Game saved! {saveData.InteractableStates.Count} interactable objects saved.");
             }
         
             public void LoadProgress(string customFileName = null)
             {
+                Time.timeScale = 1f;
+                PauseMenu.isPaused = false;
                 Debug.Log("Loading game progress...");
                 data = SaveSystem.Load(customFileName);
                 if (data != null)
@@ -193,9 +178,19 @@
                         $"Save data loaded - Time: {data.GameTime}, Scene: {data.CurrentScene}, Position: {data.PlayerPosition}");
                     GameTime = data.GameTime;
                     CurrentScene = data.CurrentScene;
-        
+                    _cachedInventory = data.InventorySlots ?? new List<InventorySlotData>();
+                    _cachedMoney = data.Money;
+                    _cachedCommunityLevel = data.CommunityLevel;
+                    _cachedCommunityOverflow = data.CommunityOverflowPoints;
+                    _cachedHungerValue = data.HungerValue > 0 ? data.HungerValue : 100f;
+                    _cachedSatisfactionValue = data.SatisfactionValue > 0 ? data.SatisfactionValue : 50;
+                    _cachedSatisfactionPassive = data.IsPassivePointActive;
+
+                    if (DayCycleManager.Instance != null)
+                        DayCycleManager.Instance.LoadState(data.CurrentDay > 0 ? data.CurrentDay : 1, data.DayTimer);
+
                     StartCoroutine(LoadSceneWithPlayerAndObjects(data.CurrentScene, data.PlayerPosition,
-                        data.InteractableStates));
+                        data.InteractableStates, data.ActiveQuestStates, data.CompletedQuestIDs));
                 }
                 else
                 {
@@ -204,7 +199,9 @@
             }
         
             private IEnumerator LoadSceneWithPlayerAndObjects(string sceneName, Vector3 playerPosition,
-                List<InteractableObjectState> interactableStates)
+                List<InteractableObjectState> interactableStates,
+                List<Save.QuestSaveState> activeQuestStates = null,
+                List<string> completedQuestIDs = null)
             {
                 SceneManager.LoadScene(sceneName);
         
@@ -238,8 +235,37 @@
         
                 // Load interactable object states
                 LoadInteractableStates(interactableStates);
+
+                if (activeQuestStates != null && Assets.Scripts.Quests.QuestController.Instance != null)
+                    Assets.Scripts.Quests.QuestController.Instance.LoadSaveData(activeQuestStates, completedQuestIDs);
+
+                InventoryManager inventoryManager = FindAnyObjectByType<InventoryManager>();
+                if (inventoryManager != null)
+                {
+                    List<InventorySlotData> toRestore = _cachedInventory?.Count > 0
+                        ? _cachedInventory
+                        : data.InventorySlots;
+                    if (toRestore != null)
+                        inventoryManager.LoadInventory(toRestore);
+                }
+
+                MoneyManager moneyManager = FindAnyObjectByType<MoneyManager>();
+                if (moneyManager != null)
+                    moneyManager.SetMoney(_cachedMoney);
+
+                CommunityMeter communityMeter = FindAnyObjectByType<CommunityMeter>();
+                if (communityMeter != null)
+                    communityMeter.LoadCommunityState(_cachedCommunityLevel, _cachedCommunityOverflow);
+
+                PlayerHunger playerHunger = FindAnyObjectByType<PlayerHunger>();
+                if (playerHunger != null)
+                    playerHunger.SetHungerValue(_cachedHungerValue);
+
+                CircularSatisfactionMeter satisfactionMeter = FindAnyObjectByType<CircularSatisfactionMeter>();
+                if (satisfactionMeter != null)
+                    satisfactionMeter.LoadSatisfactionState(_cachedSatisfactionValue, _cachedSatisfactionPassive);
             }
-        
+
             private void LoadInteractableStates(List<InteractableObjectState> states)
             {
                 if (states == null || states.Count == 0)
@@ -317,7 +343,120 @@
             {
                 SceneManager.LoadScene(sceneName);
             }
-        
+
+            public bool IsTransitioning { get; private set; }
+
+            public void TransitionToScene(string sceneName)
+            {
+                if (IsTransitioning) return;
+                IsTransitioning = true;
+                StartCoroutine(TransitionCoroutine(sceneName));
+            }
+
+            private IEnumerator TransitionCoroutine(string sceneName)
+            {
+                if (string.IsNullOrEmpty(sceneName) || !Application.CanStreamedLevelBeLoaded(sceneName))
+                {
+                    Debug.LogError($"Cannot transition to scene '{sceneName}': not found in build settings.");
+                    IsTransitioning = false;
+                    yield break;
+                }
+
+                // Remember where the player was in the current scene before leaving
+                string leavingScene = SceneManager.GetActiveScene().name;
+                GameObject leavingPlayer = PlayerManager.Instance?.GetPlayer();
+                if (leavingPlayer != null)
+                    _sessionPositions[leavingScene] = leavingPlayer.transform.position;
+
+                CommunityMeter leavingCommunityMeter = FindAnyObjectByType<CommunityMeter>();
+                if (leavingCommunityMeter != null)
+                {
+                    _cachedCommunityLevel = leavingCommunityMeter.CommunityLevel;
+                    _cachedCommunityOverflow = leavingCommunityMeter.OverflowPoints;
+                }
+
+                PlayerHunger leavingHunger = FindAnyObjectByType<PlayerHunger>();
+                if (leavingHunger != null)
+                    _cachedHungerValue = leavingHunger.GetHungerValue();
+
+                CircularSatisfactionMeter leavingSatisfaction = FindAnyObjectByType<CircularSatisfactionMeter>();
+                if (leavingSatisfaction != null)
+                {
+                    _cachedSatisfactionValue = leavingSatisfaction.currentSatisfactionValue;
+                    _cachedSatisfactionPassive = leavingSatisfaction.IsPassivePointActive;
+                }
+
+                // Cache inventory and money so items picked up since the last save survive the scene swap
+                InventoryManager leavingInventory = FindAnyObjectByType<InventoryManager>();
+                if (leavingInventory != null)
+                    _cachedInventory = leavingInventory.SaveInventory();
+
+                MoneyManager leavingMoney = FindAnyObjectByType<MoneyManager>();
+                if (leavingMoney != null)
+                    _cachedMoney = leavingMoney.GetMoney();
+
+                AsyncOperation load = SceneManager.LoadSceneAsync(sceneName);
+                if (load == null)
+                {
+                    Debug.LogError($"LoadSceneAsync returned null for scene '{sceneName}'.");
+                    yield break;
+                }
+
+                float timeout = 5f, elapsed = 0f;
+                while (!load.isDone)
+                {
+                    yield return null;
+                    elapsed += Time.deltaTime;
+                    if (elapsed >= timeout)
+                    {
+                        Debug.LogError($"Timed out loading scene '{sceneName}'.");
+                        yield break;
+                    }
+                }
+
+                elapsed = 0f;
+                while (PlayerManager.Instance == null || PlayerManager.Instance.GetPlayer() == null)
+                {
+                    yield return null;
+                    elapsed += Time.deltaTime;
+                    if (elapsed >= timeout) yield break;
+                }
+
+                // Restore position before rendering the next frame to avoid spawn point pop
+                if (_sessionPositions.TryGetValue(sceneName, out Vector3 returnPos))
+                    PlayerManager.Instance.SetPlayerPosition(returnPos);
+
+                yield return null;
+
+                // Restore scene-specific interactable states from this scene's save file if one exists
+                SaveData sceneData = SaveSystem.Load(sceneName);
+                if (sceneData != null)
+                    LoadInteractableStates(sceneData.InteractableStates);
+
+                // Always restore inventory and money from cache so they follow the player
+                InventoryManager inventoryManager = FindAnyObjectByType<InventoryManager>();
+                if (inventoryManager != null && _cachedInventory != null && _cachedInventory.Count > 0)
+                    inventoryManager.LoadInventory(_cachedInventory);
+
+                MoneyManager moneyManager = FindAnyObjectByType<MoneyManager>();
+                if (moneyManager != null)
+                    moneyManager.SetMoney(_cachedMoney);
+
+                CommunityMeter communityMeter = FindAnyObjectByType<CommunityMeter>();
+                if (communityMeter != null)
+                    communityMeter.LoadCommunityState(_cachedCommunityLevel, _cachedCommunityOverflow);
+
+                PlayerHunger playerHunger = FindAnyObjectByType<PlayerHunger>();
+                if (playerHunger != null)
+                    playerHunger.SetHungerValue(_cachedHungerValue);
+
+                CircularSatisfactionMeter satisfactionMeter = FindAnyObjectByType<CircularSatisfactionMeter>();
+                if (satisfactionMeter != null)
+                    satisfactionMeter.LoadSatisfactionState(_cachedSatisfactionValue, _cachedSatisfactionPassive);
+
+                IsTransitioning = false;
+            }
+
             public void LoadMainMenu()
             {
                 SceneManager.LoadScene("MainMenu");

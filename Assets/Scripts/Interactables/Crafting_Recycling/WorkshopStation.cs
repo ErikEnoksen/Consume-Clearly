@@ -4,7 +4,7 @@ using LevelObjects.Interactable;
 using UnityEngine;
 using Save;
 
-public class WorkshopStation : Interactable
+public class WorkshopStation : Interactable, IUILockable
 {
     
     //StationType can expand into like BicycleRepair, Clothing Repair or multiple different instances.
@@ -14,22 +14,53 @@ public class WorkshopStation : Interactable
     [SerializeField] private GameObject workshopUI;
     
     private InventoryManager inventoryManager;
-    
-   
+    private CircularSatisfactionMeter satisfactionMeter;
+
+    private int CSIncreaseAmount = 10;
+    private bool _isLocked = false;
+
     void Start()
     {
         inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
+        satisfactionMeter = GameObject.Find("Sliders").GetComponent<CircularSatisfactionMeter>();
+        UIManager.Instance?.RegisterUI(this);
     }
-    public override void Interact()
+
+    private void OnDestroy()
     {
-        if (workshopUI.activeSelf)
+        UIManager.Instance?.UnregisterUI(this);
+    }
+
+    public void SetLocked(bool locked)
+    {
+        _isLocked = locked;
+        if (locked && workshopUI.activeSelf)
         {
             workshopUI.SetActive(false);
+            UIManager.Instance?.RemoveLock(UIManager.UILockType.Workshop);
+        }
+    }
+
+    public override void Interact()
+    {
+        if (_isLocked) return;
+
+        if (workshopUI.activeSelf)
+        {
+            CloseWorkshop();
+            UIManager.Instance?.RemoveLock(UIManager.UILockType.Workshop);
         }
         else
         {
             workshopUI.GetComponent<WorkshopUI>().Open(this);
+            UIManager.Instance?.AddLock(UIManager.UILockType.Workshop);
         }
+    }
+
+    public void CloseWorkshop()
+    {
+        workshopUI.SetActive(false);
+        UIManager.Instance?.RemoveLock(UIManager.UILockType.Workshop);
     }
     public override InteractableObjectState SaveState()
     {
@@ -44,25 +75,29 @@ public class WorkshopStation : Interactable
 
         foreach (var input in recipe.inputs)
         {
-            if (!HasItem(input.itemName, input.amount))
+            Item item = input.itemPrefab.GetComponent<Item>();
+            if (!HasItem(item.ItemName, input.amount))
             {
-                Debug.Log($"Missing: {input.itemName} x{input.amount}");
+                Debug.Log($"Missing: {item.ItemName} x{input.amount}");
                 return false;
             }
         }
 
         foreach (var input in recipe.inputs)
-            inventoryManager.RemoveItem(input.itemName, input.amount);
+            inventoryManager.RemoveItem(input.itemPrefab.GetComponent<Item>().ItemName, input.amount);
 
         foreach (var output in recipe.outputPrefabs)
         {
             Item item = output.itemPrefab.GetComponent<Item>();
-            inventoryManager.AddItem(
-                item.Id, item.ItemName, output.amount,
-                item.Sprite, item.ItemDescription, item.MaxStack,
-                output.itemPrefab.tag
-            );
+            inventoryManager.AddItem(item, 1);
         }
+
+        // Increase Circular Satisfaction Meter
+        if (satisfactionMeter != null)
+        {
+            satisfactionMeter.IncreaseSatisfactionValue(CSIncreaseAmount);
+        }
+
         Debug.Log($"Processed at {stationType}!");
         return true;
     }
@@ -70,7 +105,7 @@ public class WorkshopStation : Interactable
     public bool CanProcess(WorkshopRecipe recipe)
     {
         foreach (var input in recipe.inputs)
-            if (!HasItem(input.itemName, input.amount))
+            if (!HasItem(input.itemPrefab.GetComponent<Item>().ItemName, input.amount))
                 return false;
         return true;
     }

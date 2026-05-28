@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e9525c0c9818184791b9e8f6b179e8d, type: 3}
   m_Name: Workshop Recipe
   m_EditorClassIdentifier: Main::WorkshopRecipe
-  stationType: 2
+  stationType: 0
   inputs:
-  - item: {fileID: 0}
+  - itemName: 
     amount: 0
-  outputs:
-  - item: {fileID: 0}
+    icon: {fileID: 0}
+  outputPrefabs:
+  - itemPrefab: {fileID: 0}
     amount: 0

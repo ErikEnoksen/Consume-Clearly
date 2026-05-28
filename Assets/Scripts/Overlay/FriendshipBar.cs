@@ -13,16 +13,24 @@ public class FriendshipBar : MonoBehaviour
     }
 
     [SerializeField] private Slider friendshipBar;
+    [SerializeField] private Image feedback; 
     [SerializeField] private List<MoodSprite> moodSprites;
 
     private CompanionFriendship currentCompanion;
     private Image handleImage;
+    public float feedbackDuration = 3f;
+    private float feedbackTimer = 0f;
 
     private void Start()
     {
         if (friendshipBar != null)
         {
             friendshipBar.gameObject.SetActive(false);
+        }
+        if (feedback == null)
+        {
+            Debug.LogError("FriendshipBar: Feedback Image reference is missing!");
+            return;
         }
 
         // Subscribe to dialogue events (these now pass CompanionFriendship)
@@ -54,6 +62,7 @@ public class FriendshipBar : MonoBehaviour
 
             // Show the friendship bar
             ShowFriendshipBar();
+            feedback.gameObject.SetActive(false); 
         }
         else
         {
@@ -98,6 +107,7 @@ public class FriendshipBar : MonoBehaviour
             friendshipBar.fillRect.GetComponent<Image>().color = currentCompanion.GetFriendshipColor();
             friendshipBar.maxValue = currentCompanion.MaxFriendshipLevel;
             friendshipBar.value = newLevel;
+            FeedbackLoop();
         }
     }
 
@@ -125,6 +135,26 @@ public class FriendshipBar : MonoBehaviour
             }
         }
     }
+
+    private void FeedbackLoop()
+    {
+        feedback.gameObject.SetActive(true);
+
+        feedbackTimer = feedbackDuration;
+    }
+
+    public void Update()
+    {
+        if (feedback.gameObject.activeSelf)
+        {
+            feedbackTimer -= Time.deltaTime;
+            if (feedbackTimer <= 0f)
+            {
+                feedback.gameObject.SetActive(false);
+            }
+        }
+    }
+
 
     private void OnDestroy()
     {

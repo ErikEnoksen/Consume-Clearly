@@ -20,7 +20,7 @@ namespace Player
         [SerializeField] private float jumpBufferTime = 0.2f;
 
         [Header("Gravity Multipliers")] [SerializeField]
-        private float baseGravity = 2.5f;
+        private float baseGravity = 3.0f;
 
         [SerializeField] private float fallMultiplier = 3.5f;
         [SerializeField] private float shortJumpMultiplier = 3f;
@@ -41,6 +41,8 @@ namespace Player
 
         private AnimationController animationController;
 
+        private bool canMove = true;
+
         // Climb related
         public bool IsClimbing { get; private set; } = false;
         private float climbVerticalVelocity = 0f; // set by ClimbController each FixedUpdate
@@ -50,6 +52,39 @@ namespace Player
         private void Awake()
         {
             ValidateComponents();
+        }
+
+        private void OnEnable()
+        {
+            Dialogue.OnDialogueStarted += OnDialogueStarted;
+            Dialogue.OnDialogueEnded += OnDialogueEnded;
+        }
+
+        private void OnDisable()
+        {
+            Dialogue.OnDialogueStarted -= OnDialogueStarted;
+            Dialogue.OnDialogueEnded -= OnDialogueEnded;
+        }
+
+        private void OnDialogueStarted(CompanionFriendship _) => FreezeMovement(true);
+        private void OnDialogueEnded(DialogueObject _) => FreezeMovement(false);
+
+        public void FreezeMovement(bool freeze)
+        {
+            canMove = !freeze;
+            if (!canMove)
+            {
+                horizontal = 0f;
+                jumpBufferTimeCounter = 0f;
+                rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+                animationController.SetWalking(false);
+                animationController.SetIdle(true);
+            }
+            else
+            {
+                rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
         }
 
         private void ValidateComponents()
@@ -100,7 +135,11 @@ namespace Player
         // All input is read in Update so GetKeyDown/GetKeyUp are never missed between FixedUpdate frames
         private void Update()
         {
-            horizontal = Input.GetAxisRaw("Horizontal");
+            if (!canMove) return;
+
+            float moveLeft = Input.GetKey(KeybindManager.Instance.GetKey("MoveLeft")) ? -1f : 0f;
+            float moveRight = Input.GetKey(KeybindManager.Instance.GetKey("MoveRight")) ? 1f : 0f;
+            horizontal = moveLeft + moveRight;
 
             // Buffer jump input regardless of ground state so pressing jump slightly before landing still works
             if (Input.GetKeyDown(KeybindManager.Instance.GetKey("Jump")))
@@ -111,14 +150,19 @@ namespace Player
             // Variable jump height: catch key release in Update so it is never missed
             if (Input.GetKeyUp(KeybindManager.Instance.GetKey("Jump")) && rb.linearVelocity.y > 0f)
             {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.1f);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
             }
         }
 
         private void FixedUpdate()
         {
+            if (!canMove) return;
+
             Move();
 
+            float moveLeft = Input.GetKey(KeybindManager.Instance.GetKey("MoveLeft")) ? -1f : 0f;
+            float moveRight = Input.GetKey(KeybindManager.Instance.GetKey("MoveRight")) ? 1f : 0f;
+            horizontal = moveLeft + moveRight;
             bool isGrounded = IsGrounded();
 
             // Handle walking and idle animations
@@ -155,7 +199,7 @@ namespace Player
                     // Falling - pull down fast for snappy landing
                     rb.gravityScale = fallMultiplier;
                 }
-                else if (rb.linearVelocity.y > 0 && !Input.GetButton("Jump"))
+                else if (rb.linearVelocity.y > 0 && !Input.GetKey(KeybindManager.Instance.GetKey("Jump")))
                 {
                     // Released early - cut the jump short
                     rb.gravityScale = shortJumpMultiplier;
@@ -294,8 +338,9 @@ namespace Player
                 transform.position = pos;
             }
 
-            // Ensure velocity reset on enter
+            // Ensure velocity reset on enter and disable gravity while climbing
             rb.linearVelocity = new Vector2(0f, 0f);
+            rb.gravityScale = 0f;
 
             // Notify animator via AnimationController
             animationController.SetWalking(false);
@@ -312,7 +357,8 @@ namespace Player
             currentClimbTransform = null;
             currentClimbIsLadder = false;
 
-            // Apply exit velocity
+            // Restore gravity and apply exit velocity
+            rb.gravityScale = baseGravity;
             rb.linearVelocity = exitVelocity;
 
             // Reset climb vertical control

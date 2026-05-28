@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\erike\\\\Documents\\\\GitHub\\\\Consume-Clearly\" -Recurse -Name)",
+      "Bash(Get-ChildItem *)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\erike\\\\Documents\\\\GitHub\\\\Consume-Clearly\\\\Assets\\\\Quests\" -Recurse | Select-Object -First 50 | ForEach-Object { $_.FullName })"
+    ]
+  }
+}

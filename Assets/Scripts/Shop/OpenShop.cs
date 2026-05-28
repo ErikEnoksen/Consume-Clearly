@@ -7,17 +7,11 @@ namespace LevelObjects.Interactable
 {
     public class OpenShop : Interactable
     {
-        private Collider2D collider;
-
         [SerializeField] private GameObject Shop;
-        void Start()
-        {
-            collider = GetComponent<Collider2D>();
-        }
 
         public override void Interact()
         {
-            if (!Shop.active)
+            if (!Shop.activeSelf)
             {
                 Shop.SetActive(true);
             }

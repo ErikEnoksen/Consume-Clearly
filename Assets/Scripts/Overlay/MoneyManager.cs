@@ -16,6 +16,15 @@ public class MoneyManager : MonoBehaviour
             moneyDisplay.text = $"${moneyCount}";
     }
 
+    public int GetMoney() => moneyCount;
+
+    public void SetMoney(int amount)
+    {
+        moneyCount = amount;
+        if (moneyDisplay != null)
+            moneyDisplay.text = $"${moneyCount}";
+    }
+
     public bool ChangeMoneyAmount(int amount)
     {
         if (amount > 0)
@@ -32,16 +41,16 @@ public class MoneyManager : MonoBehaviour
     private void AddMoney(int amount)
     {
         moneyCount += amount;
-        moneyDisplay.text = $"${moneyCount}";
+        if (moneyDisplay != null) moneyDisplay.text = $"${moneyCount}";
         moneyChanged = true;
     }
 
     private void RemoveMoney(int amount)
     {
-        if(amount <= moneyCount)
+        if (amount <= moneyCount)
         {
             moneyCount -= amount;
-            moneyDisplay.text = $"${moneyCount}";
+            if (moneyDisplay != null) moneyDisplay.text = $"${moneyCount}";
             moneyChanged = true;
         }
         else

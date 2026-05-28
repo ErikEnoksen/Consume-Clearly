@@ -14,12 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::WorkshopRecipe
   stationType: 0
   inputs:
-  - itemName: Rope
+  - itemPrefab: {fileID: 2151010398377138779, guid: 3d9c330ca2a68294588a3d3bf10adf72, type: 3}
     amount: 1
-    icon: {fileID: -4570153536982545689, guid: 756f2426d9db9c8499593cf1f529a608, type: 3}
-  - itemName: Plank
+  - itemPrefab: {fileID: 1609036242584951016, guid: 2320ca8f8b038914288c1ec2910a5302, type: 3}
     amount: 1
-    icon: {fileID: 5736930619707861622, guid: ac51451c284c0b44b89026f87301fa1b, type: 3}
   outputPrefabs:
   - itemPrefab: {fileID: 5489925412272331661, guid: 1da58d9b3b87dc1449f311a297e2cb95, type: 3}
     amount: 1

@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
 
        Instance = this;
 
+       if (sounds == null) return;
        foreach (Sound s in sounds)
        {
            s.source = gameObject.AddComponent<AudioSource>();
@@ -48,31 +49,67 @@ public class AudioManager : MonoBehaviour
     
     //Quick check so Play() dosent go through the whole array every call
     private Dictionary<string, Sound> _soundMap;
+    private float _sfxVolume = 1f;
 
     private void Start()
     {
-        AudioListener.volume = PlayerPrefs.GetFloat("MasterVolume", 1f);
         _soundMap = new Dictionary<string, Sound>();
-        
-        foreach (Sound s in sounds)
+
+        if (sounds != null)
         {
-            _soundMap.Add(s.name, s);
+            foreach (Sound s in sounds)
+                _soundMap.Add(s.name, s);
         }
-        
+
+        // Apply saved volume settings — prefer SettingsManager so values stay in sync
+        if (SettingsManager.Instance != null)
+        {
+            AudioListener.volume = SettingsManager.Instance.masterVolume;
+            SetMusicVolume(SettingsManager.Instance.musicOn ? SettingsManager.Instance.musicVolume : 0f);
+            SetSfxVolume(SettingsManager.Instance.sfxVolume);
+        }
+        else
+        {
+            AudioListener.volume = PlayerPrefs.GetFloat("MasterVolume", 1f);
+            bool musicOn = PlayerPrefs.GetInt("MusicOn", 1) == 1;
+            SetMusicVolume(musicOn ? PlayerPrefs.GetFloat("MusicVolume", 1f) : 0f);
+            SetSfxVolume(PlayerPrefs.GetFloat("SfxVolume", 1f));
+        }
+
+        if (sounds == null) return;
+
         //Auto-play anything that has been marked with Loop on start
         foreach (Sound s in sounds)
         {
             if (s.loop && s.source != null)
-            {
                 s.source.Play();
-            }
         }
-        
     }
 
     public void SetMasterVolume(float value)
     {
         AudioListener.volume = value;
+    }
+
+    public void SetMusicVolume(float value)
+    {
+        if (sounds == null) return;
+        foreach (var s in sounds)
+        {
+            if (s.loop && s.source != null)
+                s.source.volume = s.volume * value;
+        }
+    }
+
+    public void SetSfxVolume(float value)
+    {
+        _sfxVolume = value;
+        if (sounds == null) return;
+        foreach (var s in sounds)
+        {
+            if (!s.loop && s.source != null)
+                s.source.volume = s.volume * value;
+        }
     }
 
     /*
@@ -81,10 +118,8 @@ public class AudioManager : MonoBehaviour
 
     public void Play(string soundName)
     {
-        if (!TryGet(soundName, out Sound s))
-        {
-            return;
-        }
+        if (!TryGet(soundName, out Sound s)) return;
+        s.source.volume = s.volume * _sfxVolume;
         s.source.Play();
     }
     
@@ -140,6 +175,12 @@ public class AudioManager : MonoBehaviour
             return true;
         }
         
+        if (sounds == null)
+        {
+            s = null;
+            return false;
+        }
+
         foreach (Sound sound in sounds)
         {
             if (sound.name == soundName)

@@ -37,15 +37,21 @@ namespace Tests.EditMode
         [Test]
         public void Inputs_CanBePopulated()
         {
+            GameObject prefabA = new GameObject("PrefabA");
+            GameObject prefabB = new GameObject("PrefabB");
+
             recipe.inputs = new List<WorkshopRecipe.ItemStack>
             {
-                new WorkshopRecipe.ItemStack { itemName = "Wood", amount = 3 },
-                new WorkshopRecipe.ItemStack { itemName = "Stone", amount = 2 }
+                new WorkshopRecipe.ItemStack { itemPrefab = prefabA, amount = 3 },
+                new WorkshopRecipe.ItemStack { itemPrefab = prefabB, amount = 2 }
             };
 
             Assert.AreEqual(2, recipe.inputs.Count);
-            Assert.AreEqual("Wood", recipe.inputs[0].itemName);
+            Assert.AreEqual(prefabA, recipe.inputs[0].itemPrefab);
             Assert.AreEqual(3, recipe.inputs[0].amount);
+
+            Object.DestroyImmediate(prefabA);
+            Object.DestroyImmediate(prefabB);
         }
 
         [Test]
@@ -63,15 +69,17 @@ namespace Tests.EditMode
         [Test]
         public void ItemStack_FieldsAreReadable()
         {
+            GameObject prefab = new GameObject("Iron");
             var stack = new WorkshopRecipe.ItemStack
             {
-                itemName = "Iron",
-                amount = 5,
-                icon = null
+                itemPrefab = prefab,
+                amount = 5
             };
 
-            Assert.AreEqual("Iron", stack.itemName);
+            Assert.AreEqual(prefab, stack.itemPrefab);
             Assert.AreEqual(5, stack.amount);
+
+            Object.DestroyImmediate(prefab);
         }
 
         [Test]

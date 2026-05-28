@@ -1,5 +1,6 @@
-using System.Collections;
 using Companion;
+using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,14 +11,19 @@ namespace Player
         public static PlayerManager Instance { get; private set; }
 
         [SerializeField] private GameObject playerPrefab; // Reference to the player prefab
+        [SerializeField] private bool delaySpawnUntilSignal;
+        [SerializeField] private float fallThreshold = -20f;
 
         private GameObject player;
+        private Vector3 lastRespawnPosition;
+        private bool isRespawning;
 
         private void Awake()
         {
             if (Instance == null)
             {
                 Instance = this;
+                transform.SetParent(null);
                 DontDestroyOnLoad(gameObject);
 
                 // Subscribe to the SceneManager.sceneLoaded event
@@ -35,6 +41,25 @@ namespace Player
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
+        private void Update()
+        {
+            if (player == null || isRespawning) return;
+            if (player.transform.position.y < fallThreshold)
+                StartCoroutine(Respawn());
+        }
+
+        private IEnumerator Respawn()
+        {
+            isRespawning = true;
+            yield return StartCoroutine(WaitAndSetPosition(lastRespawnPosition));
+            isRespawning = false;
+        }
+
+        public void SetRespawnPoint(Vector3 position)
+        {
+            lastRespawnPosition = position;
+        }
+
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             // Clear the player reference if the scene has changed
@@ -46,7 +71,7 @@ namespace Player
             }
 
             // Spawn player only if it's not found in the scene and the scene isn't the MainMenu
-            if (scene.name != "MainMenu" && player == null)
+            if (scene.name != "MainMenu" && player == null && !delaySpawnUntilSignal)
             {
                 Debug.Log($"Spawning player in scene {scene.name}.");
                 Vector3 spawnPosition = GetSpawnPosition();
@@ -108,7 +133,7 @@ namespace Player
         private Vector3 GetSpawnPosition()
         {
             // Look for spawn points in the scene
-            PlayerSpawnPoint[] spawnPoints = FindObjectsOfType<PlayerSpawnPoint>();
+            PlayerSpawnPoint[] spawnPoints = FindObjectsByType<PlayerSpawnPoint>(FindObjectsSortMode.None);
                 
             if (spawnPoints.Length > 0)
             {
@@ -147,6 +172,7 @@ namespace Player
             if (player == null)
             {
                 player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity);
+                lastRespawnPosition = spawnPosition;
                 Debug.Log("Player successfully spawned.");
 
                 // Validate spawn correctness
@@ -217,11 +243,30 @@ namespace Player
             }
 
             // Fallback: assign directly to any CompanionFollow2D in the scene
-            foreach (var companion in FindObjectsOfType<CompanionFollow2D>())
+            foreach (var companion in FindObjectsByType<CompanionFollow2D>(FindObjectsSortMode.None))
             {
                 companion.SetTarget(targetPoint);
                 Debug.Log($"Assigned TargetPoint to {companion.name}");
             }
+        }
+
+        public void SpawnPlayerFromTimeline()
+        {
+            if (player != null)
+                return;
+
+            Vector3 spawnPosition = GetSpawnPosition();
+            SpawnPlayer(spawnPosition);
+
+            CinemachineCamera vcam = FindAnyObjectByType<CinemachineCamera>();
+
+            if (vcam != null)
+            {
+                vcam.Follow = player.transform;
+                vcam.LookAt = player.transform;
+            }
+
+            Debug.Log("Player spawned from Timeline signal.");
         }
 
     }

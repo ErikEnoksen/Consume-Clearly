@@ -1,90 +1,203 @@
 using Save;
 using UnityEngine;
+using System;
 
 namespace LevelObjects.Interactable
 {
     public class TrashCan : Interactable
     {
-        [Header("Trashcan Objects")]
+        [Header("Trashcan Visuals")]
         [SerializeField] private GameObject fullTrashcan;
         [SerializeField] private GameObject emptyTrashcan;
 
-        [Header("Loot")]
-        [SerializeField] private string itemId = "Trash";
-        [SerializeField] private string itemName = "Trash";
-        [SerializeField] private int amount = 1;
-        [SerializeField] private Sprite itemSprite;
-        [SerializeField] private string itemDescription = "Some trash";
-        [SerializeField] private int maxStack = 10;
-        [SerializeField] private string itemTag = "Trash";
+        [Header("Loot Settings")]
+        [SerializeField] private Item[] items;
+        [SerializeField] private int satisfactionReward = 2;
 
+        [Header("References")]
+        [SerializeField] private InventoryManager inventoryManager;
+        [SerializeField] private CircularSatisfactionMeter satisfactionMeter;
 
-        private InventoryManager _inventory;
-        private bool isEmpty = false;
+        // State
+        private bool _isEmpty = false;
+        private bool _isInitialized = false;
+
+        // Events
+        public event Action<TrashCan> OnTrashEmptied;
+        public event Action<TrashCan> OnTrashReset;
+
+        // Properties
+        public bool IsEmpty => _isEmpty;
+        public bool CanInteract => !_isEmpty && _isInitialized;
 
         protected override void Awake()
         {
             base.Awake();
-
-            _inventory = FindFirstObjectByType<InventoryManager>();
-
-            if (_inventory == null)
-
-                Debug.LogError("No InventoryManagerTest found in scene!");
-
+            InitializeReferences();
         }
 
-        public void Start()
+        private void InitializeReferences()
+        {
+            // Try to find inventory if not assigned
+            if (inventoryManager == null)
+            {
+                inventoryManager = FindAnyObjectByType<InventoryManager>();
+                if (inventoryManager == null)
+                    Debug.LogError($"[TrashCan] No InventoryManager found in scene!");
+            }
+
+            // Try to find satisfaction meter if not assigned
+            if (satisfactionMeter == null)
+            {
+                satisfactionMeter = FindAnyObjectByType<CircularSatisfactionMeter>();
+                if (satisfactionMeter == null)
+                    Debug.LogError($"[TrashCan] No CircularSatisfactionMeter found in scene!");
+            }
+
+            // Validate visual references
+            if (fullTrashcan == null || emptyTrashcan == null)
+            {
+                Debug.LogWarning($"[TrashCan] Visual objects not fully assigned on {gameObject.name}");
+            }
+
+            _isInitialized = true;
+            UpdateVisuals();
+        }
+
+        private void Start()
         {
             if (DayCycleManager.Instance != null)
+            {
                 DayCycleManager.Instance.OnNewDay += ResetDaily;
+            }
+            else
+            {
+                Debug.LogWarning($"[TrashCan] DayCycleManager not found, daily reset won't work");
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (DayCycleManager.Instance != null)
+            {
+                DayCycleManager.Instance.OnNewDay -= ResetDaily;
+            }
         }
 
         public override void Interact()
         {
-            if (isEmpty) return;
+            if (!ValidateInteraction()) return;
 
             EmptyTrash();
         }
 
-        private void EmptyTrash()
+        private bool ValidateInteraction()
         {
-            isEmpty = true;
-            UpdateVisuals();
-
-            GiveItem();
-
-            Debug.Log("Trash can emptied!");
-        }
-
-        private void GiveItem()
-        {
-            if (_inventory == null)
+            if (!_isInitialized)
             {
-                _inventory = FindFirstObjectByType<InventoryManager>();
-                if (_inventory == null) return;
+                Debug.LogWarning($"[TrashCan] Not initialized yet");
+                return false;
             }
 
-            int excessItems = _inventory.AddItem(
-                itemId,
-                itemName,
-                amount,
-                itemSprite,
-                itemDescription,
-                maxStack,
-                itemTag
-            );
+            if (_isEmpty)
+            {
+                Debug.Log($"[TrashCan] Trash can is already empty");
+                return false;
+            }
+
+            return true;
+        }
+
+        private void EmptyTrash()
+        {
+            _isEmpty = true;
+            UpdateVisuals();
+
+            bool itemGiven = GiveItemToPlayer();
+            bool satisfactionGiven = GiveSatisfactionReward();
+
+            // Trigger events
+            OnTrashEmptied?.Invoke(this);
+
+            Debug.Log($"[TrashCan] Trash emptied! Item given: {itemGiven}, Satisfaction given: {satisfactionGiven}");
+        }
+
+        private bool GiveItemToPlayer()
+        {
+            if (items == null || items.Length == 0)
+            {
+                Debug.LogWarning($"[TrashCan] No item assigned to give");
+                return false;
+            }
+
+            if (inventoryManager == null)
+            {
+                Debug.LogError($"[TrashCan] Cannot give item - InventoryManager is null");
+                return false;
+            }
+
+            int randomIndex = UnityEngine.Random.Range(0, items.Length);
+            Item item = items[randomIndex];
+
+            int excessItems = inventoryManager.AddItem(item, 1);
 
             if (excessItems > 0)
             {
-                Debug.Log($"Inventory full! {excessItems} items couldn't be added.");
+                Debug.Log($"[TrashCan] Inventory full! {excessItems} {items}(s) couldn't be added.");
+                return false;
+            }
+
+            Debug.Log($"[TrashCan] Gave item: {items}");
+            return true;
+        }
+
+        private bool GiveSatisfactionReward()
+        {
+            if (satisfactionMeter == null)
+            {
+                Debug.LogError($"[TrashCan] Cannot give satisfaction - SatisfactionMeter is null");
+                return false;
+            }
+
+            try
+            {
+                satisfactionMeter.IncreaseSatisfactionValue(satisfactionReward);
+                Debug.Log($"[TrashCan] Added {satisfactionReward} satisfaction points");
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"[TrashCan] Failed to add satisfaction: {e.Message}");
+                return false;
+            }
+        }
+        private void UpdateVisuals()
+        {
+            if (fullTrashcan != null)
+                fullTrashcan.SetActive(!_isEmpty);
+
+            if (emptyTrashcan != null)
+                emptyTrashcan.SetActive(_isEmpty);
+        }
+
+        private void ResetDaily(int day)
+        {
+            if (_isEmpty)
+            {
+                _isEmpty = false;
+                UpdateVisuals();
+                OnTrashReset?.Invoke(this);
+
+                Debug.Log($"[TrashCan] Reset on day {day}");
             }
         }
 
-        private void UpdateVisuals()
+        [Serializable]
+        private class TrashCanSaveData
         {
-            if (fullTrashcan != null) fullTrashcan.SetActive(!isEmpty);
-            if (emptyTrashcan != null) emptyTrashcan.SetActive(isEmpty);
+            public string uniqueId;
+            public bool isEmpty;
+            public string lastEmptiedDate; // Optional for more advanced saving
         }
 
         public override InteractableObjectState SaveState()
@@ -92,31 +205,37 @@ namespace LevelObjects.Interactable
             return new InteractableObjectState
             {
                 uniqueId = GetUniqueId(),
-                isActive = isEmpty
+                isActive = _isEmpty
             };
         }
 
         public override void LoadState(InteractableObjectState state)
         {
-            if (state == null || state.uniqueId != GetUniqueId()) return;
+            if (state == null)
+            {
+                Debug.LogWarning($"[TrashCan] Null state provided for {gameObject.name}");
+                return;
+            }
 
-            isEmpty = state.isActive;
+            if (state.uniqueId != GetUniqueId())
+            {
+                Debug.LogWarning($"[TrashCan] State ID mismatch: {state.uniqueId} vs {GetUniqueId()}");
+                return;
+            }
 
-            // Add null checks to ensure objects are ready
+            _isEmpty = state.isActive;
+
+            // Ensure visuals are updated after loading
             if (fullTrashcan != null && emptyTrashcan != null)
             {
                 UpdateVisuals();
             }
             else
             {
-                Debug.LogWarning($"Visual objects not assigned for TrashCan {gameObject.name}");
+                Debug.LogWarning($"[TrashCan] Cannot update visuals after load - references missing on {gameObject.name}");
             }
-        }
 
-        private void ResetDaily(int day)
-        {
-            isEmpty = false;
-            UpdateVisuals();
+            Debug.Log($"[TrashCan] Loaded state - Empty: {_isEmpty}");
         }
     }
 }

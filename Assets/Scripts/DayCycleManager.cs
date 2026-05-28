@@ -5,12 +5,12 @@ public class DayCycleManager : MonoBehaviour
 {
     public static DayCycleManager Instance { get; private set; }
     public int CurrentDay { get; private set; } = 1;
+    public float DayTimer { get; private set; } = 0f;
     public event Action<int> OnNewDay;
 
     [Tooltip("How long is a day in seconds?")]
-    public float dayLength = 180f; // 3 minutes per day
-    private float dayTimer = 0f;
-
+    public float dayLength = 180f;
+    
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -19,15 +19,22 @@ public class DayCycleManager : MonoBehaviour
             return;
         }
         Instance = this;
+        transform.SetParent(null);
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void LoadState(int day, float timer)
+    {
+        CurrentDay = day;
+        DayTimer = timer;
     }
 
     private void Update()
     {
-        dayTimer += Time.deltaTime;
-        if (dayTimer >= dayLength)
+        DayTimer += Time.deltaTime;
+        if (DayTimer >= dayLength)
         {
-            dayTimer = 0f;
+            DayTimer = 0f;
             CurrentDay++;
             OnNewDay?.Invoke(CurrentDay);
         }

@@ -57,8 +57,7 @@ namespace LevelObjects.Interactable
                 if (!string.IsNullOrEmpty(sceneToLoad))
                 {
                     GameManager.Instance?.SaveProgress(SceneManager.GetActiveScene().name);
-                    GameManager.Instance?.LoadScene(sceneToLoad);
-                    GameManager.Instance?.LoadProgress(sceneToLoad);
+                    GameManager.Instance?.TransitionToScene(sceneToLoad);
                 }
                 else
                 {

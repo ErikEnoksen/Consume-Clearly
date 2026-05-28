@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using Player;
 
 public class WorkshopUI : MonoBehaviour
 {
@@ -28,6 +29,15 @@ public class WorkshopUI : MonoBehaviour
     {
         if (station != null)
             PopulateRecipeList();
+
+        var player = PlayerManager.Instance?.GetPlayer();
+        player?.GetComponent<MovementScript>()?.FreezeMovement(true);
+    }
+
+    void OnDisable()
+    {
+        var player = PlayerManager.Instance?.GetPlayer();
+        player?.GetComponent<MovementScript>()?.FreezeMovement(false);
     }
 
     void PopulateRecipeList()
@@ -54,15 +64,16 @@ public class WorkshopUI : MonoBehaviour
 
         foreach (var input in recipe.inputs)
         {
-            int playerHas = GetItemCount(input.itemName);
+            Item item = input.itemPrefab.GetComponent<Item>();
+            int playerHas = GetItemCount(item.ItemName);
             bool enough = playerHas >= input.amount;
 
             GameObject row = Instantiate(ingredientRowPrefab, ingredientListParent);
             TMP_Text[] texts = row.GetComponentsInChildren<TMP_Text>();
             Image icon = row.GetComponentInChildren<Image>();
-            if (icon != null) {icon.sprite = input.icon;}
-            
-            texts[0].text = input.itemName;
+            if (icon != null) { icon.sprite = item.Sprite; }
+
+            texts[0].text = item.ItemName;
             texts[1].text = $"{Mathf.Min(playerHas, input.amount)}/{input.amount}";
             texts[1].color = enough ? Color.green : Color.red;
         }

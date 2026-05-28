@@ -216,7 +216,6 @@ MonoBehaviour:
   jumpForce: 12
   canJump: 1
   followDistance: 2
-  lookAheadDistance: 2
   teleportDistance: 5
   groundCheckRadius: 0.1
   groundCheck: {fileID: 8132787090314073876}
@@ -291,7 +290,7 @@ MonoBehaviour:
   - triggerType: 0
     requiredState: 0
     item: {fileID: 5268927219989098962, guid: 1da58d9b3b87dc1449f311a297e2cb95, type: 3}
-    quantity: 10
+    quantity: 2
     giveOnce: 1
     hasBeenGiven: 0
   interactKey: 116
@@ -321,8 +320,8 @@ Transform:
   m_GameObject: {fileID: 3271865402770979268}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 8.69, z: -4.666666}
-  m_LocalScale: {x: 0.2, y: 0.18763249, z: 0.3533569}
+  m_LocalPosition: {x: 3.167, y: 7.153, z: -4.666666}
+  m_LocalScale: {x: 0.7285206, y: 0.9821596, z: 0.3533569}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4036169441490382326}
@@ -373,13 +372,13 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 1648790168363200983, guid: 0834e9b7da76d5e4b85578ff479dd6cc, type: 3}
+  m_SortingOrder: 99
+  m_Sprite: {fileID: -6966588595320501180, guid: 107fc8648bb60db4f920d21d45376e0a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.61, y: 3.62}
+  m_Size: {x: 2.59, y: 1.68}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -398,6 +397,7 @@ GameObject:
   - component: {fileID: 6559476994735948643}
   - component: {fileID: 8985960376940174906}
   - component: {fileID: 5437844398025346150}
+  - component: {fileID: 6122864247972947061}
   m_Layer: 8
   m_Name: DialogueTriggerBox
   m_TagString: Untagged
@@ -468,10 +468,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8551f3ab8e73148ae97c061e0b735e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Main::DialogueTrigger
-  dialogueToPlay: {fileID: 11400000, guid: 7986fb9a283fe844dbd5794b543e6a75, type: 2}
+  dialogueStages:
+  - dialogue: {fileID: 11400000, guid: 7986fb9a283fe844dbd5794b543e6a75, type: 2}
+    advanceCondition: 0
+    conversationsToAdvance: 0
   triggerType: 0
   interactKey: 102
   pressF: {fileID: 3271865402770979268}
+  uniqueId: ab76ed89-94e5-4149-a577-34705da76fe4
 --- !u!114 &8985960376940174906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -504,10 +508,23 @@ MonoBehaviour:
   - triggerType: 0
     requiredState: 0
     item: {fileID: 5268927219989098962, guid: 1da58d9b3b87dc1449f311a297e2cb95, type: 3}
-    quantity: 10
+    quantity: 2
     giveOnce: 1
     hasBeenGiven: 0
   interactKey: 116
+--- !u!114 &6122864247972947061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3786246799249716820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8f1655bea5c4a36951c3cbe7754dd30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::Save.InstanceIdentifier
+  id: Miner
 --- !u!1 &7993382541483594524
 GameObject:
   m_ObjectHideFlags: 0

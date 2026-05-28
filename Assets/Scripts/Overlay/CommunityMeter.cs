@@ -16,16 +16,18 @@ public class CommunityMeter : MonoBehaviour
     public int FriendCount = 0;
 
     private readonly int[] thresholds = { 0, 25, 50, 75, 100 }; // Example thresholds for each state
+    private CircularSatisfactionMeter satisfactionMeter;
 
     // Store all companions and track their states
     private List<CompanionFriendship> allCompanions = new List<CompanionFriendship>();
     private Dictionary<CompanionFriendship, CompanionFriendship.FriendshipState> companionStates = new Dictionary<CompanionFriendship, CompanionFriendship.FriendshipState>();
     private HashSet<CompanionFriendship> countedFriends = new HashSet<CompanionFriendship>();
-    private void Awake()
+    private void Start()
     {
         // Find all companions in the scene
         FindAndRegisterAllCompanions();
 
+        satisfactionMeter = GetComponent<CircularSatisfactionMeter>();
         CurrentState = GetCommunityState();
         UpdateCommunityMeter();
 
@@ -41,7 +43,7 @@ public class CommunityMeter : MonoBehaviour
         countedFriends.Clear();
         FriendCount = 0;
 
-        CompanionFriendship[] companions = FindObjectsOfType<CompanionFriendship>();
+        CompanionFriendship[] companions = FindObjectsByType<CompanionFriendship>(FindObjectsSortMode.None);
         foreach (var companion in companions)
         {
             RegisterCompanion(companion);
@@ -224,6 +226,8 @@ public class CommunityMeter : MonoBehaviour
                         break;
                     case CommunityState.Thriving:
                         fillImage.color = Color.purple;
+                        // Activates passive points of circular satisfaction meter for reaching the thriving state
+                        satisfactionMeter.ActivatePassivePoint();
                         break;
                 }
             }
@@ -301,6 +305,14 @@ public class CommunityMeter : MonoBehaviour
             Debug.Log($"Daily community increase: {dailyIncrease}");
             AddPointsWithOverflow(dailyIncrease);
         }
+    }
+
+    public void LoadCommunityState(int level, int overflowPoints)
+    {
+        CommunityLevel = level;
+        OverflowPoints = overflowPoints;
+        EvaluateCommunityState();
+        UpdateCommunityMeter();
     }
 
     private void OnDestroy()

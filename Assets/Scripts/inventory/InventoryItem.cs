@@ -12,12 +12,15 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     public bool isFull;
     [TextArea]
     public string itemDescription;
-    private int maxStack;
+    public int maxStack;
 
     [SerializeField]
     private TMP_Text quantityText;
     [SerializeField]
     private Image itemImage;
+
+    [SerializeField]
+    private GameObject eKeySprite;
 
     public GameObject selectedShaders;
     public bool thisItemSelected;
@@ -25,53 +28,52 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     public Image infoImage;
     public TMP_Text itemDescriptionTitle;
     public TMP_Text itemDescriptionText;
+    public GameObject foodButton;
 
-    
     private InventoryManager inventoryManager;
 
     private void Start()
     {
         inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
+        foodButton.SetActive(false);
     }
 
 
     //method for adding items to the inventory
-    public int AddItem(string itemID, string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string tag)
+    public int AddItem(Item item, int quantity)
     {
         if (isFull)
         {
-            return quantity;
+            return item.Quantity;
         }
-        this.itemID = itemID;
+        itemID = item.Id;
 
         //updates the slot in the inventory to make the data visible in the inventory
-        this.itemName = itemName;
-        this.sprite = sprite;
-        this.itemDescription = itemDescription;
-        this.maxStack = maxStack;
-        this.tag = tag;
+        itemName = item.ItemName;
+        sprite = item.Sprite;
+        itemDescription = item.ItemDescription;
+        maxStack = item.MaxStack;
+        tag = item.tag;
+        eKeySprite = item.EKeySprite;
         
         //SetActive makes the item and item count visible in the inventory
-        itemImage.sprite = sprite;
-        itemImage.enabled = true;
-        
+        if (itemImage != null) { itemImage.sprite = item.Sprite; itemImage.enabled = true; }
+
         //checks if the amount of items in the slot and sees if there is space for the rest
         this.quantity += quantity;
-        if(this.quantity >= maxStack)
+        if(this.quantity >= item.MaxStack)
         {
-            quantityText.text = maxStack.ToString();
-            quantityText.enabled = true;
+            if (quantityText != null) { quantityText.text = item.MaxStack.ToString(); quantityText.enabled = true; }
             isFull = true;
-            
+
             //return excess items
-            int excessItems = this.quantity - maxStack;
-            this.quantity = maxStack;
+            int excessItems = this.quantity - item.MaxStack;
+            this.quantity = item.MaxStack;
             return excessItems;
         }
 
         //updates the view to the itemslot if the spot is not full yet
-        quantityText.text = this.quantity.ToString();
-        quantityText.enabled = true;
+        if (quantityText != null) { quantityText.text = this.quantity.ToString(); quantityText.enabled = true; }
         return 0;
         
     }
@@ -81,7 +83,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         if (quantity < this.quantity)
         {
             this.quantity -= quantity;
-            quantityText.text = this.quantity.ToString();
+            if (quantityText != null) quantityText.text = this.quantity.ToString();
             return 0;
         }
         else if (quantity == this.quantity)
@@ -115,34 +117,28 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     //highlights the selected itembox and deselects the previous selected spots
     public void OnLeftClick()
     {
-        if (thisItemSelected)
-        {
-            bool usable = inventoryManager.UseItem(itemName);
-
-            if (usable)
-            {
-                quantity -= 1;
-                quantityText.text = quantity.ToString();
+        inventoryManager.DeselectAllSlots();
+        selectedShaders.SetActive(true);
+        infoImage.gameObject.SetActive(true);
+        thisItemSelected = true;
+        
+        itemDescriptionTitle.text = itemName;
+        inventoryManager.selectedItemName = itemName;
+        itemDescriptionText.text = itemDescription;
+        infoImage.sprite = itemImage.sprite;
+        
+        if (infoImage.sprite != null) infoImage.enabled = true;
+        else infoImage.enabled = false; 
             
-                if(quantity == 0)
+        foreach(ItemSO itemSO in inventoryManager.itemSOs)
+        {
+            if(itemSO.itemName == itemName)
+            {
+                if(itemSO.itemType == ItemType.Food)
                 {
-                    EmptySlot();
+                    foodButton.SetActive(true);
                 }
             }
-        }
-        else
-        {
-            inventoryManager.DeselectAllSlots();
-            selectedShaders.SetActive(true);
-            infoImage.gameObject.SetActive(true);
-            thisItemSelected = true;
-        
-            itemDescriptionTitle.text = itemName;
-            itemDescriptionText.text = itemDescription;
-            infoImage.sprite = itemImage.sprite;
-        
-            if (infoImage.sprite != null) infoImage.enabled = true;
-            else infoImage.enabled = false; 
         }
     }
 
@@ -159,16 +155,23 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
             GameObject itemToDrop = new GameObject(itemName);
             Item newItem = itemToDrop.AddComponent<Item>();
 
-            newItem.Initialize(itemName, 1, sprite, itemDescription, maxStack, tag);
+            GameObject eKeyInstance = null;
+            if (eKeySprite != null)
+            {
+                eKeyInstance = Instantiate(eKeySprite, itemToDrop.transform);
+                eKeyInstance.transform.localPosition = new Vector3(0, 1.2f, 0);
+                eKeyInstance.SetActive(false);
+            }
+
+            newItem.Initialize(itemName, 1, sprite, itemDescription, maxStack, tag, eKeyInstance);
 
             SpriteRenderer sr = itemToDrop.AddComponent<SpriteRenderer>();
             sr.sprite = sprite;
 
+
             BoxCollider2D itemTrigger = itemToDrop.AddComponent<BoxCollider2D>();
             itemTrigger.isTrigger = true;
             itemTrigger.size = new Vector2(2f, 1f);
-
-            
 
             itemToDrop.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position - new Vector3(0f, 0.5f);
 
@@ -183,22 +186,38 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         }
     }
 
-    //method that can be used when the count of an item reaches 0
-    private void EmptySlot()
+    public void RestoreSlot(Save.InventorySlotData data, Sprite sprite)
     {
-        quantityText.enabled = false;
-        quantityText.text = string.Empty;
-        
-        itemImage.enabled = false;
-        itemImage.sprite = null;
+        itemID = data.itemID;
+        itemName = data.itemName;
+        quantity = data.quantity;
+        itemDescription = data.itemDescription;
+        maxStack = data.maxStack;
+        tag = data.itemTag;
+        this.sprite = sprite;
+        isFull = quantity >= maxStack;
+
+        itemImage.sprite = sprite;
+        itemImage.enabled = sprite != null;
+        quantityText.text = quantity.ToString();
+        quantityText.enabled = true;
+    }
+
+    //method that can be used when the count of an item reaches 0
+    public void EmptySlot()
+    {
+        if (quantityText != null) { quantityText.enabled = false; quantityText.text = string.Empty; }
+        if (inventoryManager != null) inventoryManager.selectedItemName = string.Empty;
+        if (itemImage != null) { itemImage.enabled = false; itemImage.sprite = null; }
+        if (itemDescriptionText != null) itemDescriptionText.text = null;
+        if (itemDescriptionTitle != null) itemDescriptionTitle.text = null;
+        if (infoImage != null) infoImage.sprite = null;
+
         itemName = null;
+        itemID = null;
         itemDescription = null;
+        sprite = null;
         tag = "Untagged";
-
         isFull = false;
-
-        itemDescriptionText.text = null;
-        itemDescriptionTitle.text = null;
-        infoImage.sprite = null;
     }
 }

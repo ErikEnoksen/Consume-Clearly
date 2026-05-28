@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 31ea57f3d3beea24d95df06d6b961db3
+guid: 912d0378768c0f04aadad0423cb5e0a2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2150391925166808807
-    second: Casino_0
+      213: -6780514518874223233
+    second: Casino 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Casino_0
+      name: Casino 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9116094ffe54822e0800000000000000
-      internalID: -2150391925166808807
+      spriteID: f7d8f1448f5c6e1a0800000000000000
+      internalID: -6780514518874223233
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Casino_0: -2150391925166808807
+      Casino 1_0: -6780514518874223233
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

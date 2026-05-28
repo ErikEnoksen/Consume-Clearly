@@ -5,9 +5,8 @@ public class PauseMenu : MonoBehaviour
     public static bool isPaused = false;
     
     public GameObject Container;
-    
     public GameObject SettingsContainer;
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.GetKeyDown(KeybindManager.Instance.GetKey("Pause")))
@@ -25,13 +24,15 @@ public class PauseMenu : MonoBehaviour
         Container.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
+        UIManager.Instance?.RemoveLock(UIManager.UILockType.Pausemenu);
     }
-    
+
     public void Pause()
     {
         Container.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
+        UIManager.Instance?.AddLock(UIManager.UILockType.Pausemenu);
     }
     public void Settings()
     {
@@ -40,7 +41,13 @@ public class PauseMenu : MonoBehaviour
     }
     public void Quit()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1f;
+        isPaused = false;
+        UIManager.Instance?.RemoveLock(UIManager.UILockType.Pausemenu);
+        if (GameManager.Instance != null)
+            GameManager.Instance.GoToMainMenu();
+        else
+            UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
     
 

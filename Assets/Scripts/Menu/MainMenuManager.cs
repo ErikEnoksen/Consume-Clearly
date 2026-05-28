@@ -10,6 +10,8 @@ namespace MainMenu
     {
         private const string CREDITS_SCENE_NAME = "Credits";
         private const string GAME_SCENE_NAME = "IntroVid";
+        public GameObject SettingsContainer;
+        public GameObject MainMenuButtons;
 
         private void Start()
         {
@@ -18,13 +20,15 @@ namespace MainMenu
     
         private void SetupAllMenuButtons()
         {
-            var buttons = GetComponentsInChildren<Button>(true);
-        
+            if (MainMenuButtons == null) return;
+            var buttons = MainMenuButtons.GetComponentsInChildren<Button>(true);
+
             foreach (var button in buttons)
             {
                 var text = button.GetComponentInChildren<TMP_Text>(true);
+                if (text == null) continue;
                 var effect = text.gameObject.AddComponent<MenuButtonEffect>();
-            
+
                 var buttonNameLower = button.name.ToLower();
                 if (buttonNameLower.Contains("continue"))
                 {
@@ -35,22 +39,13 @@ namespace MainMenu
         }
         public void ContinueGame()
         {
-            SaveData saveData = SaveSystem.Load();
-            if (saveData != null)
+            if (GameManager.Instance != null)
             {
-                if (GameManager.Instance != null)
-                {
-                    GameManager.Instance.LoadProgress();
-                }
-                else
-                {
-                    Debug.LogWarning("GameManager instance not found! Falling back to scene load.");
-                }
-                SceneManager.LoadScene(saveData.CurrentScene);
+                GameManager.Instance.LoadProgress();
             }
             else
             {
-                Debug.LogError("No save data found! Unable to continue.");
+                Debug.LogError("GameManager instance not found! Cannot continue game.");
             }
         }
 
@@ -61,7 +56,9 @@ namespace MainMenu
     
         public void NewGame()
         {
-            SaveSystem.ClearSaveData(); // New method to delete any existing save.
+            Debug.Log("NewGame: clearing save data");
+            SaveSystem.ClearAllData();
+            Debug.Log($"NewGame: loading scene '{GAME_SCENE_NAME}'");
             StartGame();
         }
     
@@ -69,7 +66,8 @@ namespace MainMenu
     
         public void OpenSettings()
         {
-            Debug.Log("Settings menu opened! Implementation pending.");
+            MainMenuButtons.SetActive(false);
+            SettingsContainer.SetActive(true);
         }
 
         public void LoadCredits()
