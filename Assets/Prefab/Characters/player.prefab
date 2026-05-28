@@ -142,14 +142,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Main::Player.MovementScript
   speed: 8
-  jumpingPower: 10
+  jumpingPower: 11
   landAcceleration: 30
   landDeceleration: 100
   airAcceleration: 30
   airDeceleration: 100
   coyoteTime: 0.2
   jumpBufferTime: 0.2
-  baseGravity: 2.5
+  baseGravity: 3
   fallMultiplier: 3.5
   shortJumpMultiplier: 3
   groundCheck: {fileID: 8132787090314073876}

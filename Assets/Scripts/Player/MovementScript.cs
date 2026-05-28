@@ -20,7 +20,7 @@ namespace Player
         [SerializeField] private float jumpBufferTime = 0.2f;
 
         [Header("Gravity Multipliers")] [SerializeField]
-        private float baseGravity = 2.5f;
+        private float baseGravity = 3.0f;
 
         [SerializeField] private float fallMultiplier = 3.5f;
         [SerializeField] private float shortJumpMultiplier = 3f;
@@ -150,7 +150,7 @@ namespace Player
             // Variable jump height: catch key release in Update so it is never missed
             if (Input.GetKeyUp(KeybindManager.Instance.GetKey("Jump")) && rb.linearVelocity.y > 0f)
             {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.1f);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
             }
         }
 
@@ -199,7 +199,7 @@ namespace Player
                     // Falling - pull down fast for snappy landing
                     rb.gravityScale = fallMultiplier;
                 }
-                else if (rb.linearVelocity.y > 0 && !Input.GetButton("Jump"))
+                else if (rb.linearVelocity.y > 0 && !Input.GetKey(KeybindManager.Instance.GetKey("Jump")))
                 {
                     // Released early - cut the jump short
                     rb.gravityScale = shortJumpMultiplier;

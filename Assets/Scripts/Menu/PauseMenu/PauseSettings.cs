@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Numerics;
 
 public class PauseSettings : MonoBehaviour
 {
     [Header("Display")]
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown displayModeDropdown;
+    public TMP_Text fpsLimitText;
+    public TMP_InputField fpsLimitInput;
 
     [Header("Volume")]
     public Slider masterVolumeSlider;
@@ -33,6 +36,8 @@ public class PauseSettings : MonoBehaviour
         InitializeResolutions();
         InitializeDisplayMode();
         SyncUI();
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = int.Parse(fpsLimitInput.text);
     }
 
     private void OnEnable()
@@ -193,6 +198,16 @@ public class PauseSettings : MonoBehaviour
     {
         if (label != null)
             label.text = Mathf.RoundToInt(value * 100).ToString();
+    }
+
+    public void SetFPS()
+    {
+        int fps = int.Parse(fpsLimitInput.text);
+        if(fps > 0 && 360 >= fps)
+        {
+            Application.targetFrameRate = fps;
+            fpsLimitText.text = $"FPS limit: {fps} (max: 360)";
+        }
     }
 
     public void Back()
