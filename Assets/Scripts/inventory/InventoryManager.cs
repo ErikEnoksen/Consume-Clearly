@@ -1,7 +1,6 @@
-using System.Collections.Generic;
 using Assets.Scripts.Quests;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour, IUILockable
@@ -10,18 +9,22 @@ public class InventoryManager : MonoBehaviour, IUILockable
     private bool inventoryActive;
     private bool _isLocked;
     public bool giftingEnabled = false;
+    public bool sellingEnabled = false;
     public InventoryItem[] inventoryItems;
     public string selectedItemName;
 
     private CompanionFriendship companionFriendship;
+    private MoneyManager moneyManager;
     public ItemSO[] itemSOs;
     private Dictionary<string, Sprite> _spriteCache;
 
     public Button giftButton;
+    public Button sellButton;
 
     void Start()
     {
         UIManager.Instance?.RegisterUI(this);
+        moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
     }
 
     private void OnDestroy()
@@ -64,6 +67,7 @@ public class InventoryManager : MonoBehaviour, IUILockable
         inventoryMenu.SetActive(false);
         inventoryActive = false;
         giftingEnabled = false;
+        sellingEnabled = false;
         giftButton.gameObject.SetActive(false);
         selectedItemName = string.Empty;
         DeselectAllSlots();
@@ -79,6 +83,17 @@ public class InventoryManager : MonoBehaviour, IUILockable
         giftingEnabled = true;
         companionFriendship = companion;
         giftButton.gameObject.SetActive(true);
+        UIManager.Instance?.AddLock(UIManager.UILockType.Inventory);
+    }
+
+    public void SellingMenu()
+    {
+        if (_isLocked) return;
+
+        inventoryMenu.SetActive(true);
+        inventoryActive = true;
+        sellingEnabled = true;
+        sellButton.gameObject.SetActive(true);
         UIManager.Instance?.AddLock(UIManager.UILockType.Inventory);
     }
 
@@ -210,6 +225,21 @@ public class InventoryManager : MonoBehaviour, IUILockable
         {
             RemoveItem(selectedItemName, 1);
         }
+    }
+
+    public void SellItem()
+    {
+        foreach (var slot in inventoryItems)
+        {
+            if(slot.itemName == selectedItemName)
+            {
+                if (moneyManager.ChangeMoneyAmount(slot.sellPrice))
+                {
+                    RemoveItem(selectedItemName, 1);
+                }
+            }
+        }
+
     }
 
     public List<Save.InventorySlotData> SaveInventory()

@@ -13,6 +13,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     [TextArea]
     public string itemDescription;
     public int maxStack;
+    public int sellPrice;
 
     [SerializeField]
     private TMP_Text quantityText;
@@ -55,6 +56,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         maxStack = item.MaxStack;
         tag = item.tag;
         eKeySprite = item.EKeySprite;
+        sellPrice = item.SellPrice;
         
         //SetActive makes the item and item count visible in the inventory
         if (itemImage != null) { itemImage.sprite = item.Sprite; itemImage.enabled = true; }
@@ -121,10 +123,10 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         selectedShaders.SetActive(true);
         infoImage.gameObject.SetActive(true);
         thisItemSelected = true;
-        
+
         itemDescriptionTitle.text = itemName;
         inventoryManager.selectedItemName = itemName;
-        itemDescriptionText.text = itemDescription;
+        itemDescriptionText.text = $"{itemDescription} \n-Value: {sellPrice}";
         infoImage.sprite = itemImage.sprite;
         
         if (infoImage.sprite != null) infoImage.enabled = true;
@@ -163,7 +165,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
                 eKeyInstance.SetActive(false);
             }
 
-            newItem.Initialize(itemName, 1, sprite, itemDescription, maxStack, tag, eKeyInstance);
+            newItem.Initialize(itemName, 1, sprite, itemDescription, maxStack, tag, eKeyInstance, sellPrice);
 
             SpriteRenderer sr = itemToDrop.AddComponent<SpriteRenderer>();
             sr.sprite = sprite;

@@ -308,7 +308,8 @@ namespace Assets.Scripts.Quests
 					rewardItem.itemPrefab.ItemDescription,
 					rewardItem.itemPrefab.MaxStack,
                     itemTag,
-                    rewardItem.itemPrefab.EKeySprite
+                    rewardItem.itemPrefab.EKeySprite,
+					rewardItem.itemPrefab.SellPrice
                 );
 
 				int leftover = inventoryManager.AddItem(newItem, newItem.Quantity);

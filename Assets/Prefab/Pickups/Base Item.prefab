@@ -52,8 +52,11 @@ MonoBehaviour:
   quantity: 1
   maxStack: 10
   sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  sellPrice: 16
+  uniqueSceneId: 90166733-c154-4de6-8a9d-c77dae06868b
   itemDescription: Just an item
   eKeySprite: {fileID: 2861000246671771363}
+  _collected: 0
 --- !u!61 &4768837072606002413
 BoxCollider2D:
   m_ObjectHideFlags: 0
