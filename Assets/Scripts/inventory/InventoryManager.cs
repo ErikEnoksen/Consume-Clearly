@@ -11,7 +11,7 @@ public class InventoryManager : MonoBehaviour, IUILockable
     public bool giftingEnabled = false;
     public bool sellingEnabled = false;
     public InventoryItem[] inventoryItems;
-    public string selectedItemName;
+    public string selectedItemID;
 
     private CompanionFriendship companionFriendship;
     private MoneyManager moneyManager;
@@ -69,7 +69,7 @@ public class InventoryManager : MonoBehaviour, IUILockable
         giftingEnabled = false;
         sellingEnabled = false;
         giftButton.gameObject.SetActive(false);
-        selectedItemName = string.Empty;
+        selectedItemID = string.Empty;
         DeselectAllSlots();
         UIManager.Instance?.RemoveLock(UIManager.UILockType.Inventory);
     }
@@ -210,20 +210,20 @@ public class InventoryManager : MonoBehaviour, IUILockable
         
     public void GiftItem()
     { 
-        bool usable = UseItem(selectedItemName, true);
+        bool usable = UseItem(selectedItemID, true);
         if (usable)
         {
-            RemoveItem(selectedItemName, 1);
+            RemoveItem(selectedItemID, 1);
             ToggleInventory();
         }
     }
 
     public void EatFood()
     {
-        bool usable = UseItem(selectedItemName, false);
+        bool usable = UseItem(selectedItemID, false);
         if (usable)
         {
-            RemoveItem(selectedItemName, 1);
+            RemoveItem(selectedItemID, 1);
         }
     }
 
@@ -231,11 +231,11 @@ public class InventoryManager : MonoBehaviour, IUILockable
     {
         foreach (var slot in inventoryItems)
         {
-            if(slot.itemName == selectedItemName)
+            if(slot.itemID == selectedItemID && slot.quantity > 0)
             {
                 if (moneyManager.ChangeMoneyAmount(slot.sellPrice))
                 {
-                    RemoveItem(selectedItemName, 1);
+                    RemoveItem(selectedItemID, 1);
                 }
             }
         }

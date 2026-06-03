@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: itemDescription
-      value: 'It is a piece of bread, seems in pretty good condition all thing considerd.
+      value: 'It is a piece of bread, seems in pretty good condition all thing considerd
 
         -Food
         +20'

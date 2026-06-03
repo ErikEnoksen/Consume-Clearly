@@ -1342,9 +1342,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::DialogueTrigger
   dialogueStages:
   - dialogue: {fileID: 11400000, guid: 1bdf039fc93a6bf4f9d075f7c7bc71d1, type: 2}
+    questToCheck: {fileID: 0}
+    questInProgressDialogue: {fileID: 0}
+    questCompletedDialogue: {fileID: 0}
     advanceCondition: 0
     conversationsToAdvance: 0
   - dialogue: {fileID: 11400000, guid: ba1bdf9e29a7ec0489fd101525ad90a0, type: 2}
+    questToCheck: {fileID: 0}
+    questInProgressDialogue: {fileID: 0}
+    questCompletedDialogue: {fileID: 0}
     advanceCondition: 0
     conversationsToAdvance: 0
   triggerType: 0
@@ -2106,6 +2112,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::DialogueTrigger
   dialogueStages:
   - dialogue: {fileID: 11400000, guid: 5c883d7cad06fb54aaeefb6cd8f51e7b, type: 2}
+    questToCheck: {fileID: 0}
+    questInProgressDialogue: {fileID: 0}
+    questCompletedDialogue: {fileID: 0}
     advanceCondition: 0
     conversationsToAdvance: 0
   triggerType: 0
@@ -8075,11 +8084,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7169444392638059195, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.000043034554
+      value: 0.000076293945
       objectReference: {fileID: 0}
     - target: {fileID: 7169444392638059195, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000018119812
+      value: -0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 7177496990438436423, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9469,6 +9478,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::DialogueTrigger
   dialogueStages:
   - dialogue: {fileID: 11400000, guid: 7a0b6c8bec26e344e8ace94b74883743, type: 2}
+    questToCheck: {fileID: 0}
+    questInProgressDialogue: {fileID: 0}
+    questCompletedDialogue: {fileID: 0}
     advanceCondition: 0
     conversationsToAdvance: 0
   triggerType: 0
@@ -10734,15 +10746,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -746.0246
+      value: -746.01825
       objectReference: {fileID: 0}
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -375.4727
+      value: -375.47263
       objectReference: {fileID: 0}
     - target: {fileID: 1994999582465708776, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20
+      value: -19.999998
       objectReference: {fileID: 0}
     - target: {fileID: 2347502356443665200, guid: 6f898c27a6b6b4247b693f5251919a8b, type: 3}
       propertyPath: m_Name
@@ -11268,6 +11280,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::DialogueTrigger
   dialogueStages:
   - dialogue: {fileID: 11400000, guid: 775173c60af29a2409e9cac79d9362ab, type: 2}
+    questToCheck: {fileID: 0}
+    questInProgressDialogue: {fileID: 0}
+    questCompletedDialogue: {fileID: 0}
     advanceCondition: 0
     conversationsToAdvance: 0
   triggerType: 0

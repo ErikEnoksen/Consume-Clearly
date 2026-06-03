@@ -470,6 +470,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::DialogueTrigger
   dialogueStages:
   - dialogue: {fileID: 11400000, guid: 7986fb9a283fe844dbd5794b543e6a75, type: 2}
+    questToCheck: {fileID: 0}
+    questInProgressDialogue: {fileID: 0}
+    questCompletedDialogue: {fileID: 0}
     advanceCondition: 0
     conversationsToAdvance: 0
   triggerType: 0

@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: itemName
       value: Screw
       objectReference: {fileID: 0}
+    - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: itemDescription
+      value: It's a screw maybe I can make something with it
+      objectReference: {fileID: 0}
     - target: {fileID: 2274255593806471894, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: m_Name
       value: Screw

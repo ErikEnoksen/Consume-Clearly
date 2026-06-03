@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5630117629413361817
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 758696676443698294, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 758696676443698294, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 758696676443698294, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 758696676443698294, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 763164595874130931, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4925002154883299450, guid: 7d72b48d4a43c8644ba88e518770fabb, type: 3}
+    - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: itemID
+      value: Dented can
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: -4925002154883299450, guid: 7d72b48d4a43c8644ba88e518770fabb, type: 3}
+    - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: itemName
+      value: Dented can
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: itemDescription
+      value: I can't really use this as a can anymore, maybe I should scrap it
+      objectReference: {fileID: 0}
+    - target: {fileID: 2274255593806471894, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_Name
+      value: DentedCan
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155737613828107393, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.55
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}

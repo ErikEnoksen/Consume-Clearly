@@ -121,12 +121,12 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     {
         inventoryManager.DeselectAllSlots();
         selectedShaders.SetActive(true);
-        infoImage.gameObject.SetActive(true);
         thisItemSelected = true;
+        infoImage.enabled = true;
 
         itemDescriptionTitle.text = itemName;
-        inventoryManager.selectedItemName = itemName;
-        itemDescriptionText.text = $"{itemDescription} \n-Value: {sellPrice}";
+        inventoryManager.selectedItemID = itemID;
+        itemDescriptionText.text = (sellPrice > 0) ? $"{itemDescription} \n-Value: {sellPrice}" : itemDescription;
         infoImage.sprite = itemImage.sprite;
         
         if (infoImage.sprite != null) infoImage.enabled = true;
@@ -209,11 +209,11 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     public void EmptySlot()
     {
         if (quantityText != null) { quantityText.enabled = false; quantityText.text = string.Empty; }
-        if (inventoryManager != null) inventoryManager.selectedItemName = string.Empty;
+        if (inventoryManager != null) inventoryManager.selectedItemID = string.Empty;
         if (itemImage != null) { itemImage.enabled = false; itemImage.sprite = null; }
         if (itemDescriptionText != null) itemDescriptionText.text = null;
         if (itemDescriptionTitle != null) itemDescriptionTitle.text = null;
-        if (infoImage != null) infoImage.sprite = null;
+        if (infoImage != null) infoImage.sprite = null; infoImage.enabled = false;
 
         itemName = null;
         itemID = null;
