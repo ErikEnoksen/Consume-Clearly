@@ -94,7 +94,7 @@ namespace Assets.Scripts.Quests
 				foreach (var quest in toComplete)
 					CompleteQuest(quest);
 
-				questUI?.UpdateQuestUI();
+				questUI?.RefreshObjectiveTexts();
         }
 
         public bool IsQuestCompleted(string questID)
@@ -247,7 +247,6 @@ namespace Assets.Scripts.Quests
 		{
 			ActiveQuests.Clear();
 			completedQuestIDs.Clear();
-			questUI?.UpdateQuestUI();
 		}
 
 		public List<string> GetCompletedQuestIDs() => new List<string>(completedQuestIDs);
