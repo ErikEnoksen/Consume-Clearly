@@ -1,3 +1,38 @@
+// =============================================================================
+// ResourceManager.cs — Player Satisfaction & Economy UI Manager
+// This is from Previous group we dont use the resourceManager Actively. 
+//
+// PURPOSE:
+//   Tracks and displays three interconnected satisfaction meters and the player's
+//   money. All meters decay or change over time and react to player actions.
+//
+// THE THREE METERS:
+//   • RS (Relational Satisfaction) — yellow slider. Increased by social actions
+//     (talking, gifting). Decays on a timer.
+//   • MS (Material Satisfaction)   — red slider. Increased by buying/consuming.
+//     Decays on a timer. When MS is high and RS is low, the addictive shader fires.
+//   • CS (Community Spirit)        — blue slider. Rises passively when RS−MS is
+//     above sCapIncreaseCS, falls when it's below sCapDecreaseCS.
+//
+// CLAMP MODE (ClampRMS):
+//   When true, RS and MS cannot overlap — each is capped at STotalLimit minus
+//   the other. This keeps the combined bar from exceeding 200.
+//   When false, increasing one subtracts from the other if the total would overflow.
+//
+// SATISFACTION (RS − MS):
+//   The difference between RS and MS drives Community Spirit over time.
+//   High satisfaction (RS >> MS) grows CS; low satisfaction shrinks it.
+//
+// SLIDER ANIMATION:
+//   All meters animate via AnimateMeterRoutine, which lerps the Image fillAmount
+//   using one of four easing curves (Cubic, SmoothStep, SuperSoft, Bounce).
+//   Each meter stores its coroutine reference so a new value cancels the in-progress animation.
+//
+// ADDICTIVE SHADER:
+//   A fullscreen RawImage overlay becomes visible when MS ≥ 100 AND MS > RS.
+//   This is a visual feedback mechanic for overconsumption.
+// =============================================================================
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,126 +49,118 @@ namespace PlayerResources
     {
         private static readonly int ShaderIntensity = Shader.PropertyToID("ShaderIntensity");
 
-        //This script uses 2 Images, 1 slider and 1 text mesh. 
+        // --- Inspector Fields ---
         [Header("Money Amount")]
-        [SerializeField] public TMP_Text TextMoney; //Simple TextMesh
-        [Tooltip("Amount of money player has. Range between 0 - 9 99 999")]
+        [SerializeField] public TMP_Text TextMoney;
+        [Tooltip("Amount of money player has. Range between 0 - 999999")]
         [SerializeField] [Range(0, 999999)] public float Money = 1;
-        
+
+        // When true, RS and MS cap each other so they can't both be at max simultaneously.
         [Header("Clamp Settings")]
         [Tooltip("Can Material and Relational Satisfaction subtract each other when meter is filled or not?")]
         [SerializeField] public bool ClampRMS = true;
-        
+
         [Header("Relational Satisfaction Settings")]
-        [SerializeField] public Image SliderRS; //Yellow
-        [Tooltip("Relational Satisfaction (yellow).")]
-        [SerializeField] [Range(0f, STotalLimit)] public float RS; //Relational Satisfaction (yellow). Value is clamped in the Unity Editor.
-        [Tooltip("Seconds it takes for RS to decrease. Interval Range between 0 - 60 seconds.")]
-        [SerializeField] [Range(0, 60)] private int RSDecreaseInterval = 5; //Seconds it takes for RS to decrease. Value is clamped in the Unity Editor.
-        [Tooltip("Amount of RS that decreases after interval. Decrease Amount range between 0 - 50")]
-        [SerializeField] [Range(0, 50)] public int RSDecreaseOverTimeAmount = 5; //Amount of RS that decreases after interval.
-        
+        [SerializeField] public Image SliderRS; // yellow fill image
+        [Tooltip("Relational Satisfaction (yellow). Increases via social actions, decays over time.")]
+        [SerializeField] [Range(0f, STotalLimit)] public float RS;
+        [Tooltip("Seconds between each RS decay tick.")]
+        [SerializeField] [Range(0, 60)] private int RSDecreaseInterval = 5;
+        [Tooltip("How much RS loses each decay tick.")]
+        [SerializeField] [Range(0, 50)] public int RSDecreaseOverTimeAmount = 5;
+
         [Header("Material Satisfaction Settings")]
-        [SerializeField] public Image SliderMS; //Red
-        [Tooltip("Material Satisfaction (red).")]
-        [SerializeField] [Range(0f, STotalLimit)] public float MS; //Material Satisfaction (red). Value is clamped in the Unity Editor.
-        [Tooltip("Seconds it takes for MS to decrease. Interval Range between 0 - 60 seconds.")]
-        [SerializeField] [Range(0, 60)] private int MSDecreaseInterval = 5; //Seconds it takes for MS to decrease. Value is clamped in the Unity Editor.
-        [Tooltip("Amount of MS that decreases after interval. Decrease Amount range between 0 - 50")]
-        [SerializeField] [Range(0, 50)] public int MSDecreaseOverTimeAmount = 5; //Amount of RS that decreases after interval.
-        
+        [SerializeField] public Image SliderMS; // red fill image
+        [Tooltip("Material Satisfaction (red). Increases via purchases/consumption, decays over time.")]
+        [SerializeField] [Range(0f, STotalLimit)] public float MS;
+        [Tooltip("Seconds between each MS decay tick.")]
+        [SerializeField] [Range(0, 60)] private int MSDecreaseInterval = 5;
+        [Tooltip("How much MS loses each decay tick.")]
+        [SerializeField] [Range(0, 50)] public int MSDecreaseOverTimeAmount = 5;
+
         [Header("Community Spirit Settings")]
-        [Tooltip("Fill Image of Community Spirit Meter")]
-        [SerializeField] public Image SliderCS;
-        [Tooltip("Community Spirit (blue). Value Range between 0 - 100")]
+        [SerializeField] public Image SliderCS; // blue fill image
+        [Tooltip("Community Spirit (blue). Grows when RS >> MS, shrinks when RS << MS.")]
         [SerializeField] [Range(0, 100)] public float CS;
-        [Tooltip("Seconds it takes for CS to increase or decrease. Interval Range between 0 - 60 seconds.")]
-        [SerializeField] [Range(0, 60)] private int csChangeInterval = 5; //Seconds it takes for CS to decrease. Value is clamped in the Unity Editor.
-        [Tooltip("Amount of CS that decreases after interval. Decrease Amount range between 0 - 25")]
-        [SerializeField] [Range(0, 25)] public int CSDecreaseOverTimeAmount = 5; //Amount of CS that decreases after interval. Value is clamped in the Unity Editor.
-        [Tooltip("Amount of CS that increases after interval. Decrease Amount range between 0 - 25")]
-        [SerializeField] [Range(0, 25)] public int CSIncreaseOverTimeAmount = 5; //Amount of CS that increases after interval. Value is clamped in the Unity Editor.
-        [Tooltip("The biggest amount overall satisfaction (RS - MS) can be before increasing Community Spirit over time.")]
-        [SerializeField] [Range(0, 200)] private int sCapIncreaseCS = 90; //How much the float "satisfaction" (= RS - MS) can be before increasing CS over time. Value is clamped in the Unity Editor.
-        [Tooltip("The smallest amount overall satisfaction (RS - MS) can be before decreasing Community Spirit over time.")]
-        [SerializeField] [Range(0, 200)] private int sCapDecreaseCS = 0; //The smallest amount the float "satisfaction" (= RS - MS) can be before decreasing CS over time. Value is clamped in the Unity Editor.
-        
+        [Tooltip("Seconds between each CS change tick.")]
+        [SerializeField] [Range(0, 60)] private int csChangeInterval = 5;
+        [Tooltip("How much CS decreases per tick when satisfaction is too low.")]
+        [SerializeField] [Range(0, 25)] public int CSDecreaseOverTimeAmount = 5;
+        [Tooltip("How much CS increases per tick when satisfaction is high enough.")]
+        [SerializeField] [Range(0, 25)] public int CSIncreaseOverTimeAmount = 5;
+        [Tooltip("RS−MS must exceed this to start growing CS over time.")]
+        [SerializeField] [Range(0, 200)] private int sCapIncreaseCS = 90;
+        [Tooltip("RS−MS must fall below this to start shrinking CS over time.")]
+        [SerializeField] [Range(0, 200)] private int sCapDecreaseCS = 0;
+
         [Header("Slider Easing Settings")]
-        [Tooltip("Time for slider anim to finish. Range between 0.01 - 2 seconds.")]
-        [SerializeField] [Range(0.01f, 2f)] float easeTime = 0.25f; //Time for slider anim to finish. Value is clamped in the Unity Editor.
+        [Tooltip("Duration of the meter fill animation in seconds.")]
+        [SerializeField] [Range(0.01f, 2f)] float easeTime = 0.25f;
         public enum EasingType { Cubic, SmoothStep, SuperSoft, Bounce }
-        [Tooltip("Type of animation for Satisfaction Slider")]
+        [Tooltip("Easing curve applied to meter animations.")]
         [SerializeField] EasingType easingType;
 
         [Header("Shader Settings")]
-        [Tooltip("The shader that activates when material satisfaction is too high.")]
+        [Tooltip("Fullscreen overlay that fades in when MS is dominant (overconsumption visual).")]
         [SerializeField] public RawImage AddictiveShader;
-        
+
+        // --- Coroutine Handles ---
+        // Stored per-meter so a new value update cancels the in-progress animation.
         private Coroutine rsAnimRoutine;
         private Coroutine msAnimRoutine;
         private Coroutine csAnimRoutine;
-        
-        private const float STotalLimit = 200f; // "Satisfaction Total Limit" Total value of the satisfaction meter. E.g if RS is at 200 the meter is filled.
-        private float RS_max; //"Relational Satisfaction Max" Relevant if Clamp = true. Subtract total satisfaction meter value with current MS so that RS and MS doesn't overlap.
-        private float MS_max; //"Material Satisfaction Max" Relevant if Clamp = true. Subtract total satisfaction meter value with current RS so that RS and MS doesn't overlap.
-        private float rms; //"Relational Material Satisfaction" RS+MS to calculate the total value filled in the satisfaction meter. Relevant if Clamp = false so that increasing RS subtract MS and vice versa.
-        private float satisfaction; //Subtract MS from RS to determine if Community spirit should increase or decrease over time.
+
+        // --- Constants & Derived State ---
+        private const float STotalLimit = 200f; // max combined value the satisfaction bar can reach
+        private float RS_max; // RS cap when clamped: STotalLimit - current MS
+        private float MS_max; // MS cap when clamped: STotalLimit - current RS
+        private float rms;    // RS + MS (clamped to STotalLimit) — total bar fill when unclipped
+        private float satisfaction; // RS - MS — drives Community Spirit direction
+
+        // Per-meter timers for decay/change intervals.
         private float CStimer;
         private float RStimer;
         private float MStimer;
-        
 
+        // --- Update ---
+        // Ticks all timers and drives the full satisfaction + CS + money update each frame.
         void Update()
         {
-            if (RS > 0f)
-            {
-                RStimer += Time.deltaTime;
-            }
-
-            if (MS > 0f)
-            {
-                MStimer += Time.deltaTime;
-            }
-            
+            if (RS > 0f) RStimer += Time.deltaTime;
+            if (MS > 0f) MStimer += Time.deltaTime;
             CStimer += Time.deltaTime;
-            
+
             UpdateRMS();
             UpdateCS();
             DecreaseRSOverTime();
             DecreaseMSOverTime();
             ChangeCsOverTime();
-            
+
             TextMoney.text = "€" + Money;
         }
-        
-        
-        //SATISFACTION LOGIC: START
-        private void UpdateRMS() 
+
+        // =====================================================================
+        // SATISFACTION LOGIC
+        // =====================================================================
+
+        // Converts RS and MS to fill ratios, animates the sliders, and toggles
+        // the addictive shader when MS is dominant (≥ 100 and greater than RS).
+        private void UpdateRMS()
         {
             float rsFillAmount = RS / STotalLimit;
             float msFillAmount = MS / STotalLimit;
 
-            
             AnimateMeter(ref rsAnimRoutine, SliderRS, rsFillAmount);
             AnimateMeter(ref msAnimRoutine, SliderMS, msFillAmount);
 
-            if (MS >= STotalLimit / 2 && MS > RS)
-            {
-                float alpha = 1.0f;
-                Color currColor = AddictiveShader.color;
-                currColor.a = alpha;
-                AddictiveShader.color = currColor;
-
-            }
-            else
-            {
-                float alpha = 0f;
-                Color currColor = AddictiveShader.color;
-                currColor.a = alpha;
-                AddictiveShader.color = currColor;
-            }
+            // Addictive shader — visible when material satisfaction overwhelms relational.
+            bool addictiveActive = MS >= STotalLimit / 2 && MS > RS;
+            Color shaderColor = AddictiveShader.color;
+            shaderColor.a = addictiveActive ? 1f : 0f;
+            AddictiveShader.color = shaderColor;
         }
-        
+
+        // Decays RS by RSDecreaseOverTimeAmount every RSDecreaseInterval seconds.
         private void DecreaseRSOverTime()
         {
             if (RStimer >= RSDecreaseInterval)
@@ -143,6 +170,9 @@ namespace PlayerResources
                 RStimer = 0;
             }
         }
+
+        // Called externally to increase RS (e.g. after a positive social interaction).
+        // Clamp mode prevents RS from pushing the combined total over STotalLimit.
         public void UpdateRS(float amount)
         {
             if (RS < RS_max && ClampRMS)
@@ -150,20 +180,21 @@ namespace PlayerResources
                 UpdateTotalS();
                 RS = Mathf.Min(RS + amount, RS_max);
             }
-                  
+
             if (ClampRMS == false)
             {
                 RS = Mathf.Min(RS + amount, STotalLimit);
                 UpdateTotalS();
                 if (rms >= STotalLimit)
                 {
-                    MS = rms - RS;
+                    MS = rms - RS; // push down MS so the total stays within bounds
                     UpdateTotalS();
                 }
             }
             UpdateRMS();
         }
-        
+
+        // Decays MS by MSDecreaseOverTimeAmount every MSDecreaseInterval seconds.
         private void DecreaseMSOverTime()
         {
             if (MStimer >= MSDecreaseInterval)
@@ -173,6 +204,8 @@ namespace PlayerResources
                 MStimer = 0;
             }
         }
+
+        // Called externally to increase MS (e.g. after a purchase or consumption event).
         public void UpdateMS(float amount)
         {
             if (MS < MS_max && ClampRMS)
@@ -187,13 +220,14 @@ namespace PlayerResources
                 UpdateTotalS();
                 if (rms >= STotalLimit)
                 {
-                    RS = rms - MS;
+                    RS = rms - MS; // push down RS so the total stays within bounds
                     UpdateTotalS();
                 }
             }
             UpdateRMS();
         }
 
+        // Recalculates derived values after any RS or MS change.
         private void UpdateTotalS()
         {
             RS_max = STotalLimit - MS;
@@ -201,49 +235,57 @@ namespace PlayerResources
             rms = Mathf.Clamp(RS + MS, 0, STotalLimit);
             satisfaction = Mathf.Clamp(RS - MS, -STotalLimit, STotalLimit);
         }
-        //SATISFACTION LOGIC: END
 
-        
-        //COMMUNITY SPIRIT LOGIC: START
+        // =====================================================================
+        // COMMUNITY SPIRIT LOGIC
+        // =====================================================================
+
+        // Animates the CS bar to match the current CS value (0–100 mapped to 0–1 fill).
         private void UpdateCS()
         {
-            float csFillAmount = CS / 100;
-
-            AnimateMeter(ref csAnimRoutine, SliderCS, csFillAmount);
+            AnimateMeter(ref csAnimRoutine, SliderCS, CS / 100f);
         }
-        
+
+        // Changes CS over time based on whether satisfaction is above or below the caps.
+        // If RS−MS is in the neutral band (sCapDecreaseCS to sCapIncreaseCS), nothing happens.
         private void ChangeCsOverTime()
         {
-            //Below says "If satisfaction is between 0 to 89 or the time interval for Community Spirit value change (5 sec) hasn't passed, DO NOTHING."
             if (CStimer < csChangeInterval) return;
             if (satisfaction >= sCapDecreaseCS && satisfaction <= sCapIncreaseCS) return;
-            //Below says "If satisfaction is 90 or more, increase the value. If it's the other option (-1 or less) decrease the value."
+
             CS += (satisfaction >= sCapIncreaseCS) ? CSIncreaseOverTimeAmount : -CSDecreaseOverTimeAmount;
             CStimer = 0;
             UpdateCS();
         }
+
+        // Called externally to directly add to Community Spirit (e.g. workshop processing reward).
         public void UpdateCommunitySpirit(float amount)
         {
             CS = Mathf.Min(CS + amount, 100f);
             UpdateCS();
         }
-        //COMMUNITY SPIRIT LOGIC: END
-        
-        
-        //MONEY LOGIC: START
+
+        // =====================================================================
+        // MONEY LOGIC
+        // =====================================================================
+
         public void UpdateMoney(float amount)
         {
             Money += amount;
             UpdateMoneyText();
         }
+
         private void UpdateMoneyText()
         {
             TextMoney.text = "€" + Money.ToString("F2");
         }
-        //MONEY LOGIC: END
-        
-        
-        //EASING ANIMATION LOGIC: START
+
+        // =====================================================================
+        // EASING ANIMATION
+        // =====================================================================
+
+        // Cancels any in-progress animation for this meter and starts a new one.
+        // Storing the Coroutine reference prevents multiple routines running in parallel.
         private void AnimateMeter(ref Coroutine routine, Image image, float target)
         {
             if (routine != null)
@@ -251,6 +293,8 @@ namespace PlayerResources
             routine = StartCoroutine(AnimateMeterRoutine(image, target));
         }
 
+        // Lerps the image fillAmount from its current value to target over easeTime seconds,
+        // applying the selected easing curve to the interpolation parameter t.
         private IEnumerator AnimateMeterRoutine(Image image, float target)
         {
             float start = image.fillAmount;
@@ -259,16 +303,15 @@ namespace PlayerResources
             {
                 time += Time.deltaTime;
                 float t = time / easeTime;
-                
-                //anim style/effect
+
                 switch (easingType)
                 {
-                    case EasingType.Cubic: t = 1f - Mathf.Pow(1 - t, 3f);  break;
-                    case EasingType.SmoothStep: t = t * t * (3f - 2f * t);  break;
-                    case EasingType.SuperSoft: t = 1f - Mathf.Pow(1 - t, 7f); break;
-                    case EasingType.Bounce: t = Mathf.Sin(t * Mathf.PI * 0.5f);  break;
+                    case EasingType.Cubic:     t = 1f - Mathf.Pow(1 - t, 3f);        break;
+                    case EasingType.SmoothStep: t = t * t * (3f - 2f * t);            break;
+                    case EasingType.SuperSoft: t = 1f - Mathf.Pow(1 - t, 7f);        break;
+                    case EasingType.Bounce:    t = Mathf.Sin(t * Mathf.PI * 0.5f);   break;
                 }
-                
+
                 image.fillAmount = Mathf.Lerp(start, target, t);
                 yield return null;
             }
