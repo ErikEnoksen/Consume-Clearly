@@ -242,6 +242,13 @@ namespace Assets.Scripts.Quests
 			}
 			return result;
 		}
+		
+		public void ResetState()
+		{
+			ActiveQuests.Clear();
+			completedQuestIDs.Clear();
+			questUI?.UpdateQuestUI();
+		}
 
 		public List<string> GetCompletedQuestIDs() => new List<string>(completedQuestIDs);
 

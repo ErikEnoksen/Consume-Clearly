@@ -29,6 +29,15 @@ namespace Save
             return Path.Combine(basePath, fileName);
         }
 
+        private static string BackupFilePath(string fileName = null)
+        {
+            fileName ??= "SaveData.json";
+            string ext = Path.GetExtension(fileName);
+            string name = Path.GetFileNameWithoutExtension(fileName);
+            string backupName = string.IsNullOrEmpty(ext) ? fileName + "_backup" : name + "_backup" + ext;
+            return SaveFilePath(backupName);
+        }
+
         public static void Save(SaveData data, string customFileName = null)
         {
             if (data == null || !data.IsSceneValidForSaving())
@@ -39,8 +48,12 @@ namespace Save
 
             try
             {
+                string primaryPath = SaveFilePath(customFileName);
+                if (File.Exists(primaryPath))
+                    File.Copy(primaryPath, BackupFilePath(customFileName), overwrite: true);
+
                 string json = JsonUtility.ToJson(data, prettyPrint: true);
-                File.WriteAllText(SaveFilePath(customFileName), json);
+                File.WriteAllText(primaryPath, json);
                 Debug.Log("Game saved successfully!");
             }
             catch (System.Exception ex)
@@ -75,6 +88,29 @@ namespace Save
                 }
             }
 
+            string backupPath = BackupFilePath(customFileName);
+            if (File.Exists(backupPath))
+            {
+                try
+                {
+                    string json = File.ReadAllText(backupPath);
+                    SaveData data = JsonUtility.FromJson<SaveData>(json);
+
+                    if (!data.IsSceneValidForSaving())
+                    {
+                        Debug.LogWarning("Backup save data is associated with an invalid scene. Save ignored.");
+                        return null;
+                    }
+
+                    Debug.LogWarning("Primary save missing or corrupted. Loaded from backup.");
+                    return data;
+                }
+                catch (System.Exception ex)
+                {
+                    Debug.LogError($"Failed to load backup save: {ex.Message}");
+                }
+            }
+
             return null;
         }
 
@@ -87,12 +123,15 @@ namespace Save
         public static void ClearSaveData(string customFileName = null)
         {
             string path = SaveFilePath(customFileName);
-
             if (File.Exists(path))
             {
                 File.Delete(path);
                 Debug.Log("Save data cleared.");
             }
+
+            string backupPath = BackupFilePath(customFileName);
+            if (File.Exists(backupPath))
+                File.Delete(backupPath);
         }
         public static void ClearAllData()
         {

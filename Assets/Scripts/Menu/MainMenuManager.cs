@@ -58,6 +58,7 @@ namespace MainMenu
         {
             Debug.Log("NewGame: clearing save data");
             SaveSystem.ClearAllData();
+            Assets.Scripts.Quests.QuestController.Instance?.ResetState();
             Debug.Log($"NewGame: loading scene '{GAME_SCENE_NAME}'");
             StartGame();
         }
