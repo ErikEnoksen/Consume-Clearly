@@ -2984,6 +2984,8 @@ GameObject:
   - component: {fileID: 611905022}
   - component: {fileID: 611905023}
   - component: {fileID: 611905024}
+  - component: {fileID: 611905026}
+  - component: {fileID: 611905025}
   m_Layer: 0
   m_Name: ladder_0
   m_TagString: Untagged
@@ -3126,6 +3128,43 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.9202515, y: 7.0399995}
   m_EdgeRadius: 0
+--- !u!95 &611905025
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611905020}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7a26e21e982723d4b861682d859f61f0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &611905026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611905020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60418fa5fc224ddcb2246907998faf8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::LevelObjects.Interactable.Rope
+  unfurlTriggerName: Unfurl
+  ropeClipName: RopeShort
+  showImmediately: 1
 --- !u!1 &630545832
 GameObject:
   m_ObjectHideFlags: 0
@@ -5412,6 +5451,9 @@ GameObject:
   - component: {fileID: 1059350889}
   - component: {fileID: 1059350890}
   - component: {fileID: 1059350891}
+  - component: {fileID: 1059350894}
+  - component: {fileID: 1059350893}
+  - component: {fileID: 1059350892}
   m_Layer: 0
   m_Name: ladder_0 (1)
   m_TagString: Untagged
@@ -5538,6 +5580,59 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.9202515, y: 7.0399995}
   m_EdgeRadius: 0
+--- !u!114 &1059350892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059350888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69b77514761b499c839cb9d3c6b54ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::LevelObjects.Climbable
+  climbType: 1
+  topPoint: {fileID: 1263518086}
+  bottomPoint: {fileID: 611905021}
+  snapToX: 1
+--- !u!95 &1059350893
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059350888}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7a26e21e982723d4b861682d859f61f0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1059350894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059350888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60418fa5fc224ddcb2246907998faf8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Main::LevelObjects.Interactable.Rope
+  unfurlTriggerName: Unfurl
+  ropeClipName: RopeShort
+  showImmediately: 1
 --- !u!1 &1066027407
 GameObject:
   m_ObjectHideFlags: 0
