@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 015654e925ce1b84d82d0bd42340a32e
+guid: 255476b45da02704da0fa1a5267f9101
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4557210561198914992
-    second: blue art_0
-  - first:
-      213: -5392027278495220597
-    second: blue art_1
-  - first:
-      213: 282927794268225946
-    second: blue art_2
+      213: -6712092019752620666
+    second: Big_Blue_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -106,29 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: blue art_0
-      rect:
-        serializedVersion: 2
-        x: 143
-        y: 473
-        width: 502
-        height: 313
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 0bd7bea3cd67e3f30800000000000000
-      internalID: 4557210561198914992
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blue art_1
+      name: Big_Blue_0
       rect:
         serializedVersion: 2
         x: 715
@@ -143,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b8c731622cbab25b0800000000000000
-      internalID: -5392027278495220597
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blue art_2
-      rect:
-        serializedVersion: 2
-        x: 1756
-        y: 187
-        width: 535
-        height: 174
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: a91417274592de300800000000000000
-      internalID: 282927794268225946
+      spriteID: 68d29e6cedbd9d2a0800000000000000
+      internalID: -6712092019752620666
       vertices: []
       indices: 
       edges: []
@@ -185,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      blue art_0: 4557210561198914992
-      blue art_1: -5392027278495220597
-      blue art_2: 282927794268225946
+      Big_Blue_0: -6712092019752620666
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
