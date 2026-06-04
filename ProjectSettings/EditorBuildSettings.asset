@@ -47,6 +47,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Windesheim_Outside.unity
     guid: 935af2db15ec98e499994fc93366b539
+  - enabled: 1
+    path: Assets/Scenes/Downtown(RoamingArea)/Buildings/InsideJaffaJaffa.unity
+    guid: f5cf1940e860b5d4fadbee8b34849d28
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

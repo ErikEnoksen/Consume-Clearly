@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 880e6da15edd66c4f88ee0079d37b927
+guid: a1ec67ae066809c4280b2059d1010bc7
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -127,10 +127,10 @@ TextureImporter:
       name: Bar_Stuff_0
       rect:
         serializedVersion: 2
-        x: 502
+        x: 1172
         y: 857
-        width: 459
-        height: 231
+        width: 433
+        height: 139
       alignment: 9
       pivot: {x: 0.47399053, y: 0.49999946}
       border: {x: 0, y: 0, z: 0, w: 0}
