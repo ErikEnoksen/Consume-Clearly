@@ -136,6 +136,10 @@ PrefabInstance:
       value: 2.3261855
       objectReference: {fileID: 0}
     - target: {fileID: 7264101159942444807, guid: a37cad1638bf380459a25c0f2e6aa825, type: 3}
+      propertyPath: sceneToLoad
+      value: Windesheim_Outside
+      objectReference: {fileID: 0}
+    - target: {fileID: 7264101159942444807, guid: a37cad1638bf380459a25c0f2e6aa825, type: 3}
       propertyPath: activateAfterFirstExit
       value: 0
       objectReference: {fileID: 0}
