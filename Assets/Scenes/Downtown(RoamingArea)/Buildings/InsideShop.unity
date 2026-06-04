@@ -2183,6 +2183,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 75863917968290283, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: shopMenu
+      value: 
+      objectReference: {fileID: 1955629217}
     - target: {fileID: 80505925353350073, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2191,14 +2195,18 @@ PrefabInstance:
       propertyPath: m_Value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 374355417984382838, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: shopMenu
+      value: 
+      objectReference: {fileID: 706060541}
+    - target: {fileID: 1127912337761365723, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: shopMenu
+      value: 
+      objectReference: {fileID: 706060541}
     - target: {fileID: 1149931076416988844, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: shopMenu
       value: 
       objectReference: {fileID: 1955629217}
-    - target: {fileID: 1262776426676192740, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -60.681396
-      objectReference: {fileID: 0}
     - target: {fileID: 1647007370556768940, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2207,11 +2215,27 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1924280167518644243, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: shopMenu
+      value: 
+      objectReference: {fileID: 706060541}
     - target: {fileID: 2125203103209555260, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_Value
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2178059047622840726, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: shopMenu
+      value: 
+      objectReference: {fileID: 1955629217}
     - target: {fileID: 2858550006067496156, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: shopMenu
+      value: 
+      objectReference: {fileID: 706060541}
+    - target: {fileID: 3023402700928794777, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: shopMenu
+      value: 
+      objectReference: {fileID: 1955629217}
+    - target: {fileID: 3058433727065028913, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: shopMenu
       value: 
       objectReference: {fileID: 706060541}
@@ -2227,6 +2251,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3341788754033953145, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: shopMenu
+      value: 
+      objectReference: {fileID: 706060541}
+    - target: {fileID: 3352500106304013708, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: shopMenu
+      value: 
+      objectReference: {fileID: 706060541}
     - target: {fileID: 3510729319102900328, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2236,6 +2268,10 @@ PrefabInstance:
       value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 3572534695567113448, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: shopMenu
+      value: 
+      objectReference: {fileID: 706060541}
+    - target: {fileID: 3994087363798197529, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: shopMenu
       value: 
       objectReference: {fileID: 706060541}
@@ -2251,6 +2287,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4604259281755851490, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: shopMenu
+      value: 
+      objectReference: {fileID: 1955629217}
     - target: {fileID: 4936878414952392995, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2279,17 +2319,21 @@ PrefabInstance:
       propertyPath: shopMenu
       value: 
       objectReference: {fileID: 706060541}
+    - target: {fileID: 5928037919846607848, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: shopMenu
+      value: 
+      objectReference: {fileID: 1955629217}
     - target: {fileID: 7147685405324520712, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: shopMenu
       value: 
       objectReference: {fileID: 1955629217}
     - target: {fileID: 7169444392638059195, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.00002527237
+      value: 0.0000027418137
       objectReference: {fileID: 0}
     - target: {fileID: 7169444392638059195, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000013232231
+      value: 0.000037908554
       objectReference: {fileID: 0}
     - target: {fileID: 7231137429175794959, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2299,6 +2343,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7448783786542724246, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: shopMenu
+      value: 
+      objectReference: {fileID: 706060541}
     - target: {fileID: 7634374304517423644, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2315,6 +2363,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8280075258175625892, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: shopMenu
+      value: 
+      objectReference: {fileID: 1955629217}
+    - target: {fileID: 8544327454578054551, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: shopMenu
+      value: 
+      objectReference: {fileID: 706060541}
     - target: {fileID: 8574326643682524904, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: shopMenu
       value: 
