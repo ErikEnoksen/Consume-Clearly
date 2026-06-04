@@ -2207,6 +2207,14 @@ PrefabInstance:
       propertyPath: shopMenu
       value: 
       objectReference: {fileID: 1955629217}
+    - target: {fileID: 1647007370556768940, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1647007370556768940, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1924280167518644243, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: shopMenu
       value: 
@@ -2235,6 +2243,14 @@ PrefabInstance:
       propertyPath: shopMenu
       value: 
       objectReference: {fileID: 1955629217}
+    - target: {fileID: 3248443507571943829, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3248443507571943829, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3341788754033953145, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: shopMenu
       value: 
@@ -2275,6 +2291,22 @@ PrefabInstance:
       propertyPath: shopMenu
       value: 
       objectReference: {fileID: 1955629217}
+    - target: {fileID: 4936878414952392995, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4936878414952392995, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4936878414952392995, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4936878414952392995, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5602567861712945252, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: shopMenu
       value: 

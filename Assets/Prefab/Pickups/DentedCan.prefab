@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: -4925002154883299450, guid: 7d72b48d4a43c8644ba88e518770fabb, type: 3}
     - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: itemName
-      value: Dented can
+      value: Scrap Metal
       objectReference: {fileID: 0}
     - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: itemDescription
