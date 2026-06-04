@@ -1,3 +1,10 @@
+// =============================================================================
+// InventoryItem.cs - The individual itemslots in the inventory
+//
+// PURPOSE:
+//   The individual slots store the information of the items.
+//   When clicked on they show more information on the side such as the description.
+// =============================================================================
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;

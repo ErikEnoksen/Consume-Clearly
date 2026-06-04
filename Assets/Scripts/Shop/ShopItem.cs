@@ -1,6 +1,12 @@
+// =============================================================================
+// ShopItem.cs - The invidivual slots of items in the shop
+//
+// PURPOSE:
+//   When selecting an item it will be displayed on the side.
+//   This way the player knows what they are buying.
+// =============================================================================
 using TMPro;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 

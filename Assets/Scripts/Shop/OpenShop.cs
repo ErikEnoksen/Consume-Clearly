@@ -1,6 +1,11 @@
+// =============================================================================
+// OpenShop.cs - Opens the shop UI
+//
+// PURPOSE:
+//   When interacing with the box it opens the shop UI.
+// =============================================================================
 using Save;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace LevelObjects.Interactable
