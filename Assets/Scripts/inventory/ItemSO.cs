@@ -1,3 +1,10 @@
+// =============================================================================
+// ItemSO.cs - IN charge of the behaviour of items
+//
+// PURPOSE:
+//   Different items have different behaviours.
+//   When using the item this script decides which stat to increase and by how much.
+// =============================================================================
 using UnityEngine;
 public enum ItemType
 {

@@ -1,3 +1,9 @@
+// =============================================================================
+// MoneyManager.cs - Manages the value of the players balance
+//
+// PURPOSE: 
+//   Through this script items can be bought and rewards can be given.
+// =============================================================================
 using TMPro;
 using UnityEngine;
 

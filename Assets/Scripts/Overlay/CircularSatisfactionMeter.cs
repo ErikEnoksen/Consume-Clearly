@@ -1,3 +1,12 @@
+// =============================================================================
+// CircularSatisfactionMeter.cs - Represents the circular and linear consequenses
+//
+// PURPOSE: 
+//   Though this meter the player can see the consequenses of his choices.
+//
+// NOTES:
+//   As of writing this there are no consequenses regarding a low score.
+// =============================================================================
 using UnityEngine;
 using UnityEngine.UI;
 

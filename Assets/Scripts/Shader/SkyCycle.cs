@@ -1,3 +1,10 @@
+// =============================================================================
+// SkyCyle.cs - Changes the background
+//
+// PURPOSE:
+//   This script changes the settings of the background material to simulate a sky.
+//   It does this by rotating and changing the exposure
+// =============================================================================
 using UnityEngine;
 
 public class SkyCycle : MonoBehaviour

@@ -1421,7 +1421,7 @@ MonoBehaviour:
   triggerType: 0
   interactKey: 102
   pressF: {fileID: 346258215}
-  uniqueId: 2bf6c052-7058-4fda-a5fa-e0d2212a92ca
+  uniqueId: 2bf6g052-7058-4fda-a5fa-e0d2212a92ca
 --- !u!58 &286253977
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2185,7 +2185,7 @@ MonoBehaviour:
   triggerType: 0
   interactKey: 102
   pressF: {fileID: 1187601090}
-  uniqueId: d58368f4-a8a5-48a3-a621-210e1731b560
+  uniqueId: d99868f4-a8a5-48a3-a621-210e1731b560
 --- !u!58 &360808268
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9608,7 +9608,7 @@ MonoBehaviour:
   triggerType: 0
   interactKey: 102
   pressF: {fileID: 968694684}
-  uniqueId: daa03190-f689-427e-a033-5eeb542195fc
+  uniqueId: dbc03190-f689-427e-a033-5eeb542195fc
 --- !u!58 &1428293271
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -11410,7 +11410,7 @@ MonoBehaviour:
   triggerType: 0
   interactKey: 102
   pressF: {fileID: 418371854}
-  uniqueId: 9b6affaf-9cba-4fc2-9032-55342b8717b0
+  uniqueId: 9b6affaf-9cba-4fc2-9032-54242b8717b0
 --- !u!58 &1834258195
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -12113,6 +12113,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 607881939}
     m_Modifications:
+    - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
+      propertyPath: uniqueId
+      value: 0af2093d-a6de-4cff-b971-210dc0ff6063
+      objectReference: {fileID: 0}
     - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: dialogueStages.Array.size
       value: 3

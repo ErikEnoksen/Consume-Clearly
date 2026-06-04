@@ -1,3 +1,9 @@
+// =============================================================================
+// CameraController.cs - Responsible for configuring the camera
+//
+// PURPOSE: 
+//   This script sets the tracking target for the camera to the player.
+// =============================================================================
 using Unity.Cinemachine;
 using UnityEngine;
 

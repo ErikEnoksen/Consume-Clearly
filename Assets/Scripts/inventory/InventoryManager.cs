@@ -1,3 +1,10 @@
+// =============================================================================
+// InventoryManager.cs - Responsible for managing items
+//
+// PURPOSE:
+//   When looking for items in other scripts, this script will hold the methods responsible for it.
+//   Depending on where you open the inventory from you will get other functionalities.
+// =============================================================================
 using Assets.Scripts.Quests;
 using System.Collections.Generic;
 using UnityEngine;
@@ -192,20 +199,6 @@ public class InventoryManager : MonoBehaviour, IUILockable
         }
 
         return false;
-    }
-
-    public int LookForGift(string itemName, int affectionIncrease)
-    {
-        for (int i = 0; i < inventoryItems.Length; i++)
-        {
-            if (inventoryItems[i].itemName == itemName)
-            {
-                inventoryItems[i].RemoveItem(1);
-                return affectionIncrease;
-            }
-        }
-        Debug.Log("looked for gift");
-        return 0;
     }
         
     public void GiftItem()

@@ -1,3 +1,13 @@
+// =============================================================================
+// PlayerHunger.cs - Manages the hunger of the player
+//
+// PURPOSE:
+//   This script simulates hunger by slowly decreasing the value over time.
+//   It can be filled back up by using food.
+//
+// NOTES:
+//   As of writing this there are no consequenses for low hunger.
+// =============================================================================
 using UnityEngine;
 using UnityEngine.UI;
 

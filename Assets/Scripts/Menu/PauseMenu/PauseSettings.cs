@@ -36,6 +36,7 @@ public class PauseSettings : MonoBehaviour
         InitializeResolutions();
         InitializeDisplayMode();
         SyncUI();
+        //Sets the frame rate to prevent unnecessary resource usage
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = int.Parse(fpsLimitInput.text);
     }
@@ -202,9 +203,11 @@ public class PauseSettings : MonoBehaviour
 
     public void SetFPS()
     {
+        //Saves the fps input as an int
         int fps = int.Parse(fpsLimitInput.text);
         if(fps > 0 && 360 >= fps)
         {
+            //Sets the frame rate
             Application.targetFrameRate = fps;
             fpsLimitText.text = $"FPS limit: {fps} (max: 360)";
         }

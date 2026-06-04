@@ -1,5 +1,12 @@
+// =============================================================================
+// CashRegister.cs — Opens the inventory with selling functionality
+// 
+//
+// PURPOSE:
+//   When in the trigger the player can press the interact button.
+//   Upon pressing the button the inventory will open with a sell button.
+// =============================================================================
 using UnityEngine;
-using UnityEngine.UI;
 
 public class CashRegister : MonoBehaviour
 {
@@ -7,7 +14,6 @@ public class CashRegister : MonoBehaviour
     GameObject eKeyImage;
     InventoryManager inventoryManager;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         inventoryManager = GameObject.Find("InventorySelector").GetComponent<InventoryManager>();
@@ -24,7 +30,6 @@ public class CashRegister : MonoBehaviour
             {
                 inventoryManager.SellingMenu();
             }
-
         }
     }
 

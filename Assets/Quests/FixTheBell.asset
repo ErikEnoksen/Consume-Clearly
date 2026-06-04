@@ -16,7 +16,7 @@ MonoBehaviour:
   questName: Fix the bell
   description: Collect resources and reach the top of the clocktower to fix the bell
   objectives:
-  - objectiveID: Scrap Metal
+  - objectiveID: Dented can
     description: Collect Scrap Metal
     type: 0
     requiredAmount: 2

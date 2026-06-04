@@ -1,4 +1,11 @@
-using Items;
+// =============================================================================
+// Item.cs - The individual items in the environment
+//
+// PURPOSE:
+//   These are the items the player will collect to help him through levels.
+//   When interacting with these items they will be added to the inventory.
+//   An item can be picked up when the player sees and E symbol above them.
+// =============================================================================
 using Save;
 using System;
 using UnityEngine;
