@@ -3906,10 +3906,11 @@ MonoBehaviour:
   uniqueId: f23f8a78-63cf-4451-a6b0-e8e416e2c6f9
   stationType: 0
   recipes:
-  - {fileID: 11400000, guid: 721a8997d579e4e4d897508086f373e3, type: 2}
-  - {fileID: 11400000, guid: 721a8997d579e4e4d897508086f373e3, type: 2}
-  - {fileID: 11400000, guid: 721a8997d579e4e4d897508086f373e3, type: 2}
-  - {fileID: 11400000, guid: 721a8997d579e4e4d897508086f373e3, type: 2}
+  - {fileID: 11400000, guid: 1e3565859f21a7e4c8d41b941ce19715, type: 2}
+  - {fileID: 11400000, guid: 679ce564813ce4e46a6e386010b3e279, type: 2}
+  - {fileID: 11400000, guid: c99e45e9b5c07244c9cc3419419c8e44, type: 2}
+  - {fileID: 11400000, guid: 92784f627d4fe834bb9ad4cee4a28436, type: 2}
+  - {fileID: 11400000, guid: bdd1b379ab8ff6b499099814703a5ff3, type: 2}
   workshopUI: {fileID: 2022043658}
 --- !u!61 &647275200
 BoxCollider2D:
@@ -7686,6 +7687,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5194170411184828006, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5194170411184828006, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5340604583033323592, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -7900,6 +7909,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6258100385349538312, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278555158375083359, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6278555158375083359, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6381752634705386738, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
@@ -8122,6 +8139,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7247016638657640627, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7247016638657640627, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7251133656421589746, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8213,6 +8238,18 @@ PrefabInstance:
     - target: {fileID: 7795635141683364816, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825596925441452230, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825596925441452230, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825596925441452230, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.000000059604645
       objectReference: {fileID: 0}
     - target: {fileID: 8053702684528809227, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8342,6 +8379,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8413766886881884101, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8604276887623148409, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -8396,6 +8437,22 @@ PrefabInstance:
       objectReference: {fileID: 906094935}
     - target: {fileID: 8834727615462840534, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897372810480416832, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897372810480416832, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897372810480416832, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8897372810480416832, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8914616892585617923, guid: 32cc2b54d3f81f94cab7671c34e599ce, type: 3}
@@ -11043,9 +11100,9 @@ MonoBehaviour:
   stationType: 0
   recipes:
   - {fileID: 11400000, guid: 1d55bf95112b7174ba8cd99cf7ed0fe7, type: 2}
+  - {fileID: 11400000, guid: 0cd9bd08f02b43b499b3acbd9cf99206, type: 2}
   - {fileID: 11400000, guid: 162c7323962e8f344a849cc99918fc49, type: 2}
   - {fileID: 11400000, guid: 4c04951c1e3178d4789f1e49e50c73a1, type: 2}
-  - {fileID: 11400000, guid: 0cd9bd08f02b43b499b3acbd9cf99206, type: 2}
   workshopUI: {fileID: 2022043658}
 --- !u!212 &1771850295
 SpriteRenderer:
@@ -11530,7 +11587,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: dialogueStages.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: dialogueStages.Array.data[0].dialogue
@@ -11543,11 +11600,15 @@ PrefabInstance:
     - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: dialogueStages.Array.data[2].dialogue
       value: 
-      objectReference: {fileID: 11400000, guid: 7d967817b6ecd1645b83ea6010051f41, type: 2}
+      objectReference: {fileID: 11400000, guid: 853586f2791100d429a64d40f78adf93, type: 2}
     - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: dialogueStages.Array.data[3].dialogue
       value: 
       objectReference: {fileID: 11400000, guid: 853586f2791100d429a64d40f78adf93, type: 2}
+    - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
+      propertyPath: dialogueStages.Array.data[1].questToCheck
+      value: 
+      objectReference: {fileID: 11400000, guid: 57d1d335eb13f76439d1d610ab6045aa, type: 2}
     - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: dialogueStages.Array.data[0].advanceCondition
       value: 0
@@ -11556,6 +11617,14 @@ PrefabInstance:
       propertyPath: dialogueStages.Array.data[1].advanceCondition
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
+      propertyPath: dialogueStages.Array.data[1].questCompletedDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d967817b6ecd1645b83ea6010051f41, type: 2}
+    - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
+      propertyPath: dialogueStages.Array.data[1].questInProgressDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 3cc88be436122344f8b9273d2e3b33be, type: 2}
     - target: {fileID: 6151885679887498229, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: leftPatrolX
       value: 20
@@ -11981,7 +12050,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: dialogueStages.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: dialogueStages.Array.data[0].dialogue
@@ -11994,11 +12063,15 @@ PrefabInstance:
     - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: dialogueStages.Array.data[2].dialogue
       value: 
-      objectReference: {fileID: 11400000, guid: aed4c55590cd80949a7c17746715309b, type: 2}
+      objectReference: {fileID: 11400000, guid: f84607eec3895d6408463db4ba1e8dbe, type: 2}
     - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: dialogueStages.Array.data[3].dialogue
       value: 
       objectReference: {fileID: 11400000, guid: f84607eec3895d6408463db4ba1e8dbe, type: 2}
+    - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
+      propertyPath: dialogueStages.Array.data[1].questToCheck
+      value: 
+      objectReference: {fileID: 11400000, guid: 42aa3d01f28498848880eabff49e468c, type: 2}
     - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: dialogueStages.Array.data[0].advanceCondition
       value: 0
@@ -12007,6 +12080,14 @@ PrefabInstance:
       propertyPath: dialogueStages.Array.data[1].advanceCondition
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
+      propertyPath: dialogueStages.Array.data[1].questCompletedDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: aed4c55590cd80949a7c17746715309b, type: 2}
+    - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
+      propertyPath: dialogueStages.Array.data[1].questInProgressDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: a3fbb5bb00638b04fba99f118391e688, type: 2}
     - target: {fileID: 6243834197810659815, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.2261238

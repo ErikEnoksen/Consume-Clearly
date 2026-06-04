@@ -45,6 +45,7 @@ namespace Save
         public string itemDescription;
         public int maxStack;
         public string itemTag;
+        public int sellPrice;
         public string spriteName;
         [NonSerialized] public UnityEngine.Sprite cachedSprite; // not serialized — rebuilt at load time
     }

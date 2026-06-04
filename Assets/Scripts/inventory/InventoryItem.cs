@@ -196,6 +196,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         itemDescription = data.itemDescription;
         maxStack = data.maxStack;
         tag = data.itemTag;
+        sellPrice = data.sellPrice;
         this.sprite = sprite;
         isFull = quantity >= maxStack;
 

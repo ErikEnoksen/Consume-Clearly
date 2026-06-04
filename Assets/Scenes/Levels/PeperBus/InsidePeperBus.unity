@@ -995,16 +995,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7995607063562561978, guid: bb552bca229a21240ad162798102b57f, type: 3}
       propertyPath: dialogueStages.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7995607063562561978, guid: bb552bca229a21240ad162798102b57f, type: 3}
       propertyPath: dialogueStages.Array.data[0].dialogue
       value: 
       objectReference: {fileID: 11400000, guid: 848f8362b1ca9f24faa0fba14943c80c, type: 2}
     - target: {fileID: 7995607063562561978, guid: bb552bca229a21240ad162798102b57f, type: 3}
+      propertyPath: dialogueStages.Array.data[1].dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: cae74c9c8d6612942b600abf31207422, type: 2}
+    - target: {fileID: 7995607063562561978, guid: bb552bca229a21240ad162798102b57f, type: 3}
+      propertyPath: dialogueStages.Array.data[0].questToCheck
+      value: 
+      objectReference: {fileID: 11400000, guid: 829c52fa25b61da44b10a034a0811855, type: 2}
+    - target: {fileID: 7995607063562561978, guid: bb552bca229a21240ad162798102b57f, type: 3}
       propertyPath: dialogueStages.Array.data[0].advanceCondition
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7995607063562561978, guid: bb552bca229a21240ad162798102b57f, type: 3}
+      propertyPath: dialogueStages.Array.data[1].advanceCondition
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7995607063562561978, guid: bb552bca229a21240ad162798102b57f, type: 3}
+      propertyPath: dialogueStages.Array.data[0].questInProgressDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 829968be8eca4854896f6f9d30d133a4, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

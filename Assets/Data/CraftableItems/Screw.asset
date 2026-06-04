@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e9525c0c9818184791b9e8f6b179e8d, type: 3}
-  m_Name: Trash 2
+  m_Name: Screw
   m_EditorClassIdentifier: Main::WorkshopRecipe
   stationType: 0
   inputs:
   - itemPrefab: {fileID: 3182126576682125952, guid: de8ffa18da723cb428c64155c230e894, type: 3}
     amount: 1
   outputPrefabs:
-  - itemPrefab: {fileID: 4212142162107661175, guid: 24e75c9a827586344be04d2b9dc3d7de, type: 3}
+  - itemPrefab: {fileID: 2151010398377138779, guid: 3d9c330ca2a68294588a3d3bf10adf72, type: 3}
     amount: 1

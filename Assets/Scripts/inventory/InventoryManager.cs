@@ -257,6 +257,7 @@ public class InventoryManager : MonoBehaviour, IUILockable
                     itemDescription = slot.itemDescription,
                     maxStack = slot.maxStack,
                     itemTag = slot.tag,
+                    sellPrice = slot.sellPrice,
                     spriteName = slot.sprite != null ? slot.sprite.name : string.Empty,
                     cachedSprite = slot.sprite
                 });
