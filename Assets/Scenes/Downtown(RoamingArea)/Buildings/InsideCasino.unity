@@ -902,6 +902,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::DialogueTrigger
   dialogueStages:
   - dialogue: {fileID: 11400000, guid: c2f92f4ba43c591468e35601604a4679, type: 2}
+    questToCheck: {fileID: 0}
+    questInProgressDialogue: {fileID: 0}
+    questCompletedDialogue: {fileID: 0}
     advanceCondition: 2
     conversationsToAdvance: 0
   triggerType: 0
@@ -2487,7 +2490,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: dialogueStages.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: dialogueStages.Array.data[0].dialogue
@@ -2519,7 +2522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1243572360099442622, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: dialogueStages.Array.data[3].conversationsToAdvance
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6243834197810659815, guid: c3e16b3e3122bd94b82be000c3918df8, type: 3}
       propertyPath: m_LocalScale.x
@@ -3022,7 +3025,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Main::DialogueTrigger
   dialogueStages:
+  - dialogue: {fileID: 11400000, guid: d0f3d3e67279cd44d8d74ef4c338db01, type: 2}
+    questToCheck: {fileID: 0}
+    questInProgressDialogue: {fileID: 0}
+    questCompletedDialogue: {fileID: 0}
+    advanceCondition: 2
+    conversationsToAdvance: 0
   - dialogue: {fileID: 11400000, guid: 784212a6fb962e340b2525fb49f2353b, type: 2}
+    questToCheck: {fileID: 0}
+    questInProgressDialogue: {fileID: 0}
+    questCompletedDialogue: {fileID: 0}
     advanceCondition: 2
     conversationsToAdvance: 0
   triggerType: 0
