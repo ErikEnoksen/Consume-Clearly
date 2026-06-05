@@ -1,3 +1,10 @@
+// =============================================================================
+// InventoryItem.cs - The individual itemslots in the inventory
+//
+// PURPOSE:
+//   The individual slots store the information of the items.
+//   When clicked on they show more information on the side such as the description.
+// =============================================================================
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,6 +20,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     [TextArea]
     public string itemDescription;
     public int maxStack;
+    public int sellPrice;
 
     [SerializeField]
     private TMP_Text quantityText;
@@ -55,6 +63,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         maxStack = item.MaxStack;
         tag = item.tag;
         eKeySprite = item.EKeySprite;
+        sellPrice = item.SellPrice;
         
         //SetActive makes the item and item count visible in the inventory
         if (itemImage != null) { itemImage.sprite = item.Sprite; itemImage.enabled = true; }
@@ -119,12 +128,12 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     {
         inventoryManager.DeselectAllSlots();
         selectedShaders.SetActive(true);
-        infoImage.gameObject.SetActive(true);
         thisItemSelected = true;
-        
+        infoImage.enabled = true;
+
         itemDescriptionTitle.text = itemName;
-        inventoryManager.selectedItemName = itemName;
-        itemDescriptionText.text = itemDescription;
+        inventoryManager.selectedItemID = itemID;
+        itemDescriptionText.text = (sellPrice > 0) ? $"{itemDescription} \n-Value: {sellPrice}" : itemDescription;
         infoImage.sprite = itemImage.sprite;
         
         if (infoImage.sprite != null) infoImage.enabled = true;
@@ -163,7 +172,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
                 eKeyInstance.SetActive(false);
             }
 
-            newItem.Initialize(itemName, 1, sprite, itemDescription, maxStack, tag, eKeyInstance);
+            newItem.Initialize(itemName, 1, sprite, itemDescription, maxStack, tag, eKeyInstance, sellPrice);
 
             SpriteRenderer sr = itemToDrop.AddComponent<SpriteRenderer>();
             sr.sprite = sprite;
@@ -194,6 +203,7 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
         itemDescription = data.itemDescription;
         maxStack = data.maxStack;
         tag = data.itemTag;
+        sellPrice = data.sellPrice;
         this.sprite = sprite;
         isFull = quantity >= maxStack;
 
@@ -207,11 +217,11 @@ public class InventoryItem : MonoBehaviour, IPointerClickHandler
     public void EmptySlot()
     {
         if (quantityText != null) { quantityText.enabled = false; quantityText.text = string.Empty; }
-        if (inventoryManager != null) inventoryManager.selectedItemName = string.Empty;
+        if (inventoryManager != null) inventoryManager.selectedItemID = string.Empty;
         if (itemImage != null) { itemImage.enabled = false; itemImage.sprite = null; }
         if (itemDescriptionText != null) itemDescriptionText.text = null;
         if (itemDescriptionTitle != null) itemDescriptionTitle.text = null;
-        if (infoImage != null) infoImage.sprite = null;
+        if (infoImage != null) infoImage.sprite = null; infoImage.enabled = false;
 
         itemName = null;
         itemID = null;

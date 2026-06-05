@@ -1,3 +1,12 @@
+// =============================================================================
+// CircularSatisfactionMeter.cs - Represents the circular and linear consequenses
+//
+// PURPOSE: 
+//   Though this meter the player can see the consequenses of his choices.
+//
+// NOTES:
+//   As of writing this there are no consequenses regarding a low score.
+// =============================================================================
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -62,7 +71,7 @@ public class CircularSatisfactionMeter : MonoBehaviour
             return;
 
         passivePointTimer -= Time.deltaTime;
-
+        // When the timer reaches zero, increase satisfaction and reset the timer
         if (passivePointTimer <= 0f)
         {
             IncreaseSatisfactionValue(1);
@@ -70,6 +79,7 @@ public class CircularSatisfactionMeter : MonoBehaviour
         }
     }
 
+    // Activates the passive point system, which will increase satisfaction over time until deactivated.
     public void ActivatePassivePoint()
     {
         isPassivePointActive = true;
@@ -88,6 +98,7 @@ public class CircularSatisfactionMeter : MonoBehaviour
 
     private void SatisfactionColor()
     {
+        // Change the fill color based on the current satisfaction value
         Image sliderFill = circularSatisfactionSlider.fillRect.GetComponent<Image>();
         if (sliderFill != null)
         {

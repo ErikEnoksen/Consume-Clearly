@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e9525c0c9818184791b9e8f6b179e8d, type: 3}
+  m_Name: TireRubber
+  m_EditorClassIdentifier: Main::WorkshopRecipe
+  stationType: 0
+  inputs:
+  - itemPrefab: {fileID: 3182126576682125952, guid: de8ffa18da723cb428c64155c230e894, type: 3}
+    amount: 2
+  outputPrefabs:
+  - itemPrefab: {fileID: 2250404272924058097, guid: c86a68547d783df4ca5e61a725641386, type: 3}
+    amount: 1

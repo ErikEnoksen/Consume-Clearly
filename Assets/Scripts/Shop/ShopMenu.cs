@@ -1,3 +1,11 @@
+// =============================================================================
+// ShopMenu.cs - The display of the shop
+//
+// PURPOSE: 
+//   When enabled it will display the shop.
+//   There are two shops with the same logic but different items.
+//   This enables the player to use their money to obtain the items they need.
+// =============================================================================
 using LevelObjects.Interactable;
 using Player;
 using Save;

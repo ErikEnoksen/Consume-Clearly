@@ -1,3 +1,41 @@
+// =============================================================================
+// CompanionManager.cs — Persistent Companion Spawn & Lifecycle Manager
+// 
+//
+// PURPOSE:
+//   Singleton that manages all companion instances across scene loads.
+//   Reads CompanionSpawnPoint markers in each scene, decides whether to spawn
+//   new companions or reposition existing ones, and wires the player as their
+//   follow target once PlayerManager is ready.
+//
+// TWO DICTIONARIES:
+//   • spawnedCompanions    — spawnID → live GameObject instance (the truth of what exists)
+//   • scenePrefabOverrides — spawnID → prefab the current scene wants for that ID
+//     (re-built fresh every scene load from the scene's CompanionSpawnPoints)
+//
+// ON SCENE LOAD (preserveBetweenScenes = true):
+//   1. RegisterSceneOverrides()       — reads all spawn points into scenePrefabOverrides
+//   2. ApplySceneOverridesToExisting()— for companions already alive, either replace
+//                                       them (different prefab) or teleport them to
+//                                       their spawn point (same prefab)
+//   3. SpawnMissingFromScene()        — instantiates any spawn point that has no
+//                                       live companion yet
+//   4. TryAssignPlayerTargets()       — hands the player's TargetPoint to all followers;
+//                                       retries for up to 2 seconds if the player isn't ready
+//
+// ON SCENE LOAD (preserveBetweenScenes = false):
+//   All existing companions are destroyed and every scene spawn point re-spawns fresh.
+//
+// AUTO-CREATION:
+//   [RuntimeInitializeOnLoadMethod] guarantees the manager exists even if not
+//   placed in any scene — it creates itself before the first scene loads.
+//
+// COMPONENT SAFETY (autoAddMissingComponents):
+//   EnsureComponents() checks for Rigidbody2D, AnimationController, and
+//   CompanionFollow2D on spawn, adding them at runtime if missing and the
+//   flag is enabled. Also wires groundCheck via reflection if it's null.
+// =============================================================================
+
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -17,12 +55,13 @@ namespace Companion
         [Tooltip("If true, existing companions will be teleported to matched spawn points on scene load.")]
         [SerializeField] private bool teleportExistingOnSceneLoad = true;
 
-        // scene-specific overrides: spawnID -> prefab
+        // Which prefab the current scene wants for each spawnID — rebuilt every scene load.
         private Dictionary<string, GameObject> scenePrefabOverrides = new Dictionary<string, GameObject>();
 
-        // active spawned companions: spawnID -> instance
+        // All currently live companion instances, keyed by spawnID.
         private Dictionary<string, GameObject> spawnedCompanions = new Dictionary<string, GameObject>();
 
+        // --- Singleton Setup ---
         private void Awake()
         {
             if (Instance == null)
@@ -46,6 +85,8 @@ namespace Companion
             }
         }
 
+        // --- Scene Load Handler ---
+        // Runs the full spawn/reposition pipeline each time a scene finishes loading.
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             RegisterSceneOverrides();
@@ -56,15 +97,17 @@ namespace Companion
             }
             else
             {
-                // If not preserving, clear and respawn according to scene
+                // Not preserving — wipe and start fresh from the scene's spawn points.
                 DespawnAll();
                 SpawnMissingFromScene();
             }
 
-            // Try to assign player as target (wait briefly if player not yet created)
             TryAssignPlayerTargets();
         }
 
+        // --- Register Scene Overrides ---
+        // Reads every CompanionSpawnPoint in the loaded scene into scenePrefabOverrides.
+        // Duplicate IDs and missing prefabs are warned about but don't crash.
         private void RegisterSceneOverrides()
         {
             scenePrefabOverrides.Clear();
@@ -85,14 +128,16 @@ namespace Companion
                 }
 
                 if (sp.CompanionPrefab == null)
-                {
                     Debug.LogWarning($"CompanionSpawnPoint '{sp.SpawnID}' has no prefab assigned.");
-                }
 
                 scenePrefabOverrides[sp.SpawnID] = sp.CompanionPrefab;
             }
         }
 
+        // --- Apply Overrides to Existing Companions ---
+        // For each already-alive companion that also has a scene spawn point:
+        //   • Different prefab → despawn and respawn the new one
+        //   • Same prefab → optionally teleport to the spawn point position
         private void ApplySceneOverridesToExisting()
         {
             var keys = spawnedCompanions.Keys.ToList();
@@ -103,34 +148,30 @@ namespace Companion
                 var desiredPrefab = scenePrefabOverrides[spawnID];
                 var existingInstance = spawnedCompanions[spawnID];
 
-                if (desiredPrefab == null)
-                {
-                    // If scene says no prefab, remove existing
-                    continue;
-                }
+                if (desiredPrefab == null) continue;
 
                 var existingPrefab = GetOriginalPrefab(existingInstance);
                 if (existingPrefab == null || existingPrefab.name != desiredPrefab.name)
                 {
-                    // Different prefab: replace
+                    // Scene wants a different companion here — replace.
                     Despawn(spawnID);
                     SpawnByID(spawnID);
                 }
                 else
                 {
-                    // Same prefab: teleport to spawn point if possible
+                    // Same companion — just reposition them at the scene's spawn point.
                     if (teleportExistingOnSceneLoad)
                     {
                         var sp = FindObjectsByType<CompanionSpawnPoint>(FindObjectsSortMode.None).FirstOrDefault(x => x.SpawnID == spawnID);
                         if (sp != null)
-                        {
                             existingInstance.transform.position = sp.transform.position;
-                        }
                     }
                 }
             }
         }
 
+        // --- Spawn Missing ---
+        // Instantiates companions for any spawn point that doesn't have a live instance yet.
         private void SpawnMissingFromScene()
         {
             var spawnPoints = FindObjectsByType<CompanionSpawnPoint>(FindObjectsSortMode.None);
@@ -149,17 +190,21 @@ namespace Companion
             }
         }
 
+        // Editor-only: resolves a live instance back to its source prefab asset for comparison.
+        // Returns null in builds (prefab comparison not needed at runtime).
         private GameObject GetOriginalPrefab(GameObject instance)
         {
             #if UNITY_EDITOR
             if (instance == null) return null;
-            var prefab = UnityEditor.PrefabUtility.GetCorrespondingObjectFromSource(instance) as GameObject;
-            return prefab;
+            return UnityEditor.PrefabUtility.GetCorrespondingObjectFromSource(instance) as GameObject;
             #else
             return null;
             #endif
         }
 
+        // --- Public API ---
+
+        // Spawns all companions that have a spawn point in the scene and aren't alive yet.
         public void SpawnAll()
         {
             var spawnPoints = FindObjectsByType<CompanionSpawnPoint>(FindObjectsSortMode.None);
@@ -170,6 +215,7 @@ namespace Companion
             }
         }
 
+        // Spawns the companion for a specific spawnID using the scene's matching spawn point.
         public GameObject SpawnByID(string spawnID)
         {
             var sp = FindObjectsByType<CompanionSpawnPoint>(FindObjectsSortMode.None).FirstOrDefault(x => x.SpawnID == spawnID);
@@ -178,10 +224,10 @@ namespace Companion
                 Debug.LogWarning($"No CompanionSpawnPoint found with SpawnID '{spawnID}' in the current scene.");
                 return null;
             }
-
             return SpawnAt(sp);
         }
 
+        // Destroys the live instance for this spawnID and removes it from the tracking dict.
         public void Despawn(string spawnID)
         {
             if (!spawnedCompanions.ContainsKey(spawnID)) return;
@@ -202,10 +248,10 @@ namespace Companion
             SpawnByID(spawnID);
         }
 
+        // Overrides which prefab a spawnID uses and immediately replaces the live instance.
         public void SetPrefabForSpawnID(string spawnID, GameObject prefab)
         {
             scenePrefabOverrides[spawnID] = prefab;
-
             if (spawnedCompanions.ContainsKey(spawnID))
             {
                 Despawn(spawnID);
@@ -213,6 +259,7 @@ namespace Companion
             }
         }
 
+        // Assigns the player's TargetPoint as the follow target for all live companions.
         public void AssignTargetsToAll(Transform playerTarget)
         {
             if (playerTarget == null)
@@ -239,14 +286,15 @@ namespace Companion
                         continue;
                     }
                 }
-
                 follow.SetTarget(playerTarget);
             }
         }
 
+        // --- Player Target Assignment ---
+        // Tries to find the player immediately. If PlayerManager isn't ready yet
+        // (common right after scene load), falls back to a 2-second polling coroutine.
         private void TryAssignPlayerTargets()
         {
-            // Try to find player; PlayerManager is expected to be persistent like this manager
             var playerMgr = Player.PlayerManager.Instance;
             if (playerMgr != null && playerMgr.GetPlayer() != null)
             {
@@ -258,14 +306,13 @@ namespace Companion
                 }
             }
 
-            // If player not ready, schedule a delayed attempt
             StartCoroutine(DelayedAssignRoutine());
         }
 
         private System.Collections.IEnumerator DelayedAssignRoutine()
         {
             float start = Time.time;
-            while (Time.time - start < 2f) // try for up to 2 seconds
+            while (Time.time - start < 2f)
             {
                 var playerMgr = Player.PlayerManager.Instance;
                 if (playerMgr != null && playerMgr.GetPlayer() != null)
@@ -283,6 +330,9 @@ namespace Companion
             Debug.LogWarning("CompanionManager: failed to find player TargetPoint within timeout.");
         }
 
+        // --- Spawn At Point ---
+        // Core instantiation method. Creates the companion, names it, ensures required
+        // components, registers it, and assigns the player target if one is available.
         private GameObject SpawnAt(CompanionSpawnPoint sp)
         {
             if (sp == null) return null;
@@ -291,7 +341,6 @@ namespace Companion
                 Debug.LogWarning("Cannot spawn companion with empty SpawnID.");
                 return null;
             }
-
             if (sp.CompanionPrefab == null)
             {
                 Debug.LogWarning($"Spawn point '{sp.SpawnID}' has no prefab assigned.");
@@ -301,12 +350,10 @@ namespace Companion
             var instance = Instantiate(sp.CompanionPrefab, sp.transform.position, Quaternion.identity);
             instance.name = sp.SpawnID + "_" + instance.name;
 
-            // Ensure components
             EnsureComponents(instance);
-
             spawnedCompanions[sp.SpawnID] = instance;
 
-            // If we already have a player, assign target now
+            // If the player is already in the scene, wire up the follow target immediately.
             var player = Player.PlayerManager.Instance?.GetPlayer();
             if (player != null)
             {
@@ -321,6 +368,10 @@ namespace Companion
             return instance;
         }
 
+        // --- Component Safety Check ---
+        // Adds missing required components at runtime if autoAddMissingComponents is enabled.
+        // Also uses reflection to wire the groundCheck field if it exists as a child object
+        // but wasn't assigned in the prefab.
         private void EnsureComponents(GameObject instance)
         {
             if (instance == null) return;
@@ -369,7 +420,8 @@ namespace Companion
                 }
             }
 
-            // Try to wire groundCheck if missing
+            // Reflection-based groundCheck wiring — finds a child named "GroundCheck" and
+            // assigns it to the private field if it wasn't set in the prefab.
             if (follow != null)
             {
                 var groundCheckField = typeof(CompanionFollow2D).GetField("groundCheck", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
@@ -380,15 +432,15 @@ namespace Companion
                     {
                         var found = instance.transform.Find("GroundCheck");
                         if (found != null)
-                        {
                             groundCheckField.SetValue(follow, found);
-                        }
                     }
                 }
             }
         }
 
-        // Ensure a CompanionManager exists even if not placed in the scene manually.
+        // --- Auto-Creation ---
+        // Runs before any scene loads. If no CompanionManager exists in the scene,
+        // one is created automatically so nothing needs to be manually placed.
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void EnsureInstanceExists()
         {

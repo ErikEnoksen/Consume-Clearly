@@ -14,9 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::WorkshopRecipe
   stationType: 0
   inputs:
-  - itemName: 
-    amount: 0
-    icon: {fileID: 0}
+  - itemPrefab: {fileID: 3646466263335055028, guid: 90fafa1642bff554bb3fb81785bdcf25, type: 3}
+    amount: 2
+  - itemPrefab: {fileID: 4082836664346804950, guid: 36615883ffae81c4f86c38148b02b951, type: 3}
+    amount: 1
+  - itemPrefab: {fileID: 2250404272924058097, guid: c86a68547d783df4ca5e61a725641386, type: 3}
+    amount: 1
+  - itemPrefab: {fileID: 2510323855395423327, guid: 2a4f887e2806bd1468304659b8eeebc6, type: 3}
+    amount: 1
   outputPrefabs:
-  - itemPrefab: {fileID: 0}
-    amount: 0
+  - itemPrefab: {fileID: 2151010398377138779, guid: 2c4358ffedbd3cc42b98e5b12f8aa61d, type: 3}
+    amount: 1

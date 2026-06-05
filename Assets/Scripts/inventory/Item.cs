@@ -1,4 +1,11 @@
-using Items;
+// =============================================================================
+// Item.cs - The individual items in the environment
+//
+// PURPOSE:
+//   These are the items the player will collect to help him through levels.
+//   When interacting with these items they will be added to the inventory.
+//   An item can be picked up when the player sees and E symbol above them.
+// =============================================================================
 using Save;
 using System;
 using UnityEngine;
@@ -15,6 +22,8 @@ public class Item : MonoBehaviour, ISaveable
     private int maxStack = 10;
     [SerializeField]
     private Sprite sprite;
+    [SerializeField]
+    private int sellPrice = 10;
 
     [Header("Save System")]
     [SerializeField] private string uniqueSceneId;
@@ -32,6 +41,7 @@ public class Item : MonoBehaviour, ISaveable
     public int Quantity { get { return quantity; } set { quantity = value; } }
     public Sprite Sprite { get { return sprite; } set { sprite = value; } }
     public int MaxStack { get { return maxStack; } set { maxStack = value; } }
+    public int SellPrice { get { return sellPrice; } set { sellPrice = value; } } 
 
     [TextArea]
     [SerializeField]
@@ -71,7 +81,7 @@ public class Item : MonoBehaviour, ISaveable
             uniqueSceneId = Guid.NewGuid().ToString();
     }
 
-    public void Initialize(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string itemTag, GameObject eKeySprite)
+    public void Initialize(string itemName, int quantity, Sprite sprite, string itemDescription, int maxStack, string itemTag, GameObject eKeySprite, int sellPrice)
     {
         ItemName = itemName;
         itemID = itemName;
@@ -81,6 +91,8 @@ public class Item : MonoBehaviour, ISaveable
         MaxStack = maxStack;
         tag = itemTag;
         EKeySprite = eKeySprite;
+        SellPrice = sellPrice;
+
     }
 
     private void OnTriggerStay2D(Collider2D other)

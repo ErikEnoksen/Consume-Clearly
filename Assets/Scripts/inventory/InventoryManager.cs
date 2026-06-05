@@ -1,7 +1,13 @@
-using System.Collections.Generic;
+// =============================================================================
+// InventoryManager.cs - Responsible for managing items
+//
+// PURPOSE:
+//   When looking for items in other scripts, this script will hold the methods responsible for it.
+//   Depending on where you open the inventory from you will get other functionalities.
+// =============================================================================
 using Assets.Scripts.Quests;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour, IUILockable
@@ -10,18 +16,22 @@ public class InventoryManager : MonoBehaviour, IUILockable
     private bool inventoryActive;
     private bool _isLocked;
     public bool giftingEnabled = false;
+    public bool sellingEnabled = false;
     public InventoryItem[] inventoryItems;
-    public string selectedItemName;
+    public string selectedItemID;
 
     private CompanionFriendship companionFriendship;
+    private MoneyManager moneyManager;
     public ItemSO[] itemSOs;
     private Dictionary<string, Sprite> _spriteCache;
 
     public Button giftButton;
+    public Button sellButton;
 
     void Start()
     {
         UIManager.Instance?.RegisterUI(this);
+        moneyManager = GameObject.Find("MoneyManager").GetComponent<MoneyManager>();
     }
 
     private void OnDestroy()
@@ -64,8 +74,9 @@ public class InventoryManager : MonoBehaviour, IUILockable
         inventoryMenu.SetActive(false);
         inventoryActive = false;
         giftingEnabled = false;
+        sellingEnabled = false;
         giftButton.gameObject.SetActive(false);
-        selectedItemName = string.Empty;
+        selectedItemID = string.Empty;
         DeselectAllSlots();
         UIManager.Instance?.RemoveLock(UIManager.UILockType.Inventory);
     }
@@ -79,6 +90,17 @@ public class InventoryManager : MonoBehaviour, IUILockable
         giftingEnabled = true;
         companionFriendship = companion;
         giftButton.gameObject.SetActive(true);
+        UIManager.Instance?.AddLock(UIManager.UILockType.Inventory);
+    }
+
+    public void SellingMenu()
+    {
+        if (_isLocked) return;
+
+        inventoryMenu.SetActive(true);
+        inventoryActive = true;
+        sellingEnabled = true;
+        sellButton.gameObject.SetActive(true);
         UIManager.Instance?.AddLock(UIManager.UILockType.Inventory);
     }
 
@@ -178,38 +200,39 @@ public class InventoryManager : MonoBehaviour, IUILockable
 
         return false;
     }
-
-    public int LookForGift(string itemName, int affectionIncrease)
-    {
-        for (int i = 0; i < inventoryItems.Length; i++)
-        {
-            if (inventoryItems[i].itemName == itemName)
-            {
-                inventoryItems[i].RemoveItem(1);
-                return affectionIncrease;
-            }
-        }
-        Debug.Log("looked for gift");
-        return 0;
-    }
         
     public void GiftItem()
     { 
-        bool usable = UseItem(selectedItemName, true);
+        bool usable = UseItem(selectedItemID, true);
         if (usable)
         {
-            RemoveItem(selectedItemName, 1);
+            RemoveItem(selectedItemID, 1);
             ToggleInventory();
         }
     }
 
     public void EatFood()
     {
-        bool usable = UseItem(selectedItemName, false);
+        bool usable = UseItem(selectedItemID, false);
         if (usable)
         {
-            RemoveItem(selectedItemName, 1);
+            RemoveItem(selectedItemID, 1);
         }
+    }
+
+    public void SellItem()
+    {
+        foreach (var slot in inventoryItems)
+        {
+            if(slot.itemID == selectedItemID && slot.quantity > 0)
+            {
+                if (moneyManager.ChangeMoneyAmount(slot.sellPrice))
+                {
+                    RemoveItem(selectedItemID, 1);
+                }
+            }
+        }
+
     }
 
     public List<Save.InventorySlotData> SaveInventory()
@@ -227,6 +250,7 @@ public class InventoryManager : MonoBehaviour, IUILockable
                     itemDescription = slot.itemDescription,
                     maxStack = slot.maxStack,
                     itemTag = slot.tag,
+                    sellPrice = slot.sellPrice,
                     spriteName = slot.sprite != null ? slot.sprite.name : string.Empty,
                     cachedSprite = slot.sprite
                 });

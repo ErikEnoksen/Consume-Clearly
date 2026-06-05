@@ -86,7 +86,7 @@ MonoBehaviour:
   dialogueStages: []
   triggerType: 0
   interactKey: 102
-  pressF: {fileID: 0}
+  pressF: {fileID: 8082486689940229377}
   uniqueId: 635dceb4-8e42-416b-a055-8239659c71a2
 --- !u!114 &4432971425243214631
 MonoBehaviour:

@@ -41,6 +41,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: sellPrice
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918841412333357193, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: itemDescription
       value: You can ride around mabye
       objectReference: {fileID: 0}
@@ -119,6 +123,22 @@ PrefabInstance:
     - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: m_Offset.y
       value: 0.48253822
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.w
+      value: 5.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.x
+      value: 7.651002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.y
+      value: 6.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
+      propertyPath: m_SpriteTilingProperty.border.z
+      value: 9.661265
       objectReference: {fileID: 0}
     - target: {fileID: 4768837072606002413, guid: f01beaf54a295bd4799c7e1f6a7ec4af, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x

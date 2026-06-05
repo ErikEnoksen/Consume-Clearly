@@ -1,3 +1,5 @@
+// This script lets the player interact with a trash can to empty it, which gives them a random item and increases their satisfaction.
+// The trash can resets daily, allowing for repeated interactions.
 using Save;
 using UnityEngine;
 using System;
@@ -66,6 +68,7 @@ namespace LevelObjects.Interactable
 
         private void Start()
         {
+            // subcribe to day cycle events for daily reset
             if (DayCycleManager.Instance != null)
             {
                 DayCycleManager.Instance.OnNewDay += ResetDaily;
@@ -78,6 +81,7 @@ namespace LevelObjects.Interactable
 
         private void OnDestroy()
         {
+            // Unsubscribe from events to prevent memory leaks
             if (DayCycleManager.Instance != null)
             {
                 DayCycleManager.Instance.OnNewDay -= ResetDaily;
@@ -110,6 +114,7 @@ namespace LevelObjects.Interactable
 
         private void EmptyTrash()
         {
+            // Set state to empty and update visuals immediately
             _isEmpty = true;
             UpdateVisuals();
 
@@ -135,10 +140,10 @@ namespace LevelObjects.Interactable
                 Debug.LogError($"[TrashCan] Cannot give item - InventoryManager is null");
                 return false;
             }
-
+            // Select a random item from the array
             int randomIndex = UnityEngine.Random.Range(0, items.Length);
             Item item = items[randomIndex];
-
+            // Attempt to add the item to the player's inventory
             int excessItems = inventoryManager.AddItem(item, 1);
 
             if (excessItems > 0)
@@ -158,7 +163,7 @@ namespace LevelObjects.Interactable
                 Debug.LogError($"[TrashCan] Cannot give satisfaction - SatisfactionMeter is null");
                 return false;
             }
-
+            // Attempt to increase satisfaction, catching any exceptions that might occur
             try
             {
                 satisfactionMeter.IncreaseSatisfactionValue(satisfactionReward);
@@ -184,6 +189,7 @@ namespace LevelObjects.Interactable
         {
             if (_isEmpty)
             {
+                // Reset the trash can to be full again
                 _isEmpty = false;
                 UpdateVisuals();
                 OnTrashReset?.Invoke(this);

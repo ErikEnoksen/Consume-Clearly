@@ -27,28 +27,28 @@ namespace Tests.EditMode
         [Test]
         public void Initialize_SetsItemName()
         {
-            item.Initialize("Wood", 1, null, "A plank of wood", 10, "Untagged", item.EKeySprite);
+            item.Initialize("Wood", 1, null, "A plank of wood", 10, "Untagged", item.EKeySprite, item.SellPrice);
             Assert.AreEqual("Wood", item.ItemName);
         }
 
         [Test]
         public void Initialize_SetsQuantity()
         {
-            item.Initialize("Stone", 5, null, "", 20, "Untagged", item.EKeySprite);
+            item.Initialize("Stone", 5, null, "", 20, "Untagged", item.EKeySprite, item.SellPrice);
             Assert.AreEqual(5, item.Quantity);
         }
 
         [Test]
         public void Initialize_SetsMaxStack()
         {
-            item.Initialize("Stone", 1, null, "", 15, "Untagged", item.EKeySprite);
+            item.Initialize("Stone", 1, null, "", 15, "Untagged", item.EKeySprite, item.SellPrice);
             Assert.AreEqual(15, item.MaxStack); 
         }
 
         [Test]
         public void Initialize_SetsDescription()
         {
-            item.Initialize("Herb", 1, null, "A healing herb", 5, "Untagged", item.EKeySprite);
+            item.Initialize("Herb", 1, null, "A healing herb", 5, "Untagged", item.EKeySprite, item.SellPrice);
             Assert.AreEqual("A healing herb", item.ItemDescription);
         }
 
@@ -60,7 +60,7 @@ namespace Tests.EditMode
                 new Rect(0, 0, 1, 1),
                 Vector2.zero);
 
-            item.Initialize("Icon", 1, sprite, "", 1, "Untagged", item.EKeySprite);
+            item.Initialize("Icon", 1, sprite, "", 1, "Untagged", item.EKeySprite, item.SellPrice);
             Assert.AreEqual(sprite, item.Sprite);
 
             Object.DestroyImmediate(sprite.texture);
@@ -71,7 +71,7 @@ namespace Tests.EditMode
         [Test]
         public void Id_UsesItemNameWhenAvailable()
         {
-            item.Initialize("Plank", 1, null, "", 10, "Untagged", item.EKeySprite);
+            item.Initialize("Plank", 1, null, "", 10, "Untagged", item.EKeySprite, item.SellPrice);
             Assert.AreEqual("Plank", item.Id);
         }
 
@@ -85,7 +85,7 @@ namespace Tests.EditMode
         [Test]
         public void Id_IsStableOnRepeatedAccess()
         {
-            item.Initialize("Rock", 1, null, "", 5, "Untagged", item.EKeySprite);
+            item.Initialize("Rock", 1, null, "", 5, "Untagged", item.EKeySprite, item.SellPrice);
             string first = item.Id;
             string second = item.Id;
             Assert.AreEqual(first, second);

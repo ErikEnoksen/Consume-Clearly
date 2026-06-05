@@ -471,7 +471,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Main::LevelObjects.Interactable.Bridge
   requiresLever: 0
   interactionRange: 0.6
-  uniqueId: 65e4bc64-4e24-4748-97b6-8b9deec36cd3
+  uniqueId: 33e4bc64-4e24-4748-97b6-8b9deec36cd3
   repairObjectiveID: PeperbusBell
   brokenStrucutre: {fileID: 1111945267}
   fixedStructure: {fileID: 1931643918}

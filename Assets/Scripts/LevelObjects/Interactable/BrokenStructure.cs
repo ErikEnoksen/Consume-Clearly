@@ -1,3 +1,10 @@
+// =============================================================================
+// BrokenStructure.cs - Allows the repairing of structures
+//
+// PURPOSE:
+//   Through this script structures can be repaired with the necessary materials.
+//   If the player has the materials then these will be removed to repair the structure.
+// =============================================================================
 using UnityEngine;
 using Save;
 using System.Collections.Generic;
@@ -16,10 +23,9 @@ namespace LevelObjects.Interactable
 
     [Header("Required Items")]
     [SerializeField] private Item[] requiredItems;
-        //[SerializeField] private string screwItemId = "Screw";
 
 
-        List<InventoryItem> items = new List<InventoryItem>();
+    List<InventoryItem> items = new List<InventoryItem>();
     private InventoryManager _inventory;
     private bool isRepaired = false;
 
@@ -40,7 +46,6 @@ namespace LevelObjects.Interactable
     {
         if (isRepaired || _inventory == null) return;
         
-
             foreach(var item in requiredItems)
             {
                 InventoryItem inventoryItem = FindItemByName(item.ItemName);

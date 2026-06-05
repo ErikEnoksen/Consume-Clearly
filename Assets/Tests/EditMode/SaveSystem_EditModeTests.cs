@@ -136,5 +136,44 @@ namespace Tests.EditMode
             Assert.IsFalse(saveData2.IsSceneValidForSaving(), "MainMenu scene should be excluded from saving.");
             Assert.IsTrue(saveData3.IsSceneValidForSaving(), "Gameplay scene should be valid for saving.");
         }
+
+        [Test]
+        public void SaveSystem_BackupCreatedOnSecondSave()
+        {
+            SaveSystem.Save(new SaveData { CurrentScene = "TestScene", Money = 100 }, TestSaveFileName);
+            SaveSystem.Save(new SaveData { CurrentScene = "TestScene", Money = 200 }, TestSaveFileName);
+
+            Assert.AreEqual(200, SaveSystem.Load(TestSaveFileName).Money, "Primary should hold second save.");
+
+            File.Delete(Path.Combine(testSaveDirectory, TestSaveFileName));
+            var backup = SaveSystem.Load(TestSaveFileName);
+
+            Assert.IsNotNull(backup, "Backup should exist after second save.");
+            Assert.AreEqual(100, backup.Money, "Backup should hold first save.");
+        }
+
+        [Test]
+        public void SaveSystem_FallsBackToBackupWhenPrimaryMissing()
+        {
+            SaveSystem.Save(new SaveData { CurrentScene = "TestScene", Money = 50 }, TestSaveFileName);
+            SaveSystem.Save(new SaveData { CurrentScene = "TestScene", Money = 99 }, TestSaveFileName);
+
+            File.Delete(Path.Combine(testSaveDirectory, TestSaveFileName));
+            var loaded = SaveSystem.Load(TestSaveFileName);
+
+            Assert.IsNotNull(loaded, "Should load from backup when primary is missing.");
+            Assert.AreEqual(50, loaded.Money);
+        }
+
+        [Test]
+        public void SaveSystem_ClearSaveData_AlsoClearsBackup()
+        {
+            SaveSystem.Save(new SaveData { CurrentScene = "TestScene", Money = 1 }, TestSaveFileName);
+            SaveSystem.Save(new SaveData { CurrentScene = "TestScene", Money = 2 }, TestSaveFileName);
+
+            SaveSystem.ClearSaveData(TestSaveFileName);
+
+            Assert.IsNull(SaveSystem.Load(TestSaveFileName), "Load should return null after clearing both primary and backup.");
+        }
     }
 }

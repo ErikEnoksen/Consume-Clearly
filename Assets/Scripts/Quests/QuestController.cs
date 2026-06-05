@@ -94,7 +94,7 @@ namespace Assets.Scripts.Quests
 				foreach (var quest in toComplete)
 					CompleteQuest(quest);
 
-				questUI?.UpdateQuestUI();
+				questUI?.RefreshObjectiveTexts();
         }
 
         public bool IsQuestCompleted(string questID)
@@ -242,6 +242,12 @@ namespace Assets.Scripts.Quests
 			}
 			return result;
 		}
+		
+		public void ResetState()
+		{
+			ActiveQuests.Clear();
+			completedQuestIDs.Clear();
+		}
 
 		public List<string> GetCompletedQuestIDs() => new List<string>(completedQuestIDs);
 
@@ -308,7 +314,8 @@ namespace Assets.Scripts.Quests
 					rewardItem.itemPrefab.ItemDescription,
 					rewardItem.itemPrefab.MaxStack,
                     itemTag,
-                    rewardItem.itemPrefab.EKeySprite
+                    rewardItem.itemPrefab.EKeySprite,
+					rewardItem.itemPrefab.SellPrice
                 );
 
 				int leftover = inventoryManager.AddItem(newItem, newItem.Quantity);
