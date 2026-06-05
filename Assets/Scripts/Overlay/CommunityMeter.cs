@@ -1,3 +1,29 @@
+// This script manages the community meter, which tracks the player's progress in building a community of companions.
+//
+// Purpose:
+// It increases or decreases based on player actions and the number of friends (companions) the player has.
+// The community meter has different states (Fragmented, Growing, Connecting, Thriving) that provide various benefits.
+// The script also handles overflow points when the player tries to increase the community level beyond the current cap based on their friend count.
+//
+// Key Features:
+// - Tracks community level and overflow points
+// - Determines community state based on friend count and community level
+// - Provides daily increases based on the current community state
+// - Listens for changes in companion friendship states to update the community state accordingly
+// - Updates the UI slider to reflect the current community level and state
+// 
+// FLOW:
+// 1. On start, it finds all companions in the scene and registers them.
+// 2. When a companion's friendship state changes, it checks if they became a friend or lost friendship and updates the friend count and community state.
+// 3. When the community level is increased, it checks for overflow and applies it if the player gains more points than the current cap allows.
+// 4. On a new day, it applies a daily increase to the community level based on the current state.
+// 5. The community state is evaluated whenever there are changes to the friend count or community level, and the UI is updated accordingly.
+// 
+// Start() -> FindAndRegisterAllCompanions() -> OnCompanionStateChanged() -> EvaluateCommunityState() -> UpdateCommunityMeter()
+// IncreaseCommunityLevel() -> AddPointsWithOverflow() -> TryApplyOverflow()
+// OnNewDay() -> GetDailyCommunityIncrease() -> AddPointsWithOverflow()
+// ==============================================================================================================================================================================
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,11 +52,13 @@ public class CommunityMeter : MonoBehaviour
     {
         // Find all companions in the scene
         FindAndRegisterAllCompanions();
-
+        
         satisfactionMeter = GetComponent<CircularSatisfactionMeter>();
+        // Initialize community state
         CurrentState = GetCommunityState();
+        // Update the UI
         UpdateCommunityMeter();
-
+        // Subscribe to day cycle events
         if (DayCycleManager.Instance != null)
             DayCycleManager.Instance.OnNewDay += OnNewDay;
     }
@@ -65,6 +93,7 @@ public class CommunityMeter : MonoBehaviour
             // Check if this companion is already a friend
             if (IsActualFriend(companion.CurrentState))
             {
+                // Only count as friend if it's Friend or BestFriend state
                 if (!countedFriends.Contains(companion))
                 {
                     countedFriends.Add(companion);
@@ -172,6 +201,7 @@ public class CommunityMeter : MonoBehaviour
 
     public void IncreaseCommunityLevel(int amount)
     {
+        // Handels overflow when trying to increase community level beyond the current cap based on friend count
         AddPointsWithOverflow(amount);
         OnCommunityLevelChanged?.Invoke(CommunityLevel);
         EvaluateCommunityState();
@@ -190,7 +220,7 @@ public class CommunityMeter : MonoBehaviour
     private void EvaluateCommunityState()
     {
         var newState = GetCommunityState();
-
+        // Only trigger state change if it actually changed to avoid unnecessary updates
         if (newState != CurrentState)
         {
             CurrentState = newState;

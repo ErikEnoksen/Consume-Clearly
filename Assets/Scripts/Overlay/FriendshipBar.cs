@@ -1,3 +1,27 @@
+// This script manages the friendship bar UI, updating it based on the current companion's friendship level and mood.
+// 
+// Purpose:
+// It listens for dialogue events to show or hide the friendship bar,
+// and it updates the bar's fill amount and color based on the companion's current friendship level and mood.
+// It also provides feedback when the friendship level changes.
+//
+// Key Features:
+// - Listens for dialogue start and end events to manage the visibility of the friendship bar.
+// - Updates the friendship bar's fill amount and color based on the companion's current friendship level.
+// - Changes the handle sprite based on the companion's mood.
+// - Provides visual feedback when the friendship level changes.
+//
+// FLOW:
+// 1. On dialogue start, it subscribes to the companion's friendship level and mood change events, and shows the friendship bar.
+// 2. On dialogue end, it unsubscribes from the events and hides the friendship bar.
+// 3. When the friendship level changes, it updates the bar's fill amount and color, and triggers feedback.
+// 4. When the mood changes, it updates the handle sprite to reflect the new mood.
+// 
+// Start() -> OnDialogueStarted() -> Subscribe to companion events -> ShowFriendshipBar()
+// OnDialogueEnded() -> Unsubscribe from events -> HideFriendshipBar()
+// UpdateFriendshipLevel() -> Update bar fill and color -> FeedbackLoop()
+//==============================================================================================================================================================================
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -102,6 +126,7 @@ public class FriendshipBar : MonoBehaviour
 
     private void UpdateFriendshipLevel(int newLevel)
     {
+        // Update the fill amount and color of the friendship bar based on the new level
         if (friendshipBar != null && currentCompanion != null)
         {
             friendshipBar.fillRect.GetComponent<Image>().color = currentCompanion.GetFriendshipColor();
@@ -138,6 +163,7 @@ public class FriendshipBar : MonoBehaviour
 
     private void FeedbackLoop()
     {
+        // Show feedback (e.g., a flash or animation) when the friendship level changes
         feedback.gameObject.SetActive(true);
 
         feedbackTimer = feedbackDuration;
@@ -145,6 +171,7 @@ public class FriendshipBar : MonoBehaviour
 
     public void Update()
     {
+        // Handle feedback timer to hide feedback after duration
         if (feedback.gameObject.activeSelf)
         {
             feedbackTimer -= Time.deltaTime;

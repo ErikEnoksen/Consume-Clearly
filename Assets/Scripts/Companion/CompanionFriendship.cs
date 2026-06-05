@@ -1,3 +1,24 @@
+// This script manages the friendship level and mood of a companion character in a game.
+// Purpose:
+// It includes functionality for increasing and decreasing friendship levels, changing moods, and providing daily conversation bonuses.
+// The script also handles state changes based on the current friendship level and mood, and it integrates with a day cycle manager to reset daily bonuses and apply penalties for missed conversations.
+//
+// Key Features:
+// - Friendship levels with defined states (Stranger, Acquaintance, Friend, Best Friend)
+// - Mood states (Happy, Neutral, Angry) that affect the rate of friendship increase
+// - Daily conversation bonuses and penalties
+// - Events for when friendship levels and moods change, allowing other parts of the game to react accordingly
+//
+// FLOW:
+// 1. The script initializes and subscribes to the day cycle manager's new day event.
+// 2. The player can interact with the companion to increase or decrease friendship levels, which also checks for state changes.
+// 3. The companion's mood can be switched, affecting the multiplier for friendship increases.
+// 
+// Start() -> IncreaseFriendship() / DecreaseFriendship() -> Apply multiplier -> CheckStateChange() -> OnStateChanged event
+// GiveDailyConversationBonus() /^\ 
+// ResetDaily() -> DecreaseFriendship() if daily bonus not given -> Reset daily bonus and mood
+
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;
